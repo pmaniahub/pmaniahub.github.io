@@ -81,6 +81,12 @@
             vertical-align: middle; 
         }
 
+        .main-nav {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
         .main-nav ul {
             list-style: none;
             display: flex;
@@ -96,6 +102,21 @@
 
         .main-nav a:hover {
             color: var(--secondary-color);
+        }
+
+        /* Language Switcher */
+        .lang-switcher button {
+            background: none;
+            border: none;
+            color: var(--text-color);
+            font-weight: 600;
+            cursor: pointer;
+            padding: 5px;
+            font-size: 1em;
+        }
+        .lang-switcher button.active {
+            color: var(--secondary-color);
+            text-decoration: underline;
         }
 
         /* --- Hero Section --- */
@@ -380,16 +401,13 @@
         }
 
         /* --- Responsive Design --- */
-        @media (max-width: 768px) {
+        @media (max-width: 992px) {
             .main-header .container {
                 flex-direction: column;
                 gap: 15px;
             }
-            .main-nav ul {
-                flex-direction: column;
-                text-align: center;
-                gap: 10px;
-            }
+        }
+        @media (max-width: 768px) {
             .hero h1 {
                 font-size: 2.5em;
             }
@@ -409,13 +427,17 @@
             </a>
             <nav class="main-nav">
                 <ul>
-                    <li><a href="index.html">Əsas Səhifə</a></li>
-                    <li><a href="telimler.html">Təlimlər</a></li>
-                    <li><a href="#about-section">Haqqımızda</a></li>
-                    <li><a href="#testimonials-section">Rəylər</a></li>
-                    <li><a href="#blog-section">Bloq</a></li>
-                    <li><a href="elaqe.html">Əlaqə</a></li>
+                    <li><a href="index.html" data-lang-key="navHome">Əsas Səhifə</a></li>
+                    <li><a href="telimler.html" data-lang-key="navTrainings">Təlimlər</a></li>
+                    <li><a href="#about-section" data-lang-key="navAbout">Haqqımızda</a></li>
+                    <li><a href="#testimonials-section" data-lang-key="navReviews">Rəylər</a></li>
+                    <li><a href="#blog-section" data-lang-key="navBlog">Bloq</a></li>
+                    <li><a href="elaqe.html" data-lang-key="navContact">Əlaqə</a></li>
                 </ul>
+                <div class="lang-switcher">
+                    <button id="lang-az" class="active">AZ</button> |
+                    <button id="lang-en">EN</button>
+                </div>
             </nav>
         </div>
     </header>
@@ -424,28 +446,28 @@
         <!-- Hero Section -->
         <section class="hero">
             <div class="container">
-                <h1>Layihə İdarəetməsini Ustalıqla Öyrənin</h1>
-                <p>Online kurslar, təlimlər və peşəkar konsultasiya ilə bacarıqlarınızı artırın</p>
-                <a href="telimler.html" class="cta-button">Dərslərə Başla</a>
+                <h1 data-lang-key="heroTitle">Layihə İdarəetməsini Ustalıqla Öyrənin</h1>
+                <p data-lang-key="heroSubtitle">Online kurslar, təlimlər və peşəkar konsultasiya ilə bacarıqlarınızı artırın</p>
+                <a href="telimler.html" class="cta-button" data-lang-key="heroButton">Dərslərə Başla</a>
             </div>
         </section>
 
         <!-- Services Section -->
         <section class="services">
             <div class="container">
-                <h2 class="section-title">Xidmətlərimiz</h2>
+                <h2 class="section-title" data-lang-key="servicesTitle">Xidmətlərimiz</h2>
                 <div class="services-grid">
                     <div class="service-card">
-                        <h3><a href="telimler.html" style="text-decoration:none; color: var(--secondary-color);">Təlimlər</a></h3>
-                        <p>Layihə idarəetmə bacarıqlarınızı praktiki və nəzəri dərslərlə inkişaf etdirin.</p>
+                        <h3><a href="telimler.html" style="text-decoration:none; color: var(--secondary-color);" data-lang-key="service1Title">Təlimlər</a></h3>
+                        <p data-lang-key="service1Desc">Layihə idarəetmə bacarıqlarınızı praktiki və nəzəri dərslərlə inkişaf etdirin.</p>
                     </div>
                     <div class="service-card">
-                        <h3>Konsultasiya</h3>
-                        <p>Peşəkar layihə menecerlərindən layihələriniz üçün fərdi məsləhət alın.</p>
+                        <h3 data-lang-key="service2Title">Konsultasiya</h3>
+                        <p data-lang-key="service2Desc">Peşəkar layihə menecerlərindən layihələriniz üçün fərdi məsləhət alın.</p>
                     </div>
                     <div class="service-card">
-                        <h3><a href="#blog-section" style="text-decoration:none; color: var(--secondary-color);">Bloq</a></h3>
-                        <p>Sektorla bağlı son məqalələr, trendlər və yenilikləri izləyin.</p>
+                        <h3><a href="#blog-section" style="text-decoration:none; color: var(--secondary-color);" data-lang-key="service3Title">Bloq</a></h3>
+                        <p data-lang-key="service3Desc">Sektorla bağlı son məqalələr, trendlər və yenilikləri izləyin.</p>
                     </div>
                 </div>
             </div>
@@ -454,11 +476,11 @@
         <!-- About Section -->
         <section id="about-section" class="about">
             <div class="container">
-                <h2 class="section-title">“PMania” ilə Tanış ol</h2>
-                <p>PMania Hub, layihə idarəetməsi sahəsində karyera qurmaq və ya mövcud bacarıqlarını təkmilləşdirmək istəyənlər üçün yaradılmış hərtərəfli bir platformadır. Məqsədimiz, hər kəsə keyfiyyətli təhsil və peşəkar dəstək təqdim etməklə onların uğuruna töhfə verməkdir.</p>
+                <h2 class="section-title" data-lang-key="aboutTitle">“PMania” ilə Tanış ol</h2>
+                <p data-lang-key="aboutDesc">PMania Hub, layihə idarəetməsi sahəsində karyera qurmaq və ya mövcud bacarıqlarını təkmilləşdirmək istəyənlər üçün yaradılmış hərtərəfli bir platformadır. Məqsədimiz, hər kəsə keyfiyyətli təhsil və peşəkar dəstək təqdim etməklə onların uğuruna töhfə verməkdir.</p>
                 <div class="about-buttons">
-                    <button class="cta-button" onclick="openModal('mission-modal')">💡 Missiyamız</button>
-                    <button class="cta-button" onclick="openModal('vision-modal')">🎯 Vizyonumuz</button>
+                    <button class="cta-button" onclick="openModal('mission-modal')" data-lang-key="missionButton">💡 Missiyamız</button>
+                    <button class="cta-button" onclick="openModal('vision-modal')" data-lang-key="visionButton">🎯 Vizyonumuz</button>
                 </div>
             </div>
         </section>
@@ -466,37 +488,37 @@
         <!-- Testimonials CTA Section -->
         <section id="testimonials-section" class="testimonials-cta">
             <div class="container">
-                <h2 class="section-title">Tələbələrimiz Nə Deyir?</h2>
-                <p>Bizimlə təcrübələrini bölüşən məzunlarımızın fikirləri ilə tanış olun.</p>
-                <button class="cta-button" onclick="openModal('all-testimonials-modal')">Bütün Rəyləri Oxu</button>
+                <h2 class="section-title" data-lang-key="testimonialsTitle">Tələbələrimiz Nə Deyir?</h2>
+                <p data-lang-key="testimonialsDesc">Bizimlə təcrübələrini bölüşən məzunlarımızın fikirləri ilə tanış olun.</p>
+                <button class="cta-button" onclick="openModal('all-testimonials-modal')" data-lang-key="testimonialsButton">Bütün Rəyləri Oxu</button>
             </div>
         </section>
 
         <!-- Blog Section -->
         <section id="blog-section" class="blog">
             <div class="container">
-                <h2 class="section-title">Son Bloq Yazıları</h2>
+                <h2 class="section-title" data-lang-key="blogTitle">Son Bloq Yazıları</h2>
                 <div class="blog-grid">
                     <article class="blog-post-card">
                         <div class="blog-post-content">
-                            <h3>Agile və Scrum Arasındakı Fərqlər</h3>
-                            <p>Bu məqalədə çevik metodologiyaların əsas prinsiplərini və onların tətbiqini araşdırırıq.</p>
+                            <h3 data-lang-key="blog1Title">Agile və Scrum Arasındakı Fərqlər</h3>
+                            <p data-lang-key="blog1Desc">Bu məqalədə çevik metodologiyaların əsas prinsiplərini və onların tətbiqini araşdırırıq.</p>
                         </div>
-                        <button class="read-more-btn" onclick="openModal('blog-modal-1')">Daha çox oxu &rarr;</button>
+                        <button class="read-more-btn" onclick="openModal('blog-modal-1')" data-lang-key="readMore">Daha çox oxu &rarr;</button>
                     </article>
                     <article class="blog-post-card">
                         <div class="blog-post-content">
-                            <h3>Uğurlu Layihə Üçün 5 Vacib Addım</h3>
-                            <p>Layihə planlamasından yekun təhvilə qədər olan mərhələlərdə diqqət etməli olduğunuz məqamlar.</p>
+                            <h3 data-lang-key="blog2Title">Uğurlu Layihə Üçün 5 Vacib Addım</h3>
+                            <p data-lang-key="blog2Desc">Layihə planlamasından yekun təhvilə qədər olan mərhələlərdə diqqət etməli olduğunuz məqamlar.</p>
                         </div>
-                        <button class="read-more-btn" onclick="openModal('blog-modal-2')">Daha çox oxu &rarr;</button>
+                        <button class="read-more-btn" onclick="openModal('blog-modal-2')" data-lang-key="readMore">Daha çox oxu &rarr;</button>
                     </article>
                     <article class="blog-post-card">
                         <div class="blog-post-content">
-                            <h3>Risk İdarəetməsi Nədir?</h3>
-                            <p>Layihələrinizdə qarşılaşa biləcəyiniz riskləri necə müəyyən edə və idarə edə bilərsiniz?</p>
+                            <h3 data-lang-key="blog3Title">Risk İdarəetməsi Nədir?</h3>
+                            <p data-lang-key="blog3Desc">Layihələrinizdə qarşılaşa biləcəyiniz riskləri necə müəyyən edə və idarə edə bilərsiniz?</p>
                         </div>
-                        <button class="read-more-btn" onclick="openModal('blog-modal-3')">Daha çox oxu &rarr;</button>
+                        <button class="read-more-btn" onclick="openModal('blog-modal-3')" data-lang-key="readMore">Daha çox oxu &rarr;</button>
                     </article>
                 </div>
             </div>
@@ -508,27 +530,27 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
-                    <h4>PMania Hub</h4>
-                    <p>Layihə idarəetməsində peşəkar dəstəkçiniz.</p>
+                    <h4 data-lang-key="footerTitle1">PMania Hub</h4>
+                    <p data-lang-key="footerDesc1">Layihə idarəetməsində peşəkar dəstəkçiniz.</p>
                 </div>
                 <div class="footer-section">
-                    <h4>Sürətli Keçidlər</h4>
+                    <h4 data-lang-key="footerTitle2">Sürətli Keçidlər</h4>
                     <ul>
-                        <li><a href="index.html">Əsas Səhifə</a></li>
-                        <li><a href="telimler.html">Təlimlər</a></li>
-                        <li><a href="#about-section">Haqqımızda</a></li>
-                        <li><a href="#testimonials-section">Rəylər</a></li>
-                        <li><a href="#blog-section">Bloq</a></li>
-                        <li><a href="elaqe.html">Əlaqə</a></li>
+                        <li><a href="index.html" data-lang-key="navHome">Əsas Səhifə</a></li>
+                        <li><a href="telimler.html" data-lang-key="navTrainings">Təlimlər</a></li>
+                        <li><a href="#about-section" data-lang-key="navAbout">Haqqımızda</a></li>
+                        <li><a href="#testimonials-section" data-lang-key="navReviews">Rəylər</a></li>
+                        <li><a href="#blog-section" data-lang-key="navBlog">Bloq</a></li>
+                        <li><a href="elaqe.html" data-lang-key="navContact">Əlaqə</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
-                    <h4>Əlaqə</h4>
+                    <h4 data-lang-key="footerTitle3">Əlaqə</h4>
                     <p>Email: pmaniahub@gmail.com</p>
-                    <p>Telefon: +994 50 972 63 84</p>
+                    <p data-lang-key="footerPhone">Telefon: +994 50 972 63 84</p>
                 </div>
                 <div class="footer-section">
-                    <h4>Bizi İzləyin</h4>
+                    <h4 data-lang-key="footerTitle4">Bizi İzləyin</h4>
                     <div class="social-icons">
                         <a href="https://www.instagram.com/pmania_hub/" target="_blank">Instagram</a>
                         <a href="https://www.facebook.com/profile.php?id=61578312400129" target="_blank">Facebook</a>
@@ -537,18 +559,18 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2025 PMania Hub. Bütün hüquqlar qorunur.</p>
+                <p data-lang-key="footerRights">&copy; 2025 PMania Hub. Bütün hüquqlar qorunur.</p>
             </div>
         </div>
     </footer>
 
-    <!-- Mission & Vision Modals -->
+    <!-- Modals -->
     <div id="mission-modal" class="modal">
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal('mission-modal')">&times;</span>
             <div class="modal-body">
-                <h3>💡 Missiyamız</h3>
-                <p>Layihə idarəetməsini maarifləndirici, əyləncəli və motivasiyaedici yanaşma ilə hər kəs üçün daha maraqlı və əlçatan etmək!</p>
+                <h3 data-lang-key="missionModalTitle">💡 Missiyamız</h3>
+                <p data-lang-key="missionModalDesc">Layihə idarəetməsini maarifləndirici, əyləncəli və motivasiyaedici yanaşma ilə hər kəs üçün daha maraqlı və əlçatan etmək!</p>
             </div>
         </div>
     </div>
@@ -556,112 +578,160 @@
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal('vision-modal')">&times;</span>
             <div class="modal-body">
-                <h3>🎯 Vizyonumuz</h3>
-                <p>Layihə idarəetməsini yeni baxışla təqdim edən aparıcı platforma olmaq.</p>
+                <h3 data-lang-key="visionModalTitle">🎯 Vizyonumuz</h3>
+                <p data-lang-key="visionModalDesc">Layihə idarəetməsini yeni baxışla təqdim edən aparıcı platforma olmaq.</p>
             </div>
         </div>
     </div>
-
-    <!-- All Testimonials Modal -->
     <div id="all-testimonials-modal" class="modal">
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal('all-testimonials-modal')">&times;</span>
             <div class="modal-body">
-                <h3>Tələbə Rəyləri</h3>
-                <div class="review">
-                    <p>“Təlimçinin dərsi təqdim etmə tərzi çox maraqlı və aydın idi. Mövzunu hərtərəfli izah edir, real nümunələr gətirərək mövzunu daha da anlaşıqlı edirdi. Ritmi uyğun, izahı əyləncəli idi və iştirakçılarla yaxşı əlaqə qurmağı bacarırdı.”</p>
-                    <p class="author">- Vebinar İştirakçısı</p>
-                </div>
-                <div class="review">
-                    <p>“Mən stomatologiya ixtisasında təhsil alıram, lakin fakültə startap sədri kimi layihə idarəetməsi üzrə biliklərimi genişləndirmək məqsədilə Project Manager mövzulu vebinarlarda iştirak edirəm. Təlimçinin izahı olduqca aydın və məzmunlu idi, dərsin ritmi uyğun şəkildə qurulmuşdu. Nəticədə, mövzunun bütün məqamlarını asanlıqla mənimsəyə bildim.”</p>
-                    <p class="author">- Vebinar İştirakçısı</p>
-                </div>
-                <div class="review">
-                    <p>“Tecrubeli olmasini hiss eletdiren telimcidir, aydin, sistematik ve sual isaresi qalmayacaq sekilde izah edir.”</p>
-                    <p class="author">- Təlim İştirakçısı</p>
-                </div>
-                <div class="review">
-                    <p>“Təlimçi həqiqətən həm vaxtını ayırır aydın izah edir həm də tələbələrə xüsusi yanaşır.”</p>
-                    <p class="author">- Təlim İştirakçısı</p>
-                </div>
-                <div class="review">
-                    <p>“Hər kəsin fikrini dinliyib, sonda ən optimal variantla aydın başa salır.”</p>
-                    <p class="author">- Vebinar İştirakçısı</p>
-                </div>
-                <div class="review">
-                    <p>“İnteraktiv, dinləyicini nəzərə alaraq ona uyğun sadə dildə izah etməsi, sonda əyləncəli metodla öyrəndiklərimizin yoxlanılması.”</p>
-                    <p class="author">- Təlim İştirakçısı</p>
-                </div>
-                <div class="review">
-                    <p>“Çox aydındır və real həyat təcrübələrinə əsaslanır.”</p>
-                    <p class="author">- Təlim İştirakçısı</p>
-                </div>
-                <div class="review">
-                    <p>“Təlimçi mövzunu sadə və aydın şəkildə təqdim etdi. Ritm balanslı idi, izahları həyatdakı nümunələrlə zənginləşdirməsi dərsi daha anlaşılan etdi.”</p>
-                    <p class="author">- Vebinar İştirakçısı</p>
-                </div>
-                 <div class="review">
-                    <p>“Çox aydındır, çox bəyənirəm və tələbələrlə əlaqə yaratmağı yaxşıdı, yəni prosta gəlib dərsi keçib getmir, həmçinin care edir, bu da dərslərə necə önəm dəyər verdiyini göstərir.”</p>
-                    <p class="author">- Təlim İştirakçısı</p>
-                </div>
-                 <div class="review">
-                    <p>“Çox razı qaldım, qısa aydın izah etdi.”</p>
-                    <p class="author">- Vebinar İştirakçısı</p>
-                </div>
+                <h3 data-lang-key="testimonialsModalTitle">Tələbə Rəyləri</h3>
+                <div class="review"><p>“Təlimçinin dərsi təqdim etmə tərzi çox maraqlı və aydın idi. Mövzunu hərtərəfli izah edir, real nümunələr gətirərək mövzunu daha da anlaşıqlı edirdi. Ritmi uyğun, izahı əyləncəli idi və iştirakçılarla yaxşı əlaqə qurmağı bacarırdı.”</p><p class="author">- Vebinar İştirakçısı</p></div>
+                <div class="review"><p>“Mən stomatologiya ixtisasında təhsil alıram, lakin fakültə startap sədri kimi layihə idarəetməsi üzrə biliklərimi genişləndirmək məqsədilə Project Manager mövzulu vebinarlarda iştirak edirəm. Təlimçinin izahı olduqca aydın və məzmunlu idi, dərsin ritmi uyğun şəkildə qurulmuşdu. Nəticədə, mövzunun bütün məqamlarını asanlıqla mənimsəyə bildim.”</p><p class="author">- Vebinar İştirakçısı</p></div>
+                <div class="review"><p>“Tecrubeli olmasini hiss eletdiren telimcidir, aydin, sistematik ve sual isaresi qalmayacaq sekilde izah edir.”</p><p class="author">- Təlim İştirakçısı</p></div>
             </div>
         </div>
     </div>
-
-    <!-- Blog Modals -->
-    <div id="blog-modal-1" class="modal">
-        <div class="modal-content">
-            <span class="close-btn" onclick="closeModal('blog-modal-1')">&times;</span>
-            <div class="modal-body">
-                <h3>Agile və Scrum Arasındakı Fərqlər</h3>
-                <p>Layihə idarəetməsində tez-tez qarışdırılan iki termin Agile və Scrum-dır. Əslində, onlar bir-birini tamamlayan, lakin fərqli mənalar daşıyan anlayışlardır.</p>
-                <p><b>Agile (Çeviklik):</b> Bu, bir fəlsəfə və dəyərlər toplusudur. Agile, layihələri kiçik, idarəolunan hissələrə bölərək, dəyişikliklərə sürətli adaptasiya olmağı və müştəri ilə sıx əməkdaşlığı təşviq edir. Bu, konkret bir metod deyil, bir düşüncə tərzidir.</p>
-                <p><b>Scrum:</b> Bu isə Agile fəlsəfəsini həyata keçirmək üçün istifadə olunan ən populyar çərçivədir (framework). Scrum-ın özünəməxsus qaydaları, rolları (Scrum Master, Product Owner, Development Team) və tədbirləri (Sprint, Daily Stand-up) var. Qısacası, Scrum "necə" sualına cavab verir, Agile isə "niyə" sualını əsaslandırır.</p>
-                <p><b>Əsas fərq:</b> Bütün Scrum prosesləri Agile prinsiplərinə əsaslanır, lakin Agile olmaq üçün mütləq Scrum istifadə etmək şərt deyil. Kanban kimi digər Agile metodları da mövcuddur.</p>
-            </div>
-        </div>
-    </div>
-
-    <div id="blog-modal-2" class="modal">
-        <div class="modal-content">
-            <span class="close-btn" onclick="closeModal('blog-modal-2')">&times;</span>
-            <div class="modal-body">
-                <h3>Uğurlu Layihə Üçün 5 Vacib Addım</h3>
-                <p>İstənilən layihənin uğuru onun düzgün idarə olunmasından birbaşa asılıdır. Budur, hər bir layihə menecerinin diqqət etməli olduğu 5 fundamental addım:</p>
-                <ul>
-                    <li><b>1. Dəqiq Məqsədlər Təyin Etmək:</b> Layihənin sonunda nə əldə etmək istədiyinizi aydın şəkildə müəyyənləşdirin. "SMART" (Specific, Measurable, Achievable, Relevant, Time-bound) prinsipi burada ən yaxşı köməkçinizdir.</li>
-                    <li><b>2. Hərtərəfli Planlama:</b> Bütün tapşırıqları, lazım olan resursları, büdcəni və zaman çərçivəsini əhatə edən detallı bir plan hazırlayın. Yaxşı plan, uğurun yarısıdır.</li>
-                    <li><b>3. Effektiv Kommunikasiya:</b> Komanda üzvləri və maraqlı tərəflər arasında davamlı və şəffaf məlumat axınını təmin edin. Hər kəs öz rolunu və gözləntiləri bilməlidir.</li>
-                    <li><b>4. Risk İdarəetməsi:</b> Layihəyə təsir edə biləcək potensial problemləri (riskləri) əvvəlcədən müəyyən edin və onlara qarşı hazırlıqlı olun.</li>
-                    <li><b>5. Davamlı Monitorinq və Nəzarət:</b> Layihənin gedişatını planla müqayisə edərək mütəmadi izləyin. Problem yaranarsa, vaxtında müdaxilə edərək onu aradan qaldırın.</li>
-                </ul>
-            </div>
-        </div>
-    </div>
-
-    <div id="blog-modal-3" class="modal">
-        <div class="modal-content">
-            <span class="close-btn" onclick="closeModal('blog-modal-3')">&times;</span>
-            <div class="modal-body">
-                <h3>Risk İdarəetməsi Nədir?</h3>
-                <p>Risk idarəetməsi, layihənin məqsədlərinə mənfi təsir edə biləcək potensial problemlərin (risklərin) proaktiv şəkildə müəyyən edilməsi, təhlili və onlara cavab verilməsi prosesidir. Məqsəd, sürprizləri minimuma endirmək və layihənin uğur şansını artırmaqdır.</p>
-                <p>Bu proses adətən 4 əsas mərhələdən ibarətdir:</p>
-                <ul>
-                    <li><b>Risklərin Müəyyən Edilməsi:</b> "Nə səhv gedə bilər?" sualına cavab axtarmaq. Bu, texniki problemlərdən tutmuş büdcə çatışmazlığına qədər hər şeyi əhatə edə bilər.</li>
-                    <li><b>Risklərin Təhlili:</b> Hər bir riskin baş vermə ehtimalını və layihəyə potensial təsirini qiymətləndirmək.</li>
-                    <li><b>Riskə Cavab Planlaması:</b> Müəyyən edilmiş risklərə qarşı strategiyalar hazırlamaq. Bu, riskdən yayınmaq, onu azaltmaq, başqasına ötürmək və ya sadəcə qəbul etmək ola bilər.</li>
-                    <li><b>Risklərin Monitorinqi:</b> Layihə boyunca riskləri davamlı olaraq izləmək və lazım gəldikdə planları yeniləmək.</li>
-                </ul>
-                <p>Unutmayın, effektiv risk idarəetməsi problemi böyümədən həll etmək sənətidir.</p>
-            </div>
-        </div>
-    </div>
+    <div id="blog-modal-1" class="modal"><div class="modal-content"><span class="close-btn" onclick="closeModal('blog-modal-1')">&times;</span><div class="modal-body"><h3 data-lang-key="blogModal1Title">Agile və Scrum Arasındakı Fərqlər</h3><p data-lang-key="blogModal1Content1">Layihə idarəetməsində tez-tez qarışdırılan iki termin Agile və Scrum-dır. Əslində, onlar bir-birini tamamlayan, lakin fərqli mənalar daşıyan anlayışlardır.</p><p data-lang-key="blogModal1Content2"><b>Agile (Çeviklik):</b> Bu, bir fəlsəfə və dəyərlər toplusudur. Agile, layihələri kiçik, idarəolunan hissələrə bölərək, dəyişikliklərə sürətli adaptasiya olmağı və müştəri ilə sıx əməkdaşlığı təşviq edir. Bu, konkret bir metod deyil, bir düşüncə tərzidir.</p><p data-lang-key="blogModal1Content3"><b>Scrum:</b> Bu isə Agile fəlsəfəsini həyata keçirmək üçün istifadə olunan ən populyar çərçivədir (framework). Scrum-ın özünəməxsus qaydaları, rolları (Scrum Master, Product Owner, Development Team) və tədbirləri (Sprint, Daily Stand-up) var. Qısacası, Scrum "necə" sualına cavab verir, Agile isə "niyə" sualını əsaslandırır.</p><p data-lang-key="blogModal1Content4"><b>Əsas fərq:</b> Bütün Scrum prosesləri Agile prinsiplərinə əsaslanır, lakin Agile olmaq üçün mütləq Scrum istifadə etmək şərt deyil. Kanban kimi digər Agile metodları da mövcuddur.</p></div></div></div>
+    <div id="blog-modal-2" class="modal"><div class="modal-content"><span class="close-btn" onclick="closeModal('blog-modal-2')">&times;</span><div class="modal-body"><h3 data-lang-key="blogModal2Title">Uğurlu Layihə Üçün 5 Vacib Addım</h3><p data-lang-key="blogModal2Content1">İstənilən layihənin uğuru onun düzgün idarə olunmasından birbaşa asılıdır. Budur, hər bir layihə menecerinin diqqət etməli olduğu 5 fundamental addım:</p><ul><li data-lang-key="blogModal2Item1"><b>1. Dəqiq Məqsədlər Təyin Etmək:</b> Layihənin sonunda nə əldə etmək istədiyinizi aydın şəkildə müəyyənləşdirin. "SMART" (Specific, Measurable, Achievable, Relevant, Time-bound) prinsipi burada ən yaxşı köməkçinizdir.</li><li data-lang-key="blogModal2Item2"><b>2. Hərtərəfli Planlama:</b> Bütün tapşırıqları, lazım olan resursları, büdcəni və zaman çərçivəsini əhatə edən detallı bir plan hazırlayın. Yaxşı plan, uğurun yarısıdır.</li><li data-lang-key="blogModal2Item3"><b>3. Effektiv Kommunikasiya:</b> Komanda üzvləri və maraqlı tərəflər arasında davamlı və şəffaf məlumat axınını təmin edin. Hər kəs öz rolunu və gözləntiləri bilməlidir.</li><li data-lang-key="blogModal2Item4"><b>4. Risk İdarəetməsi:</b> Layihəyə təsir edə biləcək potensial problemləri (riskləri) əvvəlcədən müəyyən edin və onlara qarşı hazırlıqlı olun.</li><li data-lang-key="blogModal2Item5"><b>5. Davamlı Monitorinq və Nəzarət:</b> Layihənin gedişatını planla müqayisə edərək mütəmadi izləyin. Problem yaranarsa, vaxtında müdaxilə edərək onu aradan qaldırın.</li></ul></div></div></div>
+    <div id="blog-modal-3" class="modal"><div class="modal-content"><span class="close-btn" onclick="closeModal('blog-modal-3')">&times;</span><div class="modal-body"><h3 data-lang-key="blogModal3Title">Risk İdarəetməsi Nədir?</h3><p data-lang-key="blogModal3Content1">Risk idarəetməsi, layihənin məqsədlərinə mənfi təsir edə biləcək potensial problemlərin (risklərin) proaktiv şəkildə müəyyən edilməsi, təhlili və onlara cavab verilməsi prosesidir. Məqsəd, sürprizləri minimuma endirmək və layihənin uğur şansını artırmaqdır.</p><p data-lang-key="blogModal3Content2">Bu proses adətən 4 əsas mərhələdən ibarətdir:</p><ul><li data-lang-key="blogModal3Item1"><b>Risklərin Müəyyən Edilməsi:</b> "Nə səhv gedə bilər?" sualına cavab axtarmaq. Bu, texniki problemlərdən tutmuş büdcə çatışmazlığına qədər hər şeyi əhatə edə bilər.</li><li data-lang-key="blogModal3Item2"><b>Risklərin Təhlili:</b> Hər bir riskin baş vermə ehtimalını və layihəyə potensial təsirini qiymətləndirmək.</li><li data-lang-key="blogModal3Item3"><b>Riskə Cavab Planlaması:</b> Müəyyən edilmiş risklərə qarşı strategiyalar hazırlamaq. Bu, riskdən yayınmaq, onu azaltmaq, başqasına ötürmək və ya sadəcə qəbul etmək ola bilər.</li><li data-lang-key="blogModal3Item4"><b>Risklərin Monitorinqi:</b> Layihə boyunca riskləri davamlı olaraq izləmək və lazım gəldikdə planları yeniləmək.</li></ul><p data-lang-key="blogModal3Content3">Unutmayın, effektiv risk idarəetməsi problemi böyümədən həll etmək sənətidir.</p></div></div></div>
     
     <script>
+        const translations = {
+            az: {
+                navHome: "Əsas Səhifə",
+                navTrainings: "Təlimlər",
+                navAbout: "Haqqımızda",
+                navReviews: "Rəylər",
+                navBlog: "Bloq",
+                navContact: "Əlaqə",
+                heroTitle: "Layihə İdarəetməsini Ustalıqla Öyrənin",
+                heroSubtitle: "Online kurslar, təlimlər və peşəkar konsultasiya ilə bacarıqlarınızı artırın",
+                heroButton: "Dərslərə Başla",
+                servicesTitle: "Xidmətlərimiz",
+                service1Title: "Təlimlər",
+                service1Desc: "Layihə idarəetmə bacarıqlarınızı praktiki və nəzəri dərslərlə inkişaf etdirin.",
+                service2Title: "Konsultasiya",
+                service2Desc: "Peşəkar layihə menecerlərindən layihələriniz üçün fərdi məsləhət alın.",
+                service3Title: "Bloq",
+                service3Desc: "Sektorla bağlı son məqalələr, trendlər və yenilikləri izləyin.",
+                aboutTitle: "“PMania” ilə Tanış ol",
+                aboutDesc: "PMania Hub, layihə idarəetməsi sahəsində karyera qurmaq və ya mövcud bacarıqlarını təkmilləşdirmək istəyənlər üçün yaradılmış hərtərəfli bir platformadır. Məqsədimiz, hər kəsə keyfiyyətli təhsil və peşəkar dəstək təqdim etməklə onların uğuruna töhfə verməkdir.",
+                missionButton: "💡 Missiyamız",
+                visionButton: "🎯 Vizyonumuz",
+                testimonialsTitle: "Tələbələrimiz Nə Deyir?",
+                testimonialsDesc: "Bizimlə təcrübələrini bölüşən məzunlarımızın fikirləri ilə tanış olun.",
+                testimonialsButton: "Bütün Rəyləri Oxu",
+                blogTitle: "Son Bloq Yazıları",
+                blog1Title: "Agile və Scrum Arasındakı Fərqlər",
+                blog1Desc: "Bu məqalədə çevik metodologiyaların əsas prinsiplərini və onların tətbiqini araşdırırıq.",
+                blog2Title: "Uğurlu Layihə Üçün 5 Vacib Addım",
+                blog2Desc: "Layihə planlamasından yekun təhvilə qədər olan mərhələlərdə diqqət etməli olduğunuz məqamlar.",
+                blog3Title: "Risk İdarəetməsi Nədir?",
+                blog3Desc: "Layihələrinizdə qarşılaşa biləcəyiniz riskləri necə müəyyən edə və idarə edə bilərsiniz?",
+                readMore: "Daha çox oxu &rarr;",
+                footerTitle1: "PMania Hub",
+                footerDesc1: "Layihə idarəetməsində peşəkar dəstəkçiniz.",
+                footerTitle2: "Sürətli Keçidlər",
+                footerTitle3: "Əlaqə",
+                footerPhone: "Telefon: +994 50 972 63 84",
+                footerTitle4: "Bizi İzləyin",
+                footerRights: "&copy; 2025 PMania Hub. Bütün hüquqlar qorunur.",
+                missionModalTitle: "💡 Missiyamız",
+                missionModalDesc: "Layihə idarəetməsini maarifləndirici, əyləncəli və motivasiyaedici yanaşma ilə hər kəs üçün daha maraqlı və əlçatan etmək!",
+                visionModalTitle: "🎯 Vizyonumuz",
+                visionModalDesc: "Layihə idarəetməsini yeni baxışla təqdim edən aparıcı platforma olmaq.",
+                testimonialsModalTitle: "Tələbə Rəyləri",
+                blogModal1Title: "Agile və Scrum Arasındakı Fərqlər",
+                blogModal1Content1: "Layihə idarəetməsində tez-tez qarışdırılan iki termin Agile və Scrum-dır. Əslində, onlar bir-birini tamamlayan, lakin fərqli mənalar daşıyan anlayışlardır.",
+                blogModal1Content2: "<b>Agile (Çeviklik):</b> Bu, bir fəlsəfə və dəyərlər toplusudur. Agile, layihələri kiçik, idarəolunan hissələrə bölərək, dəyişikliklərə sürətli adaptasiya olmağı və müştəri ilə sıx əməkdaşlığı təşviq edir. Bu, konkret bir metod deyil, bir düşüncə tərzidir.",
+                blogModal1Content3: "<b>Scrum:</b> Bu isə Agile fəlsəfəsini həyata keçirmək üçün istifadə olunan ən populyar çərçivədir (framework). Scrum-ın özünəməxsus qaydaları, rolları (Scrum Master, Product Owner, Development Team) və tədbirləri (Sprint, Daily Stand-up) var. Qısacası, Scrum \"necə\" sualına cavab verir, Agile isə \"niyə\" sualını əsaslandırır.",
+                blogModal1Content4: "<b>Əsas fərq:</b> Bütün Scrum prosesləri Agile prinsiplərinə əsaslanır, lakin Agile olmaq üçün mütləq Scrum istifadə etmək şərt deyil. Kanban kimi digər Agile metodları da mövcuddur.",
+                blogModal2Title: "Uğurlu Layihə Üçün 5 Vacib Addım",
+                blogModal2Content1: "İstənilən layihənin uğuru onun düzgün idarə olunmasından birbaşa asılıdır. Budur, hər bir layihə menecerinin diqqət etməli olduğu 5 fundamental addım:",
+                blogModal2Item1: "<b>1. Dəqiq Məqsədlər Təyin Etmək:</b> Layihənin sonunda nə əldə etmək istədiyinizi aydın şəkildə müəyyənləşdirin. \"SMART\" (Specific, Measurable, Achievable, Relevant, Time-bound) prinsipi burada ən yaxşı köməkçinizdir.",
+                blogModal2Item2: "<b>2. Hərtərəfli Planlama:</b> Bütün tapşırıqları, lazım olan resursları, büdcəni və zaman çərçivəsini əhatə edən detallı bir plan hazırlayın. Yaxşı plan, uğurun yarısıdır.",
+                blogModal2Item3: "<b>3. Effektiv Kommunikasiya:</b> Komanda üzvləri və maraqlı tərəflər arasında davamlı və şəffaf məlumat axınını təmin edin. Hər kəs öz rolunu və gözləntiləri bilməlidir.",
+                blogModal2Item4: "<b>4. Risk İdarəetməsi:</b> Layihəyə təsir edə biləcək potensial problemləri (riskləri) əvvəlcədən müəyyən edin və onlara qarşı hazırlıqlı olun.",
+                blogModal2Item5: "<b>5. Davamlı Monitorinq və Nəzarət:</b> Layihənin gedişatını planla müqayisə edərək mütəmadi izləyin. Problem yaranarsa, vaxtında müdaxilə edərək onu aradan qaldırın.",
+                blogModal3Title: "Risk İdarəetməsi Nədir?",
+                blogModal3Content1: "Risk idarəetməsi, layihənin məqsədlərinə mənfi təsir edə biləcək potensial problemlərin (risklərin) proaktiv şəkildə müəyyən edilməsi, təhlili və onlara cavab verilməsi prosesidir. Məqsəd, sürprizləri minimuma endirmək və layihənin uğur şansını artırmaqdır.",
+                blogModal3Content2: "Bu proses adətən 4 əsas mərhələdən ibarətdir:",
+                blogModal3Item1: "<b>Risklərin Müəyyən Edilməsi:</b> \"Nə səhv gedə bilər?\" sualına cavab axtarmaq. Bu, texniki problemlərdən tutmuş büdcə çatışmazlığına qədər hər şeyi əhatə edə bilər.",
+                blogModal3Item2: "<b>Risklərin Təhlili:</b> Hər bir riskin baş vermə ehtimalını və layihəyə potensial təsirini qiymətləndirmək.",
+                blogModal3Item3: "<b>Riskə Cavab Planlaması:</b> Müəyyən edilmiş risklərə qarşı strategiyalar hazırlamaq. Bu, riskdən yayınmaq, onu azaltmaq, başqasına ötürmək və ya sadəcə qəbul etmək ola bilər.",
+                blogModal3Item4: "<b>Risklərin Monitorinqi:</b> Layihə boyunca riskləri davamlı olaraq izləmək və lazım gəldikdə planları yeniləmək.",
+                blogModal3Content3: "Unutmayın, effektiv risk idarəetməsi problemi böyümədən həll etmək sənətidir."
+            },
+            en: {
+                navHome: "Home",
+                navTrainings: "Trainings",
+                navAbout: "About Us",
+                navReviews: "Reviews",
+                navBlog: "Blog",
+                navContact: "Contact",
+                heroTitle: "Master Project Management with Excellence",
+                heroSubtitle: "Enhance your skills with online courses, trainings, and professional consultation",
+                heroButton: "Start Learning",
+                servicesTitle: "Our Services",
+                service1Title: "Trainings",
+                service1Desc: "Develop your project management skills with practical and theoretical lessons.",
+                service2Title: "Consulting",
+                service2Desc: "Get personalized advice for your projects from professional project managers.",
+                service3Title: "Blog",
+                service3Desc: "Follow the latest articles, trends, and news related to the sector.",
+                aboutTitle: "Meet “PMania”",
+                aboutDesc: "PMania Hub is a comprehensive platform created for those who want to build a career in project management or improve their existing skills. Our goal is to contribute to their success by providing quality education and professional support to everyone.",
+                missionButton: "💡 Our Mission",
+                visionButton: "🎯 Our Vision",
+                testimonialsTitle: "What Our Students Say",
+                testimonialsDesc: "Discover the experiences of our graduates who have shared their feedback with us.",
+                testimonialsButton: "Read All Reviews",
+                blogTitle: "Latest Blog Posts",
+                blog1Title: "Differences Between Agile and Scrum",
+                blog1Desc: "In this article, we explore the core principles of agile methodologies and their application.",
+                blog2Title: "5 Essential Steps for a Successful Project",
+                blog2Desc: "Key points to consider from project planning to final delivery.",
+                blog3Title: "What is Risk Management?",
+                blog3Desc: "How can you identify and manage potential risks in your projects?",
+                readMore: "Read More &rarr;",
+                footerTitle1: "PMania Hub",
+                footerDesc1: "Your professional support in project management.",
+                footerTitle2: "Quick Links",
+                footerTitle3: "Contact",
+                footerPhone: "Phone: +994 50 972 63 84",
+                footerTitle4: "Follow Us",
+                footerRights: "&copy; 2025 PMania Hub. All rights reserved.",
+                missionModalTitle: "💡 Our Mission",
+                missionModalDesc: "To make project management more interesting and accessible for everyone with an enlightening, fun, and motivational approach!",
+                visionModalTitle: "🎯 Our Vision",
+                visionModalDesc: "To be the leading platform that presents project management with a new perspective.",
+                testimonialsModalTitle: "Student Reviews",
+                blogModal1Title: "Differences Between Agile and Scrum",
+                blogModal1Content1: "Two frequently confused terms in project management are Agile and Scrum. In reality, they are complementary but distinct concepts.",
+                blogModal1Content2: "<b>Agile:</b> This is a philosophy and a set of values. Agile promotes adapting to change quickly and collaborating closely with the customer by breaking projects into small, manageable parts. It's a mindset, not a specific method.",
+                blogModal1Content3: "<b>Scrum:</b> This is the most popular framework used to implement the Agile philosophy. Scrum has its own specific rules, roles (Scrum Master, Product Owner, Development Team), and events (Sprint, Daily Stand-up). In short, Scrum answers the 'how,' while Agile justifies the 'why.'",
+                blogModal1Content4: "<b>The main difference:</b> All Scrum processes are based on Agile principles, but you don't have to use Scrum to be Agile. Other Agile methods like Kanban also exist.",
+                blogModal2Title: "5 Essential Steps for a Successful Project",
+                blogModal2Content1: "The success of any project directly depends on its proper management. Here are 5 fundamental steps every project manager should follow:",
+                blogModal2Item1: "<b>1. Define Clear Goals:</b> Clearly determine what you want to achieve by the end of the project. The 'SMART' (Specific, Measurable, Achievable, Relevant, Time-bound) principle is your best guide here.",
+                blogModal2Item2: "<b>2. Comprehensive Planning:</b> Create a detailed plan that includes all tasks, necessary resources, budget, and timeline. A good plan is half the battle.",
+                blogModal2Item3: "<b>3. Effective Communication:</b> Ensure a continuous and transparent flow of information among team members and stakeholders. Everyone should know their role and the expectations.",
+                blogModal2Item4: "<b>4. Risk Management:</b> Proactively identify potential problems (risks) that could affect the project and be prepared for them.",
+                blogModal2Item5: "<b>5. Continuous Monitoring and Control:</b> Regularly track the project's progress against the plan. If a problem arises, intervene in a timely manner to resolve it.",
+                blogModal3Title: "What is Risk Management?",
+                blogModal3Content1: "Risk management is the process of proactively identifying, analyzing, and responding to potential problems (risks) that could negatively impact a project's objectives. The goal is to minimize surprises and increase the project's chance of success.",
+                blogModal3Content2: "This process typically consists of 4 main stages:",
+                blogModal3Item1: "<b>Risk Identification:</b> Answering the question, 'What could go wrong?' This can range from technical issues to budget shortages.",
+                blogModal3Item2: "<b>Risk Analysis:</b> Assessing the probability of each risk occurring and its potential impact on the project.",
+                blogModal3Item3: "<b>Risk Response Planning:</b> Developing strategies to address identified risks. This could involve avoiding the risk, mitigating it, transferring it, or simply accepting it.",
+                blogModal3Item4: "<b>Risk Monitoring:</b> Continuously tracking risks throughout the project and updating plans as needed.",
+                blogModal3Content3: "Remember, effective risk management is the art of solving a problem before it grows."
+            }
+        };
+
         // Function to open a specific modal
         function openModal(modalId) {
             const modal = document.getElementById(modalId);
@@ -677,6 +747,27 @@
                 modal.style.display = 'none';
             }
         }
+
+        // Language switching function
+        function switchLanguage(lang) {
+            document.documentElement.lang = lang;
+            document.querySelectorAll('[data-lang-key]').forEach(el => {
+                const key = el.getAttribute('data-lang-key');
+                if (translations[lang] && translations[lang][key]) {
+                    el.innerHTML = translations[lang][key];
+                }
+            });
+            document.getElementById('lang-az').classList.toggle('active', lang === 'az');
+            document.getElementById('lang-en').classList.toggle('active', lang === 'en');
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('lang-az').addEventListener('click', () => switchLanguage('az'));
+            document.getElementById('lang-en').addEventListener('click', () => switchLanguage('en'));
+            
+            // Set default language
+            switchLanguage('az');
+        });
 
         // Close any open modal if the user clicks anywhere outside of the modal content
         window.onclick = function(event) {
