@@ -120,14 +120,23 @@
             font-size: 2.5em;
             margin-bottom: 50px;
         }
+        .training-cards-container {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
         .training-card {
             background: var(--white-color);
             border-radius: 10px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.08);
             padding: 30px;
-            max-width: 500px;
-            margin: 0 auto;
+            width: 100%;
+            max-width: 450px;
             text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
         .training-card h3 {
             color: var(--secondary-color);
@@ -281,78 +290,51 @@
         <section class="trainings-list">
             <div class="container">
                 <h2>Təlim Paketlərimiz</h2>
-                <div class="training-card">
-                    <h3>“360° Layihə İdarəetməsi” Təlim Proqramı</h3>
-                    <p>Layihə idarəetməsini sıfırdan öyrənmək və bu sahədə peşəkar olmaq üçün 8 həftəlik intensiv proqram.</p>
-                    <div class="price">300 AZN</div>
-                    <button class="cta-button" onclick="openModal()">Daha Çox</button>
+                <div class="training-cards-container">
+                    <div class="training-card">
+                        <div>
+                            <h3>“360° Layihə İdarəetməsi” Təlim Proqramı</h3>
+                            <p>Layihə idarəetməsini sıfırdan öyrənmək və bu sahədə peşəkar olmaq üçün 8 həftəlik intensiv proqram.</p>
+                            <div class="price">300 AZN</div>
+                        </div>
+                        <button class="cta-button" onclick="openModal('modal-360')">Daha Çox</button>
+                    </div>
+                    <div class="training-card">
+                        <div>
+                            <h3>CAPM® Sertifikatına Hazırlıq Proqramı</h3>
+                            <p>PMI® standartları ilə layihə idarəetməsi nəzəriyyəsini mənimsəyin və beynəlxalq CAPM® imtahanına tam hazır olun.</p>
+                            <div class="price">450 AZN</div>
+                        </div>
+                        <button class="cta-button" onclick="openModal('modal-capm')">Daha Çox</button>
+                    </div>
                 </div>
-                <!-- Future training cards can be added here -->
             </div>
         </section>
     </main>
     
-    <!-- Training Details Modal -->
-    <div id="training-modal" class="modal">
+    <!-- 360 Training Details Modal -->
+    <div id="modal-360" class="modal">
         <div class="modal-content">
-            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <span class="close-btn" onclick="closeModal('modal-360')">&times;</span>
             <div class="training-details">
                 <h2>“360° Layihə İdarəetməsi” Təlim Proqramı</h2>
                 <h3 class="tagline">QOŞUL, ÖYRƏN, TƏTBİQ ET!</h3>
                 <p>Layihə idarəetməsini sıfırdan öyrənmək və bu sahədə peşəkar olmaq istəyirsənsə, bu 8 həftəlik intensiv proqram tam sənin üçündür! PMANIA sənə praktiki bilik və real təcrübəyə əsaslanan bir yanaşma təqdim edir.</p>
-
-                <div class="training-section">
-                    <h4>Təlim formatı:</h4>
-                    <ul>
-                        <li>2 ay müddətini əhatə edir.</li>
-                        <li>Dərslər həftədə 2 dəfə keçirilir, nəzəriyyə və praktika olaraq bölünmüşdür.</li>
-                        <li>Hər dərs 90 dəqiqə davam edir və online şəkildə aparılır.</li>
-                    </ul>
-                </div>
-
                 <div class="training-section">
                     <h4>Təlimçi: <span class="trainer-name">Mahmud Mahmudlu</span></h4>
                     <ul>
                         <li>PMP® və Lean Six Sigma sertifikatlı layihə idarəetməsi mütəxəssisi</li>
-                        <li>Hal-hazırda qlobal telekommunikasiya lideri Ericsson şirkətində layihə meneceri kimi çalışır</li>
-                        <li>Yerli və xarici bazarlarda 7 ildən çox peşəkar təcrübəyə malikdir</li>
-                        <li>İnnovasiya və Texnologiya Menecmenti üzrə magistr dərəcəsini xaricdə tamamlamışdır</li>
-                        <li>Agile, prediktiv və hibrid layihə idarəetməsi, proses və resurs idarəetməsi, komanda rəhbərliyi üzrə ixtisaslaşmışdır.</li>
+                        <li>7 ildən çox yerli və xarici bazarlarda peşəkar təcrübə</li>
                     </ul>
                 </div>
-
                 <div class="training-section">
                     <h4>Bu proqram kimlər üçündür?</h4>
                     <ul>
                         <li>Layihə idarəetməsi sahəsinə yeni başlayanlar</li>
                         <li>Mövcud biliklərini sistemləşdirmək istəyənlər</li>
-                        <li>Öz layihələrində uğur əldə etmək istəyən sahibkarlar və menecerlər</li>
                         <li>Karyerasını beynəlxalq standartlara uyğun inkişaf etdirmək istəyən hər kəs</li>
                     </ul>
                 </div>
-
-                <div class="training-section">
-                    <h4>Təlimin Məzmunu Nələrdən İbarətdir?</h4>
-                    <ul>
-                        <li>Layihənin planlaşdırılması, icrası və monitorinqi</li>
-                        <li>Agile və Waterfall metodologiyaları (Scrum, Kanban, Lean)</li>
-                        <li>Risk, büdcə və keyfiyyətin idarə edilməsi</li>
-                        <li>Liderlik bacarıqları, komanda idarəetməsi və effektiv kommunikasiya</li>
-                        <li>Praktiki tapşırıqlar, real nümunələr və case study-lər</li>
-                        <li>Karyera inkişafına dəstək və müsahibə üçün hazırlıq</li>
-                    </ul>
-                </div>
-
-                <div class="training-section">
-                    <h4>Nəticədə Nə Qazanacaqsan?</h4>
-                    <ul>
-                        <li>Sistemli və peşəkar layihə idarəetmə bacarığı</li>
-                        <li>Beynəlxalq yanaşmalara uyğun biliklər</li>
-                        <li>İdarəçilikdə özünə inam və liderlik səriştəsi</li>
-                        <li>Karyera inkişafına təsir edəcək sertifikat və praktik biliklər</li>
-                    </ul>
-                </div>
-                
                 <div class="price-box">
                     <h4>Proqramın Tam Ödəniş Məbləği</h4>
                     <div class="price">300 AZN</div>
@@ -363,6 +345,52 @@
         </div>
     </div>
 
+    <!-- CAPM Training Details Modal -->
+    <div id="modal-capm" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('modal-capm')">&times;</span>
+            <div class="training-details">
+                <h2>CAPM® Sertifikatına Hazırlıq Proqramı</h2>
+                <h3 class="tagline">KARYERANIZIN İLK PEŞƏKAR ZİRVƏSİ!</h3>
+                <p>Layihə idarəetməsi sahəsində karyeranıza güclü bir təməllə başlamaq istəyirsinizsə, Certified Associate in Project Management (CAPM)® sertifikatı sizin üçün ideal seçimdir. Bu proqram sizi PMI®-ın rəsmi imtahanına hərtərəfli hazırlayacaq.</p>
+                
+                <div class="training-section">
+                    <h4>Təlimin Məzmunu</h4>
+                    <ul>
+                        <li>Layihə İdarəetməsinin Əsasları və Prinsipləri</li>
+                        <li>PMBOK® Guide Standartları ilə Tam Tanışlıq</li>
+                        <li>Proses Qrupları: Başlanğıc, Planlama, İcra, Monitorinq və Nəzarət, Bağlanış</li>
+                        <li>Bilik Sahələri: İnteqrasiya, Məzmun, Zaman, Büdcə, Keyfiyyət, Resurslar və s.</li>
+                    </ul>
+                </div>
+
+                <div class="training-section">
+                    <h4>Bu proqram kimlər üçündür?</h4>
+                    <ul>
+                        <li>Karyerasına layihə idarəetməsi ilə başlamaq istəyən məzunlar və tələbələr</li>
+                        <li>Layihə komandalarında çalışan, lakin rəsmi təcrübəsi olmayan mütəxəssislər</li>
+                        <li>PM sahəsində fundamental biliklərini möhkəmləndirmək istəyən hər kəs</li>
+                    </ul>
+                </div>
+                
+                <div class="training-section">
+                    <h4>Təlimçi: <span class="trainer-name">Mahmud Mahmudlu</span></h4>
+                    <ul>
+                        <li>Layihə Meneceri, PMP®, LSS® Certified</li>
+                        <li>Project Manager at Test Technology, Ericsson</li>
+                        <li>Master’s in Innovation and Technology Management, University of Tartu, Estonia</li>
+                        <li>6+ il peşəkar təcrübə</li>
+                    </ul>
+                </div>
+
+                <div class="price-box">
+                    <h4>Proqramın Tam Ödəniş Məbləği</h4>
+                    <div class="price">450 AZN</div>
+                    <a href="https://wa.me/994509726384?text=Salam%2C%20CAPM%C2%AE%20Sertifikat%C4%B1na%20Haz%C4%B1rl%C4%B1q%20Proqram%C4%B1%20il%C9%99%20maraqlan%C4%B1ram." target="_blank" class="cta-button">İndi Müraciət Et</a>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Footer -->
     <footer class="main-footer">
@@ -402,23 +430,26 @@
     </footer>
     
     <script>
-        // Get the modal element
-        const modal = document.getElementById('training-modal');
-
-        // Function to open the modal
-        function openModal() {
-            modal.style.display = 'block';
+        // Function to open a specific modal
+        function openModal(modalId) {
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                modal.style.display = 'block';
+            }
         }
 
-        // Function to close the modal
-        function closeModal() {
-            modal.style.display = 'none';
+        // Function to close a specific modal
+        function closeModal(modalId) {
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                modal.style.display = 'none';
+            }
         }
 
-        // Close the modal if the user clicks anywhere outside of the modal content
+        // Close any open modal if the user clicks anywhere outside of the modal content
         window.onclick = function(event) {
-            if (event.target == modal) {
-                closeModal();
+            if (event.target.classList.contains('modal')) {
+                event.target.style.display = 'none';
             }
         }
     </script>
