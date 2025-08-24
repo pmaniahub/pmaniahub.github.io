@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Əlaqə - PMania Hub</title>
+    <style>
+        /* --- Google Fonts Import --- */
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Roboto:wght@400;500&display=swap');
+
+        /* --- CSS Reset & Basic Styles --- */
+        :root {
+            --primary-color: #222831; /* Neutral Dark Grey */
+            --secondary-color: #4a1ad1; /* Your Brand's Purple */
+            --background-color: #ecf0f1; /* Light Gray */
+            --text-color: #34495e; /* Dark Gray */
+            --white-color: #ffffff;
+            --heading-font: 'Poppins', sans-serif;
+            --body-font: 'Roboto', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--body-font);
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--white-color);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        h1, h2, h3 {
+            font-family: var(--heading-font);
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        section {
+            padding: 60px 0;
+        }
+
+        /* --- Header & Navigation --- */
+        .main-header {
+            background-color: var(--white-color);
+            padding: 15px 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .main-header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            text-decoration: none;
+        }
+        
+        .logo img {
+            height: 60px;
+            width: auto;
+            vertical-align: middle; 
+        }
+
+        .main-nav ul {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+        }
+
+        .main-nav a {
+            text-decoration: none;
+            color: var(--primary-color);
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .main-nav a:hover {
+            color: var(--secondary-color);
+        }
+        
+        /* --- Contact Section --- */
+        .contact-section {
+            background-color: var(--background-color);
+        }
+        .contact-container {
+            max-width: 700px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .contact-container h2 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+        .contact-container p {
+            font-size: 1.1em;
+            margin-bottom: 40px;
+        }
+        
+        .contact-form {
+            background: var(--white-color);
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            text-align: left;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-family: var(--body-font);
+            font-size: 1em;
+        }
+        
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+        
+        .submit-button {
+            display: block;
+            width: 100%;
+            background-color: var(--secondary-color);
+            color: var(--white-color);
+            padding: 15px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-family: var(--heading-font);
+            border: none;
+            cursor: pointer;
+            font-size: 1.1em;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .submit-button:hover {
+            background-color: #3b15a8;
+            transform: translateY(-3px);
+        }
+        
+        .whatsapp-section {
+            text-align: center;
+            margin-top: 40px;
+        }
+        
+        .whatsapp-button {
+            display: inline-block;
+            background-color: #25D366;
+            color: var(--white-color);
+            padding: 15px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-family: var(--heading-font);
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+        
+        .whatsapp-button:hover {
+            background-color: #1EBE57;
+            transform: translateY(-3px);
+        }
+
+        /* --- Footer --- */
+        .main-footer {
+            background-color: var(--primary-color);
+            color: var(--white-color);
+            padding: 50px 0;
+        }
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+        .footer-section {
+            flex: 1;
+            min-width: 200px;
+        }
+        .footer-section h4 {
+            font-family: var(--heading-font);
+            font-size: 1.2em;
+            margin-bottom: 15px;
+        }
+        .footer-section ul {
+            list-style: none;
+        }
+        .footer-section ul li {
+            margin-bottom: 10px;
+        }
+        .footer-section a {
+            color: var(--background-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .footer-section a:hover {
+            color: var(--secondary-color);
+        }
+        .social-icons a {
+            margin-right: 15px;
+            font-size: 1em; 
+        }
+        .footer-bottom {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #4a4e56;
+        }
+
+        /* --- Responsive Design --- */
+        @media (max-width: 768px) {
+            .main-header .container {
+                flex-direction: column;
+                gap: 15px;
+            }
+            .main-nav ul {
+                flex-direction: column;
+                text-align: center;
+                gap: 10px;
+            }
+            .contact-container h2 {
+                font-size: 2em;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="main-header">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <img src="images/logo.png" alt="PMania Hub Logo">
+            </a>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html">Əsas Səhifə</a></li>
+                    <li><a href="telimler.html">Təlimlər</a></li>
+                    <li><a href="#">Məsləhət</a></li>
+                    <li><a href="#">Bloq</a></li>
+                    <li><a href="elaqe.html">Əlaqə</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="contact-section">
+            <div class="contact-container">
+                <h2>Bizimlə Əlaqə</h2>
+                <p>Suallarınız, təklifləriniz və ya əməkdaşlıq üçün bizə yazın. Sizə ən qısa zamanda cavab verəcəyik.</p>
+                
+                <!-- NOTE: This is a visual form only. It does not send emails without a backend server. -->
+                <form class="contact-form" onsubmit="event.preventDefault(); alert('Mesajınız göndərildi! Təşəkkür edirik.');">
+                    <div class="form-group">
+                        <label for="name">Adınız</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Adresiniz</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Mesajınız</label>
+                        <textarea id="message" name="message" required></textarea>
+                    </div>
+                    <button type="submit" class="submit-button">Göndər</button>
+                </form>
+                
+                <div class="whatsapp-section">
+                    <h3>və ya</h3>
+                    <p>Bizə birbaşa WhatsApp-da yaza bilərsiniz:</p>
+                    <a href="https://wa.me/994509726384?text=Salam%2C%20websayt%C4%B1n%C4%B1zdan%20yaz%C4%B1ram." target="_blank" class="whatsapp-button">WhatsApp'da Yazın</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>PMania Hub</h4>
+                    <p>Layihə idarəetməsində peşəkar dəstəkçiniz.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Sürətli Keçidlər</h4>
+                    <ul>
+                        <li><a href="index.html">Əsas Səhifə</a></li>
+                        <li><a href="telimler.html">Təlimlər</a></li>
+                        <li><a href="#">Məsləhət</a></li>
+                        <li><a href="#">Bloq</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Əlaqə</h4>
+                    <p>Email: pmaniahub@gmail.com</p>
+                    <p>Telefon: +994 50 972 63 84</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Bizi İzləyin</h4>
+                    <div class="social-icons">
+                        <a href="https://www.instagram.com/pmania_hub/" target="_blank">Instagram</a>
+                        <a href="https://www.facebook.com/profile.php?id=61578312400129" target="_blank">Facebook</a>
+                        <a href="https://www.linkedin.com/company/pmania-hub" target="_blank">LinkedIn</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 PMania Hub. Bütün hüquqlar qorunur.</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
