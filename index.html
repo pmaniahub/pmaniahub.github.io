@@ -65,14 +65,14 @@
         }
 
         .logo {
-            font-family: var(--heading-font);
-            font-size: 1.8em;
-            font-weight: 700;
-            color: var(--primary-color);
             text-decoration: none;
         }
-        .logo span {
-            color: var(--secondary-color);
+        
+        /* --- THIS IS THE NEW CSS FOR YOUR LOGO IMAGE --- */
+        .logo img {
+            height: 40px; /* Adjust this value to make your logo bigger or smaller */
+            width: auto;
+            vertical-align: middle; /* Helps align the logo nicely with the menu */
         }
 
         .main-nav ul {
@@ -279,9 +279,10 @@
     <!-- Header -->
     <header class="main-header">
         <div class="container">
+            <!-- --- THIS IS THE NEW HTML FOR YOUR LOGO IMAGE --- -->
             <a href="#" class="logo">
-    <img src="images/logo (1).png" alt="PMania Hub Logo">
-</a>
+                <img src="images/logo.png" alt="PMania Hub Logo">
+            </a>
             <nav class="main-nav">
                 <ul>
                     <li><a href="#">Əsas Səhifə</a></li>
