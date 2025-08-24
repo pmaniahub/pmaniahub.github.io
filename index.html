@@ -24,6 +24,11 @@
             padding: 0;
             box-sizing: border-box;
         }
+        
+        /* Add smooth scrolling behavior */
+        html {
+            scroll-behavior: smooth;
+        }
 
         body {
             font-family: var(--body-font);
@@ -171,6 +176,12 @@
             margin: 0 auto;
             font-size: 1.1em;
         }
+        .about h3 {
+            font-size: 1.5em;
+            color: var(--secondary-color);
+            margin-top: 30px;
+            margin-bottom: 10px;
+        }
 
         /* --- Blog Section --- */
         .blog {
@@ -288,7 +299,7 @@
                 <ul>
                     <li><a href="index.html">Əsas Səhifə</a></li>
                     <li><a href="telimler.html">Təlimlər</a></li>
-                    <li><a href="#">Məsləhət</a></li>
+                    <li><a href="#about-section">Haqqımızda</a></li>
                     <li><a href="#">Bloq</a></li>
                     <li><a href="elaqe.html">Əlaqə</a></li>
                 </ul>
@@ -328,10 +339,16 @@
         </section>
 
         <!-- About Section -->
-        <section class="about">
+        <section id="about-section" class="about">
             <div class="container">
-                <h2 class="section-title">Bizim Haqqımızda</h2>
+                <h2 class="section-title">“PMania” ilə Tanış ol</h2>
                 <p>PMania Hub, layihə idarəetməsi sahəsində karyera qurmaq və ya mövcud bacarıqlarını təkmilləşdirmək istəyənlər üçün yaradılmış hərtərəfli bir platformadır. Məqsədimiz, hər kəsə keyfiyyətli təhsil və peşəkar dəstək təqdim etməklə onların uğuruna töhfə verməkdir.</p>
+                
+                <h3>💡 Missiyamız</h3>
+                <p>Layihə idarəetməsini maarifləndirici, əyləncəli və motivasiyaedici yanaşma ilə hər kəs üçün daha maraqlı və əlçatan etmək!</p>
+                
+                <h3>🎯 Vizyonumuz</h3>
+                <p>Layihə idarəetməsini yeni baxışla təqdim edən aparıcı platforma olmaq.</p>
             </div>
         </section>
 
@@ -379,7 +396,8 @@
                     <ul>
                         <li><a href="index.html">Əsas Səhifə</a></li>
                         <li><a href="telimler.html">Təlimlər</a></li>
-                        <li><a href="#">Məsləhət</a></li>
+                        <li><a href="#about-section">Haqqımızda</a></li>
+                        <li><a href="#">Bloq</a></li>
                         <li><a href="elaqe.html">Əlaqə</a></li>
                     </ul>
                 </div>
