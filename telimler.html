@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Təlimlər - PMania Hub</title>
+    <style>
+        /* --- Google Fonts Import --- */
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Roboto:wght@400;500&display=swap');
+
+        /* --- CSS Reset & Basic Styles --- */
+        :root {
+            --primary-color: #222831; /* Neutral Dark Grey */
+            --secondary-color: #4a1ad1; /* Your Brand's Purple */
+            --background-color: #ecf0f1; /* Light Gray */
+            --text-color: #34495e; /* Dark Gray */
+            --white-color: #ffffff;
+            --heading-font: 'Poppins', sans-serif;
+            --body-font: 'Roboto', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--body-font);
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--white-color);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        h1, h2, h3 {
+            font-family: var(--heading-font);
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        section {
+            padding: 60px 0;
+        }
+
+        /* --- Header & Navigation --- */
+        .main-header {
+            background-color: var(--white-color);
+            padding: 15px 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .main-header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            text-decoration: none;
+        }
+        
+        .logo img {
+            height: 40px; 
+            width: auto;
+            vertical-align: middle; 
+        }
+
+        .main-nav ul {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+        }
+
+        .main-nav a {
+            text-decoration: none;
+            color: var(--primary-color);
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .main-nav a:hover {
+            color: var(--secondary-color);
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            color: var(--white-color);
+            padding: 15px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-family: var(--heading-font);
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background-color: #3b15a8; /* Darker Purple */
+            transform: translateY(-3px);
+        }
+
+        /* --- Training Program Section --- */
+        .training-program {
+            background-color: var(--background-color);
+        }
+        .training-program .container {
+            max-width: 800px;
+        }
+        .training-program h2 {
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 15px;
+        }
+        .training-program .tagline {
+            text-align: center;
+            font-size: 1.3em;
+            font-weight: 600;
+            color: var(--secondary-color);
+            margin-bottom: 30px;
+        }
+        .training-program p {
+            margin-bottom: 20px;
+        }
+        .training-section {
+            margin-bottom: 40px;
+        }
+        .training-section h4 {
+            font-size: 1.4em;
+            margin-bottom: 15px;
+            padding-bottom: 5px;
+            border-bottom: 2px solid var(--secondary-color);
+            display: inline-block;
+        }
+        .training-section ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        .training-section ul li {
+            margin-bottom: 10px;
+            padding-left: 25px;
+            position: relative;
+        }
+        .training-section ul li::before {
+            content: '✓';
+            color: var(--secondary-color);
+            position: absolute;
+            left: 0;
+            font-weight: 600;
+        }
+        .trainer-name {
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+        .price-box {
+            background: var(--white-color);
+            border: 2px solid var(--secondary-color);
+            border-radius: 10px;
+            padding: 25px;
+            text-align: center;
+            margin-top: 30px;
+        }
+        .price-box h4 {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+        .price-box .price {
+            font-size: 2em;
+            font-weight: 700;
+            color: var(--secondary-color);
+            margin-bottom: 15px;
+        }
+
+        /* --- Footer --- */
+        .main-footer {
+            background-color: var(--primary-color);
+            color: var(--white-color);
+            padding: 50px 0;
+        }
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+        .footer-section {
+            flex: 1;
+            min-width: 200px;
+        }
+        .footer-section h4 {
+            font-family: var(--heading-font);
+            font-size: 1.2em;
+            margin-bottom: 15px;
+        }
+        .footer-section ul {
+            list-style: none;
+        }
+        .footer-section ul li {
+            margin-bottom: 10px;
+        }
+        .footer-section a {
+            color: var(--background-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .footer-section a:hover {
+            color: var(--secondary-color);
+        }
+        .social-icons a {
+            margin-right: 15px;
+            font-size: 1em; 
+        }
+        .footer-bottom {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #4a4e56;
+        }
+
+        /* --- Responsive Design --- */
+        @media (max-width: 768px) {
+            .main-header .container {
+                flex-direction: column;
+                gap: 15px;
+            }
+            .main-nav ul {
+                flex-direction: column;
+                text-align: center;
+                gap: 10px;
+            }
+            .training-program h2 {
+                font-size: 2em;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="main-header">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <img src="images/logo.png" alt="PMania Hub Logo">
+            </a>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html">Əsas Səhifə</a></li>
+                    <li><a href="telimler.html">Təlimlər</a></li>
+                    <li><a href="#">Məsləhət</a></li>
+                    <li><a href="#">Bloq</a></li>
+                    <li><a href="#">Əlaqə</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Training Program Section -->
+        <section id="training-program" class="training-program">
+            <div class="container">
+                <h2>“360° Layihə İdarəetməsi” Təlim Proqramı</h2>
+                <h3 class="tagline">QOŞUL, ÖYRƏN, TƏTBİQ ET!</h3>
+                <p>Layihə idarəetməsini sıfırdan öyrənmək və bu sahədə peşəkar olmaq istəyirsənsə, bu 8 həftəlik intensiv proqram tam sənin üçündür! PMANIA sənə praktiki bilik və real təcrübəyə əsaslanan bir yanaşma təqdim edir.</p>
+
+                <div class="training-section">
+                    <h4>Təlim formatı:</h4>
+                    <ul>
+                        <li>2 ay müddətini əhatə edir.</li>
+                        <li>Dərslər həftədə 2 dəfə keçirilir, nəzəriyyə və praktika olaraq bölünmüşdür.</li>
+                        <li>Hər dərs 90 dəqiqə davam edir və online şəkildə aparılır.</li>
+                    </ul>
+                </div>
+
+                <div class="training-section">
+                    <h4>Təlimçi: <span class="trainer-name">Mahmud Mahmudlu</span></h4>
+                    <ul>
+                        <li>PMP® və Lean Six Sigma sertifikatlı layihə idarəetməsi mütəxəssisi</li>
+                        <li>Hal-hazırda qlobal telekommunikasiya lideri Ericsson şirkətində layihə meneceri kimi çalışır</li>
+                        <li>Yerli və xarici bazarlarda 7 ildən çox peşəkar təcrübəyə malikdir</li>
+                        <li>İnnovasiya və Texnologiya Menecmenti üzrə magistr dərəcəsini xaricdə tamamlamışdır</li>
+                        <li>Agile, prediktiv və hibrid layihə idarəetməsi, proses və resurs idarəetməsi, komanda rəhbərliyi üzrə ixtisaslaşmışdır.</li>
+                    </ul>
+                </div>
+
+                <div class="training-section">
+                    <h4>Bu proqram kimlər üçündür?</h4>
+                    <ul>
+                        <li>Layihə idarəetməsi sahəsinə yeni başlayanlar</li>
+                        <li>Mövcud biliklərini sistemləşdirmək istəyənlər</li>
+                        <li>Öz layihələrində uğur əldə etmək istəyən sahibkarlar və menecerlər</li>
+                        <li>Karyerasını beynəlxalq standartlara uyğun inkişaf etdirmək istəyən hər kəs</li>
+                    </ul>
+                </div>
+
+                <div class="training-section">
+                    <h4>Təlimin Məzmunu Nələrdən İbarətdir?</h4>
+                    <ul>
+                        <li>Layihənin planlaşdırılması, icrası və monitorinqi</li>
+                        <li>Agile və Waterfall metodologiyaları (Scrum, Kanban, Lean)</li>
+                        <li>Risk, büdcə və keyfiyyətin idarə edilməsi</li>
+                        <li>Liderlik bacarıqları, komanda idarəetməsi və effektiv kommunikasiya</li>
+                        <li>Praktiki tapşırıqlar, real nümunələr və case study-lər</li>
+                        <li>Karyera inkişafına dəstək və müsahibə üçün hazırlıq</li>
+                    </ul>
+                </div>
+
+                <div class="training-section">
+                    <h4>Nəticədə Nə Qazanacaqsan?</h4>
+                    <ul>
+                        <li>Sistemli və peşəkar layihə idarəetmə bacarığı</li>
+                        <li>Beynəlxalq yanaşmalara uyğun biliklər</li>
+                        <li>İdarəçilikdə özünə inam və liderlik səriştəsi</li>
+                        <li>Karyera inkişafına təsir edəcək sertifikat və praktik biliklər</li>
+                    </ul>
+                </div>
+                
+                <div class="price-box">
+                    <h4>Proqramın Tam Ödəniş Məbləği</h4>
+                    <div class="price">300 AZN</div>
+                    <p>(aylıq 150 AZN)</p>
+                    <a href="https://wa.me/994509726384?text=Salam%2C%20'360%C2%B0%20Layih%C9%99%20%C4%B0dar%C9%99etm%C9%99si'%20t%C9%99limi%20il%C9%99%20maraqlan%C4%B1ram." target="_blank" class="cta-button">İndi Müraciət Et</a>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>PMania Hub</h4>
+                    <p>Layihə idarəetməsində peşəkar dəstəkçiniz.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Sürətli Keçidlər</h4>
+                    <ul>
+                        <li><a href="index.html">Əsas Səhifə</a></li>
+                        <li><a href="telimler.html">Təlimlər</a></li>
+                        <li><a href="#">Məsləhət</a></li>
+                        <li><a href="#">Bloq</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Əlaqə</h4>
+                    <p>Email: pmaniahub@gmail.com</p>
+                    <p>Telefon: +994 50 972 63 84</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Bizi İzləyin</h4>
+                    <div class="social-icons">
+                        <a href="https://www.instagram.com/pmania_hub/" target="_blank">Instagram</a>
+                        <a href="https://www.facebook.com/profile.php?id=61578312400129" target="_blank">Facebook</a>
+                        <a href="https://www.linkedin.com/company/pmania-hub" target="_blank">LinkedIn</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 PMania Hub. Bütün hüquqlar qorunur.</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
