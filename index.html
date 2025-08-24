@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PMania Hub - Layihə İdarəetmə Platforması</title>
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><circle cx=%2250%22 cy=%2250%22 r=%2250%22 fill=%22%234a1ad1%22></circle><text y=%22.9em%22 x=%2250%%22 text-anchor=%22middle%22 font-size=%2265%22 fill=%22%23fff%22 font-family=%22Poppins%22>P</text></svg>">
     <style>
         /* --- Google Fonts Import --- */
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Roboto:wght@400;500&display=swap');
@@ -179,11 +181,33 @@
             margin: 0 auto;
             font-size: 1.1em;
         }
-        .about h3 {
-            font-size: 1.5em;
-            color: var(--secondary-color);
+        .about-buttons {
             margin-top: 30px;
-            margin-bottom: 10px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        .about-buttons .cta-button {
+            background-color: var(--white-color);
+            color: var(--secondary-color);
+            border: 2px solid var(--secondary-color);
+        }
+        .about-buttons .cta-button:hover {
+            background-color: var(--secondary-color);
+            color: var(--white-color);
+        }
+
+        /* --- Testimonials Section --- */
+        #testimonials-section {
+            scroll-margin-top: 100px; /* Offset for the sticky header */
+        }
+        .testimonials-cta {
+            background-color: var(--white-color);
+            text-align: center;
+        }
+        .testimonials-cta p {
+            font-size: 1.2em;
+            margin-bottom: 30px;
         }
 
         /* --- Blog Section --- */
@@ -191,7 +215,7 @@
             scroll-margin-top: 100px; /* Offset for the sticky header */
         }
         .blog {
-            background-color: var(--white-color);
+            background-color: var(--background-color);
         }
         .blog-grid {
             display: grid;
@@ -274,18 +298,39 @@
             from {opacity: 0; transform: translateY(-20px);}
             to {opacity: 1; transform: translateY(0);}
         }
-        .blog-modal-body h3 {
+        .modal-body h3 {
             color: var(--secondary-color);
             text-align: center;
             font-size: 1.8em;
             margin-bottom: 25px;
         }
-        .blog-modal-body p {
+        .modal-body p {
             margin-bottom: 15px;
+            text-align: center;
+            font-size: 1.1em;
         }
-        .blog-modal-body ul {
+        .modal-body ul {
             list-style-position: inside;
             padding-left: 10px;
+        }
+        .modal-body .review {
+            background-color: var(--background-color);
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            border-left: 4px solid var(--secondary-color);
+        }
+        .modal-body .review p {
+            margin: 0;
+            font-style: italic;
+            text-align: left;
+        }
+        .modal-body .review .author {
+            text-align: right;
+            font-weight: bold;
+            font-style: normal;
+            margin-top: 10px;
+            opacity: 0.8;
         }
 
         /* --- Footer --- */
@@ -367,6 +412,7 @@
                     <li><a href="index.html">Əsas Səhifə</a></li>
                     <li><a href="telimler.html">Təlimlər</a></li>
                     <li><a href="#about-section">Haqqımızda</a></li>
+                    <li><a href="#testimonials-section">Rəylər</a></li>
                     <li><a href="#blog-section">Bloq</a></li>
                     <li><a href="elaqe.html">Əlaqə</a></li>
                 </ul>
@@ -410,12 +456,19 @@
             <div class="container">
                 <h2 class="section-title">“PMania” ilə Tanış ol</h2>
                 <p>PMania Hub, layihə idarəetməsi sahəsində karyera qurmaq və ya mövcud bacarıqlarını təkmilləşdirmək istəyənlər üçün yaradılmış hərtərəfli bir platformadır. Məqsədimiz, hər kəsə keyfiyyətli təhsil və peşəkar dəstək təqdim etməklə onların uğuruna töhfə verməkdir.</p>
-                
-                <h3>💡 Missiyamız</h3>
-                <p>Layihə idarəetməsini maarifləndirici, əyləncəli və motivasiyaedici yanaşma ilə hər kəs üçün daha maraqlı və əlçatan etmək!</p>
-                
-                <h3>🎯 Vizyonumuz</h3>
-                <p>Layihə idarəetməsini yeni baxışla təqdim edən aparıcı platforma olmaq.</p>
+                <div class="about-buttons">
+                    <button class="cta-button" onclick="openModal('mission-modal')">💡 Missiyamız</button>
+                    <button class="cta-button" onclick="openModal('vision-modal')">🎯 Vizyonumuz</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials CTA Section -->
+        <section id="testimonials-section" class="testimonials-cta">
+            <div class="container">
+                <h2 class="section-title">Tələbələrimiz Nə Deyir?</h2>
+                <p>Bizimlə təcrübələrini bölüşən məzunlarımızın fikirləri ilə tanış olun.</p>
+                <button class="cta-button" onclick="openModal('all-testimonials-modal')">Bütün Rəyləri Oxu</button>
             </div>
         </section>
 
@@ -464,6 +517,7 @@
                         <li><a href="index.html">Əsas Səhifə</a></li>
                         <li><a href="telimler.html">Təlimlər</a></li>
                         <li><a href="#about-section">Haqqımızda</a></li>
+                        <li><a href="#testimonials-section">Rəylər</a></li>
                         <li><a href="#blog-section">Bloq</a></li>
                         <li><a href="elaqe.html">Əlaqə</a></li>
                     </ul>
@@ -488,11 +542,81 @@
         </div>
     </footer>
 
+    <!-- Mission & Vision Modals -->
+    <div id="mission-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('mission-modal')">&times;</span>
+            <div class="modal-body">
+                <h3>💡 Missiyamız</h3>
+                <p>Layihə idarəetməsini maarifləndirici, əyləncəli və motivasiyaedici yanaşma ilə hər kəs üçün daha maraqlı və əlçatan etmək!</p>
+            </div>
+        </div>
+    </div>
+    <div id="vision-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('vision-modal')">&times;</span>
+            <div class="modal-body">
+                <h3>🎯 Vizyonumuz</h3>
+                <p>Layihə idarəetməsini yeni baxışla təqdim edən aparıcı platforma olmaq.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- All Testimonials Modal -->
+    <div id="all-testimonials-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('all-testimonials-modal')">&times;</span>
+            <div class="modal-body">
+                <h3>Tələbə Rəyləri</h3>
+                <div class="review">
+                    <p>“Təlimçinin dərsi təqdim etmə tərzi çox maraqlı və aydın idi. Mövzunu hərtərəfli izah edir, real nümunələr gətirərək mövzunu daha da anlaşıqlı edirdi. Ritmi uyğun, izahı əyləncəli idi və iştirakçılarla yaxşı əlaqə qurmağı bacarırdı.”</p>
+                    <p class="author">- Vebinar İştirakçısı</p>
+                </div>
+                <div class="review">
+                    <p>“Mən stomatologiya ixtisasında təhsil alıram, lakin fakültə startap sədri kimi layihə idarəetməsi üzrə biliklərimi genişləndirmək məqsədilə Project Manager mövzulu vebinarlarda iştirak edirəm. Təlimçinin izahı olduqca aydın və məzmunlu idi, dərsin ritmi uyğun şəkildə qurulmuşdu. Nəticədə, mövzunun bütün məqamlarını asanlıqla mənimsəyə bildim.”</p>
+                    <p class="author">- Vebinar İştirakçısı</p>
+                </div>
+                <div class="review">
+                    <p>“Tecrubeli olmasini hiss eletdiren telimcidir, aydin, sistematik ve sual isaresi qalmayacaq sekilde izah edir.”</p>
+                    <p class="author">- Təlim İştirakçısı</p>
+                </div>
+                <div class="review">
+                    <p>“Təlimçi həqiqətən həm vaxtını ayırır aydın izah edir həm də tələbələrə xüsusi yanaşır.”</p>
+                    <p class="author">- Təlim İştirakçısı</p>
+                </div>
+                <div class="review">
+                    <p>“Hər kəsin fikrini dinliyib, sonda ən optimal variantla aydın başa salır.”</p>
+                    <p class="author">- Vebinar İştirakçısı</p>
+                </div>
+                <div class="review">
+                    <p>“İnteraktiv, dinləyicini nəzərə alaraq ona uyğun sadə dildə izah etməsi, sonda əyləncəli metodla öyrəndiklərimizin yoxlanılması.”</p>
+                    <p class="author">- Təlim İştirakçısı</p>
+                </div>
+                <div class="review">
+                    <p>“Çox aydındır və real həyat təcrübələrinə əsaslanır.”</p>
+                    <p class="author">- Təlim İştirakçısı</p>
+                </div>
+                <div class="review">
+                    <p>“Təlimçi mövzunu sadə və aydın şəkildə təqdim etdi. Ritm balanslı idi, izahları həyatdakı nümunələrlə zənginləşdirməsi dərsi daha anlaşılan etdi.”</p>
+                    <p class="author">- Vebinar İştirakçısı</p>
+                </div>
+                 <div class="review">
+                    <p>“Çox aydındır, çox bəyənirəm və tələbələrlə əlaqə yaratmağı yaxşıdı, yəni prosta gəlib dərsi keçib getmir, həmçinin care edir, bu da dərslərə necə önəm dəyər verdiyini göstərir.”</p>
+                    <p class="author">- Təlim İştirakçısı</p>
+                </div>
+                 <div class="review">
+                    <p>“Çox razı qaldım, qısa aydın izah etdi.”</p>
+                    <p class="author">- Vebinar İştirakçısı</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Blog Modals -->
     <div id="blog-modal-1" class="modal">
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal('blog-modal-1')">&times;</span>
-            <div class="blog-modal-body">
+            <div class="modal-body">
                 <h3>Agile və Scrum Arasındakı Fərqlər</h3>
                 <p>Layihə idarəetməsində tez-tez qarışdırılan iki termin Agile və Scrum-dır. Əslində, onlar bir-birini tamamlayan, lakin fərqli mənalar daşıyan anlayışlardır.</p>
                 <p><b>Agile (Çeviklik):</b> Bu, bir fəlsəfə və dəyərlər toplusudur. Agile, layihələri kiçik, idarəolunan hissələrə bölərək, dəyişikliklərə sürətli adaptasiya olmağı və müştəri ilə sıx əməkdaşlığı təşviq edir. Bu, konkret bir metod deyil, bir düşüncə tərzidir.</p>
@@ -505,7 +629,7 @@
     <div id="blog-modal-2" class="modal">
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal('blog-modal-2')">&times;</span>
-            <div class="blog-modal-body">
+            <div class="modal-body">
                 <h3>Uğurlu Layihə Üçün 5 Vacib Addım</h3>
                 <p>İstənilən layihənin uğuru onun düzgün idarə olunmasından birbaşa asılıdır. Budur, hər bir layihə menecerinin diqqət etməli olduğu 5 fundamental addım:</p>
                 <ul>
@@ -522,7 +646,7 @@
     <div id="blog-modal-3" class="modal">
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal('blog-modal-3')">&times;</span>
-            <div class="blog-modal-body">
+            <div class="modal-body">
                 <h3>Risk İdarəetməsi Nədir?</h3>
                 <p>Risk idarəetməsi, layihənin məqsədlərinə mənfi təsir edə biləcək potensial problemlərin (risklərin) proaktiv şəkildə müəyyən edilməsi, təhlili və onlara cavab verilməsi prosesidir. Məqsəd, sürprizləri minimuma endirmək və layihənin uğur şansını artırmaqdır.</p>
                 <p>Bu proses adətən 4 əsas mərhələdən ibarətdir:</p>
