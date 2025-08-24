@@ -187,6 +187,9 @@
         }
 
         /* --- Blog Section --- */
+        #blog-section {
+            scroll-margin-top: 100px; /* Offset for the sticky header */
+        }
         .blog {
             background-color: var(--white-color);
         }
@@ -200,6 +203,9 @@
             border-radius: 10px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.08);
             overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
         .blog-post-card:hover {
@@ -215,13 +221,71 @@
         .blog-post-content p {
             margin-bottom: 20px;
         }
-        .read-more-link {
-            text-decoration: none;
+        .read-more-btn {
+            background: none;
+            border: none;
             color: var(--secondary-color);
             font-weight: 600;
+            cursor: pointer;
+            padding: 10px 0;
+            font-size: 1em;
+            font-family: var(--body-font);
         }
-        .read-more-link:hover {
+        .read-more-btn:hover {
             text-decoration: underline;
+        }
+
+        /* --- Modal (Pop-up) Styles --- */
+        .modal {
+            display: none; 
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.6);
+        }
+        .modal-content {
+            background-color: var(--white-color);
+            margin: 5% auto;
+            padding: 40px;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 800px;
+            position: relative;
+            animation: fadeIn 0.3s;
+        }
+        .close-btn {
+            color: #aaa;
+            position: absolute;
+            top: 15px;
+            right: 25px;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .close-btn:hover,
+        .close-btn:focus {
+            color: var(--primary-color);
+        }
+        @keyframes fadeIn {
+            from {opacity: 0; transform: translateY(-20px);}
+            to {opacity: 1; transform: translateY(0);}
+        }
+        .blog-modal-body h3 {
+            color: var(--secondary-color);
+            text-align: center;
+            font-size: 1.8em;
+            margin-bottom: 25px;
+        }
+        .blog-modal-body p {
+            margin-bottom: 15px;
+        }
+        .blog-modal-body ul {
+            list-style-position: inside;
+            padding-left: 10px;
         }
 
         /* --- Footer --- */
@@ -303,7 +367,7 @@
                     <li><a href="index.html">Əsas Səhifə</a></li>
                     <li><a href="telimler.html">Təlimlər</a></li>
                     <li><a href="#about-section">Haqqımızda</a></li>
-                    <li><a href="#">Bloq</a></li>
+                    <li><a href="#blog-section">Bloq</a></li>
                     <li><a href="elaqe.html">Əlaqə</a></li>
                 </ul>
             </nav>
@@ -334,7 +398,7 @@
                         <p>Peşəkar layihə menecerlərindən layihələriniz üçün fərdi məsləhət alın.</p>
                     </div>
                     <div class="service-card">
-                        <h3>Bloq</h3>
+                        <h3><a href="#blog-section" style="text-decoration:none; color: var(--secondary-color);">Bloq</a></h3>
                         <p>Sektorla bağlı son məqalələr, trendlər və yenilikləri izləyin.</p>
                     </div>
                 </div>
@@ -356,7 +420,7 @@
         </section>
 
         <!-- Blog Section -->
-        <section class="blog">
+        <section id="blog-section" class="blog">
             <div class="container">
                 <h2 class="section-title">Son Bloq Yazıları</h2>
                 <div class="blog-grid">
@@ -364,22 +428,22 @@
                         <div class="blog-post-content">
                             <h3>Agile və Scrum Arasındakı Fərqlər</h3>
                             <p>Bu məqalədə çevik metodologiyaların əsas prinsiplərini və onların tətbiqini araşdırırıq.</p>
-                            <a href="#" class="read-more-link">Daha çox oxu &rarr;</a>
                         </div>
+                        <button class="read-more-btn" onclick="openModal('blog-modal-1')">Daha çox oxu &rarr;</button>
                     </article>
                     <article class="blog-post-card">
                         <div class="blog-post-content">
                             <h3>Uğurlu Layihə Üçün 5 Vacib Addım</h3>
                             <p>Layihə planlamasından yekun təhvilə qədər olan mərhələlərdə diqqət etməli olduğunuz məqamlar.</p>
-                            <a href="#" class="read-more-link">Daha çox oxu &rarr;</a>
                         </div>
+                        <button class="read-more-btn" onclick="openModal('blog-modal-2')">Daha çox oxu &rarr;</button>
                     </article>
                     <article class="blog-post-card">
                         <div class="blog-post-content">
                             <h3>Risk İdarəetməsi Nədir?</h3>
-                            <p>Layihələrinizdə qarşılaşa biləcəyiniz riskləri necə müyyən edə və idarə edə bilərsiniz?</p>
-                            <a href="#" class="read-more-link">Daha çox oxu &rarr;</a>
+                            <p>Layihələrinizdə qarşılaşa biləcəyiniz riskləri necə müəyyən edə və idarə edə bilərsiniz?</p>
                         </div>
+                        <button class="read-more-btn" onclick="openModal('blog-modal-3')">Daha çox oxu &rarr;</button>
                     </article>
                 </div>
             </div>
@@ -400,7 +464,7 @@
                         <li><a href="index.html">Əsas Səhifə</a></li>
                         <li><a href="telimler.html">Təlimlər</a></li>
                         <li><a href="#about-section">Haqqımızda</a></li>
-                        <li><a href="#">Bloq</a></li>
+                        <li><a href="#blog-section">Bloq</a></li>
                         <li><a href="elaqe.html">Əlaqə</a></li>
                     </ul>
                 </div>
@@ -423,6 +487,80 @@
             </div>
         </div>
     </footer>
+
+    <!-- Blog Modals -->
+    <div id="blog-modal-1" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('blog-modal-1')">&times;</span>
+            <div class="blog-modal-body">
+                <h3>Agile və Scrum Arasındakı Fərqlər</h3>
+                <p>Layihə idarəetməsində tez-tez qarışdırılan iki termin Agile və Scrum-dır. Əslində, onlar bir-birini tamamlayan, lakin fərqli mənalar daşıyan anlayışlardır.</p>
+                <p><b>Agile (Çeviklik):</b> Bu, bir fəlsəfə və dəyərlər toplusudur. Agile, layihələri kiçik, idarəolunan hissələrə bölərək, dəyişikliklərə sürətli adaptasiya olmağı və müştəri ilə sıx əməkdaşlığı təşviq edir. Bu, konkret bir metod deyil, bir düşüncə tərzidir.</p>
+                <p><b>Scrum:</b> Bu isə Agile fəlsəfəsini həyata keçirmək üçün istifadə olunan ən populyar çərçivədir (framework). Scrum-ın özünəməxsus qaydaları, rolları (Scrum Master, Product Owner, Development Team) və tədbirləri (Sprint, Daily Stand-up) var. Qısacası, Scrum "necə" sualına cavab verir, Agile isə "niyə" sualını əsaslandırır.</p>
+                <p><b>Əsas fərq:</b> Bütün Scrum prosesləri Agile prinsiplərinə əsaslanır, lakin Agile olmaq üçün mütləq Scrum istifadə etmək şərt deyil. Kanban kimi digər Agile metodları da mövcuddur.</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="blog-modal-2" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('blog-modal-2')">&times;</span>
+            <div class="blog-modal-body">
+                <h3>Uğurlu Layihə Üçün 5 Vacib Addım</h3>
+                <p>İstənilən layihənin uğuru onun düzgün idarə olunmasından birbaşa asılıdır. Budur, hər bir layihə menecerinin diqqət etməli olduğu 5 fundamental addım:</p>
+                <ul>
+                    <li><b>1. Dəqiq Məqsədlər Təyin Etmək:</b> Layihənin sonunda nə əldə etmək istədiyinizi aydın şəkildə müəyyənləşdirin. "SMART" (Specific, Measurable, Achievable, Relevant, Time-bound) prinsipi burada ən yaxşı köməkçinizdir.</li>
+                    <li><b>2. Hərtərəfli Planlama:</b> Bütün tapşırıqları, lazım olan resursları, büdcəni və zaman çərçivəsini əhatə edən detallı bir plan hazırlayın. Yaxşı plan, uğurun yarısıdır.</li>
+                    <li><b>3. Effektiv Kommunikasiya:</b> Komanda üzvləri və maraqlı tərəflər arasında davamlı və şəffaf məlumat axınını təmin edin. Hər kəs öz rolunu və gözləntiləri bilməlidir.</li>
+                    <li><b>4. Risk İdarəetməsi:</b> Layihəyə təsir edə biləcək potensial problemləri (riskləri) əvvəlcədən müəyyən edin və onlara qarşı hazırlıqlı olun.</li>
+                    <li><b>5. Davamlı Monitorinq və Nəzarət:</b> Layihənin gedişatını planla müqayisə edərək mütəmadi izləyin. Problem yaranarsa, vaxtında müdaxilə edərək onu aradan qaldırın.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div id="blog-modal-3" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('blog-modal-3')">&times;</span>
+            <div class="blog-modal-body">
+                <h3>Risk İdarəetməsi Nədir?</h3>
+                <p>Risk idarəetməsi, layihənin məqsədlərinə mənfi təsir edə biləcək potensial problemlərin (risklərin) proaktiv şəkildə müəyyən edilməsi, təhlili və onlara cavab verilməsi prosesidir. Məqsəd, sürprizləri minimuma endirmək və layihənin uğur şansını artırmaqdır.</p>
+                <p>Bu proses adətən 4 əsas mərhələdən ibarətdir:</p>
+                <ul>
+                    <li><b>Risklərin Müəyyən Edilməsi:</b> "Nə səhv gedə bilər?" sualına cavab axtarmaq. Bu, texniki problemlərdən tutmuş büdcə çatışmazlığına qədər hər şeyi əhatə edə bilər.</li>
+                    <li><b>Risklərin Təhlili:</b> Hər bir riskin baş vermə ehtimalını və layihəyə potensial təsirini qiymətləndirmək.</li>
+                    <li><b>Riskə Cavab Planlaması:</b> Müəyyən edilmiş risklərə qarşı strategiyalar hazırlamaq. Bu, riskdən yayınmaq, onu azaltmaq, başqasına ötürmək və ya sadəcə qəbul etmək ola bilər.</li>
+                    <li><b>Risklərin Monitorinqi:</b> Layihə boyunca riskləri davamlı olaraq izləmək və lazım gəldikdə planları yeniləmək.</li>
+                </ul>
+                <p>Unutmayın, effektiv risk idarəetməsi problemi böyümədən həll etmək sənətidir.</p>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Function to open a specific modal
+        function openModal(modalId) {
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                modal.style.display = 'block';
+            }
+        }
+
+        // Function to close a specific modal
+        function closeModal(modalId) {
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                modal.style.display = 'none';
+            }
+        }
+
+        // Close any open modal if the user clicks anywhere outside of the modal content
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal')) {
+                event.target.style.display = 'none';
+            }
+        }
+    </script>
 
 </body>
 </html>
