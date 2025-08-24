@@ -69,7 +69,6 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            flex-wrap: wrap;
         }
 
         .logo {
@@ -86,14 +85,12 @@
             display: flex;
             align-items: center;
             gap: 20px;
-            flex-wrap: wrap;
         }
 
         .main-nav ul {
             list-style: none;
             display: flex;
             gap: 25px;
-            flex-wrap: wrap;
         }
 
         .main-nav a {
@@ -144,6 +141,19 @@
         }
         .header-socials a:hover svg {
             fill: var(--secondary-color);
+        }
+
+        /* Hamburger Menu */
+        .hamburger {
+            display: none;
+            cursor: pointer;
+        }
+        .hamburger div {
+            width: 25px;
+            height: 3px;
+            background-color: var(--primary-color);
+            margin: 5px 0;
+            transition: 0.4s;
         }
 
 
@@ -432,10 +442,38 @@
         }
 
         /* --- Responsive Design --- */
-        @media (max-width: 1080px) {
-            .main-header .container, .main-nav {
+        @media (max-width: 992px) {
+            .main-nav {
+                display: none;
+                width: 100%;
                 flex-direction: column;
+                align-items: flex-start;
+                background-color: var(--white-color);
+                position: absolute;
+                top: 90px;
+                left: 0;
+                padding: 20px;
+                box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            }
+            .main-nav.active {
+                display: flex;
+            }
+            .main-nav ul {
+                flex-direction: column;
+                width: 100%;
                 gap: 15px;
+            }
+            .main-nav ul li {
+                width: 100%;
+                text-align: center;
+            }
+            .header-controls {
+                width: 100%;
+                justify-content: center;
+                margin-top: 15px;
+            }
+            .hamburger {
+                display: block;
             }
         }
         @media (max-width: 768px) {
@@ -456,7 +494,12 @@
             <a href="index.html" class="logo">
                 <img src="images/logo.png" alt="PMania Hub Logo">
             </a>
-            <nav class="main-nav">
+            <div class="hamburger" id="hamburger-menu">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            <nav class="main-nav" id="main-nav-links">
                 <ul>
                     <li><a href="index.html" data-lang-key="navHome">Əsas Səhifə</a></li>
                     <li><a href="telimler.html" data-lang-key="navTrainings">Təlimlər</a></li>
@@ -560,7 +603,7 @@
                     <article class="blog-post-card">
                         <div class="blog-post-content">
                             <h3 data-lang-key="blog3Title">Risk İdarəetməsi Nədir?</h3>
-                            <p data-lang-key="blog3Desc">Layihələrinizdə qarşılaşa biləcəyiniz riskləri necə müəyyən edə və idarə edə bilərsiniz?</p>
+                            <p data-lang-key="blog3Desc">Layihələrinizdə qarşılaşa biləcəyiniz riskləri necə müyyən edə və idarə edə bilərsiniz?</p>
                         </div>
                         <button class="read-more-btn" onclick="openModal('blog-modal-3')" data-lang-key="readMore">Daha çox oxu &rarr;</button>
                     </article>
@@ -868,6 +911,13 @@
                     event.target.style.display = 'none';
                 }
             }
+            
+            // Hamburger menu toggle
+            const hamburger = document.getElementById('hamburger-menu');
+            const navLinks = document.getElementById('main-nav-links');
+            hamburger.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+            });
         }
     </script>
 
