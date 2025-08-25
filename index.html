@@ -193,6 +193,10 @@
             background-color: #3b15a8; /* Darker Purple */
             transform: translateY(-3px);
         }
+        .cta-button.disabled {
+            background-color: #95a5a6;
+            cursor: not-allowed;
+        }
 
         /* --- Services Section --- */
         .services {
@@ -233,12 +237,18 @@
         .news {
             background-color: var(--background-color);
         }
+        .news-grid {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
         .news-card {
             background: var(--white-color);
             border-radius: 10px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-            max-width: 700px;
-            margin: 0 auto;
+            width: 100%;
+            max-width: 350px; /* Adjusted size */
             overflow: hidden;
             cursor: pointer;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -249,7 +259,8 @@
         }
         .news-card img {
             width: 100%;
-            display: block;
+            aspect-ratio: 16 / 9;
+            object-fit: cover;
         }
         .news-content {
             padding: 25px;
@@ -257,6 +268,7 @@
         }
         .news-content h3 {
             color: var(--secondary-color);
+            font-size: 1.2em;
         }
 
         /* --- About Section --- */
@@ -265,6 +277,7 @@
         }
         .about {
             background-color: var(--white-color);
+            text-align: center;
         }
         .about p {
             max-width: 700px;
@@ -478,9 +491,37 @@
 
         /* --- Responsive Design --- */
         @media (max-width: 992px) {
-            .main-header .container, .main-nav {
+            .main-nav {
+                display: none;
+                width: 100%;
                 flex-direction: column;
+                align-items: flex-start;
+                background-color: var(--white-color);
+                position: absolute;
+                top: 90px;
+                left: 0;
+                padding: 20px;
+                box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            }
+            .main-nav.active {
+                display: flex;
+            }
+            .main-nav ul {
+                flex-direction: column;
+                width: 100%;
                 gap: 15px;
+            }
+            .main-nav ul li {
+                width: 100%;
+                text-align: center;
+            }
+            .header-controls {
+                width: 100%;
+                justify-content: center;
+                margin-top: 15px;
+            }
+            .hamburger {
+                display: block;
             }
         }
         @media (max-width: 768px) {
@@ -571,11 +612,20 @@
         <section class="news">
             <div class="container">
                 <h2 class="section-title" data-lang-key="newsTitle">Xəbərlər</h2>
-                <div class="news-card" onclick="openModal('news-modal-1')">
-                    <img src="images/360.png" alt="360° Layihə İdarəetməsi Təlimi Qeydiyyatı" onerror="this.onerror=null;this.src='https://placehold.co/700x400/ecf0f1/222831?text=X%C9%99b%C9%99r+Posteri';">
-                    <div class="news-content">
-                        <h3 data-lang-key="news1Title">Qeydiyyat Başladı: 360° Layihə İdarəetməsi</h3>
-                        <p data-lang-key="news1Desc">8 həftəlik intensiv proqramla layihə idarəetməsini sıfırdan öyrənin və peşəkar olun!</p>
+                <div class="news-grid">
+                    <div class="news-card" onclick="openModal('news-modal-1')">
+                        <img src="images/360.png" alt="360° Layihə İdarəetməsi Təlimi Qeydiyyatı" onerror="this.onerror=null;this.src='https://placehold.co/450x250/ecf0f1/222831?text=X%C9%99b%C9%99r+1';">
+                        <div class="news-content">
+                            <h3 data-lang-key="news1Title">Qeydiyyat Başladı: 360° Layihə İdarəetməsi</h3>
+                            <p data-lang-key="news1Desc">8 həftəlik intensiv proqramla layihə idarəetməsini sıfırdan öyrənin və peşəkar olun!</p>
+                        </div>
+                    </div>
+                    <div class="news-card" onclick="openModal('news-modal-2')">
+                        <img src="images/webinar.png" alt="Ödənişsiz Seminar Elanı" onerror="this.onerror=null;this.src='https://placehold.co/450x250/ecf0f1/222831?text=X%C9%99b%C9%99r+2';">
+                        <div class="news-content">
+                            <h3 data-lang-key="news2Title">Keçirilmiş Seminar: Çevik və Klassik Metodlar</h3>
+                            <p data-lang-key="news2Desc">21 Avqust tarixində baş tutan ödənişsiz seminarımız haqqında ətraflı məlumat üçün klikləyin.</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -731,6 +781,24 @@
             </div>
         </div>
     </div>
+    <div id="news-modal-2" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('news-modal-2')">&times;</span>
+            <div class="modal-body">
+                <h3 data-lang-key="news2ModalTitle">📢 ÖDƏNİŞSİZ SEMİNAR – Qaçırma! 💥</h3>
+                <p data-lang-key="news2ModalDesc1">Layihə idarəçiliyində həm klassik, həm də çevik metodlarla tanış olmaq istəyirsənsə, bu seminar tam sənlikdir!</p>
+                <ul style="text-align: left; max-width: 400px; margin: 20px auto; list-style: none; padding: 0;">
+                    <li data-lang-key="news2ModalPoint1">🔍 Mövzu: Çevik və Klassik Layihə İdarəetməsi</li>
+                    <li data-lang-key="news2ModalPoint2">🎙️ Spiker: Mahmud Mahmudlu</li>
+                    <li data-lang-key="news2ModalPoint3">📌 Ericsson – Tech Project Manager</li>
+                    <li data-lang-key="news2ModalPoint4">📜 PMP, Lean Six Sigma Certified</li>
+                </ul>
+                <p data-lang-key="news2ModalDate">🗓️ Tarix: 21 Avqust (Tədbir başa çatıb)</p>
+                <button class="cta-button disabled" data-lang-key="news2ModalButton">Qeydiyyat Bağlanıb</button>
+                <p class="hashtags" data-lang-key="news2ModalHashtags">#layihəidarəetməsi #çevikidarəetmə #pmp #sixsigma #ödənişsizseminar #mahmudmahmudlu #onlineevents #aztagram #menecment</p>
+            </div>
+        </div>
+    </div>
     
     <script>
         if (!window.pmaniaScriptLoaded) {
@@ -756,6 +824,8 @@
                     newsTitle: "Xəbərlər",
                     news1Title: "Qeydiyyat Başladı: 360° Layihə İdarəetməsi",
                     news1Desc: "8 həftəlik intensiv proqramla layihə idarəetməsini sıfırdan öyrənin və peşəkar olun!",
+                    news2Title: "Keçirilmiş Seminar: Çevik və Klassik Metodlar",
+                    news2Desc: "21 Avqust tarixində baş tutan ödənişsiz seminarımız haqqında ətraflı məlumat üçün klikləyin.",
                     aboutTitle: "“PMania” ilə Tanış ol",
                     aboutDesc: "PMania Hub, layihə idarəetməsi sahəsində karyera qurmaq və ya mövcud bacarıqlarını təkmilləşdirmək istəyənlər üçün yaradılmış hərtərəfli bir platformadır. Məqsədimiz, hər kəsə keyfiyyətli təhsil və peşəkar dəstək təqdim etməklə onların uğuruna töhfə verməkdir.",
                     missionButton: "💡 Missiyamız",
@@ -830,9 +900,18 @@
                     newsModalPoint2: "📚 Agile, Waterfall, Scrum, Kanban",
                     newsModalPoint3: "🏆 Sertifikat + praktiki tapşırıqlar",
                     newsModalTrainer: "👨‍🏫 Təlimçi: Mahmud Mahmudlu – PMP®, Lean Six Sigma sertifikatlı layihə meneceri, hazırda qlobal telekommunikasiya lideri Ericsson-da çalışır.",
-                    newsModalCta: "� Qeydiyyat üçün bizə yaz – uğurlu karyera üçün ilk addımı bu gün at!",
+                    newsModalCta: "📲 Qeydiyyat üçün bizə yaz – uğurlu karyera üçün ilk addımı bu gün at!",
                     newsModalButton: "Bizə Yaz",
-                    newsModalHashtags: "#PManiaHub #Layiheidaretmesi #pmania #kurs #qeydiyyat #layihe #projectmanagement #agile #scrum"
+                    newsModalHashtags: "#PManiaHub #Layiheidaretmesi #pmania #kurs #qeydiyyat #layihe #projectmanagement #agile #scrum",
+                    news2ModalTitle: "📢 ÖDƏNİŞSİZ SEMİNAR – Qaçırma! 💥",
+                    news2ModalDesc1: "Layihə idarəçiliyində həm klassik, həm də çevik metodlarla tanış olmaq istəyirsənsə, bu seminar tam sənlikdir!",
+                    news2ModalPoint1: "🔍 Mövzu: Çevik və Klassik Layihə İdarəetməsi",
+                    news2ModalPoint2: "🎙️ Spiker: Mahmud Mahmudlu",
+                    news2ModalPoint3: "📌 Ericsson – Tech Project Manager",
+                    news2ModalPoint4: "📜 PMP, Lean Six Sigma Certified",
+                    news2ModalDate: "🗓️ Tarix: 21 Avqust (Tədbir başa çatıb)",
+                    news2ModalButton: "Qeydiyyat Bağlanıb",
+                    news2ModalHashtags: "#layihəidarəetməsi #çevikidarəetmə #pmp #sixsigma #ödənişsizseminar #mahmudmahmudlu #onlineevents #aztagram #menecment"
                 },
                 en: {
                     navHome: "Home",
@@ -852,8 +931,10 @@
                     service3Title: "Blog",
                     service3Desc: "Follow the latest articles, trends, and news related to the sector.",
                     newsTitle: "News",
-                    news1Title: "Registration is Open: 360° Project Management",
+                    news1Title: "Registration Open: 360° Project Management",
                     news1Desc: "Learn project management from scratch and become a professional with our 8-week intensive program!",
+                    news2Title: "Past Seminar: Agile vs. Classic Methods",
+                    news2Desc: "Click for more details about our free seminar that took place on August 21st.",
                     aboutTitle: "Meet “PMania”",
                     aboutDesc: "PMania Hub is a comprehensive platform created for those who want to build a career in project management or improve their existing skills. Our goal is to contribute to their success by providing quality education and professional support to everyone.",
                     missionButton: "💡 Our Mission",
@@ -930,7 +1011,16 @@
                     newsModalTrainer: "👨‍🏫 Instructor: Mahmud Mahmudlu – PMP®, Lean Six Sigma certified project manager, currently working at the global telecommunications leader, Ericsson.",
                     newsModalCta: "📲 Write to us to register – take the first step towards a successful career today!",
                     newsModalButton: "Contact Us",
-                    newsModalHashtags: "#PManiaHub #ProjectManagement #pmania #course #registration #project #agile #scrum"
+                    newsModalHashtags: "#PManiaHub #ProjectManagement #pmania #course #registration #project #agile #scrum",
+                    news2ModalTitle: "📢 FREE SEMINAR – Don't Miss Out! 💥",
+                    news2ModalDesc1: "If you want to get acquainted with both classic and agile methods in project management, this seminar is for you!",
+                    news2ModalPoint1: "🔍 Topic: Agile and Classic Project Management",
+                    news2ModalPoint2: "🎙️ Speaker: Mahmud Mahmudlu",
+                    news2ModalPoint3: "📌 Ericsson – Tech Project Manager",
+                    news2ModalPoint4: "📜 PMP, Lean Six Sigma Certified",
+                    news2ModalDate: "🗓️ Date: August 21st (Event has ended)",
+                    news2ModalButton: "Registration Closed",
+                    news2ModalHashtags: "#projectmanagement #agilemanagement #pmp #sixsigma #freeseminar #mahmudmahmudlu #onlineevents #management"
                 }
             };
 
@@ -989,4 +1079,3 @@
 
 </body>
 </html>
-�
