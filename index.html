@@ -242,40 +242,65 @@
             color: var(--secondary-color);
         }
 
-        /* --- News Section --- */
-        .news {
+        /* --- News & Blog Section --- */
+        .news, .blog {
             background-color: var(--background-color);
         }
-        .news-grid {
+        .blog {
+            background-color: var(--white-color);
+        }
+        .news-grid, .blog-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
         }
-        .news-card {
+        .news-card, .blog-post-card {
             background: var(--white-color);
             border-radius: 10px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-            width: 100%;
             overflow: hidden;
-            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
-        .news-card:hover {
-            transform: translateY(-10px);
+        .news-card:hover, .blog-post-card:hover {
+             transform: translateY(-10px);
             box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+        }
+        .news-card {
+            cursor: pointer;
         }
         .news-card img {
             width: 100%;
             height: auto;
             display: block;
         }
-        .news-content {
+        .news-content, .blog-post-content {
             padding: 25px;
-            text-align: center;
         }
-        .news-content h3 {
-            color: var(--secondary-color);
+        .news-content h3, .blog-post-content h3 {
+            margin-bottom: 10px;
             font-size: 1.2em;
+            color: var(--secondary-color);
+        }
+        .blog-post-content p {
+            margin-bottom: 20px;
+        }
+        .read-more-btn {
+            background: none;
+            border: none;
+            color: var(--secondary-color);
+            font-weight: 600;
+            cursor: pointer;
+            padding: 10px 25px;
+            font-size: 1em;
+            font-family: var(--body-font);
+            align-self: flex-start;
+            margin-left: -10px; /* Align with content padding */
+        }
+        .read-more-btn:hover {
+            text-decoration: underline;
         }
 
         /* --- About Section --- */
@@ -319,56 +344,6 @@
         .testimonials-cta p {
             font-size: 1.2em;
             margin-bottom: 30px;
-        }
-
-        /* --- Blog Section --- */
-        #blog-section {
-            scroll-margin-top: 120px; 
-        }
-        .blog {
-            background-color: var(--white-color);
-        }
-        .blog-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-        .blog-post-card {
-            background: var(--white-color);
-            border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .blog-post-card:hover {
-             transform: translateY(-10px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.12);
-        }
-        .blog-post-content {
-            padding: 25px;
-        }
-        .blog-post-content h3 {
-            margin-bottom: 10px;
-        }
-        .blog-post-content p {
-            margin-bottom: 20px;
-        }
-        .read-more-btn {
-            background: none;
-            border: none;
-            color: var(--secondary-color);
-            font-weight: 600;
-            cursor: pointer;
-            padding: 10px 25px;
-            font-size: 1em;
-            font-family: var(--body-font);
-            align-self: flex-start;
-        }
-        .read-more-btn:hover {
-            text-decoration: underline;
         }
 
         /* --- Modal (Pop-up) Styles --- */
@@ -638,6 +613,12 @@
                             <h3 data-lang-key="news2Title">Keçirilmiş Seminar: Çevik və Klassik Metodlar</h3>
                         </div>
                     </div>
+                    <div class="news-card" onclick="openModal('news-modal-3')">
+                        <img src="images/ayafe.png" alt="Təqaüd Proqramı" onerror="this.onerror=null;this.src='https://placehold.co/350x350/ecf0f1/222831?text=X%C9%99b%C9%99r+3';">
+                        <div class="news-content">
+                            <h3 data-lang-key="news3Title">Təqaüd Proqramı Uğurla Başa Çatdı</h3>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -810,6 +791,18 @@
             </div>
         </div>
     </div>
+    <div id="news-modal-3" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('news-modal-3')">&times;</span>
+            <div class="modal-body text-left">
+                <h3 data-lang-key="news3ModalTitle"></h3>
+                <p data-lang-key="news3ModalDesc1"></p>
+                <p data-lang-key="news3ModalDesc2"></p>
+                <p data-lang-key="news3ModalDesc3"></p>
+                <p class="hashtags" data-lang-key="news3ModalHashtags"></p>
+            </div>
+        </div>
+    </div>
     
     <script>
         if (!window.pmaniaScriptLoaded) {
@@ -835,6 +828,7 @@
                     newsTitle: "Xəbərlər",
                     news1Title: "Qeydiyyat Başladı: 360° Layihə İdarəetməsi",
                     news2Title: "Keçirilmiş Seminar: Çevik və Klassik Metodlar",
+                    news3Title: "Təqaüd Proqramı Uğurla Başa Çatdı",
                     aboutTitle: "“PMania” ilə Tanış ol",
                     aboutDesc: "PMania Hub, layihə idarəetməsi sahəsində karyera qurmaq və ya mövcud bacarıqlarını təkmilləşdirmək istəyənlər üçün yaradılmış hərtərəfli bir platformadır. Məqsədimiz, hər kəsə keyfiyyətli təhsil və peşəkar dəstək təqdim etməklə onların uğuruna töhfə verməkdir.",
                     missionButton: "💡 Missiyamız",
@@ -920,7 +914,12 @@
                     news2ModalPoint4: "📜 PMP, Lean Six Sigma Certified",
                     news2ModalDate: "🗓️ Tarix: 21 Avqust (Tədbir başa çatıb)",
                     news2ModalButton: "Qeydiyyat Bağlanıb",
-                    news2ModalHashtags: "#layihəidarəetməsi #çevikidarəetmə #pmp #sixsigma #ödənişsizseminar #mahmudmahmudlu #onlineevents #aztagram #menecment"
+                    news2ModalHashtags: "#layihəidarəetməsi #çevikidarəetmə #pmp #sixsigma #ödənişsizseminar #mahmudmahmudlu #onlineevents #aztagram #menecment",
+                    news3ModalTitle: "Təqaüd Proqramı Yekunlaşdı",
+                    news3ModalDesc1: "Məlumat üçün bildirmək istərdik ki, AYAFE Gənclər Təşkilatı və Pmania Hub şirkətinin təşkilatı dəstəyi ilə təqaüd proqramına müraciət prosesi yekunlaşmışdır.",
+                    news3ModalDesc2: "Ümumilikdə 100-dən çox müraciət qeydə alınmış, 40 nəfər müsahibə mərhələsinə keçmişdir. Müsahibə mərhələsindən uğurla keçən 11 nəfər 2 aylıq ödənişsiz \"360° Layihə İdarəetməsi təlim proqramı\"na cəlb edilmişdir. İndi isə yeni biliklər, böyük hədəflər və fərq yaradan layihələr üçün səhnə onlarındır!",
+                    news3ModalDesc3: "Təqaüd proqramı üzrə qaliblərimizi təbrik edir, fəaliyyətlərində uğurlar arzulayırıq.",
+                    news3ModalHashtags: "#AYAFEAZERBAIJAN #PMANİA #ProjectManagement"
                 },
                 en: {
                     navHome: "Home",
@@ -942,6 +941,7 @@
                     newsTitle: "News",
                     news1Title: "Registration Open: 360° Project Management",
                     news2Title: "Past Seminar: Agile vs. Classic Methods",
+                    news3Title: "Scholarship Program Successfully Concluded",
                     aboutTitle: "Meet “PMania”",
                     aboutDesc: "PMania Hub is a comprehensive platform created for those who want to build a career in project management or improve their existing skills. Our goal is to contribute to their success by providing quality education and professional support to everyone.",
                     missionButton: "💡 Our Mission",
@@ -1027,7 +1027,12 @@
                     news2ModalPoint4: "📜 PMP, Lean Six Sigma Certified",
                     news2ModalDate: "🗓️ Date: August 21st (Event has ended)",
                     news2ModalButton: "Registration Closed",
-                    news2ModalHashtags: "#projectmanagement #agilemanagement #pmp #sixsigma #freeseminar #mahmudmahmudlu #onlineevents #management"
+                    news2ModalHashtags: "#projectmanagement #agilemanagement #pmp #sixsigma #freeseminar #mahmudmahmudlu #onlineevents #management",
+                    news3ModalTitle: "Scholarship Program Concluded",
+                    news3ModalDesc1: "We would like to inform you that the application process for the scholarship program, organized with the support of AYAFE Youth Organization and Pmania Hub, has been completed.",
+                    news3ModalDesc2: "Over 100 applications were received, and 40 candidates advanced to the interview stage. The 11 successful candidates have been enrolled in the 2-month free '360° Project Management training program'. Now, the stage is theirs for new knowledge, big goals, and projects that make a difference!",
+                    news3ModalDesc3: "We congratulate our scholarship program winners and wish them success in their activities.",
+                    news3ModalHashtags: "#AYAFEAZERBAIJAN #PMANIA #ProjectManagement"
                 }
             };
 
