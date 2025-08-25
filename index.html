@@ -84,7 +84,7 @@
         }
         
         .logo img {
-            height: 70px; /* Increased logo size */
+            height: 70px;
             width: auto;
             vertical-align: middle; 
         }
@@ -99,7 +99,7 @@
         .main-nav ul {
             list-style: none;
             display: flex;
-            gap: 30px; /* Increased gap */
+            gap: 30px;
             flex-wrap: wrap;
         }
 
@@ -107,7 +107,7 @@
             text-decoration: none;
             color: var(--primary-color);
             font-weight: 500;
-            font-size: 1.1em; /* Increased font size */
+            font-size: 1.1em;
             transition: color 0.3s ease;
         }
 
@@ -122,11 +122,16 @@
         }
 
         /* Language Switcher */
+        .lang-switcher {
+            position: relative;
+        }
         .lang-switcher button {
             background: none;
             border: none;
             cursor: pointer;
             padding: 5px;
+            display: flex;
+            align-items: center;
         }
         .lang-switcher svg {
             width: 26px;
@@ -136,6 +141,29 @@
         }
         .lang-switcher button:hover svg {
             fill: var(--secondary-color);
+        }
+        #lang-menu {
+            position: absolute;
+            top: 120%;
+            right: 0;
+            background: var(--white-color);
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            overflow: hidden;
+            z-index: 1001;
+        }
+        #lang-menu button {
+            padding: 10px 20px;
+            width: 100%;
+            text-align: left;
+            font-size: 1em;
+            transition: background-color 0.2s ease;
+        }
+        #lang-menu button:hover {
+            background-color: var(--background-color);
+        }
+        .hidden {
+            display: none;
         }
         
         /* Header Social Icons */
@@ -231,6 +259,7 @@
         }
         .scroll-container {
             display: flex;
+            justify-content: center; /* Center items if they don't overflow */
             overflow-x: auto;
             padding-bottom: 20px; /* Space for scrollbar */
             scroll-behavior: smooth; /* Smooth scrolling for buttons */
@@ -240,7 +269,7 @@
         .scroll-container::-webkit-scrollbar {
             display: none; /* Chrome, Safari, Opera */
         }
-        .services-grid, .news-grid, .blog-grid {
+        .services-grid, .news-grid, .blog-grid, .testimonial-highlights {
             display: flex;
             flex-wrap: nowrap;
             gap: 30px;
@@ -389,13 +418,6 @@
         .testimonials-cta p {
             font-size: 1.2em;
             margin-bottom: 30px;
-        }
-        .testimonial-highlights {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-bottom: 30px;
-            flex-wrap: wrap;
         }
         .highlight-tag {
             background-color: var(--white-color);
@@ -663,7 +685,7 @@
                 <div class="header-controls">
                     <div class="lang-switcher">
                         <button id="lang-switcher-btn">
-                            <svg viewBox="0 0 24 24"><path d="M12.87 15.07l-2.54-2.51.03-.03c1.74-1.94 2.98-4.17 3.71-6.53H17V4h-7V2H8v2H1v1.99h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12zm-2.62 7l1.62-4.33L19.12 17h-3.24z"/></svg>
+                            <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v-1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
                         </button>
                     </div>
                     <div class="header-socials">
@@ -686,7 +708,7 @@
         <!-- Hero Section -->
         <section class="hero">
             <div class="container">
-                <h1 data-lang-key="heroTitle">Layihə İdarəetməsini Ustalıqla Öyrənin</h1>
+                <h1 data-lang-key="heroTitle">Karyerana Güc Qat – Layihə İdarəetməsini Öyrən!</h1>
                 <p data-lang-key="heroSubtitle">Online kurslar, təlimlər və peşəkar konsultasiya ilə bacarıqlarınızı artırın</p>
                 <a href="telimler.html" class="cta-button" data-lang-key="heroButton">Dərslərə Başla</a>
             </div>
@@ -995,7 +1017,7 @@
                     navReviews: "Rəylər",
                     navBlog: "Bloq",
                     navContact: "Əlaqə",
-                    heroTitle: "Layihə İdarəetməsini Ustalıqla Öyrənin",
+                    heroTitle: "Karyerana Güc Qat – Layihə İdarəetməsini Öyrən!",
                     heroSubtitle: "Online kurslar, təlimlər və peşəkar konsultasiya ilə bacarıqlarınızı artırın",
                     heroButton: "Dərslərə Başla",
                     servicesTitle: "Xidmətlərimiz",
@@ -1067,7 +1089,7 @@
                     testimonial10Author: "- Vebinar İştirakçısı",
                     blogModal1Title: "Agile və Scrum Arasındakı Fərqlər",
                     blogModal1Content1: "Layihə idarəetməsində tez-tez qarışdırılan iki termin Agile və Scrum-dır. Əslində, onlar bir-birini tamamlayan, lakin fərqli mənalar daşıyan anlayışlardır.",
-                    blogModal1Content2: "<b>Agile (Çeviklik):</b> Bu, bir fəlsəfə və dəyərlər toplusudur. Agile, layihələri kiçik, idarəolunan hissələrə bölərək, dəyişikliklərə sürətli adaptasiya olmağı və müştəri ilə sıx əməkdaşlığı təşviq edir. Bu, konkret bir metod deyil, bir düşüncə tərzidir.",
+                    blogModal1Content2: "<b>Agile (Çeviklik):</b> Bu, bir fəlsəfə və dəyərlər toplusudur. Agile, layihələri kiçik, idarəolunan hissələrə bölərək, dəyişikliklərə sürətli adaptasiya olmağı və müştəri ilə sıx əməkdaşlığı təşviq edir. Bu, konkret bir metod deyil, bir düşünə tərzidir.",
                     blogModal1Content3: "<b>Scrum:</b> Bu isə Agile fəlsəfəsini həyata keçirmək üçün istifadə olunan ən populyar çərçivədir (framework). Scrum-ın özünəməxsus qaydaları, rolları (Scrum Master, Product Owner, Development Team) və tədbirləri (Sprint, Daily Stand-up) var. Qısacası, Scrum \"necə\" sualına cavab verir, Agile isə \"niyə\" sualını əsaslandırır.",
                     blogModal1Content4: "<b>Əsas fərq:</b> Bütün Scrum prosesləri Agile prinsiplərinə əsaslanır, lakin Agile olmaq üçün mütləq Scrum istifadə etmək şərt deyil. Kanban kimi digər Agile metodları da mövcuddur.",
                     blogModal2Title: "Uğurlu Layihə Üçün 5 Vacib Addım",
@@ -1299,12 +1321,7 @@
                         el.innerHTML = translations[lang][key];
                     }
                 });
-                const langBtn = document.getElementById('lang-switcher-btn');
-                if(lang === 'az') {
-                    langBtn.innerHTML = '<svg viewBox="0 0 24 24"><path d="M12.87 15.07l-2.54-2.51.03-.03c1.74-1.94 2.98-4.17 3.71-6.53H17V4h-7V2H8v2H1v1.99h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12zm-2.62 7l1.62-4.33L19.12 17h-3.24z"/></svg>';
-                } else {
-                    langBtn.innerHTML = '<svg viewBox="0 0 24 24"><path d="M12.87 15.07l-2.54-2.51.03-.03c1.74-1.94 2.98-4.17 3.71-6.53H17V4h-7V2H8v2H1v1.99h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12zm-2.62 7l1.62-4.33L19.12 17h-3.24z"/></svg>';
-                }
+                // The globe icon doesn't need to change, so no update needed here
             }
 
             document.addEventListener('DOMContentLoaded', () => {
@@ -1362,6 +1379,7 @@
                     });
                     
                     // Initial check
+                    new ResizeObserver(updateArrows).observe(container);
                     updateArrows();
                 }
             }
