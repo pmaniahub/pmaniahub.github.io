@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Əlaqə - PMania Hub</title>
+    <!-- Favicon -->
+    <link rel="icon" href="images/logo.png" type="image/png">
     <style>
         /* --- Google Fonts Import --- */
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Roboto:wght@400;500&display=swap');
@@ -52,7 +54,7 @@
         .main-header {
             background-color: var(--white-color);
             padding: 15px 0;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            border-bottom: 1px solid var(--background-color);
             position: sticky;
             top: 0;
             z-index: 1000;
@@ -74,6 +76,12 @@
             vertical-align: middle; 
         }
 
+        .main-nav {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
         .main-nav ul {
             list-style: none;
             display: flex;
@@ -91,9 +99,62 @@
             color: var(--secondary-color);
         }
         
+        .header-controls {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        /* Language Switcher */
+        .lang-switcher button {
+            background: none;
+            border: none;
+            color: var(--text-color);
+            font-weight: 600;
+            cursor: pointer;
+            padding: 8px 12px;
+            font-size: 0.9em;
+            border-radius: 20px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        .lang-switcher button.active {
+            background-color: var(--secondary-color);
+            color: var(--white-color);
+        }
+        
+        /* Header Social Icons */
+        .header-socials {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .header-socials a svg {
+            width: 22px;
+            height: 22px;
+            fill: var(--text-color);
+            transition: fill 0.3s ease;
+        }
+        .header-socials a:hover svg {
+            fill: var(--secondary-color);
+        }
+
+        /* Hamburger Menu */
+        .hamburger {
+            display: none;
+            cursor: pointer;
+        }
+        .hamburger div {
+            width: 25px;
+            height: 3px;
+            background-color: var(--primary-color);
+            margin: 5px 0;
+            transition: 0.4s;
+        }
+        
         /* --- Contact Section --- */
         .contact-section {
             background-color: var(--background-color);
+            min-height: 70vh;
         }
         .contact-container {
             max-width: 700px;
@@ -104,7 +165,7 @@
             font-size: 2.5em;
             margin-bottom: 20px;
         }
-        .contact-container p {
+        .contact-container .intro-p {
             font-size: 1.1em;
             margin-bottom: 40px;
         }
@@ -163,9 +224,8 @@
             transform: translateY(-3px);
         }
         
-        .whatsapp-section {
-            text-align: center;
-            margin-top: 40px;
+        .contact-option {
+            margin-bottom: 40px;
         }
         
         .whatsapp-button {
@@ -265,16 +325,41 @@
         }
 
         /* --- Responsive Design --- */
-        @media (max-width: 768px) {
-            .main-header .container {
+        @media (max-width: 992px) {
+            .main-nav {
+                display: none;
+                width: 100%;
                 flex-direction: column;
-                gap: 15px;
+                align-items: flex-start;
+                background-color: var(--white-color);
+                position: absolute;
+                top: 90px;
+                left: 0;
+                padding: 20px;
+                box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            }
+            .main-nav.active {
+                display: flex;
             }
             .main-nav ul {
                 flex-direction: column;
-                text-align: center;
-                gap: 10px;
+                width: 100%;
+                gap: 15px;
             }
+            .main-nav ul li {
+                width: 100%;
+                text-align: center;
+            }
+            .header-controls {
+                width: 100%;
+                justify-content: center;
+                margin-top: 15px;
+            }
+            .hamburger {
+                display: block;
+            }
+        }
+        @media (max-width: 768px) {
             .contact-container h2 {
                 font-size: 2em;
             }
@@ -289,15 +374,37 @@
             <a href="index.html" class="logo">
                 <img src="images/logo.png" alt="PMania Hub Logo">
             </a>
-            <nav class="main-nav">
+            <div class="hamburger" id="hamburger-menu">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            <nav class="main-nav" id="main-nav-links">
                 <ul>
-                    <li><a href="index.html">Əsas Səhifə</a></li>
-                    <li><a href="telimler.html">Təlimlər</a></li>
-                    <li><a href="index.html#about-section">Haqqımızda</a></li>
-                    <li><a href="index.html#testimonials-section">Rəylər</a></li>
-                    <li><a href="index.html#blog-section">Bloq</a></li>
-                    <li><a href="elaqe.html">Əlaqə</a></li>
+                    <li><a href="index.html" data-lang-key="navHome">Əsas Səhifə</a></li>
+                    <li><a href="telimler.html" data-lang-key="navTrainings">Təlimlər</a></li>
+                    <li><a href="index.html#about-section" data-lang-key="navAbout">Haqqımızda</a></li>
+                    <li><a href="index.html#testimonials-section" data-lang-key="navReviews">Rəylər</a></li>
+                    <li><a href="index.html#blog-section" data-lang-key="navBlog">Bloq</a></li>
+                    <li><a href="elaqe.html" data-lang-key="navContact">Əlaqə</a></li>
                 </ul>
+                <div class="header-controls">
+                    <div class="lang-switcher">
+                        <button id="lang-az" class="active">AZ</button>
+                        <button id="lang-en">EN</button>
+                    </div>
+                    <div class="header-socials">
+                        <a href="https://www.instagram.com/pmania_hub/" target="_blank" title="Instagram">
+                            <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.85s-.011 3.585-.069 4.85c-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07s-3.585-.012-4.85-.07c-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.85s.012-3.584.07-4.85c.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.85-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948s.014 3.667.072 4.947c.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072s3.667-.014 4.947-.072c4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.947s-.014-3.667-.072-4.947c-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.689-.073-4.948-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.162 6.162 6.162 6.162-2.759 6.162-6.162-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4s1.791-4 4-4 4 1.79 4 4-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.441 1.441 1.441 1.441-.645 1.441-1.441-.645-1.44-1.441-1.44z"/></svg>
+                        </a>
+                        <a href="https://www.facebook.com/profile.php?id=61578312400129" target="_blank" title="Facebook">
+                            <svg viewBox="0 0 24 24"><path d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.323-1.325z"/></svg>
+                        </a>
+                        <a href="https://www.linkedin.com/company/pmania-hub" target="_blank" title="LinkedIn">
+                            <svg viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                        </a>
+                    </div>
+                </div>
             </nav>
         </div>
     </header>
@@ -305,30 +412,34 @@
     <main>
         <section class="contact-section">
             <div class="contact-container">
-                <h2>Bizimlə Əlaqə</h2>
-                <p>Suallarınız, təklifləriniz və ya əməkdaşlıq üçün bizə yazın. Sizə ən qısa zamanda cavab verəcəyik.</p>
+                <h2 data-lang-key="pageTitle">Bizimlə Əlaqə</h2>
+                <p class="intro-p" data-lang-key="pageSubtitle">Suallarınız, təklifləriniz və ya əməkdaşlıq üçün bizə yazın. Sizə ən qısa zamanda cavab verəcəyik.</p>
                 
-                <form id="contact-form" class="contact-form" action="https://formspree.io/f/YOUR_UNIQUE_ID" method="POST">
-                    <div class="form-group">
-                        <label for="name">Adınız</label>
-                        <input type="text" id="name" name="name" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Email Adresiniz</label>
-                        <input type="email" id="email" name="email" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="message">Mesajınız</label>
-                        <textarea id="message" name="message" required></textarea>
-                    </div>
-                    <button type="submit" class="submit-button">Göndər</button>
-                </form>
-                
-                <div class="whatsapp-section">
-                    <h3>və ya</h3>
-                    <p>Bizə birbaşa WhatsApp-da yaza bilərsiniz:</p>
-                    <a href="https://wa.me/994509726384?text=Salam%2C%20websayt%C4%B1n%C4%B1zdan%20yaz%C4%B1ram." target="_blank" class="whatsapp-button">WhatsApp'da Yazın</a>
+                <div class="contact-option">
+                    <h3 data-lang-key="whatsappTitle">Ən Sürətli Yol: WhatsApp</h3>
+                    <p data-lang-key="whatsappDesc">Bizə birbaşa WhatsApp-da yaza bilərsiniz:</p>
+                    <a href="https://wa.me/994509726384?text=Salam%2C%20websayt%C4%B1n%C4%B1zdan%20yaz%C4%B1ram." target="_blank" class="whatsapp-button" data-lang-key="whatsappBtn">WhatsApp'da Yazın</a>
                 </div>
+
+                <div class="contact-option">
+                    <h3 data-lang-key="emailTitle">və ya Email Göndərin</h3>
+                    <form id="contact-form" class="contact-form" action="https://formspree.io/f/YOUR_UNIQUE_ID" method="POST">
+                        <div class="form-group">
+                            <label for="name" data-lang-key="formName">Adınız</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email" data-lang-key="formEmail">Email Adresiniz</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message" data-lang-key="formMessage">Mesajınız</label>
+                            <textarea id="message" name="message" required></textarea>
+                        </div>
+                        <button type="submit" class="submit-button" data-lang-key="formSubmit">Göndər</button>
+                    </form>
+                </div>
+
             </div>
         </section>
     </main>
@@ -336,8 +447,8 @@
     <!-- Success Modal -->
     <div id="success-modal" class="modal">
         <div class="modal-content">
-            <h3>Mesajınız göndərildi!</h3>
-            <p>Təşəkkür edirik. Tezliklə sizinlə əlaqə saxlayacağıq.</p>
+            <h3 data-lang-key="successTitle">Mesajınız göndərildi!</h3>
+            <p data-lang-key="successDesc">Təşəkkür edirik. Tezliklə sizinlə əlaqə saxlayacağıq.</p>
         </div>
     </div>
 
@@ -346,27 +457,27 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
-                    <h4>PMania Hub</h4>
-                    <p>Layihə idarəetməsində peşəkar dəstəkçiniz.</p>
+                    <h4 data-lang-key="footerTitle1">PMania Hub</h4>
+                    <p data-lang-key="footerDesc1">Layihə idarəetməsində peşəkar dəstəkçiniz.</p>
                 </div>
                 <div class="footer-section">
-                    <h4>Sürətli Keçidlər</h4>
+                    <h4 data-lang-key="footerTitle2">Sürətli Keçidlər</h4>
                     <ul>
-                        <li><a href="index.html">Əsas Səhifə</a></li>
-                        <li><a href="telimler.html">Təlimlər</a></li>
-                        <li><a href="index.html#about-section">Haqqımızda</a></li>
-                        <li><a href="index.html#testimonials-section">Rəylər</a></li>
-                        <li><a href="index.html#blog-section">Bloq</a></li>
-                        <li><a href="elaqe.html">Əlaqə</a></li>
+                        <li><a href="index.html" data-lang-key="navHome">Əsas Səhifə</a></li>
+                        <li><a href="telimler.html" data-lang-key="navTrainings">Təlimlər</a></li>
+                        <li><a href="index.html#about-section" data-lang-key="navAbout">Haqqımızda</a></li>
+                        <li><a href="index.html#testimonials-section" data-lang-key="navReviews">Rəylər</a></li>
+                        <li><a href="index.html#blog-section" data-lang-key="navBlog">Bloq</a></li>
+                        <li><a href="elaqe.html" data-lang-key="navContact">Əlaqə</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
-                    <h4>Əlaqə</h4>
+                    <h4 data-lang-key="footerTitle3">Əlaqə</h4>
                     <p>Email: pmaniahub@gmail.com</p>
-                    <p>Telefon: +994 50 972 63 84</p>
+                    <p data-lang-key="footerPhone">Telefon: +994 50 972 63 84</p>
                 </div>
                 <div class="footer-section">
-                    <h4>Bizi İzləyin</h4>
+                    <h4 data-lang-key="footerTitle4">Bizi İzləyin</h4>
                     <div class="social-icons">
                         <a href="https://www.instagram.com/pmania_hub/" target="_blank">Instagram</a>
                         <a href="https://www.facebook.com/profile.php?id=61578312400129" target="_blank">Facebook</a>
@@ -375,53 +486,141 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2025 PMania Hub. Bütün hüquqlar qorunur.</p>
+                <p data-lang-key="footerRights">&copy; 2025 PMania Hub. Bütün hüquqlar qorunur.</p>
             </div>
         </div>
     </footer>
 
     <script>
-        const form = document.getElementById('contact-form');
-        const successModal = document.getElementById('success-modal');
+        if (!window.pmaniaScriptLoaded) {
+            window.pmaniaScriptLoaded = true;
 
-        async function handleSubmit(event) {
-            event.preventDefault();
-            const status = document.createElement('p');
-            const data = new FormData(event.target);
+            const translations = {
+                az: {
+                    navHome: "Əsas Səhifə",
+                    navTrainings: "Təlimlər",
+                    navAbout: "Haqqımızda",
+                    navReviews: "Rəylər",
+                    navBlog: "Bloq",
+                    navContact: "Əlaqə",
+                    pageTitle: "Bizimlə Əlaqə",
+                    pageSubtitle: "Suallarınız, təklifləriniz və ya əməkdaşlıq üçün bizə yazın. Sizə ən qısa zamanda cavab verəcəyik.",
+                    whatsappTitle: "Ən Sürətli Yol: WhatsApp",
+                    whatsappDesc: "Bizə birbaşa WhatsApp-da yaza bilərsiniz:",
+                    whatsappBtn: "WhatsApp'da Yazın",
+                    emailTitle: "və ya Email Göndərin",
+                    formName: "Adınız",
+                    formEmail: "Email Adresiniz",
+                    formMessage: "Mesajınız",
+                    formSubmit: "Göndər",
+                    successTitle: "Mesajınız göndərildi!",
+                    successDesc: "Təşəkkür edirik. Tezliklə sizinlə əlaqə saxlayacağıq.",
+                    footerTitle1: "PMania Hub",
+                    footerDesc1: "Layihə idarəetməsində peşəkar dəstəkçiniz.",
+                    footerTitle2: "Sürətli Keçidlər",
+                    footerTitle3: "Əlaqə",
+                    footerPhone: "Telefon: +994 50 972 63 84",
+                    footerTitle4: "Bizi İzləyin",
+                    footerRights: "&copy; 2025 PMania Hub. Bütün hüquqlar qorunur."
+                },
+                en: {
+                    navHome: "Home",
+                    navTrainings: "Trainings",
+                    navAbout: "About Us",
+                    navReviews: "Reviews",
+                    navBlog: "Blog",
+                    navContact: "Contact",
+                    pageTitle: "Contact Us",
+                    pageSubtitle: "Write to us with your questions, suggestions, or for collaboration. We will get back to you as soon as possible.",
+                    whatsappTitle: "The Fastest Way: WhatsApp",
+                    whatsappDesc: "You can write to us directly on WhatsApp:",
+                    whatsappBtn: "Write on WhatsApp",
+                    emailTitle: "or Send an Email",
+                    formName: "Your Name",
+                    formEmail: "Your Email Address",
+                    formMessage: "Your Message",
+                    formSubmit: "Send",
+                    successTitle: "Your message has been sent!",
+                    successDesc: "Thank you. We will contact you shortly.",
+                    footerTitle1: "PMania Hub",
+                    footerDesc1: "Your professional support in project management.",
+                    footerTitle2: "Quick Links",
+                    footerTitle3: "Contact",
+                    footerPhone: "Phone: +994 50 972 63 84",
+                    footerTitle4: "Follow Us",
+                    footerRights: "&copy; 2025 PMania Hub. All rights reserved."
+                }
+            };
             
-            fetch(event.target.action, {
-                method: form.method,
-                body: data,
-                headers: {
-                    'Accept': 'application/json'
-                }
-            }).then(response => {
-                if (response.ok) {
-                    successModal.style.display = "flex";
-                    form.reset();
-                    setTimeout(() => {
-                        successModal.style.display = "none";
-                    }, 3000); // Hide modal after 3 seconds
-                } else {
-                    response.json().then(data => {
-                        if (Object.hasOwn(data, 'errors')) {
-                            alert(data["errors"].map(error => error["message"]).join(", "));
-                        } else {
-                            alert("Oops! Bir xəta baş verdi.");
-                        }
-                    })
-                }
-            }).catch(error => {
-                alert("Oops! Bir xəta baş verdi.");
+            // Hamburger menu toggle
+            const hamburger = document.getElementById('hamburger-menu');
+            const navLinks = document.getElementById('main-nav-links');
+            hamburger.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
             });
-        }
-        form.addEventListener("submit", handleSubmit);
 
-        // Close modal if user clicks outside of it
-        window.onclick = function(event) {
-            if (event.target == successModal) {
-                successModal.style.display = "none";
+            // Form submission logic
+            const form = document.getElementById('contact-form');
+            const successModal = document.getElementById('success-modal');
+
+            async function handleSubmit(event) {
+                event.preventDefault();
+                const data = new FormData(event.target);
+                
+                fetch(event.target.action, {
+                    method: form.method,
+                    body: data,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                }).then(response => {
+                    if (response.ok) {
+                        successModal.style.display = "flex";
+                        form.reset();
+                        setTimeout(() => {
+                            successModal.style.display = "none";
+                        }, 3000);
+                    } else {
+                        response.json().then(data => {
+                            if (Object.hasOwn(data, 'errors')) {
+                                alert(data["errors"].map(error => error["message"]).join(", "));
+                            } else {
+                                alert("Oops! An error occurred.");
+                            }
+                        })
+                    }
+                }).catch(error => {
+                    alert("Oops! An error occurred.");
+                });
             }
+            form.addEventListener("submit", handleSubmit);
+
+            window.onclick = function(event) {
+                if (event.target == successModal) {
+                    successModal.style.display = "none";
+                }
+            }
+
+            // Language switching function
+            function switchLanguage(lang) {
+                document.documentElement.lang = lang;
+                document.querySelectorAll('[data-lang-key]').forEach(el => {
+                    const key = el.getAttribute('data-lang-key');
+                    if (translations[lang] && translations[lang][key]) {
+                        el.innerHTML = translations[lang][key];
+                    }
+                });
+                document.getElementById('lang-az').classList.toggle('active', lang === 'az');
+                document.getElementById('lang-en').classList.toggle('active', lang === 'en');
+            }
+
+            document.addEventListener('DOMContentLoaded', () => {
+                document.getElementById('lang-az').addEventListener('click', () => switchLanguage('az'));
+                document.getElementById('lang-en').addEventListener('click', () => switchLanguage('en'));
+                
+                // Set default language
+                switchLanguage('az');
+            });
         }
     </script>
 
