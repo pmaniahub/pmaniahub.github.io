@@ -250,6 +250,7 @@
             display: flex;
             overflow-x: auto;
             padding-bottom: 20px; /* Space for scrollbar */
+            scroll-behavior: smooth; /* Smooth scrolling for buttons */
             -ms-overflow-style: none;  /* IE and Edge */
             scrollbar-width: none;  /* Firefox */
         }
@@ -275,10 +276,9 @@
                 flex: 0 0 calc(33.333% - 20px);
             }
         }
-        .see-all-btn {
+        .scroll-btn {
             position: absolute;
             top: 50%;
-            right: -15px;
             transform: translateY(-50%);
             background-color: var(--white-color);
             border: 1px solid var(--background-color);
@@ -290,16 +290,29 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: transform 0.3s ease;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+            opacity: 0;
+            pointer-events: none;
         }
-        .see-all-btn:hover {
+        .scroll-btn.visible {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        .scroll-btn:hover {
             transform: translateY(-50%) scale(1.1);
         }
-        .see-all-btn svg {
+        .scroll-btn svg {
             width: 24px;
             height: 24px;
             fill: var(--secondary-color);
         }
+        .scroll-btn-left {
+            left: -25px;
+        }
+        .scroll-btn-right {
+            right: -25px;
+        }
+
 
         /* --- News & Blog Section --- */
         .news, .blog {
@@ -578,6 +591,9 @@
             .section-title {
                 font-size: 2em;
             }
+            .scroll-btn {
+                display: none; /* Hide arrows on small touch devices */
+            }
         }
     </style>
 </head>
@@ -660,7 +676,7 @@
             <div class="container">
                 <h2 class="section-title" data-lang-key="newsTitle">Xəbərlər</h2>
                 <div class="scroll-wrapper">
-                    <div class="scroll-container">
+                    <div class="scroll-container" id="news-scroller">
                         <div class="news-grid">
                             <div class="news-card" onclick="openModal('news-modal-1')">
                                 <img src="images/360.png" alt="360° Layihə İdarəetməsi Təlimi Qeydiyyatı" onerror="this.onerror=null;this.src='https://placehold.co/350x350/ecf0f1/222831?text=X%C9%99b%C9%99r+1';">
@@ -682,7 +698,10 @@
                             </div>
                         </div>
                     </div>
-                    <button class="see-all-btn" onclick="openModal('all-news-modal')">
+                    <button class="scroll-btn scroll-btn-left" id="news-scroll-left">
+                        <svg viewBox="0 0 24 24"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+                    </button>
+                    <button class="scroll-btn scroll-btn-right" id="news-scroll-right">
                         <svg viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/></svg>
                     </button>
                 </div>
@@ -715,7 +734,7 @@
             <div class="container">
                 <h2 class="section-title" data-lang-key="blogTitle">Son Bloq Yazıları</h2>
                 <div class="scroll-wrapper">
-                    <div class="scroll-container">
+                    <div class="scroll-container" id="blog-scroller">
                         <div class="blog-grid">
                             <article class="blog-post-card">
                                 <div class="blog-post-content">
@@ -738,9 +757,26 @@
                                 </div>
                                 <button class="read-more-btn" onclick="openModal('blog-modal-3')" data-lang-key="readMore">Daha çox oxu &rarr;</button>
                             </article>
+                             <article class="blog-post-card">
+                                <div class="blog-post-content">
+                                    <h3 data-lang-key="blog4Title">Layihə Meneceri yoxsa Lider? Hər İkisi!</h3>
+                                    <p data-lang-key="blog4Desc">Uğurlu layihələrin arxasında dayanan liderlik keyfiyyətlərini və onların komandaya təsirini araşdırın.</p>
+                                </div>
+                                <button class="read-more-btn" onclick="openModal('blog-modal-4')" data-lang-key="readMore">Daha çox oxu &rarr;</button>
+                            </article>
+                            <article class="blog-post-card">
+                                <div class="blog-post-content">
+                                    <h3 data-lang-key="blog5Title">Təcili yoxsa Vacib? Prioritetləri Düzgün Müəyyən Etməyin Yolları</h3>
+                                    <p data-lang-key="blog5Desc">MoSCoW və Eisenhower Matrisi kimi effektiv prioritetləşdirmə üsulları ilə tanış olun.</p>
+                                </div>
+                                <button class="read-more-btn" onclick="openModal('blog-modal-5')" data-lang-key="readMore">Daha çox oxu &rarr;</button>
+                            </article>
                         </div>
                     </div>
-                    <button class="see-all-btn" onclick="openModal('all-blogs-modal')">
+                    <button class="scroll-btn scroll-btn-left" id="blog-scroll-left">
+                        <svg viewBox="0 0 24 24"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+                    </button>
+                    <button class="scroll-btn scroll-btn-right" id="blog-scroll-right">
                         <svg viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/></svg>
                     </button>
                 </div>
@@ -827,6 +863,8 @@
     <div id="blog-modal-1" class="modal"><div class="modal-content"><span class="close-btn" onclick="closeModal('blog-modal-1')">&times;</span><div class="modal-body text-left"><h3 data-lang-key="blogModal1Title"></h3><p data-lang-key="blogModal1Content1"></p><p data-lang-key="blogModal1Content2"></p><p data-lang-key="blogModal1Content3"></p><p data-lang-key="blogModal1Content4"></p></div></div></div>
     <div id="blog-modal-2" class="modal"><div class="modal-content"><span class="close-btn" onclick="closeModal('blog-modal-2')">&times;</span><div class="modal-body text-left"><h3 data-lang-key="blogModal2Title"></h3><p data-lang-key="blogModal2Content1"></p><ul><li data-lang-key="blogModal2Item1"></li><li data-lang-key="blogModal2Item2"></li><li data-lang-key="blogModal2Item3"></li><li data-lang-key="blogModal2Item4"></li><li data-lang-key="blogModal2Item5"></li></ul></div></div></div>
     <div id="blog-modal-3" class="modal"><div class="modal-content"><span class="close-btn" onclick="closeModal('blog-modal-3')">&times;</span><div class="modal-body text-left"><h3 data-lang-key="blogModal3Title"></h3><p data-lang-key="blogModal3Content1"></p><p data-lang-key="blogModal3Content2"></p><ul><li data-lang-key="blogModal3Item1"></li><li data-lang-key="blogModal3Item2"></li><li data-lang-key="blogModal3Item3"></li><li data-lang-key="blogModal3Item4"></li></ul><p data-lang-key="blogModal3Content3"></p></div></div></div>
+    <div id="blog-modal-4" class="modal"><div class="modal-content"><span class="close-btn" onclick="closeModal('blog-modal-4')">&times;</span><div class="modal-body text-left"><h3 data-lang-key="blogModal4Title"></h3><p data-lang-key="blogModal4Content1"></p><ul><li data-lang-key="blogModal4Item1"></li><li data-lang-key="blogModal4Item2"></li><li data-lang-key="blogModal4Item3"></li></ul><p data-lang-key="blogModal4Content2"></p></div></div></div>
+    <div id="blog-modal-5" class="modal"><div class="modal-content"><span class="close-btn" onclick="closeModal('blog-modal-5')">&times;</span><div class="modal-body text-left"><h3 data-lang-key="blogModal5Title"></h3><p data-lang-key="blogModal5Content1"></p><p data-lang-key="blogModal5Content2"></p><ul><li data-lang-key="blogModal5Item1"></li><li data-lang-key="blogModal5Item2"></li><li data-lang-key="blogModal5Item3"></li><li data-lang-key="blogModal5Item4"></li></ul><p data-lang-key="blogModal5Content3"></p><ul><li data-lang-key="blogModal5Item5"></li><li data-lang-key="blogModal5Item6"></li><li data-lang-key="blogModal5Item7"></li><li data-lang-key="blogModal5Item8"></li></ul><p data-lang-key="blogModal5Content4"></p></div></div></div>
     <div id="news-modal-1" class="modal">
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal('news-modal-1')">&times;</span>
@@ -876,28 +914,6 @@
             </div>
         </div>
     </div>
-    <div id="all-news-modal" class="modal">
-        <div class="modal-content">
-            <span class="close-btn" onclick="closeModal('all-news-modal')">&times;</span>
-            <div class="modal-body">
-                <h3 data-lang-key="newsTitle"></h3>
-                <div class="news-grid">
-                    <!-- News cards will be cloned here by JS -->
-                </div>
-            </div>
-        </div>
-    </div>
-    <div id="all-blogs-modal" class="modal">
-        <div class="modal-content">
-            <span class="close-btn" onclick="closeModal('all-blogs-modal')">&times;</span>
-            <div class="modal-body">
-                <h3 data-lang-key="blogTitle"></h3>
-                <div class="blog-grid">
-                     <!-- Blog cards will be cloned here by JS -->
-                </div>
-            </div>
-        </div>
-    </div>
     
     <script>
         if (!window.pmaniaScriptLoaded) {
@@ -938,6 +954,10 @@
                     blog2Desc: "Layihə planlamasından yekun təhvilə qədər olan mərhələlərdə diqqət etməli olduğunuz məqamlar.",
                     blog3Title: "Risk İdarəetməsi Nədir?",
                     blog3Desc: "Layihələrinizdə qarşılaşa biləcəyiniz riskləri necə müəyyən edə və idarə edə bilərsiniz?",
+                    blog4Title: "Layihə Meneceri yoxsa Lider? Hər İkisi!",
+                    blog4Desc: "Uğurlu layihələrin arxasında dayanan liderlik keyfiyyətlərini və onların komandaya təsirini araşdırın.",
+                    blog5Title: "Təcili yoxsa Vacib? Prioritetləri Düzgün Müəyyən Etməyin Yolları",
+                    blog5Desc: "MoSCoW və Eisenhower Matrisi kimi effektiv prioritetləşdirmə üsulları ilə tanış olun.",
                     readMore: "Daha çox oxu &rarr;",
                     footerTitle1: "PMania Hub",
                     footerDesc1: "Layihə idarəetməsində peşəkar dəstəkçiniz.",
@@ -1014,7 +1034,26 @@
                     news3ModalDesc1: "Məlumat üçün bildirmək istərdik ki, AYAFE Gənclər Təşkilatı və Pmania Hub şirkətinin təşkilatı dəstəyi ilə təqaüd proqramına müraciət prosesi yekunlaşmışdır.",
                     news3ModalDesc2: "Ümumilikdə 100-dən çox müraciət qeydə alınmış, 40 nəfər müsahibə mərhələsinə keçmişdir. Müsahibə mərhələsindən uğurla keçən 11 nəfər 2 aylıq ödənişsiz \"360° Layihə İdarəetməsi təlim proqramı\"na cəlb edilmişdir. İndi isə yeni biliklər, böyük hədəflər və fərq yaradan layihələr üçün səhnə onlarındır!",
                     news3ModalDesc3: "Təqaüd proqramı üzrə qaliblərimizi təbrik edir, fəaliyyətlərində uğurlar arzulayırıq.",
-                    news3ModalHashtags: "#AYAFEAZERBAIJAN #PMANİA #ProjectManagement"
+                    news3ModalHashtags: "#AYAFEAZERBAIJAN #PMANİA #ProjectManagement",
+                    blogModal4Title: "Layihə Meneceri yoxsa Lider? Hər İkisi!",
+                    blogModal4Content1: "Layihə idarəetməsi yalnız planlar, cədvəllər və büdcələrdən ibarət deyil. Əsl uğur, komandanı ruhlandıran, istiqamətləndirən və motivasiya edən güclü liderlikdən gəlir. Menecer tapşırıqları idarə edərkən, lider insanları idarə edir.",
+                    blogModal4Item1: "<b>Empatiya:</b> Komanda üzvlərinin ehtiyaclarını və çətinliklərini anlamaq, onlara dəstək olmaq.",
+                    blogModal4Item2: "<b>Vizyon:</b> Layihənin \"niyə\"sini aydın şəkildə komandaya çatdırmaq və ortaq bir məqsəd ətrafında birləşdirmək.",
+                    blogModal4Item3: "<b>Nümunə Olmaq:</b> Məsuliyyəti öz üzərinə götürmək və komandadan gözlədiyi standartları ilk növbədə özü nümayiş etdirmək.",
+                    blogModal4Content2: "Yaxşı bir layihə meneceri layihəni vaxtında və büdcəsində tamamlayar. Əla bir lider isə bunu edərkən komandasını daha da gücləndirər və gələcək uğurlara hazırlayar.",
+                    blogModal5Title: "Təcili yoxsa Vacib? Prioritetləri Düzgün Müəyyən Etməyin Yolları",
+                    blogModal5Content1: "Layihələrdə hər şey təcili görünə bilər. Ancaq effektiv olmaq üçün nəyin həqiqətən vacib olduğunu bilmək şərtdir. Bunun üçün iki populyar metoddan istifadə edə bilərsiniz:",
+                    blogModal5Content2: "<b>Eisenhower Matrisi:</b> Tapşırıqları 4 kvadranta bölür:",
+                    blogModal5Item1: "<b>1. Təcili və Vacib:</b> Dərhal et.",
+                    blogModal5Item2: "<b>2. Vacib, amma Təcili Deyil:</b> Planla və vaxt ayır.",
+                    blogModal5Item3: "<b>3. Təcili, amma Vacib Deyil:</b> Mümkünsə, başqasına həvalə et.",
+                    blogModal5Item4: "<b>4. Nə Təcili, Nə də Vacib Deyil:</b> Siyahıdan çıxar.",
+                    blogModal5Content3: "<b>MoSCoW Metodu:</b> Tələbləri prioritetləşdirir:",
+                    blogModal5Item5: "<b>Must have (Mütləq olmalıdır):</b> Layihənin uğuru üçün kritikdir.",
+                    blogModal5Item6: "<b>Should have (Olsa yaxşıdır):</b> Vacibdir, lakin alternativ həlli var.",
+                    blogModal5Item7: "<b>Could have (Ola bilər):</b> Arzuolunandır, amma olmasa da olar.",
+                    blogModal5Item8: "<b>Won't have (Bu dəfə olmayacaq):</b> Gələcək üçün saxlanılır.",
+                    blogModal5Content4: "Bu üsullar, resurslarınızı ən çox dəyər yaradan işlərə yönəltməyə kömək edir."
                 },
                 en: {
                     navHome: "Home",
@@ -1051,6 +1090,10 @@
                     blog2Desc: "Key points to consider from project planning to final delivery.",
                     blog3Title: "What is Risk Management?",
                     blog3Desc: "How can you identify and manage potential risks in your projects?",
+                    blog4Title: "Project Manager or Leader? Both!",
+                    blog4Desc: "Explore the leadership qualities behind successful projects and their impact on the team.",
+                    blog5Title: "Urgent or Important? How to Set Priorities Correctly",
+                    blog5Desc: "Learn effective prioritization methods like the MoSCoW method and the Eisenhower Matrix.",
                     readMore: "Read More &rarr;",
                     seeAll: "See All",
                     footerTitle1: "PMania Hub",
@@ -1128,7 +1171,26 @@
                     news3ModalDesc1: "We would like to inform you that the application process for the scholarship program, organized with the support of AYAFE Youth Organization and Pmania Hub, has been completed.",
                     news3ModalDesc2: "Over 100 applications were received, and 40 candidates advanced to the interview stage. The 11 successful candidates have been enrolled in the 2-month free '360° Project Management training program'. Now, the stage is theirs for new knowledge, big goals, and projects that make a difference!",
                     news3ModalDesc3: "We congratulate our scholarship program winners and wish them success in their activities.",
-                    news3ModalHashtags: "#AYAFEAZERBAIJAN #PMANIA #ProjectManagement"
+                    news3ModalHashtags: "#AYAFEAZERBAIJAN #PMANIA #ProjectManagement",
+                    blogModal4Title: "Project Manager or Leader? Both!",
+                    blogModal4Content1: "Project management isn't just about plans, schedules, and budgets. True success comes from strong leadership that inspires, guides, and motivates the team. While a manager manages tasks, a leader manages people.",
+                    blogModal4Item1: "<b>Empathy:</b> Understanding the needs and challenges of team members and supporting them.",
+                    blogModal4Item2: "<b>Vision:</b> Clearly communicating the 'why' of the project to the team and uniting them around a common goal.",
+                    blogModal4Item3: "<b>Leading by Example:</b> Taking responsibility and demonstrating the standards expected from the team.",
+                    blogModal4Content2: "A good project manager completes the project on time and within budget. A great leader does this while strengthening the team and preparing them for future successes.",
+                    blogModal5Title: "Urgent or Important? How to Set Priorities Correctly",
+                    blogModal5Content1: "In projects, everything can seem urgent. But to be effective, it's essential to know what is truly important. You can use two popular methods for this:",
+                    blogModal5Content2: "<b>The Eisenhower Matrix:</b> Divides tasks into four quadrants:",
+                    blogModal5Item1: "<b>1. Urgent and Important:</b> Do it now.",
+                    blogModal5Item2: "<b>2. Important, but Not Urgent:</b> Schedule it.",
+                    blogModal5Item3: "<b>3. Urgent, but Not Important:</b> Delegate it if possible.",
+                    blogModal5Item4: "<b>4. Neither Urgent nor Important:</b> Eliminate it.",
+                    blogModal5Content3: "<b>The MoSCoW Method:</b> Prioritizes requirements:",
+                    blogModal5Item5: "<b>Must have:</b> Critical for the project's success.",
+                    blogModal5Item6: "<b>Should have:</b> Important, but there's a workaround.",
+                    blogModal5Item7: "<b>Could have:</b> Desirable, but not necessary.",
+                    blogModal5Item8: "<b>Won't have:</b> Saved for a future release.",
+                    blogModal5Content4: "These methods help you focus your resources on the tasks that create the most value."
                 }
             };
 
@@ -1136,14 +1198,6 @@
             function openModal(modalId) {
                 const modal = document.getElementById(modalId);
                 if (modal) {
-                    if (modalId === 'all-news-modal' || modalId === 'all-blogs-modal') {
-                        const contentTarget = modal.querySelector('.news-grid, .blog-grid');
-                        const sourceId = modalId === 'all-news-modal' ? '.news-grid' : '.blog-grid';
-                        const sourceContent = document.querySelector(`section.${sourceId.substring(1)} ${sourceId}`);
-                        if (sourceContent) {
-                            contentTarget.innerHTML = sourceContent.innerHTML;
-                        }
-                    }
                     modal.style.display = 'block';
                 }
             }
@@ -1176,6 +1230,10 @@
 
                 document.getElementById('lang-az').addEventListener('click', () => switchLanguage('az'));
                 document.getElementById('lang-en').addEventListener('click', () => switchLanguage('en'));
+                
+                // Initialize scrollers
+                setupScroller('news-scroller', 'news-scroll-left', 'news-scroll-right');
+                setupScroller('blog-scroller', 'blog-scroll-left', 'blog-scroll-right');
             });
 
             // Close any open modal if the user clicks anywhere outside of the modal content
@@ -1192,6 +1250,33 @@
                 hamburger.classList.toggle('active');
                 navLinks.classList.toggle('active');
             });
+
+            // Scroller functionality
+            function setupScroller(containerId, leftBtnId, rightBtnId) {
+                const container = document.getElementById(containerId);
+                const leftBtn = document.getElementById(leftBtnId);
+                const rightBtn = document.getElementById(rightBtnId);
+
+                function updateArrows() {
+                    if (!container) return; // Exit if container not found
+                    const maxScrollLeft = container.scrollWidth - container.clientWidth;
+                    leftBtn.classList.toggle('visible', container.scrollLeft > 0);
+                    rightBtn.classList.toggle('visible', container.scrollLeft < maxScrollLeft - 1);
+                }
+
+                if (container && leftBtn && rightBtn) {
+                    container.addEventListener('scroll', updateArrows);
+                    leftBtn.addEventListener('click', () => {
+                        container.scrollLeft -= 320;
+                    });
+                    rightBtn.addEventListener('click', () => {
+                        container.scrollLeft += 320;
+                    });
+                    
+                    // Initial check
+                    updateArrows();
+                }
+            }
         }
     </script>
 
