@@ -43,6 +43,13 @@
             width: 90%;
             max-width: 1100px;
             margin: 0 auto;
+            transition: max-width 0.3s ease;
+        }
+        
+        @media (min-width: 1400px) {
+            .container {
+                max-width: 1300px; /* Wider container for large screens */
+            }
         }
 
         h1, h2, h3 {
@@ -77,7 +84,7 @@
         }
         
         .logo img {
-            height: 60px;
+            height: 70px; /* Increased logo size */
             width: auto;
             vertical-align: middle; 
         }
@@ -92,7 +99,7 @@
         .main-nav ul {
             list-style: none;
             display: flex;
-            gap: 25px;
+            gap: 30px; /* Increased gap */
             flex-wrap: wrap;
         }
 
@@ -100,6 +107,7 @@
             text-decoration: none;
             color: var(--primary-color);
             font-weight: 500;
+            font-size: 1.1em; /* Increased font size */
             transition: color 0.3s ease;
         }
 
@@ -110,24 +118,24 @@
         .header-controls {
             display: flex;
             align-items: center;
-            gap: 20px;
+            gap: 25px;
         }
 
         /* Language Switcher */
         .lang-switcher button {
             background: none;
             border: none;
-            color: var(--text-color);
-            font-weight: 600;
             cursor: pointer;
-            padding: 8px 12px;
-            font-size: 0.9em;
-            border-radius: 20px;
-            transition: background-color 0.3s ease, color 0.3s ease;
+            padding: 5px;
         }
-        .lang-switcher button.active {
-            background-color: var(--secondary-color);
-            color: var(--white-color);
+        .lang-switcher svg {
+            width: 26px;
+            height: 26px;
+            fill: var(--text-color);
+            transition: fill 0.3s ease;
+        }
+        .lang-switcher button:hover svg {
+            fill: var(--secondary-color);
         }
         
         /* Header Social Icons */
@@ -384,8 +392,10 @@
         }
         .testimonial-highlights {
             display: flex;
+            justify-content: center;
             gap: 15px;
             margin-bottom: 30px;
+            flex-wrap: wrap;
         }
         .highlight-tag {
             background-color: var(--white-color);
@@ -580,7 +590,7 @@
         }
 
         /* --- Responsive Design --- */
-        @media (max-width: 992px) {
+        @media (max-width: 1080px) {
             .main-nav {
                 display: none;
                 width: 100%;
@@ -588,11 +598,11 @@
                 align-items: flex-start;
                 background-color: var(--white-color);
                 position: fixed;
-                top: 91px;
+                top: 101px;
                 left: 0;
                 padding: 20px;
                 box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-                height: calc(100vh - 91px);
+                height: calc(100vh - 101px);
             }
             .main-nav.active {
                 display: flex;
@@ -644,16 +654,17 @@
             <nav class="main-nav" id="main-nav-links">
                 <ul>
                     <li><a href="index.html" data-lang-key="navHome">Əsas Səhifə</a></li>
-                    <li><a href="telimler.html" data-lang-key="navTrainings">Təlimlər</a></li>
                     <li><a href="#about-section" data-lang-key="navAbout">Haqqımızda</a></li>
-                    <li><a href="#testimonials-section" data-lang-key="navReviews">Rəylər</a></li>
+                    <li><a href="telimler.html" data-lang-key="navTrainings">Təlimlər</a></li>
                     <li><a href="#blog-section" data-lang-key="navBlog">Bloq</a></li>
+                    <li><a href="#testimonials-section" data-lang-key="navReviews">Rəylər</a></li>
                     <li><a href="elaqe.html" data-lang-key="navContact">Əlaqə</a></li>
                 </ul>
                 <div class="header-controls">
                     <div class="lang-switcher">
-                        <button id="lang-az" class="active">AZ</button>
-                        <button id="lang-en">EN</button>
+                        <button id="lang-switcher-btn">
+                            <svg viewBox="0 0 24 24"><path d="M12.87 15.07l-2.54-2.51.03-.03c1.74-1.94 2.98-4.17 3.71-6.53H17V4h-7V2H8v2H1v1.99h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12zm-2.62 7l1.62-4.33L19.12 17h-3.24z"/></svg>
+                        </button>
                     </div>
                     <div class="header-socials">
                         <a href="https://www.instagram.com/pmania_hub/" target="_blank" title="Instagram">
@@ -749,6 +760,18 @@
             </div>
         </section>
 
+        <!-- About Section -->
+        <section id="about-section" class="about">
+            <div class="container">
+                <h2 class="section-title" data-lang-key="aboutTitle">“PMania” ilə Tanış ol</h2>
+                <p data-lang-key="aboutDesc">PMania Hub, layihə idarəetməsi sahəsində karyera qurmaq və ya mövcud bacarıqlarını təkmilləşdirmək istəyənlər üçün yaradılmış hərtərəfli bir platformadır. Məqsədimiz, hər kəsə keyfiyyətli təhsil və peşəkar dəstək təqdim etməklə onların uğuruna töhfə verməkdir.</p>
+                <div class="about-buttons">
+                    <button class="cta-button" onclick="openModal('mission-modal')" data-lang-key="missionButton">💡 Missiyamız</button>
+                    <button class="cta-button" onclick="openModal('vision-modal')" data-lang-key="visionButton">🎯 Vizyonumuz</button>
+                </div>
+            </div>
+        </section>
+
         <!-- Testimonials CTA Section -->
         <section id="testimonials-section" class="testimonials-cta">
             <div class="container">
@@ -772,18 +795,6 @@
                 </div>
                 <p data-lang-key="testimonialsDesc" style="margin-top: 30px;">Bizimlə təcrübələrini bölüşən məzunlarımızın fikirləri ilə tanış olun.</p>
                 <button class="cta-button" onclick="openModal('all-testimonials-modal')" data-lang-key="testimonialsButton">Bütün Rəyləri Oxu</button>
-            </div>
-        </section>
-
-        <!-- About Section -->
-        <section id="about-section" class="about">
-            <div class="container">
-                <h2 class="section-title" data-lang-key="aboutTitle">“PMania” ilə Tanış ol</h2>
-                <p data-lang-key="aboutDesc">PMania Hub, layihə idarəetməsi sahəsində karyera qurmaq və ya mövcud bacarıqlarını təkmilləşdirmək istəyənlər üçün yaradılmış hərtərəfli bir platformadır. Məqsədimiz, hər kəsə keyfiyyətli təhsil və peşəkar dəstək təqdim etməklə onların uğuruna töhfə verməkdir.</p>
-                <div class="about-buttons">
-                    <button class="cta-button" onclick="openModal('mission-modal')" data-lang-key="missionButton">💡 Missiyamız</button>
-                    <button class="cta-button" onclick="openModal('vision-modal')" data-lang-key="visionButton">🎯 Vizyonumuz</button>
-                </div>
             </div>
         </section>
 
@@ -1089,7 +1100,7 @@
                     news2ModalPoint1: "🔍 Mövzu: Çevik və Klassik Layihə İdarəetməsi",
                     news2ModalPoint2: "🎙️ Spiker: Mahmud Mahmudlu",
                     news2ModalPoint3: "📌 Ericsson – Tech Project Manager",
-                    news2ModalPoint4: "� PMP, Lean Six Sigma Certified",
+                    news2ModalPoint4: "📜 PMP, Lean Six Sigma Certified",
                     news2ModalDate: "🗓️ Tarix: 21 Avqust (Tədbir başa çatıb)",
                     news2ModalButton: "Qeydiyyat Bağlanıb",
                     news2ModalHashtags: "#layihəidarəetməsi #çevikidarəetmə #pmp #sixsigma #ödənişsizseminar #mahmudmahmudlu #onlineevents #aztagram #menecment",
@@ -1288,16 +1299,23 @@
                         el.innerHTML = translations[lang][key];
                     }
                 });
-                document.getElementById('lang-az').classList.toggle('active', lang === 'az');
-                document.getElementById('lang-en').classList.toggle('active', lang === 'en');
+                const langBtn = document.getElementById('lang-switcher-btn');
+                if(lang === 'az') {
+                    langBtn.innerHTML = '<svg viewBox="0 0 24 24"><path d="M12.87 15.07l-2.54-2.51.03-.03c1.74-1.94 2.98-4.17 3.71-6.53H17V4h-7V2H8v2H1v1.99h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12zm-2.62 7l1.62-4.33L19.12 17h-3.24z"/></svg>';
+                } else {
+                    langBtn.innerHTML = '<svg viewBox="0 0 24 24"><path d="M12.87 15.07l-2.54-2.51.03-.03c1.74-1.94 2.98-4.17 3.71-6.53H17V4h-7V2H8v2H1v1.99h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12zm-2.62 7l1.62-4.33L19.12 17h-3.24z"/></svg>';
+                }
             }
 
             document.addEventListener('DOMContentLoaded', () => {
                 const savedLang = localStorage.getItem('language') || 'az';
                 switchLanguage(savedLang);
 
-                document.getElementById('lang-az').addEventListener('click', () => switchLanguage('az'));
-                document.getElementById('lang-en').addEventListener('click', () => switchLanguage('en'));
+                document.getElementById('lang-switcher-btn').addEventListener('click', () => {
+                    const currentLang = localStorage.getItem('language') || 'az';
+                    const newLang = currentLang === 'az' ? 'en' : 'az';
+                    switchLanguage(newLang);
+                });
                 
                 // Initialize scrollers
                 setupScroller('news-scroller', 'news-scroll-left', 'news-scroll-right');
@@ -1352,4 +1370,3 @@
 
 </body>
 </html>
-�
