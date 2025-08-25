@@ -242,17 +242,71 @@
             color: var(--secondary-color);
         }
 
+        /* --- Horizontal Scroll Section --- */
+        .scroll-wrapper {
+            position: relative;
+        }
+        .scroll-container {
+            display: flex;
+            overflow-x: auto;
+            padding-bottom: 20px; /* Space for scrollbar */
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+        .scroll-container::-webkit-scrollbar {
+            display: none; /* Chrome, Safari, Opera */
+        }
+        .news-grid, .blog-grid {
+            display: flex;
+            flex-wrap: nowrap;
+            gap: 30px;
+        }
+        .news-card, .blog-post-card {
+            flex: 0 0 80%;
+            max-width: 300px;
+        }
+        @media (min-width: 640px) {
+            .news-card, .blog-post-card {
+                flex: 0 0 40%;
+            }
+        }
+        @media (min-width: 992px) {
+            .news-card, .blog-post-card {
+                flex: 0 0 calc(33.333% - 20px);
+            }
+        }
+        .see-all-btn {
+            position: absolute;
+            top: 50%;
+            right: -15px;
+            transform: translateY(-50%);
+            background-color: var(--white-color);
+            border: 1px solid var(--background-color);
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s ease;
+        }
+        .see-all-btn:hover {
+            transform: translateY(-50%) scale(1.1);
+        }
+        .see-all-btn svg {
+            width: 24px;
+            height: 24px;
+            fill: var(--secondary-color);
+        }
+
         /* --- News & Blog Section --- */
         .news, .blog {
             background-color: var(--background-color);
         }
         .blog {
             background-color: var(--white-color);
-        }
-        .news-grid, .blog-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
         }
         .news-card, .blog-post-card {
             background: var(--white-color);
@@ -429,6 +483,11 @@
             margin-top: 20px;
             text-align: left;
         }
+        .modal-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
 
         /* --- Footer --- */
         .main-footer {
@@ -600,25 +659,32 @@
         <section class="news">
             <div class="container">
                 <h2 class="section-title" data-lang-key="newsTitle">Xəbərlər</h2>
-                <div class="news-grid">
-                    <div class="news-card" onclick="openModal('news-modal-1')">
-                        <img src="images/360.png" alt="360° Layihə İdarəetməsi Təlimi Qeydiyyatı" onerror="this.onerror=null;this.src='https://placehold.co/350x350/ecf0f1/222831?text=X%C9%99b%C9%99r+1';">
-                        <div class="news-content">
-                            <h3 data-lang-key="news1Title">Qeydiyyat Başladı: 360° Layihə İdarəetməsi</h3>
+                <div class="scroll-wrapper">
+                    <div class="scroll-container">
+                        <div class="news-grid">
+                            <div class="news-card" onclick="openModal('news-modal-1')">
+                                <img src="images/360.png" alt="360° Layihə İdarəetməsi Təlimi Qeydiyyatı" onerror="this.onerror=null;this.src='https://placehold.co/350x350/ecf0f1/222831?text=X%C9%99b%C9%99r+1';">
+                                <div class="news-content">
+                                    <h3 data-lang-key="news1Title">Qeydiyyat Başladı: 360° Layihə İdarəetməsi</h3>
+                                </div>
+                            </div>
+                            <div class="news-card" onclick="openModal('news-modal-2')">
+                                <img src="images/webinar.png" alt="Ödənişsiz Seminar Elanı" onerror="this.onerror=null;this.src='https://placehold.co/350x350/ecf0f1/222831?text=X%C9%99b%C9%99r+2';">
+                                <div class="news-content">
+                                    <h3 data-lang-key="news2Title">Keçirilmiş Seminar: Çevik və Klassik Metodlar</h3>
+                                </div>
+                            </div>
+                            <div class="news-card" onclick="openModal('news-modal-3')">
+                                <img src="images/ayafe.png" alt="Təqaüd Proqramı" onerror="this.onerror=null;this.src='https://placehold.co/350x350/ecf0f1/222831?text=X%C9%99b%C9%99r+3';">
+                                <div class="news-content">
+                                    <h3 data-lang-key="news3Title">Təqaüd Proqramı Uğurla Başa Çatdı</h3>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="news-card" onclick="openModal('news-modal-2')">
-                        <img src="images/webinar.png" alt="Ödənişsiz Seminar Elanı" onerror="this.onerror=null;this.src='https://placehold.co/350x350/ecf0f1/222831?text=X%C9%99b%C9%99r+2';">
-                        <div class="news-content">
-                            <h3 data-lang-key="news2Title">Keçirilmiş Seminar: Çevik və Klassik Metodlar</h3>
-                        </div>
-                    </div>
-                    <div class="news-card" onclick="openModal('news-modal-3')">
-                        <img src="images/ayafe.png" alt="Təqaüd Proqramı" onerror="this.onerror=null;this.src='https://placehold.co/350x350/ecf0f1/222831?text=X%C9%99b%C9%99r+3';">
-                        <div class="news-content">
-                            <h3 data-lang-key="news3Title">Təqaüd Proqramı Uğurla Başa Çatdı</h3>
-                        </div>
-                    </div>
+                    <button class="see-all-btn" onclick="openModal('all-news-modal')">
+                        <svg viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/></svg>
+                    </button>
                 </div>
             </div>
         </section>
@@ -648,28 +714,35 @@
         <section id="blog-section" class="blog">
             <div class="container">
                 <h2 class="section-title" data-lang-key="blogTitle">Son Bloq Yazıları</h2>
-                <div class="blog-grid">
-                    <article class="blog-post-card">
-                        <div class="blog-post-content">
-                            <h3 data-lang-key="blog1Title">Agile və Scrum Arasındakı Fərqlər</h3>
-                            <p data-lang-key="blog1Desc">Bu məqalədə çevik metodologiyaların əsas prinsiplərini və onların tətbiqini araşdırırıq.</p>
+                <div class="scroll-wrapper">
+                    <div class="scroll-container">
+                        <div class="blog-grid">
+                            <article class="blog-post-card">
+                                <div class="blog-post-content">
+                                    <h3 data-lang-key="blog1Title">Agile və Scrum Arasındakı Fərqlər</h3>
+                                    <p data-lang-key="blog1Desc">Bu məqalədə çevik metodologiyaların əsas prinsiplərini və onların tətbiqini araşdırırıq.</p>
+                                </div>
+                                <button class="read-more-btn" onclick="openModal('blog-modal-1')" data-lang-key="readMore">Daha çox oxu &rarr;</button>
+                            </article>
+                            <article class="blog-post-card">
+                                <div class="blog-post-content">
+                                    <h3 data-lang-key="blog2Title">Uğurlu Layihə Üçün 5 Vacib Addım</h3>
+                                    <p data-lang-key="blog2Desc">Layihə planlamasından yekun təhvilə qədər olan mərhələlərdə diqqət etməli olduğunuz məqamlar.</p>
+                                </div>
+                                <button class="read-more-btn" onclick="openModal('blog-modal-2')" data-lang-key="readMore">Daha çox oxu &rarr;</button>
+                            </article>
+                            <article class="blog-post-card">
+                                <div class="blog-post-content">
+                                    <h3 data-lang-key="blog3Title">Risk İdarəetməsi Nədir?</h3>
+                                    <p data-lang-key="blog3Desc">Layihələrinizdə qarşılaşa biləcəyiniz riskləri necə müəyyən edə və idarə edə bilərsiniz?</p>
+                                </div>
+                                <button class="read-more-btn" onclick="openModal('blog-modal-3')" data-lang-key="readMore">Daha çox oxu &rarr;</button>
+                            </article>
                         </div>
-                        <button class="read-more-btn" onclick="openModal('blog-modal-1')" data-lang-key="readMore">Daha çox oxu &rarr;</button>
-                    </article>
-                    <article class="blog-post-card">
-                        <div class="blog-post-content">
-                            <h3 data-lang-key="blog2Title">Uğurlu Layihə Üçün 5 Vacib Addım</h3>
-                            <p data-lang-key="blog2Desc">Layihə planlamasından yekun təhvilə qədər olan mərhələlərdə diqqət etməli olduğunuz məqamlar.</p>
-                        </div>
-                        <button class="read-more-btn" onclick="openModal('blog-modal-2')" data-lang-key="readMore">Daha çox oxu &rarr;</button>
-                    </article>
-                    <article class="blog-post-card">
-                        <div class="blog-post-content">
-                            <h3 data-lang-key="blog3Title">Risk İdarəetməsi Nədir?</h3>
-                            <p data-lang-key="blog3Desc">Layihələrinizdə qarşılaşa biləcəyiniz riskləri necə müəyyən edə və idarə edə bilərsiniz?</p>
-                        </div>
-                        <button class="read-more-btn" onclick="openModal('blog-modal-3')" data-lang-key="readMore">Daha çox oxu &rarr;</button>
-                    </article>
+                    </div>
+                    <button class="see-all-btn" onclick="openModal('all-blogs-modal')">
+                        <svg viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/></svg>
+                    </button>
                 </div>
             </div>
         </section>
@@ -800,6 +873,28 @@
                 <p data-lang-key="news3ModalDesc2"></p>
                 <p data-lang-key="news3ModalDesc3"></p>
                 <p class="hashtags" data-lang-key="news3ModalHashtags"></p>
+            </div>
+        </div>
+    </div>
+    <div id="all-news-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('all-news-modal')">&times;</span>
+            <div class="modal-body">
+                <h3 data-lang-key="newsTitle"></h3>
+                <div class="news-grid">
+                    <!-- News cards will be cloned here by JS -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="all-blogs-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('all-blogs-modal')">&times;</span>
+            <div class="modal-body">
+                <h3 data-lang-key="blogTitle"></h3>
+                <div class="blog-grid">
+                     <!-- Blog cards will be cloned here by JS -->
+                </div>
             </div>
         </div>
     </div>
@@ -957,6 +1052,7 @@
                     blog3Title: "What is Risk Management?",
                     blog3Desc: "How can you identify and manage potential risks in your projects?",
                     readMore: "Read More &rarr;",
+                    seeAll: "See All",
                     footerTitle1: "PMania Hub",
                     footerDesc1: "Your professional support in project management.",
                     footerTitle2: "Quick Links",
@@ -1040,6 +1136,14 @@
             function openModal(modalId) {
                 const modal = document.getElementById(modalId);
                 if (modal) {
+                    if (modalId === 'all-news-modal' || modalId === 'all-blogs-modal') {
+                        const contentTarget = modal.querySelector('.news-grid, .blog-grid');
+                        const sourceId = modalId === 'all-news-modal' ? '.news-grid' : '.blog-grid';
+                        const sourceContent = document.querySelector(`section.${sourceId.substring(1)} ${sourceId}`);
+                        if (sourceContent) {
+                            contentTarget.innerHTML = sourceContent.innerHTML;
+                        }
+                    }
                     modal.style.display = 'block';
                 }
             }
