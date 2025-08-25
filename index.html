@@ -248,7 +248,7 @@
             border-radius: 10px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.08);
             width: 100%;
-            max-width: 350px; /* Adjusted size */
+            max-width: 350px;
             overflow: hidden;
             cursor: pointer;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -259,8 +259,8 @@
         }
         .news-card img {
             width: 100%;
-            aspect-ratio: 16 / 9;
-            object-fit: cover;
+            height: auto;
+            display: block;
         }
         .news-content {
             padding: 25px;
@@ -437,10 +437,14 @@
             margin-top: 10px;
             opacity: 0.8;
         }
+        .modal-body.text-left p, .modal-body.text-left h3 {
+            text-align: left;
+        }
         .modal-body .hashtags {
             color: #7f8c8d;
             font-size: 0.9em;
             margin-top: 20px;
+            text-align: left;
         }
 
         /* --- Footer --- */
@@ -617,14 +621,12 @@
                         <img src="images/360.png" alt="360° Layihə İdarəetməsi Təlimi Qeydiyyatı" onerror="this.onerror=null;this.src='https://placehold.co/450x250/ecf0f1/222831?text=X%C9%99b%C9%99r+1';">
                         <div class="news-content">
                             <h3 data-lang-key="news1Title">Qeydiyyat Başladı: 360° Layihə İdarəetməsi</h3>
-                            <p data-lang-key="news1Desc">8 həftəlik intensiv proqramla layihə idarəetməsini sıfırdan öyrənin və peşəkar olun!</p>
                         </div>
                     </div>
                     <div class="news-card" onclick="openModal('news-modal-2')">
                         <img src="images/webinar.png" alt="Ödənişsiz Seminar Elanı" onerror="this.onerror=null;this.src='https://placehold.co/450x250/ecf0f1/222831?text=X%C9%99b%C9%99r+2';">
                         <div class="news-content">
                             <h3 data-lang-key="news2Title">Keçirilmiş Seminar: Çevik və Klassik Metodlar</h3>
-                            <p data-lang-key="news2Desc">21 Avqust tarixində baş tutan ödənişsiz seminarımız haqqında ətraflı məlumat üçün klikləyin.</p>
                         </div>
                     </div>
                 </div>
@@ -759,43 +761,43 @@
             </div>
         </div>
     </div>
-    <div id="blog-modal-1" class="modal"><div class="modal-content"><span class="close-btn" onclick="closeModal('blog-modal-1')">&times;</span><div class="modal-body"><h3 data-lang-key="blogModal1Title"></h3><p data-lang-key="blogModal1Content1"></p><p data-lang-key="blogModal1Content2"></p><p data-lang-key="blogModal1Content3"></p><p data-lang-key="blogModal1Content4"></p></div></div></div>
-    <div id="blog-modal-2" class="modal"><div class="modal-content"><span class="close-btn" onclick="closeModal('blog-modal-2')">&times;</span><div class="modal-body"><h3 data-lang-key="blogModal2Title"></h3><p data-lang-key="blogModal2Content1"></p><ul><li data-lang-key="blogModal2Item1"></li><li data-lang-key="blogModal2Item2"></li><li data-lang-key="blogModal2Item3"></li><li data-lang-key="blogModal2Item4"></li><li data-lang-key="blogModal2Item5"></li></ul></div></div></div>
-    <div id="blog-modal-3" class="modal"><div class="modal-content"><span class="close-btn" onclick="closeModal('blog-modal-3')">&times;</span><div class="modal-body"><h3 data-lang-key="blogModal3Title"></h3><p data-lang-key="blogModal3Content1"></p><p data-lang-key="blogModal3Content2"></p><ul><li data-lang-key="blogModal3Item1"></li><li data-lang-key="blogModal3Item2"></li><li data-lang-key="blogModal3Item3"></li><li data-lang-key="blogModal3Item4"></li></ul><p data-lang-key="blogModal3Content3"></p></div></div></div>
+    <div id="blog-modal-1" class="modal"><div class="modal-content"><span class="close-btn" onclick="closeModal('blog-modal-1')">&times;</span><div class="modal-body text-left"><h3 data-lang-key="blogModal1Title"></h3><p data-lang-key="blogModal1Content1"></p><p data-lang-key="blogModal1Content2"></p><p data-lang-key="blogModal1Content3"></p><p data-lang-key="blogModal1Content4"></p></div></div></div>
+    <div id="blog-modal-2" class="modal"><div class="modal-content"><span class="close-btn" onclick="closeModal('blog-modal-2')">&times;</span><div class="modal-body text-left"><h3 data-lang-key="blogModal2Title"></h3><p data-lang-key="blogModal2Content1"></p><ul><li data-lang-key="blogModal2Item1"></li><li data-lang-key="blogModal2Item2"></li><li data-lang-key="blogModal2Item3"></li><li data-lang-key="blogModal2Item4"></li><li data-lang-key="blogModal2Item5"></li></ul></div></div></div>
+    <div id="blog-modal-3" class="modal"><div class="modal-content"><span class="close-btn" onclick="closeModal('blog-modal-3')">&times;</span><div class="modal-body text-left"><h3 data-lang-key="blogModal3Title"></h3><p data-lang-key="blogModal3Content1"></p><p data-lang-key="blogModal3Content2"></p><ul><li data-lang-key="blogModal3Item1"></li><li data-lang-key="blogModal3Item2"></li><li data-lang-key="blogModal3Item3"></li><li data-lang-key="blogModal3Item4"></li></ul><p data-lang-key="blogModal3Content3"></p></div></div></div>
     <div id="news-modal-1" class="modal">
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal('news-modal-1')">&times;</span>
-            <div class="modal-body">
-                <h3 data-lang-key="newsModalTitle">Qeydiyyat Açıqdır!</h3>
-                <p data-lang-key="newsModalTagline">QOŞUL, ÖYRƏN, TƏTBİQ ET! 🚀</p>
-                <p data-lang-key="newsModalDesc1">Layihə idarəetməsində peşəkar olmaq istəyirsən? PMANIA sənə beynəlxalq yanaşmalar, real nümunələr və praktiki biliklərlə kömək edəcək!</p>
-                <ul style="text-align: left; max-width: 400px; margin: 20px auto;">
-                    <li data-lang-key="newsModalPoint1">💡 8 həftəlik intensiv təlim</li>
-                    <li data-lang-key="newsModalPoint2">📚 Agile, Waterfall, Scrum, Kanban</li>
-                    <li data-lang-key="newsModalPoint3">🏆 Sertifikat + praktiki tapşırıqlar</li>
+            <div class="modal-body text-left">
+                <h3 data-lang-key="newsModalTitle"></h3>
+                <p data-lang-key="newsModalTagline"></p>
+                <p data-lang-key="newsModalDesc1"></p>
+                <ul>
+                    <li data-lang-key="newsModalPoint1"></li>
+                    <li data-lang-key="newsModalPoint2"></li>
+                    <li data-lang-key="newsModalPoint3"></li>
                 </ul>
-                <p data-lang-key="newsModalTrainer">👨‍🏫 Təlimçi: Mahmud Mahmudlu – PMP®, Lean Six Sigma sertifikatlı layihə meneceri, hazırda qlobal telekommunikasiya lideri Ericsson-da çalışır.</p>
-                <p data-lang-key="newsModalCta">📲 Qeydiyyat üçün bizə yaz – uğurlu karyera üçün ilk addımı bu gün at!</p>
-                <a href="https://wa.me/994509726384?text=Salam%2C%20'360%C2%B0%20Layih%C9%99%20%C4%B0dar%C9%99etm%C9%99si'%20t%C9%99limi%20il%C9%99%20maraqlan%C4%B1ram." target="_blank" class="cta-button" data-lang-key="newsModalButton">Bizə Yaz</a>
-                <p class="hashtags" data-lang-key="newsModalHashtags">#PManiaHub #Layiheidaretmesi #pmania #kurs #qeydiyyat #layihe #projectmanagement #agile #scrum</p>
+                <p data-lang-key="newsModalTrainer"></p>
+                <p data-lang-key="newsModalCta"></p>
+                <a href="https://wa.me/994509726384?text=Salam%2C%20'360%C2%B0%20Layih%C9%99%20%C4%B0dar%C9%99etm%C9%99si'%20t%C9%99limi%20il%C9%99%20maraqlan%C4%B1ram." target="_blank" class="cta-button" data-lang-key="newsModalButton"></a>
+                <p class="hashtags" data-lang-key="newsModalHashtags"></p>
             </div>
         </div>
     </div>
     <div id="news-modal-2" class="modal">
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal('news-modal-2')">&times;</span>
-            <div class="modal-body">
-                <h3 data-lang-key="news2ModalTitle">📢 ÖDƏNİŞSİZ SEMİNAR – Qaçırma! 💥</h3>
-                <p data-lang-key="news2ModalDesc1">Layihə idarəçiliyində həm klassik, həm də çevik metodlarla tanış olmaq istəyirsənsə, bu seminar tam sənlikdir!</p>
-                <ul style="text-align: left; max-width: 400px; margin: 20px auto; list-style: none; padding: 0;">
-                    <li data-lang-key="news2ModalPoint1">🔍 Mövzu: Çevik və Klassik Layihə İdarəetməsi</li>
-                    <li data-lang-key="news2ModalPoint2">🎙️ Spiker: Mahmud Mahmudlu</li>
-                    <li data-lang-key="news2ModalPoint3">📌 Ericsson – Tech Project Manager</li>
-                    <li data-lang-key="news2ModalPoint4">📜 PMP, Lean Six Sigma Certified</li>
+            <div class="modal-body text-left">
+                <h3 data-lang-key="news2ModalTitle"></h3>
+                <p data-lang-key="news2ModalDesc1"></p>
+                <ul style="list-style: none; padding: 0;">
+                    <li data-lang-key="news2ModalPoint1"></li>
+                    <li data-lang-key="news2ModalPoint2"></li>
+                    <li data-lang-key="news2ModalPoint3"></li>
+                    <li data-lang-key="news2ModalPoint4"></li>
                 </ul>
-                <p data-lang-key="news2ModalDate">🗓️ Tarix: 21 Avqust (Tədbir başa çatıb)</p>
-                <button class="cta-button disabled" data-lang-key="news2ModalButton">Qeydiyyat Bağlanıb</button>
-                <p class="hashtags" data-lang-key="news2ModalHashtags">#layihəidarəetməsi #çevikidarəetmə #pmp #sixsigma #ödənişsizseminar #mahmudmahmudlu #onlineevents #aztagram #menecment</p>
+                <p data-lang-key="news2ModalDate"></p>
+                <button class="cta-button disabled" data-lang-key="news2ModalButton"></button>
+                <p class="hashtags" data-lang-key="news2ModalHashtags"></p>
             </div>
         </div>
     </div>
@@ -823,9 +825,7 @@
                     service3Desc: "Sektorla bağlı son məqalələr, trendlər və yenilikləri izləyin.",
                     newsTitle: "Xəbərlər",
                     news1Title: "Qeydiyyat Başladı: 360° Layihə İdarəetməsi",
-                    news1Desc: "8 həftəlik intensiv proqramla layihə idarəetməsini sıfırdan öyrənin və peşəkar olun!",
                     news2Title: "Keçirilmiş Seminar: Çevik və Klassik Metodlar",
-                    news2Desc: "21 Avqust tarixində baş tutan ödənişsiz seminarımız haqqında ətraflı məlumat üçün klikləyin.",
                     aboutTitle: "“PMania” ilə Tanış ol",
                     aboutDesc: "PMania Hub, layihə idarəetməsi sahəsində karyera qurmaq və ya mövcud bacarıqlarını təkmilləşdirmək istəyənlər üçün yaradılmış hərtərəfli bir platformadır. Məqsədimiz, hər kəsə keyfiyyətli təhsil və peşəkar dəstək təqdim etməklə onların uğuruna töhfə verməkdir.",
                     missionButton: "💡 Missiyamız",
@@ -932,9 +932,7 @@
                     service3Desc: "Follow the latest articles, trends, and news related to the sector.",
                     newsTitle: "News",
                     news1Title: "Registration Open: 360° Project Management",
-                    news1Desc: "Learn project management from scratch and become a professional with our 8-week intensive program!",
                     news2Title: "Past Seminar: Agile vs. Classic Methods",
-                    news2Desc: "Click for more details about our free seminar that took place on August 21st.",
                     aboutTitle: "Meet “PMania”",
                     aboutDesc: "PMania Hub is a comprehensive platform created for those who want to build a career in project management or improve their existing skills. Our goal is to contribute to their success by providing quality education and professional support to everyone.",
                     missionButton: "💡 Our Mission",
