@@ -69,6 +69,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            flex-wrap: wrap;
         }
 
         .logo {
@@ -85,12 +86,14 @@
             display: flex;
             align-items: center;
             gap: 20px;
+            flex-wrap: wrap;
         }
 
         .main-nav ul {
             list-style: none;
             display: flex;
             gap: 25px;
+            flex-wrap: wrap;
         }
 
         .main-nav a {
@@ -155,7 +158,6 @@
             margin: 5px 0;
             transition: 0.4s;
         }
-
 
         /* --- Hero Section --- */
         .hero {
@@ -227,13 +229,42 @@
             color: var(--secondary-color);
         }
 
+        /* --- News Section --- */
+        .news {
+            background-color: var(--background-color);
+        }
+        .news-card {
+            background: var(--white-color);
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            max-width: 700px;
+            margin: 0 auto;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .news-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+        }
+        .news-card img {
+            width: 100%;
+            display: block;
+        }
+        .news-content {
+            padding: 25px;
+            text-align: center;
+        }
+        .news-content h3 {
+            color: var(--secondary-color);
+        }
+
         /* --- About Section --- */
         #about-section {
             scroll-margin-top: 120px; 
         }
         .about {
-            background-color: var(--background-color);
-            text-align: center;
+            background-color: var(--white-color);
         }
         .about p {
             max-width: 700px;
@@ -262,8 +293,7 @@
             scroll-margin-top: 120px; 
         }
         .testimonials-cta {
-            background-color: var(--white-color);
-            text-align: center;
+            background-color: var(--background-color);
         }
         .testimonials-cta p {
             font-size: 1.2em;
@@ -275,7 +305,7 @@
             scroll-margin-top: 120px; 
         }
         .blog {
-            background-color: var(--background-color);
+            background-color: var(--white-color);
         }
         .blog-grid {
             display: grid;
@@ -394,6 +424,11 @@
             margin-top: 10px;
             opacity: 0.8;
         }
+        .modal-body .hashtags {
+            color: #7f8c8d;
+            font-size: 0.9em;
+            margin-top: 20px;
+        }
 
         /* --- Footer --- */
         .main-footer {
@@ -443,37 +478,9 @@
 
         /* --- Responsive Design --- */
         @media (max-width: 992px) {
-            .main-nav {
-                display: none;
-                width: 100%;
+            .main-header .container, .main-nav {
                 flex-direction: column;
-                align-items: flex-start;
-                background-color: var(--white-color);
-                position: absolute;
-                top: 90px;
-                left: 0;
-                padding: 20px;
-                box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-            }
-            .main-nav.active {
-                display: flex;
-            }
-            .main-nav ul {
-                flex-direction: column;
-                width: 100%;
                 gap: 15px;
-            }
-            .main-nav ul li {
-                width: 100%;
-                text-align: center;
-            }
-            .header-controls {
-                width: 100%;
-                justify-content: center;
-                margin-top: 15px;
-            }
-            .hamburger {
-                display: block;
             }
         }
         @media (max-width: 768px) {
@@ -560,6 +567,20 @@
             </div>
         </section>
 
+        <!-- News Section -->
+        <section class="news">
+            <div class="container">
+                <h2 class="section-title" data-lang-key="newsTitle">Xəbərlər</h2>
+                <div class="news-card" onclick="openModal('news-modal-1')">
+                    <img src="images/360.png" alt="360° Layihə İdarəetməsi Təlimi Qeydiyyatı" onerror="this.onerror=null;this.src='https://placehold.co/700x400/ecf0f1/222831?text=X%C9%99b%C9%99r+Posteri';">
+                    <div class="news-content">
+                        <h3 data-lang-key="news1Title">Qeydiyyat Başladı: 360° Layihə İdarəetməsi</h3>
+                        <p data-lang-key="news1Desc">8 həftəlik intensiv proqramla layihə idarəetməsini sıfırdan öyrənin və peşəkar olun!</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- About Section -->
         <section id="about-section" class="about">
             <div class="container">
@@ -603,7 +624,7 @@
                     <article class="blog-post-card">
                         <div class="blog-post-content">
                             <h3 data-lang-key="blog3Title">Risk İdarəetməsi Nədir?</h3>
-                            <p data-lang-key="blog3Desc">Layihələrinizdə qarşılaşa biləcəyiniz riskləri necə müyyən edə və idarə edə bilərsiniz?</p>
+                            <p data-lang-key="blog3Desc">Layihələrinizdə qarşılaşa biləcəyiniz riskləri necə müəyyən edə və idarə edə bilərsiniz?</p>
                         </div>
                         <button class="read-more-btn" onclick="openModal('blog-modal-3')" data-lang-key="readMore">Daha çox oxu &rarr;</button>
                     </article>
@@ -691,6 +712,25 @@
     <div id="blog-modal-1" class="modal"><div class="modal-content"><span class="close-btn" onclick="closeModal('blog-modal-1')">&times;</span><div class="modal-body"><h3 data-lang-key="blogModal1Title"></h3><p data-lang-key="blogModal1Content1"></p><p data-lang-key="blogModal1Content2"></p><p data-lang-key="blogModal1Content3"></p><p data-lang-key="blogModal1Content4"></p></div></div></div>
     <div id="blog-modal-2" class="modal"><div class="modal-content"><span class="close-btn" onclick="closeModal('blog-modal-2')">&times;</span><div class="modal-body"><h3 data-lang-key="blogModal2Title"></h3><p data-lang-key="blogModal2Content1"></p><ul><li data-lang-key="blogModal2Item1"></li><li data-lang-key="blogModal2Item2"></li><li data-lang-key="blogModal2Item3"></li><li data-lang-key="blogModal2Item4"></li><li data-lang-key="blogModal2Item5"></li></ul></div></div></div>
     <div id="blog-modal-3" class="modal"><div class="modal-content"><span class="close-btn" onclick="closeModal('blog-modal-3')">&times;</span><div class="modal-body"><h3 data-lang-key="blogModal3Title"></h3><p data-lang-key="blogModal3Content1"></p><p data-lang-key="blogModal3Content2"></p><ul><li data-lang-key="blogModal3Item1"></li><li data-lang-key="blogModal3Item2"></li><li data-lang-key="blogModal3Item3"></li><li data-lang-key="blogModal3Item4"></li></ul><p data-lang-key="blogModal3Content3"></p></div></div></div>
+    <div id="news-modal-1" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('news-modal-1')">&times;</span>
+            <div class="modal-body">
+                <h3 data-lang-key="newsModalTitle">Qeydiyyat Açıqdır!</h3>
+                <p data-lang-key="newsModalTagline">QOŞUL, ÖYRƏN, TƏTBİQ ET! 🚀</p>
+                <p data-lang-key="newsModalDesc1">Layihə idarəetməsində peşəkar olmaq istəyirsən? PMANIA sənə beynəlxalq yanaşmalar, real nümunələr və praktiki biliklərlə kömək edəcək!</p>
+                <ul style="text-align: left; max-width: 400px; margin: 20px auto;">
+                    <li data-lang-key="newsModalPoint1">💡 8 həftəlik intensiv təlim</li>
+                    <li data-lang-key="newsModalPoint2">📚 Agile, Waterfall, Scrum, Kanban</li>
+                    <li data-lang-key="newsModalPoint3">🏆 Sertifikat + praktiki tapşırıqlar</li>
+                </ul>
+                <p data-lang-key="newsModalTrainer">👨‍🏫 Təlimçi: Mahmud Mahmudlu – PMP®, Lean Six Sigma sertifikatlı layihə meneceri, hazırda qlobal telekommunikasiya lideri Ericsson-da çalışır.</p>
+                <p data-lang-key="newsModalCta">📲 Qeydiyyat üçün bizə yaz – uğurlu karyera üçün ilk addımı bu gün at!</p>
+                <a href="https://wa.me/994509726384?text=Salam%2C%20'360%C2%B0%20Layih%C9%99%20%C4%B0dar%C9%99etm%C9%99si'%20t%C9%99limi%20il%C9%99%20maraqlan%C4%B1ram." target="_blank" class="cta-button" data-lang-key="newsModalButton">Bizə Yaz</a>
+                <p class="hashtags" data-lang-key="newsModalHashtags">#PManiaHub #Layiheidaretmesi #pmania #kurs #qeydiyyat #layihe #projectmanagement #agile #scrum</p>
+            </div>
+        </div>
+    </div>
     
     <script>
         if (!window.pmaniaScriptLoaded) {
@@ -713,6 +753,9 @@
                     service2Desc: "Peşəkar layihə menecerlərindən layihələriniz üçün fərdi məsləhət alın.",
                     service3Title: "Bloq",
                     service3Desc: "Sektorla bağlı son məqalələr, trendlər və yenilikləri izləyin.",
+                    newsTitle: "Xəbərlər",
+                    news1Title: "Qeydiyyat Başladı: 360° Layihə İdarəetməsi",
+                    news1Desc: "8 həftəlik intensiv proqramla layihə idarəetməsini sıfırdan öyrənin və peşəkar olun!",
                     aboutTitle: "“PMania” ilə Tanış ol",
                     aboutDesc: "PMania Hub, layihə idarəetməsi sahəsində karyera qurmaq və ya mövcud bacarıqlarını təkmilləşdirmək istəyənlər üçün yaradılmış hərtərəfli bir platformadır. Məqsədimiz, hər kəsə keyfiyyətli təhsil və peşəkar dəstək təqdim etməklə onların uğuruna töhfə verməkdir.",
                     missionButton: "💡 Missiyamız",
@@ -779,7 +822,17 @@
                     blogModal3Item2: "<b>Risklərin Təhlili:</b> Hər bir riskin baş vermə ehtimalını və layihəyə potensial təsirini qiymətləndirmək.",
                     blogModal3Item3: "<b>Riskə Cavab Planlaması:</b> Müəyyən edilmiş risklərə qarşı strategiyalar hazırlamaq. Bu, riskdən yayınmaq, onu azaltmaq, başqasına ötürmək və ya sadəcə qəbul etmək ola bilər.",
                     blogModal3Item4: "<b>Risklərin Monitorinqi:</b> Layihə boyunca riskləri davamlı olaraq izləmək və lazım gəldikdə planları yeniləmək.",
-                    blogModal3Content3: "Unutmayın, effektiv risk idarəetməsi problemi böyümədən həll etmək sənətidir."
+                    blogModal3Content3: "Unutmayın, effektiv risk idarəetməsi problemi böyümədən həll etmək sənətidir.",
+                    newsModalTitle: "Qeydiyyat Açıqdır!",
+                    newsModalTagline: "QOŞUL, ÖYRƏN, TƏTBİQ ET! 🚀",
+                    newsModalDesc1: "Layihə idarəetməsində peşəkar olmaq istəyirsən? PMANIA sənə beynəlxalq yanaşmalar, real nümunələr və praktiki biliklərlə kömək edəcək!",
+                    newsModalPoint1: "💡 8 həftəlik intensiv təlim",
+                    newsModalPoint2: "📚 Agile, Waterfall, Scrum, Kanban",
+                    newsModalPoint3: "🏆 Sertifikat + praktiki tapşırıqlar",
+                    newsModalTrainer: "👨‍🏫 Təlimçi: Mahmud Mahmudlu – PMP®, Lean Six Sigma sertifikatlı layihə meneceri, hazırda qlobal telekommunikasiya lideri Ericsson-da çalışır.",
+                    newsModalCta: "� Qeydiyyat üçün bizə yaz – uğurlu karyera üçün ilk addımı bu gün at!",
+                    newsModalButton: "Bizə Yaz",
+                    newsModalHashtags: "#PManiaHub #Layiheidaretmesi #pmania #kurs #qeydiyyat #layihe #projectmanagement #agile #scrum"
                 },
                 en: {
                     navHome: "Home",
@@ -798,6 +851,9 @@
                     service2Desc: "Get personalized advice for your projects from professional project managers.",
                     service3Title: "Blog",
                     service3Desc: "Follow the latest articles, trends, and news related to the sector.",
+                    newsTitle: "News",
+                    news1Title: "Registration is Open: 360° Project Management",
+                    news1Desc: "Learn project management from scratch and become a professional with our 8-week intensive program!",
                     aboutTitle: "Meet “PMania”",
                     aboutDesc: "PMania Hub is a comprehensive platform created for those who want to build a career in project management or improve their existing skills. Our goal is to contribute to their success by providing quality education and professional support to everyone.",
                     missionButton: "💡 Our Mission",
@@ -864,7 +920,17 @@
                     blogModal3Item2: "<b>Risk Analysis:</b> Assessing the probability of each risk occurring and its potential impact on the project.",
                     blogModal3Item3: "<b>Risk Response Planning:</b> Developing strategies to address identified risks. This could involve avoiding the risk, mitigating it, transferring it, or simply accepting it.",
                     blogModal3Item4: "<b>Risk Monitoring:</b> Continuously tracking risks throughout the project and updating plans as needed.",
-                    blogModal3Content3: "Remember, effective risk management is the art of solving a problem before it grows."
+                    blogModal3Content3: "Remember, effective risk management is the art of solving a problem before it grows.",
+                    newsModalTitle: "Registration is Open!",
+                    newsModalTagline: "JOIN, LEARN, APPLY! 🚀",
+                    newsModalDesc1: "Want to become a professional in project management? PMANIA will help you with international approaches, real examples, and practical knowledge!",
+                    newsModalPoint1: "💡 8-week intensive training",
+                    newsModalPoint2: "📚 Agile, Waterfall, Scrum, Kanban",
+                    newsModalPoint3: "🏆 Certificate + practical assignments",
+                    newsModalTrainer: "👨‍🏫 Instructor: Mahmud Mahmudlu – PMP®, Lean Six Sigma certified project manager, currently working at the global telecommunications leader, Ericsson.",
+                    newsModalCta: "📲 Write to us to register – take the first step towards a successful career today!",
+                    newsModalButton: "Contact Us",
+                    newsModalHashtags: "#PManiaHub #ProjectManagement #pmania #course #registration #project #agile #scrum"
                 }
             };
 
@@ -923,3 +989,4 @@
 
 </body>
 </html>
+�
