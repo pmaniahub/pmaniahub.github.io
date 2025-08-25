@@ -151,13 +151,23 @@
             display: none;
             cursor: pointer;
         }
-        .hamburger div {
+        .hamburger .bar {
             width: 25px;
             height: 3px;
             background-color: var(--primary-color);
             margin: 5px 0;
             transition: 0.4s;
         }
+        .hamburger.active .bar:nth-child(1) {
+            transform: rotate(-45deg) translate(-5px, 6px);
+        }
+        .hamburger.active .bar:nth-child(2) {
+            opacity: 0;
+        }
+        .hamburger.active .bar:nth-child(3) {
+            transform: rotate(45deg) translate(-5px, -6px);
+        }
+
 
         /* --- Hero Section --- */
         .hero {
@@ -502,11 +512,12 @@
                 flex-direction: column;
                 align-items: flex-start;
                 background-color: var(--white-color);
-                position: absolute;
-                top: 90px;
+                position: fixed;
+                top: 91px;
                 left: 0;
                 padding: 20px;
                 box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+                height: calc(100vh - 91px);
             }
             .main-nav.active {
                 display: flex;
@@ -548,9 +559,9 @@
                 <img src="images/logo.png" alt="PMania Hub Logo">
             </a>
             <div class="hamburger" id="hamburger-menu">
-                <div></div>
-                <div></div>
-                <div></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
             </div>
             <nav class="main-nav" id="main-nav-links">
                 <ul>
@@ -1041,6 +1052,7 @@
 
             // Language switching function
             function switchLanguage(lang) {
+                localStorage.setItem('language', lang); // Save language choice
                 document.documentElement.lang = lang;
                 document.querySelectorAll('[data-lang-key]').forEach(el => {
                     const key = el.getAttribute('data-lang-key');
@@ -1053,11 +1065,11 @@
             }
 
             document.addEventListener('DOMContentLoaded', () => {
+                const savedLang = localStorage.getItem('language') || 'az';
+                switchLanguage(savedLang);
+
                 document.getElementById('lang-az').addEventListener('click', () => switchLanguage('az'));
                 document.getElementById('lang-en').addEventListener('click', () => switchLanguage('en'));
-                
-                // Set default language
-                switchLanguage('az');
             });
 
             // Close any open modal if the user clicks anywhere outside of the modal content
@@ -1071,6 +1083,7 @@
             const hamburger = document.getElementById('hamburger-menu');
             const navLinks = document.getElementById('main-nav-links');
             hamburger.addEventListener('click', () => {
+                hamburger.classList.toggle('active');
                 navLinks.classList.toggle('active');
             });
         }
