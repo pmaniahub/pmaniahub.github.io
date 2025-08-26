@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Təlimlər - PMania Hub</title>
-    <!-- Favicon -->
     <link rel="icon" href="images/logo.png" type="image/png">
     <style>
         /* --- Google Fonts Import --- */
@@ -82,10 +81,10 @@
             vertical-align: middle; 
         }
 
-        .main-nav {
+        .header-actions {
             display: flex;
             align-items: center;
-            gap: 20px;
+            gap: 25px;
         }
 
         .main-nav ul {
@@ -106,12 +105,6 @@
             color: var(--secondary-color);
         }
         
-        .header-controls {
-            display: flex;
-            align-items: center;
-            gap: 25px;
-        }
-
         /* Language Switcher */
         .lang-switcher button {
             background: none;
@@ -340,11 +333,6 @@
                 width: 100%;
                 text-align: center;
             }
-            .header-controls {
-                width: 100%;
-                justify-content: center;
-                margin-top: 15px;
-            }
             .hamburger {
                 display: block;
             }
@@ -358,38 +346,41 @@
 </head>
 <body>
 
-    <!-- Header -->
     <header class="main-header">
         <div class="container">
             <a href="index.html" class="logo">
                 <img src="images/logo.png" alt="PMania Hub Logo">
             </a>
-            <div class="hamburger" id="hamburger-menu">
-                <div class="bar"></div>
-                <div class="bar"></div>
-                <div class="bar"></div>
-            </div>
-            <nav class="main-nav" id="main-nav-links">
-                <ul>
-                    <li><a href="index.html" data-lang-key="navHome">Əsas Səhifə</a></li>
-                    <li><a href="index.html#about-section" data-lang-key="navAbout">Haqqımızda</a></li>
-                    <li><a href="telimler.html" data-lang-key="navTrainings">Təlimlər</a></li>
-                    <li><a href="index.html#blog-section" data-lang-key="navBlog">Bloq</a></li>
-                    <li><a href="index.html#testimonials-section" data-lang-key="navReviews">Rəylər</a></li>
-                    <li><a href="elaqe.html" data-lang-key="navContact">Əlaqə</a></li>
-                </ul>
+            
+            <div class="header-actions">
+                <nav class="main-nav" id="main-nav-links">
+                    <ul>
+                        <li><a href="index.html" data-lang-key="navHome">Əsas Səhifə</a></li>
+                        <li><a href="index.html#about-section" data-lang-key="navAbout">Haqqımızda</a></li>
+                        <li><a href="telimler.html" data-lang-key="navTrainings">Təlimlər</a></li>
+                        <li><a href="index.html#blog-section" data-lang-key="navBlog">Bloq</a></li>
+                        <li><a href="index.html#testimonials-section" data-lang-key="navReviews">Rəylər</a></li>
+                        <li><a href="elaqe.html" data-lang-key="navContact">Əlaqə</a></li>
+                    </ul>
+                </nav>
+
                 <div class="header-controls">
                     <div class="lang-switcher">
                         <button id="lang-az" class="active">AZ</button> |
                         <button id="lang-en">EN</button>
                     </div>
                 </div>
-            </nav>
+
+                <div class="hamburger" id="hamburger-menu">
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                </div>
+            </div>
         </div>
     </header>
 
     <main>
-        <!-- Training List Section -->
         <section class="trainings-list">
             <div class="container">
                 <h2 data-lang-key="pageTitle">Təlim Paketlərimiz</h2>
@@ -415,7 +406,6 @@
         </section>
     </main>
     
-    <!-- Modals -->
     <div id="modal-360" class="modal">
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal('modal-360')">&times;</span>
@@ -531,7 +521,6 @@
         </div>
     </div>
 
-    <!-- Footer -->
     <footer class="main-footer">
         <div class="container">
             <div class="footer-content">
