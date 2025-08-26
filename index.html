@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PMania Hub - Project Management Platform</title>
-    <!-- Favicon -->
     <link rel="icon" href="images/logo.png" type="image/png">
     <style>
         /* --- Google Fonts Import --- */
@@ -89,13 +88,12 @@
             vertical-align: middle; 
         }
 
-        .main-nav {
+        .header-actions {
             display: flex;
             align-items: center;
-            gap: 20px;
-            flex-wrap: wrap;
+            gap: 25px;
         }
-
+        
         .main-nav ul {
             list-style: none;
             display: flex;
@@ -115,12 +113,6 @@
             color: var(--secondary-color);
         }
         
-        .header-controls {
-            display: flex;
-            align-items: center;
-            gap: 25px;
-        }
-
         /* Language Switcher */
         .lang-switcher button {
             background: none;
@@ -583,7 +575,7 @@
                 align-items: flex-start;
                 background-color: var(--white-color);
                 position: fixed;
-                top: 101px;
+                top: 101px; /* Adjust based on your header height */
                 left: 0;
                 padding: 20px;
                 box-shadow: 0 4px 10px rgba(0,0,0,0.1);
@@ -600,11 +592,6 @@
             .main-nav ul li {
                 width: 100%;
                 text-align: center;
-            }
-            .header-controls {
-                width: 100%;
-                justify-content: center;
-                margin-top: 15px;
             }
             .hamburger {
                 display: block;
@@ -625,38 +612,41 @@
 </head>
 <body>
 
-    <!-- Header -->
     <header class="main-header">
         <div class="container">
             <a href="index.html" class="logo">
                 <img src="images/logo.png" alt="PMania Hub Logo">
             </a>
-            <div class="hamburger" id="hamburger-menu">
-                <div class="bar"></div>
-                <div class="bar"></div>
-                <div class="bar"></div>
-            </div>
-            <nav class="main-nav" id="main-nav-links">
-                <ul>
-                    <li><a href="index.html" data-lang-key="navHome">Əsas Səhifə</a></li>
-                    <li><a href="#about-section" data-lang-key="navAbout">Haqqımızda</a></li>
-                    <li><a href="telimler.html" data-lang-key="navTrainings">Təlimlər</a></li>
-                    <li><a href="#blog-section" data-lang-key="navBlog">Bloq</a></li>
-                    <li><a href="#testimonials-section" data-lang-key="navReviews">Rəylər</a></li>
-                    <li><a href="elaqe.html" data-lang-key="navContact">Əlaqə</a></li>
-                </ul>
+
+            <div class="header-actions">
+                <nav class="main-nav" id="main-nav-links">
+                    <ul>
+                        <li><a href="index.html" data-lang-key="navHome">Əsas Səhifə</a></li>
+                        <li><a href="#about-section" data-lang-key="navAbout">Haqqımızda</a></li>
+                        <li><a href="telimler.html" data-lang-key="navTrainings">Təlimlər</a></li>
+                        <li><a href="#blog-section" data-lang-key="navBlog">Bloq</a></li>
+                        <li><a href="#testimonials-section" data-lang-key="navReviews">Rəylər</a></li>
+                        <li><a href="elaqe.html" data-lang-key="navContact">Əlaqə</a></li>
+                    </ul>
+                </nav>
+
                 <div class="header-controls">
                     <div class="lang-switcher">
                         <button id="lang-az" class="active">AZ</button> |
                         <button id="lang-en">EN</button>
                     </div>
                 </div>
-            </nav>
+
+                <div class="hamburger" id="hamburger-menu">
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                </div>
+            </div>
         </div>
     </header>
 
     <main>
-        <!-- Hero Section -->
         <section class="hero">
             <div class="container">
                 <h1 data-lang-key="heroTitle">Karyerana Güc Qat – Layihə İdarəetməsini Öyrən!</h1>
@@ -665,7 +655,6 @@
             </div>
         </section>
 
-        <!-- Services Section -->
         <section class="services">
             <div class="container">
                 <h2 class="section-title" data-lang-key="servicesTitle">Xidmətlərimiz</h2>
@@ -696,7 +685,6 @@
             </div>
         </section>
 
-        <!-- News Section -->
         <section class="news">
             <div class="container">
                 <h2 class="section-title" data-lang-key="newsTitle">Xəbərlər</h2>
@@ -733,7 +721,6 @@
             </div>
         </section>
 
-        <!-- About Section -->
         <section id="about-section" class="about">
             <div class="container">
                 <h2 class="section-title" data-lang-key="aboutTitle">“PMania” ilə Tanış ol</h2>
@@ -745,7 +732,6 @@
             </div>
         </section>
 
-        <!-- Testimonials CTA Section -->
         <section id="testimonials-section" class="testimonials-cta">
             <div class="container">
                 <h2 class="section-title" data-lang-key="testimonialsTitle">Tələbələrimiz Nə Deyir?</h2>
@@ -771,7 +757,6 @@
             </div>
         </section>
 
-        <!-- Blog Section -->
         <section id="blog-section" class="blog">
             <div class="container">
                 <h2 class="section-title" data-lang-key="blogTitle">Son Bloq Yazıları</h2>
@@ -826,7 +811,6 @@
         </section>
     </main>
 
-    <!-- Footer -->
     <footer class="main-footer">
         <div class="container">
             <div class="footer-content">
@@ -871,7 +855,6 @@
         </div>
     </footer>
 
-    <!-- Modals -->
     <div id="mission-modal" class="modal">
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal('mission-modal')">&times;</span>
