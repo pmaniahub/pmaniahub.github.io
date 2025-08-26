@@ -39,6 +39,12 @@
             max-width: 1100px;
             margin: 0 auto;
         }
+        
+        @media (min-width: 1400px) {
+            .container {
+                max-width: 1300px; /* Wider container for large screens */
+            }
+        }
 
         h1, h2, h3 {
             font-family: var(--heading-font);
@@ -71,7 +77,7 @@
         }
         
         .logo img {
-            height: 60px;
+            height: 70px;
             width: auto;
             vertical-align: middle; 
         }
@@ -85,13 +91,14 @@
         .main-nav ul {
             list-style: none;
             display: flex;
-            gap: 25px;
+            gap: 30px;
         }
 
         .main-nav a {
             text-decoration: none;
             color: var(--primary-color);
             font-weight: 500;
+            font-size: 1.1em;
             transition: color 0.3s ease;
         }
 
@@ -102,7 +109,7 @@
         .header-controls {
             display: flex;
             align-items: center;
-            gap: 20px;
+            gap: 25px;
         }
 
         /* Language Switcher */
@@ -112,32 +119,13 @@
             color: var(--text-color);
             font-weight: 600;
             cursor: pointer;
-            padding: 8px 12px;
-            font-size: 0.9em;
-            border-radius: 20px;
-            transition: background-color 0.3s ease, color 0.3s ease;
+            padding: 5px;
+            font-size: 1em;
         }
         .lang-switcher button.active {
-            background-color: var(--secondary-color);
-            color: var(--white-color);
+            color: var(--secondary-color);
         }
         
-        /* Header Social Icons */
-        .header-socials {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-        .header-socials a svg {
-            width: 22px;
-            height: 22px;
-            fill: var(--text-color);
-            transition: fill 0.3s ease;
-        }
-        .header-socials a:hover svg {
-            fill: var(--secondary-color);
-        }
-
         /* Hamburger Menu */
         .hamburger {
             display: none;
@@ -346,7 +334,15 @@
         }
         .social-icons a {
             margin-right: 15px;
-            font-size: 1em; 
+        }
+        .social-icons svg {
+            width: 24px;
+            height: 24px;
+            fill: var(--white-color);
+            transition: fill 0.3s ease;
+        }
+        .social-icons a:hover svg {
+            fill: var(--secondary-color);
         }
         .footer-bottom {
             text-align: center;
@@ -356,7 +352,7 @@
         }
 
         /* --- Responsive Design --- */
-        @media (max-width: 992px) {
+        @media (max-width: 1080px) {
             .main-nav {
                 display: none;
                 width: 100%;
@@ -364,11 +360,11 @@
                 align-items: flex-start;
                 background-color: var(--white-color);
                 position: fixed;
-                top: 91px;
+                top: 101px;
                 left: 0;
                 padding: 20px;
                 box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-                height: calc(100vh - 91px);
+                height: calc(100vh - 101px);
             }
             .main-nav.active {
                 display: flex;
@@ -417,27 +413,16 @@
             <nav class="main-nav" id="main-nav-links">
                 <ul>
                     <li><a href="index.html" data-lang-key="navHome">Əsas Səhifə</a></li>
-                    <li><a href="telimler.html" data-lang-key="navTrainings">Təlimlər</a></li>
                     <li><a href="index.html#about-section" data-lang-key="navAbout">Haqqımızda</a></li>
-                    <li><a href="index.html#testimonials-section" data-lang-key="navReviews">Rəylər</a></li>
+                    <li><a href="telimler.html" data-lang-key="navTrainings">Təlimlər</a></li>
                     <li><a href="index.html#blog-section" data-lang-key="navBlog">Bloq</a></li>
+                    <li><a href="index.html#testimonials-section" data-lang-key="navReviews">Rəylər</a></li>
                     <li><a href="elaqe.html" data-lang-key="navContact">Əlaqə</a></li>
                 </ul>
                 <div class="header-controls">
                     <div class="lang-switcher">
-                        <button id="lang-az" class="active">AZ</button>
+                        <button id="lang-az" class="active">AZ</button> |
                         <button id="lang-en">EN</button>
-                    </div>
-                    <div class="header-socials">
-                        <a href="https://www.instagram.com/pmania_hub/" target="_blank" title="Instagram">
-                            <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.85s-.011 3.585-.069 4.85c-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07s-3.585-.012-4.85-.07c-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.85s.012-3.584.07-4.85c.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.85-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948s.014 3.667.072 4.947c.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072s3.667-.014 4.947-.072c4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.947s-.014-3.667-.072-4.947c-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.689-.073-4.948-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.162 6.162 6.162 6.162-2.759 6.162-6.162-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4s1.791-4 4-4 4 1.79 4 4-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.441 1.441 1.441 1.441-.645 1.441-1.441-.645-1.44-1.441-1.44z"/></svg>
-                        </a>
-                        <a href="https://www.facebook.com/profile.php?id=61578312400129" target="_blank" title="Facebook">
-                            <svg viewBox="0 0 24 24"><path d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.323-1.325z"/></svg>
-                        </a>
-                        <a href="https://www.linkedin.com/company/pmania-hub" target="_blank" title="LinkedIn">
-                            <svg viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-                        </a>
                     </div>
                 </div>
             </nav>
@@ -521,9 +506,15 @@
                 <div class="footer-section">
                     <h4 data-lang-key="footerTitle4">Bizi İzləyin</h4>
                     <div class="social-icons">
-                        <a href="https://www.instagram.com/pmania_hub/" target="_blank">Instagram</a>
-                        <a href="https://www.facebook.com/profile.php?id=61578312400129" target="_blank">Facebook</a>
-                        <a href="https://www.linkedin.com/company/pmania-hub" target="_blank">LinkedIn</a>
+                        <a href="https://www.instagram.com/pmania_hub/" target="_blank" title="Instagram">
+                            <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.85s-.011 3.585-.069 4.85c-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07s-3.585-.012-4.85-.07c-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.85s.012-3.584.07-4.85c.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.85-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948s.014 3.667.072 4.947c.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072s3.667-.014 4.947-.072c4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.947s-.014-3.667-.072-4.947c-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.689-.073-4.948-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.162 6.162 6.162 6.162-2.759 6.162-6.162-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4s1.791-4 4-4 4 1.79 4 4-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.441 1.441 1.441 1.441-.645 1.441-1.441-.645-1.44-1.441-1.44z"/></svg>
+                        </a>
+                        <a href="https://www.facebook.com/profile.php?id=61578312400129" target="_blank" title="Facebook">
+                            <svg viewBox="0 0 24 24"><path d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.323-1.325z"/></svg>
+                        </a>
+                        <a href="https://www.linkedin.com/company/pmania-hub" target="_blank" title="LinkedIn">
+                            <svg viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                        </a>
                     </div>
                 </div>
             </div>
