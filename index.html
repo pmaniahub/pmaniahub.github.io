@@ -6,16 +6,18 @@
     <title>PMania Hub - Project Management Platform</title>
     <!-- Favicon -->
     <link rel="icon" href="images/logo.png" type="image/png">
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <style>
         /* --- Google Fonts Import --- */
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Roboto:wght@400;500&display=swap');
 
         /* --- CSS Reset & Basic Styles --- */
         :root {
-            --primary-color: #222831; /* Neutral Dark Grey */
-            --secondary-color: #4a1ad1; /* Your Brand's Purple */
-            --background-color: #ecf0f1; /* Light Gray */
-            --text-color: #34495e; /* Dark Gray */
+            --primary-color: #222831;
+            --secondary-color: #4a1ad1;
+            --background-color: #ecf0f1;
+            --text-color: #34495e;
             --white-color: #ffffff;
             --heading-font: 'Poppins', sans-serif;
             --body-font: 'Roboto', sans-serif;
@@ -27,7 +29,6 @@
             box-sizing: border-box;
         }
         
-        /* Add smooth scrolling behavior */
         html {
             scroll-behavior: smooth;
         }
@@ -48,7 +49,7 @@
         
         @media (min-width: 1400px) {
             .container {
-                max-width: 1300px; /* Wider container for large screens */
+                max-width: 1300px;
             }
         }
 
@@ -59,7 +60,7 @@
         }
 
         section {
-            padding: 60px 0;
+            padding: 80px 0;
         }
 
         /* --- Header & Navigation --- */
@@ -79,14 +80,9 @@
             flex-wrap: wrap;
         }
 
-        .logo {
-            text-decoration: none;
-        }
-        
         .logo img {
             height: 70px;
             width: auto;
-            vertical-align: middle; 
         }
 
         .main-nav {
@@ -147,28 +143,37 @@
             margin: 5px 0;
             transition: 0.4s;
         }
-        .hamburger.active .bar:nth-child(1) {
-            transform: rotate(-45deg) translate(-5px, 6px);
-        }
-        .hamburger.active .bar:nth-child(2) {
-            opacity: 0;
-        }
-        .hamburger.active .bar:nth-child(3) {
-            transform: rotate(45deg) translate(-5px, -6px);
-        }
+        .hamburger.active .bar:nth-child(1) { transform: rotate(-45deg) translate(-5px, 6px); }
+        .hamburger.active .bar:nth-child(2) { opacity: 0; }
+        .hamburger.active .bar:nth-child(3) { transform: rotate(45deg) translate(-5px, -6px); }
 
         /* --- Hero Section --- */
         .hero {
             background-color: var(--background-color);
             text-align: center;
-            padding: 80px 0;
+            padding: 100px 0;
+            position: relative;
+            overflow: hidden;
         }
-
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(74, 26, 209, 0.05) 0%, rgba(74, 26, 209, 0) 70%);
+            transform: translate(-50%, -50%);
+            z-index: 0;
+        }
+        .hero .container {
+            position: relative;
+            z-index: 1;
+        }
         .hero h1 {
-            font-size: 3em;
+            font-size: 3.5em;
             margin-bottom: 20px;
         }
-
         .hero p {
             font-size: 1.2em;
             max-width: 600px;
@@ -186,26 +191,43 @@
             font-family: var(--heading-font);
             transition: background-color 0.3s ease, transform 0.3s ease;
         }
-
         .cta-button:hover {
-            background-color: #3b15a8; /* Darker Purple */
+            background-color: #3b15a8;
             transform: translateY(-3px);
         }
-        .cta-button.disabled {
-            background-color: #95a5a6;
-            cursor: not-allowed;
-        }
 
-        /* --- Services Section --- */
-        .services {
+        /* --- Why Us Section --- */
+        .why-us {
             background-color: var(--white-color);
         }
-        .section-title {
-            text-align: center;
-            font-size: 2.5em;
-            margin-bottom: 50px;
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
         }
-        
+        .feature-card {
+            text-align: center;
+        }
+        .feature-card .icon {
+            background-color: rgba(74, 26, 209, 0.1);
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        .feature-card .icon svg {
+            width: 32px;
+            height: 32px;
+            fill: var(--secondary-color);
+        }
+        .feature-card h3 {
+            font-size: 1.3em;
+            margin-bottom: 10px;
+        }
+
         /* --- Horizontal Scroll Section --- */
         .scroll-wrapper {
             position: relative;
@@ -213,13 +235,13 @@
         .scroll-container {
             display: flex;
             overflow-x: auto;
-            padding-bottom: 20px; /* Space for scrollbar */
-            scroll-behavior: smooth; /* Smooth scrolling for buttons */
-            -ms-overflow-style: none;  /* IE and Edge */
-            scrollbar-width: none;  /* Firefox */
+            padding-bottom: 20px;
+            scroll-behavior: smooth;
+            -ms-overflow-style: none;
+            scrollbar-width: none;
         }
         .scroll-container::-webkit-scrollbar {
-            display: none; /* Chrome, Safari, Opera */
+            display: none;
         }
         .services-grid, .news-grid, .blog-grid, .testimonial-highlights {
             display: flex;
@@ -237,7 +259,7 @@
         }
         @media (min-width: 992px) {
             .scroll-container {
-                justify-content: center; /* Center items only on larger screens */
+                justify-content: center;
             }
             .service-card, .news-card, .blog-post-card {
                 flex: 0 0 calc(33.333% - 20px);
@@ -280,251 +302,21 @@
             right: -25px;
         }
 
-        .service-card {
-            background-color: var(--white-color);
-            padding: 30px;
-            text-align: center;
-            border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .service-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.12);
-        }
-
-        .service-card h3 {
-            font-size: 1.5em;
-            margin-bottom: 15px;
-            color: var(--secondary-color);
-        }
-
-        /* --- News Section --- */
-        .news {
-            background-color: var(--background-color);
-        }
-        .news-card {
-            background: var(--white-color);
-            border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            cursor: pointer;
-        }
-        .news-card:hover {
-             transform: translateY(-10px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.12);
-        }
-        .news-card img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-        .news-content {
-            padding: 25px;
-        }
-        .news-content h3 {
-            font-size: 1.2em;
-            color: var(--secondary-color);
-        }
-
-        /* --- About Section --- */
-        #about-section {
-            scroll-margin-top: 120px; 
-        }
-        .about {
-            background-color: var(--white-color);
-            text-align: center;
-        }
-        .about p {
-            max-width: 700px;
-            margin: 0 auto;
-            font-size: 1.1em;
-        }
-        .about-buttons {
-            margin-top: 30px;
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
-        }
-        .about-buttons .cta-button {
-            background-color: var(--white-color);
-            color: var(--secondary-color);
-            border: 2px solid var(--secondary-color);
-        }
-        .about-buttons .cta-button:hover {
-            background-color: var(--secondary-color);
+        /* --- Final CTA Section --- */
+        .final-cta {
+            background-color: var(--primary-color);
             color: var(--white-color);
-        }
-
-        /* --- Testimonials Section --- */
-        #testimonials-section {
-            scroll-margin-top: 120px; 
-        }
-        .testimonials-cta {
-            background-color: var(--background-color);
             text-align: center;
         }
-        .testimonials-cta p {
-            font-size: 1.2em;
+        .final-cta h2 {
+            color: var(--white-color);
             margin-bottom: 30px;
-        }
-        .highlight-tag {
-            background-color: var(--white-color);
-            color: var(--secondary-color);
-            padding: 8px 15px;
-            border-radius: 20px;
-            font-weight: 600;
-            font-size: 0.9em;
-            border: 1px solid var(--secondary-color);
-            flex-shrink: 0;
-        }
-
-        /* --- Blog Section --- */
-        #blog-section {
-            scroll-margin-top: 120px; 
-        }
-        .blog {
-            background-color: var(--white-color);
-        }
-        .blog-post-card {
-            background: var(--white-color);
-            border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .blog-post-card:hover {
-             transform: translateY(-10px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.12);
-        }
-        .blog-post-content {
-            padding: 25px;
-        }
-        .blog-post-content h3 {
-            margin-bottom: 10px;
-        }
-        .blog-post-content p {
-            margin-bottom: 20px;
-        }
-        .read-more-btn {
-            background: none;
-            border: none;
-            color: var(--secondary-color);
-            font-weight: 600;
-            cursor: pointer;
-            padding: 10px 25px;
-            font-size: 1em;
-            font-family: var(--body-font);
-            align-self: flex-start;
-            margin-left: -10px; /* Align with content padding */
-        }
-        .read-more-btn:hover {
-            text-decoration: underline;
-        }
-
-        /* --- Modal (Pop-up) Styles --- */
-        .modal {
-            display: none; 
-            position: fixed;
-            z-index: 2000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: auto;
-            background-color: rgba(0,0,0,0.6);
-        }
-        .modal-content {
-            background-color: var(--white-color);
-            margin: 5% auto;
-            padding: 40px;
-            border-radius: 10px;
-            width: 90%;
-            max-width: 800px;
-            position: relative;
-            animation: fadeIn 0.3s;
-        }
-        .close-btn {
-            color: #aaa;
-            position: absolute;
-            top: 15px;
-            right: 25px;
-            font-size: 28px;
-            font-weight: bold;
-            cursor: pointer;
-        }
-        .close-btn:hover,
-        .close-btn:focus {
-            color: var(--primary-color);
-        }
-        @keyframes fadeIn {
-            from {opacity: 0; transform: translateY(-20px);}
-            to {opacity: 1; transform: translateY(0);}
-        }
-        .modal-body h3 {
-            color: var(--secondary-color);
-            text-align: center;
-            font-size: 1.8em;
-            margin-bottom: 25px;
-        }
-        .modal-body p {
-            margin-bottom: 15px;
-            text-align: center;
-            font-size: 1.1em;
-        }
-        .modal-body ul {
-            list-style-position: inside;
-            padding-left: 10px;
-            text-align: left;
-        }
-        .modal-body .review {
-            background-color: var(--background-color);
-            padding: 15px;
-            border-radius: 8px;
-            margin-bottom: 15px;
-            border-left: 4px solid var(--secondary-color);
-        }
-        .modal-body .review p {
-            margin: 0;
-            font-style: italic;
-            text-align: left;
-        }
-        .modal-body .review .author {
-            text-align: right;
-            font-weight: bold;
-            font-style: normal;
-            margin-top: 10px;
-            opacity: 0.8;
-        }
-        .modal-body.text-left p, .modal-body.text-left h3 {
-            text-align: left;
-        }
-        .modal-body .hashtags {
-            color: #7f8c8d;
-            font-size: 0.9em;
-            margin-top: 20px;
-            text-align: left;
-        }
-        .modal-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
         }
 
         /* --- Footer --- */
         .main-footer {
-            background-color: var(--primary-color);
-            color: var(--white-color);
-            padding: 50px 0;
+            background-color: #1a1e25;
+            color: var(--background-color);
         }
         .footer-content {
             display: flex;
@@ -537,20 +329,11 @@
             min-width: 200px;
         }
         .footer-section h4 {
-            font-family: var(--heading-font);
-            font-size: 1.2em;
-            margin-bottom: 15px;
-        }
-        .footer-section ul {
-            list-style: none;
-        }
-        .footer-section ul li {
-            margin-bottom: 10px;
+            color: var(--white-color);
         }
         .footer-section a {
             color: var(--background-color);
             text-decoration: none;
-            transition: color 0.3s ease;
         }
         .footer-section a:hover {
             color: var(--secondary-color);
@@ -659,82 +442,86 @@
         <!-- Hero Section -->
         <section class="hero">
             <div class="container">
-                <h1 data-lang-key="heroTitle">Karyerana Güc Qat – Layihə İdarəetməsini Öyrən!</h1>
-                <p data-lang-key="heroSubtitle">Online kurslar, təlimlər və peşəkar konsultasiya ilə bacarıqlarınızı artırın</p>
-                <a href="telimler.html" class="cta-button" data-lang-key="heroButton">Dərslərə Başla</a>
+                <h1 data-lang-key="heroTitle" data-aos="fade-up">Karyerana Güc Qat – Layihə İdarəetməsini Öyrən!</h1>
+                <p data-lang-key="heroSubtitle" data-aos="fade-up" data-aos-delay="100">Online kurslar, təlimlər və peşəkar konsultasiya ilə bacarıqlarınızı artırın</p>
+                <a href="telimler.html" class="cta-button" data-lang-key="heroButton" data-aos="fade-up" data-aos-delay="200">Dərslərə Başla</a>
             </div>
         </section>
 
         <!-- Services Section -->
-        <section class="services">
+        <section class="services" data-aos="fade-up">
             <div class="container">
                 <h2 class="section-title" data-lang-key="servicesTitle">Xidmətlərimiz</h2>
-                <div class="scroll-wrapper">
-                    <div class="scroll-container" id="services-scroller">
-                        <div class="services-grid">
-                            <div class="service-card">
-                                <h3><a href="telimler.html" style="text-decoration:none; color: var(--secondary-color);" data-lang-key="service1Title">Təlimlər</a></h3>
-                                <p data-lang-key="service1Desc">Layihə idarəetmə bacarıqlarınızı praktiki və nəzəri dərslərlə inkişaf etdirin.</p>
-                            </div>
-                            <div class="service-card">
-                                <h3 data-lang-key="service2Title">Konsultasiya</h3>
-                                <p data-lang-key="service2Desc">Peşəkar layihə menecerlərindən layihələriniz üçün fərdi məsləhət alın.</p>
-                            </div>
-                            <div class="service-card">
-                                <h3><a href="#blog-section" style="text-decoration:none; color: var(--secondary-color);" data-lang-key="service3Title">Bloq</a></h3>
-                                <p data-lang-key="service3Desc">Sektorla bağlı son məqalələr, trendlər və yenilikləri izləyin.</p>
-                            </div>
-                        </div>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <h3><a href="telimler.html" style="text-decoration:none; color: var(--secondary-color);" data-lang-key="service1Title">Təlimlər</a></h3>
+                        <p data-lang-key="service1Desc">Layihə idarəetmə bacarıqlarınızı praktiki və nəzəri dərslərlə inkişaf etdirin.</p>
                     </div>
-                    <button class="scroll-btn scroll-btn-left" id="services-scroll-left">
-                        <svg viewBox="0 0 24 24"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
-                    </button>
-                    <button class="scroll-btn scroll-btn-right" id="services-scroll-right">
-                        <svg viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/></svg>
-                    </button>
+                    <div class="service-card">
+                        <h3 data-lang-key="service2Title">Konsultasiya</h3>
+                        <p data-lang-key="service2Desc">Peşəkar layihə menecerlərindən layihələriniz üçün fərdi məsləhət alın.</p>
+                    </div>
+                    <div class="service-card">
+                        <h3><a href="#blog-section" style="text-decoration:none; color: var(--secondary-color);" data-lang-key="service3Title">Bloq</a></h3>
+                        <p data-lang-key="service3Desc">Sektorla bağlı son məqalələr, trendlər və yenilikləri izləyin.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Why Us Section -->
+        <section class="why-us" data-aos="fade-up">
+            <div class="container">
+                <h2 class="section-title" data-lang-key="whyUsTitle">Niyə PMania Hub?</h2>
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <div class="icon"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v-1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg></div>
+                        <h3 data-lang-key="feature1Title">Praktiki Təlimlər</h3>
+                        <p data-lang-key="feature1Desc">Real layihələr üzərində işləyərək öyrənin.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="icon"><svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z"/></svg></div>
+                        <h3 data-lang-key="feature2Title">Peşəkar Təlimçi</h3>
+                        <p data-lang-key="feature2Desc">Beynəlxalq sertifikatlı və 7+ il təcrübəli mütəxəssisdən dərs alın.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="icon"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/></svg></div>
+                        <h3 data-lang-key="feature3Title">Karyera Dəstəyi</h3>
+                        <p data-lang-key="feature3Desc">Təlimdən sonra da karyera inkişafınıza dəstək oluruq.</p>
+                    </div>
                 </div>
             </div>
         </section>
 
         <!-- News Section -->
-        <section class="news">
+        <section class="news" data-aos="fade-up">
             <div class="container">
                 <h2 class="section-title" data-lang-key="newsTitle">Xəbərlər</h2>
-                <div class="scroll-wrapper">
-                    <div class="scroll-container" id="news-scroller">
-                        <div class="news-grid">
-                            <div class="news-card" onclick="openModal('news-modal-1')">
-                                <img src="images/360.png" alt="360° Layihə İdarəetməsi Təlimi Qeydiyyatı" onerror="this.onerror=null;this.src='https://placehold.co/350x350/ecf0f1/222831?text=X%C9%99b%C9%99r+1';">
-                                <div class="news-content">
-                                    <h3 data-lang-key="news1Title">Qeydiyyat Başladı: 360° Layihə İdarəetməsi</h3>
-                                </div>
-                            </div>
-                            <div class="news-card" onclick="openModal('news-modal-2')">
-                                <img src="images/webinar.png" alt="Ödənişsiz Seminar Elanı" onerror="this.onerror=null;this.src='https://placehold.co/350x350/ecf0f1/222831?text=X%C9%99b%C9%99r+2';">
-                                <div class="news-content">
-                                    <h3 data-lang-key="news2Title">Keçirilmiş Seminar: Çevik və Klassik Metodlar</h3>
-                                </div>
-                            </div>
-                            <div class="news-card" onclick="openModal('news-modal-3')">
-                                <img src="images/ayafe.png" alt="Təqaüd Proqramı" onerror="this.onerror=null;this.src='https://placehold.co/350x350/ecf0f1/222831?text=X%C9%99b%C9%99r+3';">
-                                <div class="news-content">
-                                    <h3 data-lang-key="news3Title">Təqaüd Proqramı Uğurla Başa Çatdı</h3>
-                                </div>
-                            </div>
+                <div class="news-grid">
+                    <div class="news-card" onclick="openModal('news-modal-1')">
+                        <img src="images/360.png" alt="360° Layihə İdarəetməsi Təlimi Qeydiyyatı" onerror="this.onerror=null;this.src='https://placehold.co/350x350/ecf0f1/222831?text=X%C9%99b%C9%99r+1';">
+                        <div class="news-content">
+                            <h3 data-lang-key="news1Title">Qeydiyyat Başladı: 360° Layihə İdarəetməsi</h3>
                         </div>
                     </div>
-                    <button class="scroll-btn scroll-btn-left" id="news-scroll-left">
-                        <svg viewBox="0 0 24 24"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
-                    </button>
-                    <button class="scroll-btn scroll-btn-right" id="news-scroll-right">
-                        <svg viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/></svg>
-                    </button>
+                    <div class="news-card" onclick="openModal('news-modal-2')">
+                        <img src="images/webinar.png" alt="Ödənişsiz Seminar Elanı" onerror="this.onerror=null;this.src='https://placehold.co/350x350/ecf0f1/222831?text=X%C9%99b%C9%99r+2';">
+                        <div class="news-content">
+                            <h3 data-lang-key="news2Title">Keçirilmiş Seminar: Çevik və Klassik Metodlar</h3>
+                        </div>
+                    </div>
+                    <div class="news-card" onclick="openModal('news-modal-3')">
+                        <img src="images/ayafe.png" alt="Təqaüd Proqramı" onerror="this.onerror=null;this.src='https://placehold.co/350x350/ecf0f1/222831?text=X%C9%99b%C9%99r+3';">
+                        <div class="news-content">
+                            <h3 data-lang-key="news3Title">Təqaüd Proqramı Uğurla Başa Çatdı</h3>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
 
         <!-- About Section -->
-        <section id="about-section" class="about">
+        <section id="about-section" class="about" data-aos="fade-up">
             <div class="container">
                 <h2 class="section-title" data-lang-key="aboutTitle">“PMania” ilə Tanış ol</h2>
                 <p data-lang-key="aboutDesc">PMania Hub, layihə idarəetməsi sahəsində karyera qurmaq və ya mövcud bacarıqlarını təkmilləşdirmək istəyənlər üçün yaradılmış hərtərəfli bir platformadır. Məqsədimiz, hər kəsə keyfiyyətli təhsil və peşəkar dəstək təqdim etməklə onların uğuruna töhfə verməkdir.</p>
@@ -746,82 +533,49 @@
         </section>
 
         <!-- Testimonials CTA Section -->
-        <section id="testimonials-section" class="testimonials-cta">
+        <section id="testimonials-section" class="testimonials-cta" data-aos="fade-up">
             <div class="container">
                 <h2 class="section-title" data-lang-key="testimonialsTitle">Tələbələrimiz Nə Deyir?</h2>
-                <div class="scroll-wrapper">
-                    <div class="scroll-container" id="testimonials-scroller">
-                        <div class="testimonial-highlights">
-                            <span class="highlight-tag" data-lang-key="highlight1">Aydın İzah</span>
-                            <span class="highlight-tag" data-lang-key="highlight2">Praktiki Nümunələr</span>
-                            <span class="highlight-tag" data-lang-key="highlight3">İnteraktiv Təlim</span>
-                            <span class="highlight-tag" data-lang-key="highlight4">Peşəkar Təlimçi</span>
-                            <span class="highlight-tag" data-lang-key="highlight5">Sistemli Yanaşma</span>
-                        </div>
-                    </div>
-                    <button class="scroll-btn scroll-btn-left" id="testimonials-scroll-left">
-                        <svg viewBox="0 0 24 24"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
-                    </button>
-                    <button class="scroll-btn scroll-btn-right" id="testimonials-scroll-right">
-                        <svg viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/></svg>
-                    </button>
-                </div>
-                <p data-lang-key="testimonialsDesc" style="margin-top: 30px;">Bizimlə təcrübələrini bölüşən məzunlarımızın fikirləri ilə tanış olun.</p>
+                <p data-lang-key="testimonialsDesc">Bizimlə təcrübələrini bölüşən məzunlarımızın fikirləri ilə tanış olun.</p>
                 <button class="cta-button" onclick="openModal('all-testimonials-modal')" data-lang-key="testimonialsButton">Bütün Rəyləri Oxu</button>
             </div>
         </section>
 
         <!-- Blog Section -->
-        <section id="blog-section" class="blog">
+        <section id="blog-section" class="blog" data-aos="fade-up">
             <div class="container">
                 <h2 class="section-title" data-lang-key="blogTitle">Son Bloq Yazıları</h2>
-                <div class="scroll-wrapper">
-                    <div class="scroll-container" id="blog-scroller">
-                        <div class="blog-grid">
-                            <article class="blog-post-card">
-                                <div class="blog-post-content">
-                                    <h3 data-lang-key="blog1Title">Agile və Scrum Arasındakı Fərqlər</h3>
-                                    <p data-lang-key="blog1Desc">Bu məqalədə çevik metodologiyaların əsas prinsiplərini və onların tətbiqini araşdırırıq.</p>
-                                </div>
-                                <button class="read-more-btn" onclick="openModal('blog-modal-1')" data-lang-key="readMore">Daha çox oxu &rarr;</button>
-                            </article>
-                            <article class="blog-post-card">
-                                <div class="blog-post-content">
-                                    <h3 data-lang-key="blog2Title">Uğurlu Layihə Üçün 5 Vacib Addım</h3>
-                                    <p data-lang-key="blog2Desc">Layihə planlamasından yekun təhvilə qədər olan mərhələlərdə diqqət etməli olduğunuz məqamlar.</p>
-                                </div>
-                                <button class="read-more-btn" onclick="openModal('blog-modal-2')" data-lang-key="readMore">Daha çox oxu &rarr;</button>
-                            </article>
-                            <article class="blog-post-card">
-                                <div class="blog-post-content">
-                                    <h3 data-lang-key="blog3Title">Risk İdarəetməsi Nədir?</h3>
-                                    <p data-lang-key="blog3Desc">Layihələrinizdə qarşılaşa biləcəyiniz riskləri necə müəyyən edə və idarə edə bilərsiniz?</p>
-                                </div>
-                                <button class="read-more-btn" onclick="openModal('blog-modal-3')" data-lang-key="readMore">Daha çox oxu &rarr;</button>
-                            </article>
-                             <article class="blog-post-card">
-                                <div class="blog-post-content">
-                                    <h3 data-lang-key="blog4Title">Layihə Meneceri yoxsa Lider? Hər İkisi!</h3>
-                                    <p data-lang-key="blog4Desc">Uğurlu layihələrin arxasında dayanan liderlik keyfiyyətlərini və onların komandaya təsirini araşdırın.</p>
-                                </div>
-                                <button class="read-more-btn" onclick="openModal('blog-modal-4')" data-lang-key="readMore">Daha çox oxu &rarr;</button>
-                            </article>
-                            <article class="blog-post-card">
-                                <div class="blog-post-content">
-                                    <h3 data-lang-key="blog5Title">Təcili yoxsa Vacib? Prioritetləri Düzgün Müəyyən Etməyin Yolları</h3>
-                                    <p data-lang-key="blog5Desc">MoSCoW və Eisenhower Matrisi kimi effektiv prioritetləşdirmə üsulları ilə tanış olun.</p>
-                                </div>
-                                <button class="read-more-btn" onclick="openModal('blog-modal-5')" data-lang-key="readMore">Daha çox oxu &rarr;</button>
-                            </article>
+                <div class="blog-grid">
+                    <article class="blog-post-card">
+                        <div class="blog-post-content">
+                            <h3 data-lang-key="blog1Title">Agile və Scrum Arasındakı Fərqlər</h3>
+                            <p data-lang-key="blog1Desc">Bu məqalədə çevik metodologiyaların əsas prinsiplərini və onların tətbiqini araşdırırıq.</p>
                         </div>
-                    </div>
-                    <button class="scroll-btn scroll-btn-left" id="blog-scroll-left">
-                        <svg viewBox="0 0 24 24"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
-                    </button>
-                    <button class="scroll-btn scroll-btn-right" id="blog-scroll-right">
-                        <svg viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/></svg>
-                    </button>
+                        <button class="read-more-btn" onclick="openModal('blog-modal-1')" data-lang-key="readMore">Daha çox oxu &rarr;</button>
+                    </article>
+                    <article class="blog-post-card">
+                        <div class="blog-post-content">
+                            <h3 data-lang-key="blog2Title">Uğurlu Layihə Üçün 5 Vacib Addım</h3>
+                            <p data-lang-key="blog2Desc">Layihə planlamasından yekun təhvilə qədər olan mərhələlərdə diqqət etməli olduğunuz məqamlar.</p>
+                        </div>
+                        <button class="read-more-btn" onclick="openModal('blog-modal-2')" data-lang-key="readMore">Daha çox oxu &rarr;</button>
+                    </article>
+                    <article class="blog-post-card">
+                        <div class="blog-post-content">
+                            <h3 data-lang-key="blog3Title">Risk İdarəetməsi Nədir?</h3>
+                            <p data-lang-key="blog3Desc">Layihələrinizdə qarşılaşa biləcəyiniz riskləri necə müəyyən edə və idarə edə bilərsiniz?</p>
+                        </div>
+                        <button class="read-more-btn" onclick="openModal('blog-modal-3')" data-lang-key="readMore">Daha çox oxu &rarr;</button>
+                    </article>
                 </div>
+            </div>
+        </section>
+
+        <!-- Final CTA Section -->
+        <section class="final-cta" data-aos="fade-up">
+            <div class="container">
+                <h2 data-lang-key="finalCtaTitle">Karyeranızda növbəti addımı atmağa hazırsınız?</h2>
+                <a href="elaqe.html" class="cta-button" data-lang-key="navContact">Bizimlə Əlaqə</a>
             </div>
         </section>
     </main>
@@ -963,9 +717,12 @@
         </div>
     </div>
     
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         if (!window.pmaniaScriptLoaded) {
             window.pmaniaScriptLoaded = true;
+            AOS.init({ once: true, duration: 600 });
+
             const translations = {
                 az: {
                     navHome: "Əsas Səhifə",
@@ -988,6 +745,14 @@
                     news1Title: "Qeydiyyat Başladı: 360° Layihə İdarəetməsi",
                     news2Title: "Keçirilmiş Seminar: Çevik və Klassik Metodlar",
                     news3Title: "Təqaüd Proqramı Uğurla Başa Çatdı",
+                    whyUsTitle: "Niyə PMania Hub?",
+                    feature1Title: "Praktiki Təlimlər",
+                    feature1Desc: "Real layihələr üzərində işləyərək öyrənin.",
+                    feature2Title: "Peşəkar Təlimçi",
+                    feature2Desc: "Beynəlxalq sertifikatlı və 7+ il təcrübəli mütəxəssisdən dərs alın.",
+                    feature3Title: "Karyera Dəstəyi",
+                    feature3Desc: "Təlimdən sonra da karyera inkişafınıza dəstək oluruq.",
+                    finalCtaTitle: "Karyeranızda növbəti addımı atmağa hazırsınız?",
                     aboutTitle: "“PMania” ilə Tanış ol",
                     aboutDesc: "PMania Hub, layihə idarəetməsi sahəsində karyera qurmaq və ya mövcud bacarıqlarını təkmilləşdirmək istəyənlər üçün yaradılmış hərtərəfli bir platformadır. Məqsədimiz, hər kəsə keyfiyyətli təhsil və peşəkar dəstək təqdim etməklə onların uğuruna töhfə verməkdir.",
                     missionButton: "💡 Missiyamız",
