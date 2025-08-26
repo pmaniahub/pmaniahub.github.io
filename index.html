@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PMania Hub - Project Management Platform</title>
+    <!-- Favicon -->
     <link rel="icon" href="images/logo.png" type="image/png">
     <style>
         /* --- Google Fonts Import --- */
@@ -26,7 +27,6 @@
             box-sizing: border-box;
         }
         
-        /* Add smooth scrolling behavior */
         html {
             scroll-behavior: smooth;
         }
@@ -47,7 +47,7 @@
         
         @media (min-width: 1400px) {
             .container {
-                max-width: 1300px; /* Wider container for large screens */
+                max-width: 1300px;
             }
         }
 
@@ -78,10 +78,6 @@
             flex-wrap: wrap;
         }
 
-        .logo {
-            text-decoration: none;
-        }
-        
         .logo img {
             height: 70px;
             width: auto;
@@ -113,7 +109,6 @@
             color: var(--secondary-color);
         }
         
-        /* Language Switcher */
         .lang-switcher button {
             background: none;
             border: none;
@@ -127,7 +122,6 @@
             color: var(--secondary-color);
         }
         
-        /* Hamburger Menu */
         .hamburger {
             display: none;
             cursor: pointer;
@@ -152,19 +146,40 @@
         /* --- Hero Section --- */
         .hero {
             background-color: var(--background-color);
-            text-align: center;
-            padding: 80px 0;
+            padding: 60px 0;
         }
 
-        .hero h1 {
+        .hero-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 40px;
+        }
+
+        .hero-text {
+            flex: 1;
+            max-width: 600px;
+            text-align: left;
+        }
+
+        .hero-text h1 {
             font-size: 3em;
             margin-bottom: 20px;
         }
 
-        .hero p {
+        .hero-text p {
             font-size: 1.2em;
-            max-width: 600px;
-            margin: 0 auto 30px auto;
+            margin-bottom: 30px;
+        }
+
+        .hero-image {
+            flex: 1;
+            max-width: 500px;
+        }
+        
+        .hero-image svg {
+            width: 100%;
+            height: auto;
         }
 
         .cta-button {
@@ -180,7 +195,7 @@
         }
 
         .cta-button:hover {
-            background-color: #3b15a8; /* Darker Purple */
+            background-color: #3b15a8;
             transform: translateY(-3px);
         }
         .cta-button.disabled {
@@ -205,13 +220,13 @@
         .scroll-container {
             display: flex;
             overflow-x: auto;
-            padding-bottom: 20px; /* Space for scrollbar */
-            scroll-behavior: smooth; /* Smooth scrolling for buttons */
-            -ms-overflow-style: none;  /* IE and Edge */
-            scrollbar-width: none;  /* Firefox */
+            padding-bottom: 20px;
+            scroll-behavior: smooth;
+            -ms-overflow-style: none;
+            scrollbar-width: none;
         }
         .scroll-container::-webkit-scrollbar {
-            display: none; /* Chrome, Safari, Opera */
+            display: none;
         }
         .services-grid, .news-grid, .blog-grid, .testimonial-highlights {
             display: flex;
@@ -229,7 +244,7 @@
         }
         @media (min-width: 992px) {
             .scroll-container {
-                justify-content: center; /* Center items only on larger screens */
+                justify-content: center;
             }
             .service-card, .news-card, .blog-post-card {
                 flex: 0 0 calc(33.333% - 20px);
@@ -265,12 +280,8 @@
             height: 24px;
             fill: var(--secondary-color);
         }
-        .scroll-btn-left {
-            left: -25px;
-        }
-        .scroll-btn-right {
-            right: -25px;
-        }
+        .scroll-btn-left { left: -25px; }
+        .scroll-btn-right { right: -25px; }
 
         .service-card {
             background-color: var(--white-color);
@@ -293,9 +304,7 @@
         }
 
         /* --- News Section --- */
-        .news {
-            background-color: var(--background-color);
-        }
+        .news { background-color: var(--background-color); }
         .news-card {
             background: var(--white-color);
             border-radius: 10px;
@@ -316,18 +325,14 @@
             height: auto;
             display: block;
         }
-        .news-content {
-            padding: 25px;
-        }
+        .news-content { padding: 25px; }
         .news-content h3 {
             font-size: 1.2em;
             color: var(--secondary-color);
         }
 
         /* --- About Section --- */
-        #about-section {
-            scroll-margin-top: 120px; 
-        }
+        #about-section { scroll-margin-top: 120px; }
         .about {
             background-color: var(--white-color);
             text-align: center;
@@ -355,9 +360,7 @@
         }
 
         /* --- Testimonials Section --- */
-        #testimonials-section {
-            scroll-margin-top: 120px; 
-        }
+        #testimonials-section { scroll-margin-top: 120px; }
         .testimonials-cta {
             background-color: var(--background-color);
             text-align: center;
@@ -378,12 +381,8 @@
         }
 
         /* --- Blog Section --- */
-        #blog-section {
-            scroll-margin-top: 120px; 
-        }
-        .blog {
-            background-color: var(--white-color);
-        }
+        #blog-section { scroll-margin-top: 120px; }
+        .blog { background-color: var(--white-color); }
         .blog-post-card {
             background: var(--white-color);
             border-radius: 10px;
@@ -398,15 +397,9 @@
              transform: translateY(-10px);
             box-shadow: 0 8px 25px rgba(0,0,0,0.12);
         }
-        .blog-post-content {
-            padding: 25px;
-        }
-        .blog-post-content h3 {
-            margin-bottom: 10px;
-        }
-        .blog-post-content p {
-            margin-bottom: 20px;
-        }
+        .blog-post-content { padding: 25px; }
+        .blog-post-content h3 { margin-bottom: 10px; }
+        .blog-post-content p { margin-bottom: 20px; }
         .read-more-btn {
             background: none;
             border: none;
@@ -417,11 +410,9 @@
             font-size: 1em;
             font-family: var(--body-font);
             align-self: flex-start;
-            margin-left: -10px; /* Align with content padding */
+            margin-left: -10px;
         }
-        .read-more-btn:hover {
-            text-decoration: underline;
-        }
+        .read-more-btn:hover { text-decoration: underline; }
 
         /* --- Modal (Pop-up) Styles --- */
         .modal {
@@ -455,9 +446,7 @@
             cursor: pointer;
         }
         .close-btn:hover,
-        .close-btn:focus {
-            color: var(--primary-color);
-        }
+        .close-btn:focus { color: var(--primary-color); }
         @keyframes fadeIn {
             from {opacity: 0; transform: translateY(-20px);}
             to {opacity: 1; transform: translateY(0);}
@@ -497,9 +486,7 @@
             margin-top: 10px;
             opacity: 0.8;
         }
-        .modal-body.text-left p, .modal-body.text-left h3 {
-            text-align: left;
-        }
+        .modal-body.text-left p, .modal-body.text-left h3 { text-align: left; }
         .modal-body .hashtags {
             color: #7f8c8d;
             font-size: 0.9em;
@@ -533,32 +520,22 @@
             font-size: 1.2em;
             margin-bottom: 15px;
         }
-        .footer-section ul {
-            list-style: none;
-        }
-        .footer-section ul li {
-            margin-bottom: 10px;
-        }
+        .footer-section ul { list-style: none; }
+        .footer-section ul li { margin-bottom: 10px; }
         .footer-section a {
             color: var(--background-color);
             text-decoration: none;
             transition: color 0.3s ease;
         }
-        .footer-section a:hover {
-            color: var(--secondary-color);
-        }
-        .social-icons a {
-            margin-right: 15px;
-        }
+        .footer-section a:hover { color: var(--secondary-color); }
+        .social-icons a { margin-right: 15px; }
         .social-icons svg {
             width: 24px;
             height: 24px;
             fill: var(--white-color);
             transition: fill 0.3s ease;
         }
-        .social-icons a:hover svg {
-            fill: var(--secondary-color);
-        }
+        .social-icons a:hover svg { fill: var(--secondary-color); }
         .footer-bottom {
             text-align: center;
             margin-top: 40px;
@@ -575,15 +552,13 @@
                 align-items: flex-start;
                 background-color: var(--white-color);
                 position: fixed;
-                top: 101px; /* Adjust based on your header height */
+                top: 101px;
                 left: 0;
                 padding: 20px;
                 box-shadow: 0 4px 10px rgba(0,0,0,0.1);
                 height: calc(100vh - 101px);
             }
-            .main-nav.active {
-                display: flex;
-            }
+            .main-nav.active { display: flex; }
             .main-nav ul {
                 flex-direction: column;
                 width: 100%;
@@ -593,20 +568,23 @@
                 width: 100%;
                 text-align: center;
             }
-            .hamburger {
-                display: block;
+            .hamburger { display: block; }
+        }
+        @media (max-width: 992px) {
+            .hero-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            .hero-text {
+                text-align: center;
+                max-width: 100%;
             }
         }
         @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.5em;
-            }
-            .section-title {
-                font-size: 2em;
-            }
-            .scroll-btn {
-                display: none; /* Hide arrows on small touch devices */
-            }
+            .hero-text h1 { font-size: 2.5em; }
+            .section-title { font-size: 2em; }
+            .scroll-btn { display: none; }
+            .hero-image { display: none; } /* Hide image on smallest screens */
         }
     </style>
 </head>
@@ -617,7 +595,6 @@
             <a href="index.html" class="logo">
                 <img src="images/logo.png" alt="PMania Hub Logo">
             </a>
-
             <div class="header-actions">
                 <nav class="main-nav" id="main-nav-links">
                     <ul>
@@ -629,14 +606,12 @@
                         <li><a href="elaqe.html" data-lang-key="navContact">Əlaqə</a></li>
                     </ul>
                 </nav>
-
                 <div class="header-controls">
                     <div class="lang-switcher">
                         <button id="lang-az" class="active">AZ</button> |
                         <button id="lang-en">EN</button>
                     </div>
                 </div>
-
                 <div class="hamburger" id="hamburger-menu">
                     <div class="bar"></div>
                     <div class="bar"></div>
@@ -649,12 +624,28 @@
     <main>
         <section class="hero">
             <div class="container">
-                <h1 data-lang-key="heroTitle">Karyerana Güc Qat – Layihə İdarəetməsini Öyrən!</h1>
-                <p data-lang-key="heroSubtitle">Online kurslar, təlimlər və peşəkar konsultasiya ilə bacarıqlarınızı artırın</p>
-                <a href="telimler.html" class="cta-button" data-lang-key="heroButton">Dərslərə Başla</a>
+                <div class="hero-content">
+                    <div class="hero-text">
+                        <h1 data-lang-key="heroTitle">Karyerana Güc Qat – Layihə İdarəetməsini Öyrən!</h1>
+                        <p data-lang-key="heroSubtitle">Online kurslar, təlimlər və peşəkar konsultasiya ilə bacarıqlarınızı artırın</p>
+                        <a href="telimler.html" class="cta-button" data-lang-key="heroButton">Dərslərə Başla</a>
+                    </div>
+                    <div class="hero-image">
+                        <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">
+                            <g fill="#4a1ad1">
+                                <path d="M512 64C264.58 64 64 264.58 64 512s200.58 448 448 448 448-200.58 448-448S759.42 64 512 64zm0 832c-212.08 0-384-171.92-384-384s171.92-384 384-384 384 171.92 384 384-171.92 384-384 384z"/>
+                                <path d="M448 320h128v128H448zM448 480h128v224H448z"/>
+                            </g>
+                            <g fill="#34495e">
+                                <path d="M682.67 341.33C640 298.67 576 298.67 533.33 341.33c-42.66 42.67-42.66 117.34 0 160l42.67 42.67 106.67-106.67-42.67-42.66zM448 576l-85.33 85.33c-42.67 42.67-42.67 117.34 0 160C405.33 864 490.67 864 533.33 821.33L746.67 608l-106.67-106.67-192 192z"/>
+                            </g>
+                        </svg>
+                    </div>
+                </div>
             </div>
         </section>
 
+        <!-- Services Section -->
         <section class="services">
             <div class="container">
                 <h2 class="section-title" data-lang-key="servicesTitle">Xidmətlərimiz</h2>
@@ -685,6 +676,7 @@
             </div>
         </section>
 
+        <!-- News Section -->
         <section class="news">
             <div class="container">
                 <h2 class="section-title" data-lang-key="newsTitle">Xəbərlər</h2>
@@ -721,6 +713,7 @@
             </div>
         </section>
 
+        <!-- About Section -->
         <section id="about-section" class="about">
             <div class="container">
                 <h2 class="section-title" data-lang-key="aboutTitle">“PMania” ilə Tanış ol</h2>
@@ -732,6 +725,7 @@
             </div>
         </section>
 
+        <!-- Testimonials CTA Section -->
         <section id="testimonials-section" class="testimonials-cta">
             <div class="container">
                 <h2 class="section-title" data-lang-key="testimonialsTitle">Tələbələrimiz Nə Deyir?</h2>
@@ -757,6 +751,7 @@
             </div>
         </section>
 
+        <!-- Blog Section -->
         <section id="blog-section" class="blog">
             <div class="container">
                 <h2 class="section-title" data-lang-key="blogTitle">Son Bloq Yazıları</h2>
@@ -811,6 +806,7 @@
         </section>
     </main>
 
+    <!-- Footer -->
     <footer class="main-footer">
         <div class="container">
             <div class="footer-content">
@@ -855,6 +851,7 @@
         </div>
     </footer>
 
+    <!-- Modals -->
     <div id="mission-modal" class="modal">
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal('mission-modal')">&times;</span>
@@ -1325,4 +1322,4 @@
     </script>
 
 </body>
-</html>
+</ht
