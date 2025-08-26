@@ -173,6 +173,13 @@
             font-size: 1.2em;
             margin-bottom: 30px;
         }
+        
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
 
         .hero-image {
             flex: 1;
@@ -193,13 +200,28 @@
             text-decoration: none;
             font-weight: 600;
             font-family: var(--heading-font);
-            transition: background-color 0.3s ease, transform 0.3s ease;
+            transition: background-color 0.3s ease, transform 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+            border: 2px solid transparent;
         }
 
         .cta-button:hover {
             background-color: #3b15a8;
             transform: translateY(-3px);
+            border-color: #3b15a8;
         }
+        
+        .cta-button-secondary {
+            background-color: transparent;
+            color: var(--secondary-color);
+            border: 2px solid var(--secondary-color);
+        }
+
+        .cta-button-secondary:hover {
+            background-color: var(--secondary-color);
+            color: var(--white-color);
+            border-color: var(--secondary-color);
+        }
+
         .cta-button.disabled {
             background-color: #95a5a6;
             cursor: not-allowed;
@@ -574,19 +596,25 @@
         }
         @media (max-width: 992px) {
             .hero-content {
-                flex-direction: column;
+                flex-direction: column-reverse;
                 text-align: center;
             }
             .hero-text {
                 text-align: center;
                 max-width: 100%;
             }
+            .hero-image {
+                max-width: 350px;
+                margin-bottom: 30px;
+            }
+            .hero-buttons {
+                justify-content: center;
+            }
         }
         @media (max-width: 768px) {
             .hero-text h1 { font-size: 2.5em; }
             .section-title { font-size: 2em; }
             .scroll-btn { display: none; }
-            .hero-image { display: none; } /* Hide image on smallest screens */
         }
     </style>
 </head>
@@ -630,20 +658,23 @@
                     <div class="hero-text">
                         <h1 data-lang-key="heroTitle">Karyerana Güc Qat – Layihə İdarəetməsini Öyrən!</h1>
                         <p data-lang-key="heroSubtitle">Online kurslar, təlimlər və peşəkar konsultasiya ilə bacarıqlarınızı artırın</p>
-                        <a href="telimler.html" class="cta-button" data-lang-key="heroButton">Dərslərə Başla</a>
+                        <div class="hero-buttons">
+                            <a href="telimler.html" class="cta-button" data-lang-key="heroButton">Dərslərə Başla</a>
+                            <a href="#about-section" class="cta-button cta-button-secondary" data-lang-key="aboutButton">Haqqımızda</a>
+                        </div>
                     </div>
                     <div class="hero-image">
                         <svg width="100%" height="100%" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
                             <rect x="32" y="32" width="448" height="320" rx="24" ry="24" fill="var(--white-color)" stroke="var(--text-color)" stroke-width="16"/>
                             <line x1="32" y1="112" x2="480" y2="112" stroke="var(--text-color)" stroke-width="16"/>
-                            <circle cx="64" cy="72" r="12" fill="var(--secondary-color)"/>
-                            <circle cx="104" cy="72" r="12" fill="var(--secondary-color)"/>
-                            <circle cx="144" cy="72" r="12" fill="var(--secondary-color)"/>
+                            <circle cx="64" cy="72" r="12" fill="#f39c12"/>
+                            <circle cx="104" cy="72" r="12" fill="#e74c3c"/>
+                            <circle cx="144" cy="72" r="12" fill="#2ecc71"/>
                             
                             <rect x="80" y="160" width="128" height="128" rx="12" ry="12" fill="var(--background-color)"/>
-                            <line x1="100" y1="184" x2="188" y2="184" stroke="var(--text-color)" stroke-width="12" stroke-linecap="round"/>
-                            <line x1="100" y1="214" x2="168" y2="214" stroke="var(--text-color)" stroke-width="12" stroke-linecap="round"/>
-                            <line x1="100" y1="244" x2="188" y2="244" stroke="var(--text-color)" stroke-width="12" stroke-linecap="round"/>
+                            <line x1="100" y1="184" x2="188" y2="184" stroke="var(--text-color)" stroke-width="12" stroke-linecap="round" opacity="0.7"/>
+                            <line x1="100" y1="214" x2="168" y2="214" stroke="var(--text-color)" stroke-width="12" stroke-linecap="round" opacity="0.7"/>
+                            <line x1="100" y1="244" x2="188" y2="244" stroke="var(--text-color)" stroke-width="12" stroke-linecap="round" opacity="0.7"/>
 
                             <path d="M 256,288 C 256,224 400,224 400,288" fill="none" stroke="var(--secondary-color)" stroke-width="16" stroke-linecap="round"/>
                             <path d="M 288,288 L 288,192 L 368,192 L 368,288" fill="none" stroke="var(--secondary-color)" stroke-width="16" stroke-linecap="round"/>
@@ -970,6 +1001,7 @@
                     heroTitle: "Karyerana Güc Qat – Layihə İdarəetməsini Öyrən!",
                     heroSubtitle: "Online kurslar, təlimlər və peşəkar konsultasiya ilə bacarıqlarınızı artırın",
                     heroButton: "Dərslərə Başla",
+                    aboutButton: "Haqqımızda",
                     servicesTitle: "Xidmətlərimiz",
                     service1Title: "Təlimlər",
                     service1Desc: "Layihə idarəetmə bacarıqlarınızı praktiki və nəzəri dərslərlə inkişaf etdirin.",
@@ -1111,6 +1143,7 @@
                     heroTitle: "Master Project Management with Excellence",
                     heroSubtitle: "Enhance your skills with online courses, trainings, and professional consultation",
                     heroButton: "Start Learning",
+                    aboutButton: "About Us",
                     servicesTitle: "Our Services",
                     service1Title: "Trainings",
                     service1Desc: "Develop your project management skills with practical and theoretical lessons.",
@@ -1214,7 +1247,7 @@
                     news2ModalPoint1: "🔍 Topic: Agile and Classic Project Management",
                     news2ModalPoint2: "🎙️ Speaker: Mahmud Mahmudlu",
                     news2ModalPoint3: "📌 Ericsson – Tech Project Manager",
-                    news2ModalPoint4: "� PMP, Lean Six Sigma Certified",
+                    news2ModalPoint4: "📜 PMP, Lean Six Sigma Certified",
                     news2ModalDate: "🗓️ Date: August 21st (Event has ended)",
                     news2ModalButton: "Registration Closed",
                     news2ModalHashtags: "#projectmanagement #agilemanagement #pmp #sixsigma #freeseminar #mahmudmahmudlu #onlineevents #management",
@@ -1336,5 +1369,3 @@
 
 </body>
 </html>
-" in the immersive.
-i want to apply second suggestion as well, add secondary call to action but�
