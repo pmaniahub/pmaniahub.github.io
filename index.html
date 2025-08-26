@@ -147,6 +147,7 @@
         .hero {
             background-color: var(--background-color);
             padding: 60px 0;
+            overflow: hidden;
         }
 
         .hero-content {
@@ -160,6 +161,7 @@
             flex: 1;
             max-width: 600px;
             text-align: left;
+            z-index: 1;
         }
 
         .hero-text h1 {
@@ -631,14 +633,25 @@
                         <a href="telimler.html" class="cta-button" data-lang-key="heroButton">Dərslərə Başla</a>
                     </div>
                     <div class="hero-image">
-                        <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">
-                            <g fill="#4a1ad1">
-                                <path d="M512 64C264.58 64 64 264.58 64 512s200.58 448 448 448 448-200.58 448-448S759.42 64 512 64zm0 832c-212.08 0-384-171.92-384-384s171.92-384 384-384 384 171.92 384 384-171.92 384-384 384z"/>
-                                <path d="M448 320h128v128H448zM448 480h128v224H448z"/>
-                            </g>
-                            <g fill="#34495e">
-                                <path d="M682.67 341.33C640 298.67 576 298.67 533.33 341.33c-42.66 42.67-42.66 117.34 0 160l42.67 42.67 106.67-106.67-42.67-42.66zM448 576l-85.33 85.33c-42.67 42.67-42.67 117.34 0 160C405.33 864 490.67 864 533.33 821.33L746.67 608l-106.67-106.67-192 192z"/>
-                            </g>
+                        <svg width="100%" height="100%" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="32" y="32" width="448" height="320" rx="24" ry="24" fill="var(--white-color)" stroke="var(--text-color)" stroke-width="16"/>
+                            <line x1="32" y1="112" x2="480" y2="112" stroke="var(--text-color)" stroke-width="16"/>
+                            <circle cx="64" cy="72" r="12" fill="var(--secondary-color)"/>
+                            <circle cx="104" cy="72" r="12" fill="var(--secondary-color)"/>
+                            <circle cx="144" cy="72" r="12" fill="var(--secondary-color)"/>
+                            
+                            <rect x="80" y="160" width="128" height="128" rx="12" ry="12" fill="var(--background-color)"/>
+                            <line x1="100" y1="184" x2="188" y2="184" stroke="var(--text-color)" stroke-width="12" stroke-linecap="round"/>
+                            <line x1="100" y1="214" x2="168" y2="214" stroke="var(--text-color)" stroke-width="12" stroke-linecap="round"/>
+                            <line x1="100" y1="244" x2="188" y2="244" stroke="var(--text-color)" stroke-width="12" stroke-linecap="round"/>
+
+                            <path d="M 256,288 C 256,224 400,224 400,288" fill="none" stroke="var(--secondary-color)" stroke-width="16" stroke-linecap="round"/>
+                            <path d="M 288,288 L 288,192 L 368,192 L 368,288" fill="none" stroke="var(--secondary-color)" stroke-width="16" stroke-linecap="round"/>
+                            
+                            <path d="M 192,480 L 240,352 L 288,480" fill="var(--white-color)" stroke="var(--text-color)" stroke-width="16" stroke-linejoin="round" stroke-linecap="round"/>
+                            <path d="M 320,480 L 272,352" fill="none" stroke="var(--text-color)" stroke-width="16" stroke-linejoin="round" stroke-linecap="round"/>
+                            <circle cx="264" cy="416" r="48" fill="var(--white-color)" stroke="var(--text-color)" stroke-width="16"/>
+                            <circle cx="264" cy="416" r="16" fill="var(--text-color)"/>
                         </svg>
                     </div>
                 </div>
@@ -1201,7 +1214,7 @@
                     news2ModalPoint1: "🔍 Topic: Agile and Classic Project Management",
                     news2ModalPoint2: "🎙️ Speaker: Mahmud Mahmudlu",
                     news2ModalPoint3: "📌 Ericsson – Tech Project Manager",
-                    news2ModalPoint4: "📜 PMP, Lean Six Sigma Certified",
+                    news2ModalPoint4: "� PMP, Lean Six Sigma Certified",
                     news2ModalDate: "🗓️ Date: August 21st (Event has ended)",
                     news2ModalButton: "Registration Closed",
                     news2ModalHashtags: "#projectmanagement #agilemanagement #pmp #sixsigma #freeseminar #mahmudmahmudlu #onlineevents #management",
@@ -1322,4 +1335,6 @@
     </script>
 
 </body>
-</ht
+</html>
+" in the immersive.
+i want to apply second suggestion as well, add secondary call to action but�
