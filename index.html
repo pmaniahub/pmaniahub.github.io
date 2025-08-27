@@ -145,50 +145,53 @@
 
         /* --- Hero Section --- */
         .hero {
-            background-color: var(--background-color);
-            padding: 60px 0;
-            overflow: hidden;
+            position: relative;
+            background-image: url('https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');
+            background-size: cover;
+            background-position: center center;
+            padding: 100px 0;
+            color: var(--white-color);
+            text-align: center;
         }
 
-        .hero-content {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 40px;
-        }
-
-        .hero-text {
-            flex: 1;
-            max-width: 600px;
-            text-align: left;
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(34, 40, 49, 0.7);
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
             z-index: 1;
         }
 
-        .hero-text h1 {
-            font-size: 3em;
-            margin-bottom: 20px;
+        .hero .container {
+            position: relative;
+            z-index: 2;
         }
 
-        .hero-text p {
-            font-size: 1.2em;
-            margin-bottom: 30px;
+        .hero h1 {
+            color: var(--white-color);
+            font-size: 3.2em;
+            margin-bottom: 20px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero p {
+            font-size: 1.25em;
+            max-width: 600px;
+            margin: 0 auto 40px auto;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.3);
         }
         
         .hero-buttons {
             display: flex;
             gap: 15px;
             align-items: center;
+            justify-content: center;
             flex-wrap: wrap;
-        }
-
-        .hero-image {
-            flex: 1;
-            max-width: 500px;
-        }
-        
-        .hero-image svg {
-            width: 100%;
-            height: auto;
         }
 
         .cta-button {
@@ -212,14 +215,13 @@
         
         .cta-button-secondary {
             background-color: transparent;
-            color: var(--secondary-color);
-            border: 2px solid var(--secondary-color);
+            color: var(--white-color);
+            border: 2px solid var(--white-color);
         }
 
         .cta-button-secondary:hover {
-            background-color: var(--secondary-color);
-            color: var(--white-color);
-            border-color: var(--secondary-color);
+            background-color: var(--white-color);
+            color: var(--secondary-color);
         }
 
         .cta-button.disabled {
@@ -594,32 +596,13 @@
             }
             .hamburger { display: block; }
         }
-        @media (max-width: 992px) {
-            .hero-content {
-                flex-direction: column-reverse;
-                text-align: center;
-            }
-            .hero-text {
-                text-align: center;
-                max-width: 100%;
-            }
-            .hero-image {
-                max-width: 350px;
-                margin-bottom: 30px;
-            }
-            .hero-buttons {
-                justify-content: center;
-            }
-        }
+        
         @media (max-width: 768px) {
             .hero {
-                padding: 40px 0;
+                padding: 80px 0;
             }
-            .hero-text h1 {
-                font-size: 2.2em;
-            }
-            .hero-image {
-                max-width: 300px;
+            .hero h1 {
+                font-size: 2.5em;
             }
             .section-title { font-size: 2em; }
             .scroll-btn { display: none; }
@@ -662,37 +645,11 @@
     <main>
         <section class="hero">
             <div class="container">
-                <div class="hero-content">
-                    <div class="hero-text">
-                        <h1 data-lang-key="heroTitle">Karyerana Güc Qat – Layihə İdarəetməsini Öyrən!</h1>
-                        <p data-lang-key="heroSubtitle">Online kurslar, təlimlər və peşəkar konsultasiya ilə bacarıqlarınızı artırın</p>
-                        <div class="hero-buttons">
-                            <a href="telimler.html" class="cta-button" data-lang-key="heroButton">Dərslərə Başla</a>
-                            <a href="#about-section" class="cta-button cta-button-secondary" data-lang-key="aboutButton">Haqqımızda</a>
-                        </div>
-                    </div>
-                    <div class="hero-image">
-                        <svg width="100%" height="100%" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
-                            <rect x="32" y="32" width="448" height="320" rx="24" ry="24" fill="var(--white-color)" stroke="var(--text-color)" stroke-width="16"/>
-                            <line x1="32" y1="112" x2="480" y2="112" stroke="var(--text-color)" stroke-width="16"/>
-                            <circle cx="64" cy="72" r="12" fill="#f39c12"/>
-                            <circle cx="104" cy="72" r="12" fill="#e74c3c"/>
-                            <circle cx="144" cy="72" r="12" fill="#2ecc71"/>
-                            
-                            <rect x="80" y="160" width="128" height="128" rx="12" ry="12" fill="var(--background-color)"/>
-                            <line x1="100" y1="184" x2="188" y2="184" stroke="var(--text-color)" stroke-width="12" stroke-linecap="round" opacity="0.7"/>
-                            <line x1="100" y1="214" x2="168" y2="214" stroke="var(--text-color)" stroke-width="12" stroke-linecap="round" opacity="0.7"/>
-                            <line x1="100" y1="244" x2="188" y2="244" stroke="var(--text-color)" stroke-width="12" stroke-linecap="round" opacity="0.7"/>
-
-                            <path d="M 256,288 C 256,224 400,224 400,288" fill="none" stroke="var(--secondary-color)" stroke-width="16" stroke-linecap="round"/>
-                            <path d="M 288,288 L 288,192 L 368,192 L 368,288" fill="none" stroke="var(--secondary-color)" stroke-width="16" stroke-linecap="round"/>
-                            
-                            <path d="M 192,480 L 240,352 L 288,480" fill="var(--white-color)" stroke="var(--text-color)" stroke-width="16" stroke-linejoin="round" stroke-linecap="round"/>
-                            <path d="M 320,480 L 272,352" fill="none" stroke="var(--text-color)" stroke-width="16" stroke-linejoin="round" stroke-linecap="round"/>
-                            <circle cx="264" cy="416" r="48" fill="var(--white-color)" stroke="var(--text-color)" stroke-width="16"/>
-                            <circle cx="264" cy="416" r="16" fill="var(--text-color)"/>
-                        </svg>
-                    </div>
+                <h1 data-lang-key="heroTitle">Karyerana Güc Qat – Layihə İdarəetməsini Öyrən!</h1>
+                <p data-lang-key="heroSubtitle">Online kurslar, təlimlər və peşəkar konsultasiya ilə bacarıqlarınızı artırın</p>
+                <div class="hero-buttons">
+                    <a href="telimler.html" class="cta-button" data-lang-key="heroButton">Dərslərə Başla</a>
+                    <a href="#about-section" class="cta-button cta-button-secondary" data-lang-key="aboutButton">Haqqımızda</a>
                 </div>
             </div>
         </section>
@@ -1059,7 +1016,7 @@
                     testimonialsModalTitle: "Tələbə Rəyləri",
                     testimonial1: "“Təlimçinin dərsi təqdim etmə tərzi çox maraqlı və aydın idi. Mövzunu hərtərəfli izah edir, real nümunələr gətirərək mövzunu daha da anlaşıqlı edirdi. Ritmi uyğun, izahı əyləncəli idi və iştirakçılarla yaxşı əlaqə qurmağı bacarırdı.”",
                     testimonial1Author: "- Vebinar İştirakçısı",
-                    testimonial2: "“Mən stomatologiya ixtisasında təhsil alıram, lakin fakültə startap sədri kimi layihə idarəetməsi üzrə biliklərimi genişləndirmək məqsədilə Project Manager mövzulu vebinarlarda iştirak edirəm. Təlimçinin izahı olduqca aydın və məzmunlu idi, dərsin ritmi uyğun şəkildə qurulmuşdu. Nəticədə, mövzunun bütün məqamlarını asanlıqla mənimsəyə bildim.”",
+                    testimonial2: "“Mən stomatologiya ixtisasında təhsil alıram, lakin fakültə startap sədri kimi layihə idarəetməsi üzrə biliklərimi genişləndirmək məqsədilə Project Manager mövzulu vebinarlarda iştirak edirəm. Təlimçinin izahı olduca aydın və məzmunlu idi, dərsin ritmi uyğun şəkildə qurulmuşdu. Nəticədə, mövzunun bütün məqamlarını asanlıqla mənimsəyə bildim.”",
                     testimonial2Author: "- Vebinar İştirakçısı",
                     testimonial3: "“Tecrubeli olmasini hiss eletdiren telimcidir, aydin, sistematik ve sual isaresi qalmayacaq sekilde izah edir.”",
                     testimonial3Author: "- Təlim İştirakçısı",
@@ -1241,7 +1198,7 @@
                     blogModal3Item4: "<b>Risk Monitoring:</b> Continuously tracking risks throughout the project and updating plans as needed.",
                     blogModal3Content3: "Remember, effective risk management is the art of solving a problem before it grows.",
                     newsModalTitle: "Registration is Open!",
-                    newsModalTagline: "JOIN, LEARN, APPLY! 🚀",
+                    newsModalTagline: "JOIN, LEARN, APPLY! �",
                     newsModalDesc1: "Want to become a professional in project management? PMANIA will help you with international approaches, real examples, and practical knowledge!",
                     newsModalPoint1: "💡 8-week intensive training",
                     newsModalPoint2: "📚 Agile, Waterfall, Scrum, Kanban",
@@ -1376,4 +1333,5 @@
     </script>
 
 </body>
-</ht
+</html>
+�
