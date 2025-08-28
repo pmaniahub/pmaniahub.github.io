@@ -6,16 +6,18 @@
     <title>PMania Hub - Project Management Platform</title>
     <!-- Favicon -->
     <link rel="icon" href="images/logo.png" type="image/png">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         /* --- Google Fonts Import --- */
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Roboto:wght@400;500&display=swap');
 
         /* --- CSS Reset & Basic Styles --- */
         :root {
-            --primary-color: #222831; /* Neutral Dark Grey */
-            --secondary-color: #4a1ad1; /* Your Brand's Purple */
-            --background-color: #ecf0f1; /* Light Gray */
-            --text-color: #34495e; /* Dark Gray */
+            --primary-color: #222831;
+            --secondary-color: #4a1ad1;
+            --background-color: #ecf0f1;
+            --text-color: #34495e;
             --white-color: #ffffff;
             --heading-font: 'Poppins', sans-serif;
             --body-font: 'Roboto', sans-serif;
@@ -59,6 +61,15 @@
 
         section {
             padding: 60px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-family: var(--heading-font);
+            font-size: 2.5em;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 50px;
         }
 
         /* --- Header & Navigation --- */
@@ -228,18 +239,117 @@
             background-color: #95a5a6;
             cursor: not-allowed;
         }
-
-        /* --- Services Section --- */
-        .services {
+        
+        /* --- Value Proposition Section --- */
+        .value-prop-section {
+            padding: 60px 0;
             background-color: var(--white-color);
         }
-        .section-title {
+
+        .value-prop-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .value-card {
+            background: var(--white-color);
+            border-radius: 12px;
+            padding: 30px;
             text-align: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.07);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .value-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+        }
+
+        .value-card-icon {
             font-size: 2.5em;
-            margin-bottom: 50px;
+            color: var(--secondary-color);
+            margin-bottom: 20px;
         }
         
-        /* --- Horizontal Scroll Section --- */
+        .value-card h3 {
+            font-family: var(--heading-font);
+            font-size: 1.3em;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        .value-card p {
+            font-family: var(--body-font);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+        
+        /* --- New Services Section --- */
+        .services-section {
+            padding: 60px 0;
+            background-color: #f9f9f9;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background: var(--white-color);
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.07);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+        }
+
+        .service-card-content {
+            padding: 30px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .service-card-icon {
+            font-size: 2.5em;
+            color: var(--secondary-color);
+            margin-bottom: 20px;
+        }
+
+        .service-card h3 {
+            font-size: 1.5em;
+            margin-bottom: 15px;
+        }
+
+        .service-card p {
+            flex-grow: 1;
+            margin-bottom: 25px;
+        }
+        
+        .service-card-button {
+            display: inline-block;
+            text-decoration: none;
+            color: var(--secondary-color);
+            font-weight: 600;
+            font-family: var(--heading-font);
+            align-self: flex-start;
+            transition: color 0.3s ease;
+        }
+
+        .service-card-button:hover {
+            color: #3b15a8;
+        }
+        
+        /* --- Horizontal Scroll Section (For News/Blog) --- */
         .scroll-wrapper {
             position: relative;
         }
@@ -254,17 +364,17 @@
         .scroll-container::-webkit-scrollbar {
             display: none;
         }
-        .services-grid, .news-grid, .blog-grid, .testimonial-highlights {
+        .news-grid, .blog-grid, .testimonial-highlights {
             display: flex;
             flex-wrap: nowrap;
             gap: 30px;
         }
-        .service-card, .news-card, .blog-post-card {
+        .news-card, .blog-post-card {
             flex: 0 0 80%;
             max-width: 300px;
         }
         @media (min-width: 640px) {
-            .service-card, .news-card, .blog-post-card {
+            .news-card, .blog-post-card {
                 flex: 0 0 40%;
             }
         }
@@ -272,7 +382,7 @@
             .scroll-container {
                 justify-content: center;
             }
-            .service-card, .news-card, .blog-post-card {
+            .news-card, .blog-post-card {
                 flex: 0 0 calc(33.333% - 20px);
             }
         }
@@ -308,27 +418,7 @@
         }
         .scroll-btn-left { left: -25px; }
         .scroll-btn-right { right: -25px; }
-
-        .service-card {
-            background-color: var(--white-color);
-            padding: 30px;
-            text-align: center;
-            border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .service-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.12);
-        }
-
-        .service-card h3 {
-            font-size: 1.5em;
-            margin-bottom: 15px;
-            color: var(--secondary-color);
-        }
-
+        
         /* --- News Section --- */
         .news { background-color: var(--background-color); }
         .news-card {
@@ -645,47 +735,93 @@
     <main>
         <section class="hero">
             <div class="container">
-                <h1 data-lang-key="heroTitle">Karyerana Güc Qat – Layihə İdarəetməsini Öyrən!</h1>
-                <p data-lang-key="heroSubtitle">Online kurslar, təlimlər və peşəkar konsultasiya ilə bacarıqlarınızı artırın</p>
+                <h1 data-lang-key="heroTitle">Layihələrinizi Peşəkarcasına İdarə Edin. Gələcəyinizi Dəyişin.</h1>
+                <p data-lang-key="heroSubtitle">Fərdlər və şirkətlər üçün hazırlanmış təlim və konsaltinq xidmətləri – real nəticələr, praktik alətlər.</p>
                 <div class="hero-buttons">
-                    <a href="telimler.html" class="cta-button" data-lang-key="heroButton">Dərslərə Başla</a>
-                    <a href="#about-section" class="cta-button cta-button-secondary" data-lang-key="aboutButton">Haqqımızda</a>
+                    <a href="telimler.html" class="cta-button" data-lang-key="heroButton">Təlimə Qoşul</a>
+                    <a href="elaqe.html" class="cta-button cta-button-secondary" data-lang-key="aboutButton">Konsultasiya Al</a>
                 </div>
             </div>
         </section>
 
-        <!-- Services Section -->
-        <section class="services">
+        <section class="value-prop-section">
+            <div class="container">
+                <h2 class="section-title" data-lang-key="valuePropTitle">Niyə Biz?</h2>
+                <div class="value-prop-grid">
+                    <!-- Card 1: Practical Training -->
+                    <div class="value-card">
+                        <div class="value-card-icon">
+                            <i class="fas fa-bullseye"></i>
+                        </div>
+                        <h3 data-lang-key="value1Title">Praktiki Təlim</h3>
+                        <p data-lang-key="value1Desc">Real nümunələr və alətlər</p>
+                    </div>
+    
+                    <!-- Card 2: Global Standards -->
+                    <div class="value-card">
+                        <div class="value-card-icon">
+                            <i class="fas fa-globe-americas"></i>
+                        </div>
+                        <h3 data-lang-key="value2Title">Beynəlxalq Standartlar</h3>
+                        <p data-lang-key="value2Desc">PMI və Agile yanaşmaları</p>
+                    </div>
+    
+                    <!-- Card 3: Personalized Consulting -->
+                    <div class="value-card">
+                        <div class="value-card-icon">
+                            <i class="fas fa-lightbulb"></i>
+                        </div>
+                        <h3 data-lang-key="value3Title">Fərdi Konsaltinq</h3>
+                        <p data-lang-key="value3Desc">Biznesinizə uyğun həllər</p>
+                    </div>
+    
+                    <!-- Card 4: Proven Expertise -->
+                    <div class="value-card">
+                        <div class="value-card-icon">
+                            <i class="fas fa-trophy"></i>
+                        </div>
+                        <h3 data-lang-key="value4Title">Sübut Olunmuş Təcrübə</h3>
+                        <p data-lang-key="value4Desc">15M+ € layihə idarəetməsi</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="services-section">
             <div class="container">
                 <h2 class="section-title" data-lang-key="servicesTitle">Xidmətlərimiz</h2>
-                <div class="scroll-wrapper">
-                    <div class="scroll-container" id="services-scroller">
-                        <div class="services-grid">
-                            <div class="service-card">
-                                <h3><a href="telimler.html" style="text-decoration:none; color: var(--secondary-color);" data-lang-key="service1Title">Təlimlər</a></h3>
-                                <p data-lang-key="service1Desc">Layihə idarəetmə bacarıqlarınızı praktiki və nəzəri dərslərlə inkişaf etdirin.</p>
-                            </div>
-                            <div class="service-card">
-                                <h3 data-lang-key="service2Title">Konsultasiya</h3>
-                                <p data-lang-key="service2Desc">Peşəkar layihə menecerlərindən layihələriniz üçün fərdi məsləhət alın.</p>
-                            </div>
-                            <div class="service-card">
-                                <h3><a href="#blog-section" style="text-decoration:none; color: var(--secondary-color);" data-lang-key="service3Title">Bloq</a></h3>
-                                <p data-lang-key="service3Desc">Sektorla bağlı son məqalələr, trendlər və yenilikləri izləyin.</p>
-                            </div>
+                <div class="services-grid">
+                    <!-- Service 1: Trainings -->
+                    <div class="service-card">
+                        <div class="service-card-content">
+                            <div class="service-card-icon"><i class="fas fa-book-open"></i></div>
+                            <h3 data-lang-key="service1Title">Təlimlər</h3>
+                            <p data-lang-key="service1Desc">Layihə idarəetməni praktik nümunələrlə və sübut olunmuş metodlarla öyrənin.</p>
+                            <a href="/telimler" class="service-card-button" data-lang-key="learnMore">Daha Çox Öyrən &rarr;</a>
                         </div>
                     </div>
-                    <button class="scroll-btn scroll-btn-left" id="services-scroll-left">
-                        <svg viewBox="0 0 24 24"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
-                    </button>
-                    <button class="scroll-btn scroll-btn-right" id="services-scroll-right">
-                        <svg viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/></svg>
-                    </button>
+                    <!-- Service 2: Consulting -->
+                    <div class="service-card">
+                        <div class="service-card-content">
+                            <div class="service-card-icon"><i class="fas fa-building"></i></div>
+                            <h3 data-lang-key="service2Title">Konsaltinq</h3>
+                            <p data-lang-key="service2Desc">Şirkətinizin layihə nəticələrini yaxşılaşdırmaq üçün xüsusi həllər.</p>
+                            <a href="/konsaltinq" class="service-card-button" data-lang-key="learnMore">Daha Çox Öyrən &rarr;</a>
+                        </div>
+                    </div>
+                    <!-- Service 3: Personal Coaching -->
+                    <div class="service-card">
+                        <div class="service-card-content">
+                            <div class="service-card-icon"><i class="fas fa-user-friends"></i></div>
+                            <h3 data-lang-key="service3Title">Şəxsi Kouçinq</h3>
+                            <p data-lang-key="service3Desc">Karyera inkişafınız üçün 1:1 mentorluq və dəstək.</p>
+                            <a href="/koucinq" class="service-card-button" data-lang-key="learnMore">Daha Çox Öyrən &rarr;</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- News Section -->
         <section class="news">
             <div class="container">
                 <h2 class="section-title" data-lang-key="newsTitle">Xəbərlər</h2>
@@ -963,17 +1099,27 @@
                     navReviews: "Rəylər",
                     navBlog: "Bloq",
                     navContact: "Əlaqə",
-                    heroTitle: "Karyerana Güc Qat – Layihə İdarəetməsini Öyrən!",
-                    heroSubtitle: "Online kurslar, təlimlər və peşəkar konsultasiya ilə bacarıqlarınızı artırın",
-                    heroButton: "Dərslərə Başla",
-                    aboutButton: "Haqqımızda",
+                    heroTitle: "Layihələrinizi Peşəkarcasına İdarə Edin. Gələcəyinizi Dəyişin.",
+                    heroSubtitle: "Fərdlər və şirkətlər üçün hazırlanmış təlim və konsaltinq xidmətləri – real nəticələr, praktik alətlər.",
+                    heroButton: "Təlimə Qoşul",
+                    aboutButton: "Konsultasiya Al",
+                    valuePropTitle: "Niyə Biz?",
+                    value1Title: "Praktiki Təlim",
+                    value1Desc: "Real nümunələr və alətlər",
+                    value2Title: "Beynəlxalq Standartlar",
+                    value2Desc: "PMI və Agile yanaşmaları",
+                    value3Title: "Fərdi Konsaltinq",
+                    value3Desc: "Biznesinizə uyğun həllər",
+                    value4Title: "Sübut Olunmuş Təcrübə",
+                    value4Desc: "15M+ € layihə idarəetməsi",
                     servicesTitle: "Xidmətlərimiz",
                     service1Title: "Təlimlər",
-                    service1Desc: "Layihə idarəetmə bacarıqlarınızı praktiki və nəzəri dərslərlə inkişaf etdirin.",
-                    service2Title: "Konsultasiya",
-                    service2Desc: "Peşəkar layihə menecerlərindən layihələriniz üçün fərdi məsləhət alın.",
-                    service3Title: "Bloq",
-                    service3Desc: "Sektorla bağlı son məqalələr, trendlər və yenilikləri izləyin.",
+                    service1Desc: "Layihə idarəetməni praktik nümunələrlə və sübut olunmuş metodlarla öyrənin.",
+                    service2Title: "Konsaltinq",
+                    service2Desc: "Şirkətinizin layihə nəticələrini yaxşılaşdırmaq üçün xüsusi həllər.",
+                    service3Title: "Şəxsi Kouçinq",
+                    service3Desc: "Karyera inkişafınız üçün 1:1 mentorluq və dəstək.",
+                    learnMore: "Daha Çox Öyrən &rarr;",
                     newsTitle: "Xəbərlər",
                     news1Title: "Qeydiyyat Başladı: 360° Layihə İdarəetməsi",
                     news2Title: "Keçirilmiş Seminar: Çevik və Klassik Metodlar",
@@ -1045,7 +1191,7 @@
                     blogModal2Item2: "<b>2. Hərtərəfli Planlama:</b> Bütün tapşırıqları, lazım olan resursları, büdcəni və zaman çərçivəsini əhatə edən detallı bir plan hazırlayın. Yaxşı plan, uğurun yarısıdır.",
                     blogModal2Item3: "<b>3. Effektiv Kommunikasiya:</b> Komanda üzvləri və maraqlı tərəflər arasında davamlı və şəffaf məlumat axınını təmin edin. Hər kəs öz rolunu və gözləntiləri bilməlidir.",
                     blogModal2Item4: "<b>4. Risk İdarəetməsi:</b> Layihəyə təsir edə biləcək potensial problemləri (riskləri) əvvəlcədən müəyyən edin və onlara qarşı hazırlıqlı olun.",
-                    blogModal2Item5: "<b>5. Davamlı Monitorinq və Nəzarət:</b> Layihənin gedişatını planla müqayisə edərək mütəmadi izləyin. Problem yaranarsa, vaxtında müdaxilə edərək onu aradan qaldırın.",
+                    blogModal2Item5: "<b>5. Davamlı Monitorinq və Nəzarət:</b> Layihənin gedişatını planla müqayəisə edərək mütəmadi izləyin. Problem yaranarsa, vaxtında müdaxilə edərək onu aradan qaldırın.",
                     blogModal3Title: "Risk İdarəetməsi Nədir?",
                     blogModal3Content1: "Risk idarəetməsi, layihənin məqsədlərinə mənfi təsir edə biləcək potensial problemlərin (risklərin) proaktiv şəkildə müəyyən edilməsi, təhlili və onlara cavab verilməsi prosesidir. Məqsəd, sürprizləri minimuma endirmək və layihənin uğur şansını artırmaqdır.",
                     blogModal3Content2: "Bu proses adətən 4 əsas mərhələdən ibarətdir:",
@@ -1105,17 +1251,27 @@
                     navReviews: "Reviews",
                     navBlog: "Blog",
                     navContact: "Contact",
-                    heroTitle: "Master Project Management with Excellence",
-                    heroSubtitle: "Enhance your skills with online courses, trainings, and professional consultation",
-                    heroButton: "Start Learning",
-                    aboutButton: "About Us",
+                    heroTitle: "Master Project Management. Transform Your Future.",
+                    heroSubtitle: "Training and consulting designed for individuals and companies who want to deliver projects with confidence.",
+                    heroButton: "Join a Training",
+                    aboutButton: "Book a Consultation",
+                    valuePropTitle: "Why Choose Us?",
+                    value1Title: "Practical Training",
+                    value1Desc: "Real industry cases & tools",
+                    value2Title: "Global Standards",
+                    value2Desc: "Based on PMI/Agile best practices",
+                    value3Title: "Personalized Consulting",
+                    value3Desc: "Tailored to your business goals",
+                    value4Title: "Proven Expertise",
+                    value4Desc: "Delivered projects worth millions",
                     servicesTitle: "Our Services",
                     service1Title: "Trainings",
-                    service1Desc: "Develop your project management skills with practical and theoretical lessons.",
+                    service1Desc: "Learn project management with practical examples and proven frameworks.",
                     service2Title: "Consulting",
-                    service2Desc: "Get personalized advice for your projects from professional project managers.",
-                    service3Title: "Blog",
-                    service3Desc: "Follow the latest articles, trends, and news related to the sector.",
+                    service2Desc: "Custom solutions to improve your company’s project delivery.",
+                    service3Title: "Personal Coaching",
+                    service3Desc: "1:1 mentoring and guidance for your career growth.",
+                    learnMore: "Learn More &rarr;",
                     newsTitle: "News",
                     news1Title: "Registration Open: 360° Project Management",
                     news2Title: "Past Seminar: Agile vs. Classic Methods",
@@ -1283,7 +1439,6 @@
                 // Initialize scrollers
                 setupScroller('news-scroller', 'news-scroll-left', 'news-scroll-right');
                 setupScroller('blog-scroller', 'blog-scroll-left', 'blog-scroll-right');
-                setupScroller('services-scroller', 'services-scroll-left', 'services-scroll-right');
                 setupScroller('testimonials-scroller', 'testimonials-scroll-left', 'testimonials-scroll-right');
             });
 
@@ -1305,17 +1460,17 @@
             // Scroller functionality
             function setupScroller(containerId, leftBtnId, rightBtnId) {
                 const container = document.getElementById(containerId);
+                if (!container) return; // Exit if the container doesn't exist
                 const leftBtn = document.getElementById(leftBtnId);
                 const rightBtn = document.getElementById(rightBtnId);
 
                 function updateArrows() {
-                    if (!container) return; // Exit if container not found
                     const maxScrollLeft = container.scrollWidth - container.clientWidth;
-                    leftBtn.classList.toggle('visible', container.scrollLeft > 0);
-                    rightBtn.classList.toggle('visible', container.scrollLeft < maxScrollLeft - 1);
+                    if(leftBtn) leftBtn.classList.toggle('visible', container.scrollLeft > 0);
+                    if(rightBtn) rightBtn.classList.toggle('visible', container.scrollLeft < maxScrollLeft - 1);
                 }
 
-                if (container && leftBtn && rightBtn) {
+                if (leftBtn && rightBtn) {
                     container.addEventListener('scroll', updateArrows);
                     leftBtn.addEventListener('click', () => {
                         container.scrollLeft -= 320;
@@ -1324,7 +1479,6 @@
                         container.scrollLeft += 320;
                     });
                     
-                    // Initial check
                     new ResizeObserver(updateArrows).observe(container);
                     updateArrows();
                 }
@@ -1334,3 +1488,4 @@
 
 </body>
 </html>
+�
