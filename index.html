@@ -712,7 +712,20 @@
                 font-size: 1.1em;
             }
             .value-prop-grid {
-                grid-template-columns: 1fr;
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .services-grid {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            .services-grid .service-card {
+                flex-basis: calc(50% - 15px);
+                min-width: 250px;
+            }
+            .services-grid .service-card:last-child {
+                flex-basis: 100%;
+                max-width: 320px; /* Adjust max-width for the centered card */
             }
         }
     </style>
@@ -1372,7 +1385,7 @@
                     blogModal3Item4: "<b>Risk Monitoring:</b> Continuously tracking risks throughout the project and updating plans as needed.",
                     blogModal3Content3: "Remember, effective risk management is the art of solving a problem before it grows.",
                     newsModalTitle: "Registration is Open!",
-                    newsModalTagline: "JOIN, LEARN, APPLY! 🚀",
+                    newsModalTagline: "JOIN, LEARN, APPLY! �",
                     newsModalDesc1: "Want to become a professional in project management? PMANIA will help you with international approaches, real examples, and practical knowledge!",
                     newsModalPoint1: "💡 8-week intensive training",
                     newsModalPoint2: "📚 Agile, Waterfall, Scrum, Kanban",
@@ -1386,7 +1399,7 @@
                     news2ModalPoint1: "🔍 Topic: Agile and Classic Project Management",
                     news2ModalPoint2: "🎙️ Speaker: Mahmud Mahmudlu",
                     news2ModalPoint3: "📌 Ericsson – Tech Project Manager",
-                    news2ModalPoint4: "� PMP, Lean Six Sigma Certified",
+                    news2ModalPoint4: "📜 PMP, Lean Six Sigma Certified",
                     news2ModalDate: "🗓️ Date: August 21st (Event has ended)",
                     news2ModalButton: "Registration Closed",
                     news2ModalHashtags: "#projectmanagement #agilemanagement #pmp #sixsigma #freeseminar #mahmudmahmudlu #onlineevents #management",
@@ -1506,3 +1519,4 @@
 
 </body>
 </html>
+�
