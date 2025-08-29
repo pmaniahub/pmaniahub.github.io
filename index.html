@@ -289,12 +289,6 @@
             background-color: #f9f9f9;
         }
 
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
-        }
-
         .service-card {
             background: var(--white-color);
             border-radius: 12px;
@@ -347,7 +341,7 @@
             color: #3b15a8;
         }
         
-        /* --- Horizontal Scroll Section (For News/Blog) --- */
+        /* --- Horizontal Scroll Section (For Services/News/Blog) --- */
         .scroll-wrapper {
             position: relative;
         }
@@ -362,17 +356,17 @@
         .scroll-container::-webkit-scrollbar {
             display: none;
         }
-        .news-grid, .blog-grid, .testimonial-highlights {
+        .services-grid-scroll, .news-grid, .blog-grid, .testimonial-highlights {
             display: flex;
             flex-wrap: nowrap;
             gap: 30px;
         }
-        .news-card, .blog-post-card {
+        .service-card, .news-card, .blog-post-card {
             flex: 0 0 80%;
             max-width: 300px;
         }
         @media (min-width: 640px) {
-            .news-card, .blog-post-card {
+            .service-card, .news-card, .blog-post-card {
                 flex: 0 0 40%;
             }
         }
@@ -380,8 +374,12 @@
             .scroll-container {
                 justify-content: center;
             }
-            .news-card, .blog-post-card {
+            .service-card, .news-card, .blog-post-card {
                 flex: 0 0 calc(33.333% - 20px);
+            }
+            .services-grid-scroll {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
             }
         }
         .scroll-btn {
@@ -689,9 +687,6 @@
             .value-prop-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
-            .services-grid {
-                grid-template-columns: 1fr;
-            }
         }
 
         @media (max-width: 768px) {
@@ -713,19 +708,6 @@
             }
             .value-prop-grid {
                 grid-template-columns: repeat(2, 1fr);
-            }
-            .services-grid {
-                display: flex;
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-            .services-grid .service-card {
-                flex-basis: calc(50% - 15px);
-                min-width: 250px;
-            }
-            .services-grid .service-card:last-child {
-                flex-basis: 100%;
-                max-width: 320px; /* Adjust max-width for the centered card */
             }
         }
     </style>
@@ -818,10 +800,12 @@
             </div>
         </section>
 
-        <section class="services-section">
+        <section class="services-section" id="services">
             <div class="container">
-                <h2 class="section-title" data-lang-key="servicesTitle">Xidmətlərimiz</h2>
-                <div class="services-grid">
+              <h2 class="section-title" data-lang-key="servicesTitle">Xidmətlərimiz</h2>
+              <div class="scroll-wrapper">
+                <div class="scroll-container" id="services-scroller">
+                  <div class="services-grid-scroll">
                     <!-- Service 1: Trainings -->
                     <div class="service-card">
                         <div class="service-card-content">
@@ -849,9 +833,17 @@
                             <a href="elaqe.html" class="service-card-button" data-lang-key="learnMore">Daha Çox Öyrən &rarr;</a>
                         </div>
                     </div>
+                  </div>
                 </div>
+                <button class="scroll-btn scroll-btn-left" id="services-scroll-left">
+                  <svg viewBox="0 0 24 24" width="24" height="24"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+                </button>
+                <button class="scroll-btn scroll-btn-right" id="services-scroll-right">
+                  <svg viewBox="0 0 24 24" width="24" height="24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/></svg>
+                </button>
+              </div>
             </div>
-        </section>
+          </section>
 
         <section class="news">
             <div class="container">
@@ -1468,6 +1460,7 @@
                 document.getElementById('lang-en').addEventListener('click', () => switchLanguage('en'));
                 
                 // Initialize scrollers
+                setupScroller('services-scroller', 'services-scroll-left', 'services-scroll-right');
                 setupScroller('news-scroller', 'news-scroll-left', 'news-scroll-right');
                 setupScroller('blog-scroller', 'blog-scroll-left', 'blog-scroll-right');
                 setupScroller('testimonials-scroller', 'testimonials-scroll-left', 'testimonials-scroll-right');
@@ -1496,6 +1489,7 @@
                 const rightBtn = document.getElementById(rightBtnId);
 
                 function updateArrows() {
+                    if (!container) return;
                     const maxScrollLeft = container.scrollWidth - container.clientWidth;
                     if(leftBtn) leftBtn.classList.toggle('visible', container.scrollLeft > 0);
                     if(rightBtn) rightBtn.classList.toggle('visible', container.scrollLeft < maxScrollLeft - 1);
@@ -1519,3 +1513,4 @@
 
 </body>
 </html>
+
