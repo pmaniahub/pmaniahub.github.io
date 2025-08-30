@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PMania Hub - Project Management Platform</title>
-    <link rel="icon" href="images/logo.png" type="image/png">
+    <!-- Favicon -->
+    <link rel="icon" href="/images/logo.png" type="image/png">
+    <!-- Font Awesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         /* --- Google Fonts Import --- */
@@ -441,34 +443,6 @@
             color: var(--secondary-color);
         }
 
-        /* --- About Section --- */
-        #about-section { scroll-margin-top: 120px; }
-        .about {
-            background-color: var(--white-color);
-            text-align: center;
-        }
-        .about p {
-            max-width: 700px;
-            margin: 0 auto;
-            font-size: 1.1em;
-        }
-        .about-buttons {
-            margin-top: 30px;
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
-        }
-        .about-buttons .cta-button {
-            background-color: var(--white-color);
-            color: var(--secondary-color);
-            border: 2px solid var(--secondary-color);
-        }
-        .about-buttons .cta-button:hover {
-            background-color: var(--secondary-color);
-            color: var(--white-color);
-        }
-
         /* --- Testimonials Section --- */
         #testimonials-section { scroll-margin-top: 120px; }
         .testimonials-cta {
@@ -791,14 +765,15 @@
     <header class="main-header">
         <div class="container">
             <a href="/" class="logo">
-                <img src="images/logo.png" alt="PMania Hub Logo">
+                <img src="/images/logo.png" alt="PMania Hub Logo">
             </a>
             <div class="header-actions">
                 <nav class="main-nav" id="main-nav-links">
                     <ul>
                         <li><a href="/" data-lang-key="navHome">Əsas Səhifə</a></li>
-                        <li><a href="/#about-section" data-lang-key="navAbout">Haqqımızda</a></li>
-                        <li><a href="/#services" data-lang-key="navServices">Xidmətlər</a></li>
+                        <li><a href="/about/" data-lang-key="navAbout">Haqqımızda</a></li>
+                        <li><a href="/services/" data-lang-key="navServices">Xidmətlər</a></li>
+                        <li><a href="/#testimonials-section" data-lang-key="navReviews">Rəylər</a></li>
                         <li><a href="/#blog-section" data-lang-key="navBlog">Bloq</a></li>
                         <li><a href="/contact/" data-lang-key="navContact">Əlaqə</a></li>
                     </ul>
@@ -834,6 +809,7 @@
             <div class="container">
                 <h2 class="section-title" data-lang-key="valuePropTitle">Niyə Biz?</h2>
                 <div class="value-prop-grid">
+                    <!-- Card 1: Practical Training -->
                     <div class="value-card">
                         <div class="value-card-icon">
                             <i class="fas fa-bullseye"></i>
@@ -842,6 +818,7 @@
                         <p data-lang-key="value1Desc">Real nümunələr və alətlər</p>
                     </div>
     
+                    <!-- Card 2: Global Standards -->
                     <div class="value-card">
                         <div class="value-card-icon">
                             <i class="fas fa-globe-americas"></i>
@@ -850,6 +827,7 @@
                         <p data-lang-key="value2Desc">PMI və Agile yanaşmaları</p>
                     </div>
     
+                    <!-- Card 3: Personalized Consulting -->
                     <div class="value-card">
                         <div class="value-card-icon">
                             <i class="fas fa-lightbulb"></i>
@@ -858,6 +836,7 @@
                         <p data-lang-key="value3Desc">Biznesinizə uyğun həllər</p>
                     </div>
     
+                    <!-- Card 4: Proven Expertise -->
                     <div class="value-card">
                         <div class="value-card-icon">
                             <i class="fas fa-trophy"></i>
@@ -875,6 +854,7 @@
               <div class="scroll-wrapper">
                 <div class="scroll-container" id="services-scroller">
                   <div class="services-grid-scroll">
+                    <!-- Service 1: Trainings -->
                     <div class="service-card">
                         <div class="service-card-content">
                             <div class="service-card-icon"><i class="fas fa-book-open"></i></div>
@@ -883,6 +863,7 @@
                             <a href="/services/" class="service-card-button" data-lang-key="learnMore">Daha Çox Öyrən &rarr;</a>
                         </div>
                     </div>
+                    <!-- Service 2: Consulting -->
                     <div class="service-card">
                         <div class="service-card-content">
                             <div class="service-card-icon"><i class="fas fa-building"></i></div>
@@ -891,6 +872,7 @@
                             <a href="/contact/" class="service-card-button" data-lang-key="learnMore">Daha Çox Öyrən &rarr;</a>
                         </div>
                     </div>
+                    <!-- Service 3: Personal Coaching -->
                     <div class="service-card">
                         <div class="service-card-content">
                             <div class="service-card-icon"><i class="fas fa-user-friends"></i></div>
@@ -918,19 +900,19 @@
                     <div class="scroll-container" id="news-scroller">
                         <div class="news-grid">
                             <div class="news-card" onclick="openModal('news-modal-1')">
-                                <img src="images/360.png" alt="360° Layihə İdarəetməsi Təlimi Qeydiyyatı" onerror="this.onerror=null;this.src='https://placehold.co/350x350/ecf0f1/222831?text=X%C9%99b%C9%99r+1';">
+                                <img src="/images/360.png" alt="360° Layihə İdarəetməsi Təlimi Qeydiyyatı" onerror="this.onerror=null;this.src='https://placehold.co/350x350/ecf0f1/222831?text=X%C9%99b%C9%99r+1';">
                                 <div class="news-content">
                                     <h3 data-lang-key="news1Title">Qeydiyyat Başladı: 360° Layihə İdarəetməsi</h3>
                                 </div>
                             </div>
                             <div class="news-card" onclick="openModal('news-modal-2')">
-                                <img src="images/webinar.png" alt="Ödənişsiz Seminar Elanı" onerror="this.onerror=null;this.src='https://placehold.co/350x350/ecf0f1/222831?text=X%C9%99b%C9%99r+2';">
+                                <img src="/images/webinar.png" alt="Ödənişsiz Seminar Elanı" onerror="this.onerror=null;this.src='https://placehold.co/350x350/ecf0f1/222831?text=X%C9%99b%C9%99r+2';">
                                 <div class="news-content">
                                     <h3 data-lang-key="news2Title">Keçirilmiş Seminar: Çevik və Klassik Metodlar</h3>
                                 </div>
                             </div>
                             <div class="news-card" onclick="openModal('news-modal-3')">
-                                <img src="images/ayafe.png" alt="Təqaüd Proqramı" onerror="this.onerror=null;this.src='https://placehold.co/350x350/ecf0f1/222831?text=X%C9%99b%C9%99r+3';">
+                                <img src="/images/ayafe.png" alt="Təqaüd Proqramı" onerror="this.onerror=null;this.src='https://placehold.co/350x350/ecf0f1/222831?text=X%C9%99b%C9%99r+3';">
                                 <div class="news-content">
                                     <h3 data-lang-key="news3Title">Təqaüd Proqramı Uğurla Başa Çatdı</h3>
                                 </div>
@@ -946,18 +928,8 @@
                 </div>
             </div>
         </section>
-
-        <section id="about-section" class="about">
-            <div class="container">
-                <h2 class="section-title" data-lang-key="aboutTitle">“PMania” ilə Tanış ol</h2>
-                <p data-lang-key="aboutDesc">PMania Hub, layihə idarəetməsi sahəsində karyera qurmaq və ya mövcud bacarıqlarını təkmilləşdirmək istəyənlər üçün yaradılmış hərtərəfli bir platformadır. Məqsədimiz, hər kəsə keyfiyyətli təhsil və peşəkar dəstək təqdim etməklə onların uğuruna töhfə verməkdir.</p>
-                <div class="about-buttons">
-                    <button class="cta-button" onclick="openModal('mission-modal')" data-lang-key="missionButton">💡 Missiyamız</button>
-                    <button class="cta-button" onclick="openModal('vision-modal')" data-lang-key="visionButton">🎯 Vizyonumuz</button>
-                </div>
-            </div>
-        </section>
-
+        
+        <!-- Testimonials CTA Section -->
         <section id="testimonials-section" class="testimonials-cta">
             <div class="container">
                 <h2 class="section-title" data-lang-key="testimonialsTitle">Tələbələrimiz Nə Deyir?</h2>
@@ -983,6 +955,7 @@
             </div>
         </section>
 
+        <!-- Blog Section -->
         <section id="blog-section" class="blog">
             <div class="container">
                 <h2 class="section-title" data-lang-key="blogTitle">Son Bloq Yazıları</h2>
@@ -1037,6 +1010,7 @@
         </section>
     </main>
 
+    <!-- Final CTA Section -->
     <section class="final-cta">
         <div class="container">
             <h2 data-lang-key="ctaTitle">Layihələrinizi Növbəti Səviyyəyə Qaldırmağa Hazırsınız?</h2>
@@ -1049,9 +1023,11 @@
                 <ul>
                     <li><a href="/" data-lang-key="quickNavHome">Əsas Səhifə</a></li>
                     <li>&rarr;</li>
-                    <li><a href="/#about-section" data-lang-key="quickNavAbout">Haqqımızda</a></li>
+                    <li><a href="/about/" data-lang-key="quickNavAbout">Haqqımızda</a></li>
                     <li>&rarr;</li>
-                    <li><a href="/#services" data-lang-key="quickNavServices">Xidmətlər</a></li>
+                    <li><a href="/services/" data-lang-key="quickNavServices">Xidmətlər</a></li>
+                     <li>&rarr;</li>
+                    <li><a href="/#testimonials-section" data-lang-key="navReviews">Rəylər</a></li>
                     <li>&rarr;</li>
                     <li><a href="/#blog-section" data-lang-key="quickNavBlog">Bloq</a></li>
                     <li>&rarr;</li>
@@ -1061,6 +1037,7 @@
         </div>
     </section>
 
+    <!-- Footer -->
     <footer class="main-footer">
         <div class="container">
             <div class="footer-content">
@@ -1072,8 +1049,9 @@
                     <h4 data-lang-key="footerTitle2">Sürətli Keçidlər</h4>
                     <ul>
                         <li><a href="/" data-lang-key="navHome">Əsas Səhifə</a></li>
-                        <li><a href="/#about-section" data-lang-key="navAbout">Haqqımızda</a></li>
-                        <li><a href="/#services" data-lang-key="navServices">Xidmətlər</a></li>
+                        <li><a href="/about/" data-lang-key="navAbout">Haqqımızda</a></li>
+                        <li><a href="/services/" data-lang-key="navServices">Xidmətlər</a></li>
+                        <li><a href="/#testimonials-section" data-lang-key="navReviews">Rəylər</a></li>
                         <li><a href="/#blog-section" data-lang-key="navBlog">Bloq</a></li>
                         <li><a href="/contact/" data-lang-key="navContact">Əlaqə</a></li>
                     </ul>
@@ -1086,15 +1064,9 @@
                 <div class="footer-section">
                     <h4 data-lang-key="footerTitle4">Bizi İzləyin</h4>
                     <div class="social-icons">
-                        <a href="https://www.instagram.com/pmania_hub/" target="_blank" title="Instagram">
-                            <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.85s-.011 3.585-.069 4.85c-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07s-3.585-.012-4.85-.07c-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.85s.012-3.584.07-4.85c.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.85-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948s.014 3.667.072 4.947c.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072s3.667-.014 4.947-.072c4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.947s-.014-3.667-.072-4.947c-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.689-.073-4.948-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.162 6.162 6.162 6.162-2.759 6.162-6.162-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4s1.791-4 4-4 4 1.79 4 4-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.441 1.441 1.441 1.441-.645 1.441-1.441-.645-1.44-1.441-1.44z"/></svg>
-                        </a>
-                        <a href="https://www.facebook.com/profile.php?id=61578312400129" target="_blank" title="Facebook">
-                            <svg viewBox="0 0 24 24"><path d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.323-1.325z"/></svg>
-                        </a>
-                        <a href="https://www.linkedin.com/company/pmania-hub" target="_blank" title="LinkedIn">
-                            <svg viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-                        </a>
+                        <a href="https://www.instagram.com/pmania_hub/" target="_blank" title="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.85s-.011 3.585-.069 4.85c-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07s-3.585-.012-4.85-.07c-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.85s.012-3.584.07-4.85c.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.85-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948s.014 3.667.072 4.947c.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072s3.667-.014 4.947-.072c4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.947s-.014-3.667-.072-4.947c-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.689-.073-4.948-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.162 6.162 6.162 6.162-2.759 6.162-6.162-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4s1.791-4 4-4 4 1.79 4 4-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.441 1.441 1.441 1.441-.645 1.441-1.441-.645-1.44-1.441-1.44z"/></svg></a>
+                        <a href="https://www.facebook.com/profile.php?id=61578312400129" target="_blank" title="Facebook"><svg viewBox="0 0 24 24"><path d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.323-1.325z"/></svg></a>
+                        <a href="https://www.linkedin.com/company/pmania-hub" target="_blank" title="LinkedIn"><svg viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg></a>
                     </div>
                 </div>
             </div>
@@ -1104,6 +1076,7 @@
         </div>
     </footer>
 
+    <!-- Modals -->
     <div id="mission-modal" class="modal">
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal('mission-modal')">&times;</span>
@@ -1423,8 +1396,9 @@
                     ctaBtn1: "Book a Free Call",
                     ctaBtn2: "View Future Trainings",
                     quickNavHome: "Home",
-                    quickNavAbout: "About",
+                    quickNavAbout: "About Us",
                     quickNavServices: "Services",
+                    quickNavReviews: "Reviews",
                     quickNavBlog: "Blog",
                     quickNavContact: "Contact",
                     seeAll: "See All",
@@ -1617,3 +1591,4 @@
 
 </body>
 </html>
+
