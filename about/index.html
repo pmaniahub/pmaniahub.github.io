@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Haqqımızda - PMania Hub</title>
+    <!-- Favicon -->
+    <link rel="icon" href="/images/logo.png" type="image/png">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* --- Google Fonts Import --- */
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Roboto:wght@400;500&display=swap');
+
+        /* --- CSS Reset & Basic Styles --- */
+        :root {
+            --primary-color: #222831;
+            --secondary-color: #4a1ad1;
+            --background-color: #f9f9f9;
+            --text-color: #34495e;
+            --white-color: #ffffff;
+            --heading-font: 'Poppins', sans-serif;
+            --body-font: 'Roboto', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--body-font);
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--white-color);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        
+        @media (min-width: 1400px) {
+            .container {
+                max-width: 1300px;
+            }
+        }
+
+        h1, h2, h3 {
+            font-family: var(--heading-font);
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        /* --- Header & Navigation --- */
+        .main-header {
+            background-color: var(--white-color);
+            padding: 15px 0;
+            border-bottom: 1px solid #ecf0f1;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .main-header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 70px;
+            width: auto;
+            vertical-align: middle; 
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+        }
+
+        .main-nav ul {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+        }
+
+        .main-nav a {
+            text-decoration: none;
+            color: var(--primary-color);
+            font-weight: 500;
+            font-size: 1.1em;
+            transition: color 0.3s ease;
+        }
+
+        .main-nav a:hover {
+            color: var(--secondary-color);
+        }
+        
+        .lang-switcher button {
+            background: none;
+            border: none;
+            color: var(--text-color);
+            font-weight: 600;
+            cursor: pointer;
+            padding: 5px;
+            font-size: 1em;
+        }
+        .lang-switcher button.active {
+            color: var(--secondary-color);
+        }
+        
+        .hamburger {
+            display: none;
+            cursor: pointer;
+        }
+        .hamburger .bar {
+            width: 25px;
+            height: 3px;
+            background-color: var(--primary-color);
+            margin: 5px 0;
+            transition: 0.4s;
+        }
+        
+        /* --- About Page Section --- */
+        .about-hero {
+            position: relative;
+            padding: 100px 0;
+            background-image: url('https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');
+            background-size: cover;
+            background-position: center;
+            color: var(--white-color);
+        }
+
+        .about-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(34, 40, 49, 0.75);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+        }
+
+        .about-hero .container {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+        }
+        
+        .about-hero-content {
+            max-width: 850px;
+            margin: 0 auto;
+        }
+
+        .about-hero .tagline {
+            font-weight: 600;
+            margin-bottom: 15px;
+            display: block;
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+
+        .about-hero h1 {
+            font-size: 3.5em;
+            margin-bottom: 25px;
+            color: var(--white-color);
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .about-hero p {
+            font-size: 1.15em;
+            line-height: 1.8;
+            max-width: 750px;
+            margin: 0 auto 50px auto;
+            opacity: 0.95;
+        }
+
+        .values-container {
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+            text-align: left;
+        }
+
+        .value-card {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 30px;
+            border-radius: 12px;
+            width: 50%;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+        
+        .value-card .icon {
+            font-size: 2.5em;
+            margin-bottom: 15px;
+        }
+
+        .value-card h3 {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+            color: var(--white-color);
+        }
+
+        .value-card p {
+            font-size: 1.05em;
+            margin: 0;
+            text-align: left;
+        }
+
+        /* --- Footer --- */
+        .main-footer {
+            background-color: var(--primary-color);
+            color: var(--white-color);
+            padding: 50px 0;
+        }
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+        .footer-section {
+            flex: 1;
+            min-width: 200px;
+        }
+        .footer-section h4 {
+            font-family: var(--heading-font);
+            font-size: 1.2em;
+            margin-bottom: 15px;
+        }
+        .footer-section ul {
+            list-style: none;
+            padding: 0;
+        }
+        .footer-section ul li {
+            margin-bottom: 10px;
+        }
+        .footer-section a {
+            color: #ecf0f1;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .footer-section a:hover {
+            color: var(--secondary-color);
+        }
+        .social-icons a {
+            margin-right: 15px;
+        }
+        .social-icons svg {
+            width: 24px;
+            height: 24px;
+            fill: var(--white-color);
+            transition: fill 0.3s ease;
+        }
+        .social-icons a:hover svg {
+            fill: var(--secondary-color);
+        }
+        .footer-bottom {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #4a4e56;
+        }
+
+        /* --- Responsive Design --- */
+        @media (max-width: 1080px) {
+            .main-nav {
+                display: none;
+                width: 100%;
+                flex-direction: column;
+                align-items: flex-start;
+                background-color: var(--white-color);
+                position: fixed;
+                top: 101px;
+                left: 0;
+                padding: 20px;
+                box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+                height: calc(100vh - 101px);
+            }
+            .main-nav.active {
+                display: flex;
+            }
+            .main-nav ul {
+                flex-direction: column;
+                width: 100%;
+                gap: 15px;
+            }
+            .main-nav ul li {
+                width: 100%;
+                text-align: center;
+            }
+            .hamburger {
+                display: block;
+            }
+        }
+        @media (max-width: 768px) {
+            .about-hero h1 {
+                font-size: 2.5em;
+            }
+            .about-hero p {
+                font-size: 1.1em;
+            }
+            .values-container {
+                flex-direction: column;
+            }
+            .value-card {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="main-header">
+        <div class="container">
+            <a href="/" class="logo">
+                <img src="/images/logo.png" alt="PMania Hub Logo">
+            </a>
+            <div class="header-actions">
+                <nav class="main-nav" id="main-nav-links">
+                    <ul>
+                        <li><a href="/" data-lang-key="navHome">Əsas Səhifə</a></li>
+                        <li><a href="/about/" data-lang-key="navAbout">Haqqımızda</a></li>
+                        <li><a href="/services/" data-lang-key="navServices">Xidmətlər</a></li>
+                        <li><a href="/#blog-section" data-lang-key="navBlog">Bloq</a></li>
+                        <li><a href="/contact/" data-lang-key="navContact">Əlaqə</a></li>
+                    </ul>
+                </nav>
+                <div class="header-controls">
+                    <div class="lang-switcher">
+                        <button id="lang-az" class="active">AZ</button> |
+                        <button id="lang-en">EN</button>
+                    </div>
+                </div>
+                <div class="hamburger" id="hamburger-menu">
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="about-hero">
+            <div class="container">
+                <div class="about-hero-content">
+                    <span class="tagline" data-lang-key="aboutTagline">BİZİM HEKAYƏMİZ</span>
+                    <h1 data-lang-key="aboutTitle">“PMania” ilə Tanış ol</h1>
+                    <p data-lang-key="aboutDesc">PMania Hub, layihə idarəetməsi sahəsində karyera qurmaq və ya mövcud bacarıqlarını təkmilləşdirmək istəyənlər üçün yaradılmış hərtərəfli bir platformadır. Məqsədimiz, hər kəsə keyfiyyətli təhsil və peşəkar dəstək təqdim etməklə onların uğuruna töhfə verməkdir.</p>
+                    
+                    <div class="values-container">
+                        <div class="value-card">
+                            <div class="icon">💡</div>
+                            <h3 data-lang-key="missionModalTitle">Missiyamız</h3>
+                            <p data-lang-key="missionModalDesc">Layihə idarəetməsini maarifləndirici, əyləncəli və motivasiyaedici yanaşma ilə hər kəs üçün daha maraqlı və əlçatan etmək!</p>
+                        </div>
+                        <div class="value-card">
+                            <div class="icon">🎯</div>
+                            <h3 data-lang-key="visionModalTitle">Vizyonumuz</h3>
+                            <p data-lang-key="visionModalDesc">Layihə idarəetməsini yeni baxışla təqdim edən aparıcı platforma olmaq.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4 data-lang-key="footerTitle1">PMania Hub</h4>
+                    <p data-lang-key="footerDesc1">Layihə idarəetməsində peşəkar dəstəkçiniz.</p>
+                </div>
+                <div class="footer-section">
+                    <h4 data-lang-key="footerTitle2">Sürətli Keçidlər</h4>
+                    <ul>
+                        <li><a href="/" data-lang-key="navHome">Əsas Səhifə</a></li>
+                        <li><a href="/about/" data-lang-key="navAbout">Haqqımızda</a></li>
+                        <li><a href="/services/" data-lang-key="navServices">Xidmətlər</a></li>
+                        <li><a href="/#blog-section" data-lang-key="navBlog">Bloq</a></li>
+                        <li><a href="/contact/" data-lang-key="navContact">Əlaqə</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4 data-lang-key="footerTitle3">Əlaqə</h4>
+                    <p>Email: pmaniahub@gmail.com</p>
+                    <p data-lang-key="footerPhone">Telefon: +994 50 972 63 84</p>
+                </div>
+                <div class="footer-section">
+                    <h4 data-lang-key="footerTitle4">Bizi İzləyin</h4>
+                    <div class="social-icons">
+                        <a href="https://www.instagram.com/pmania_hub/" target="_blank" title="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.85s-.011 3.585-.069 4.85c-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07s-3.585-.012-4.85-.07c-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.85s.012-3.584.07-4.85c.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.85-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948s.014 3.667.072 4.947c.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072s3.667-.014 4.947-.072c4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.947s-.014-3.667-.072-4.947c-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.689-.073-4.948-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.162 6.162 6.162 6.162-2.759 6.162-6.162-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4s1.791-4 4-4 4 1.79 4 4-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.441 1.441 1.441 1.441-.645 1.441-1.441-.645-1.44-1.441-1.44z"/></svg></a>
+                        <a href="https://www.facebook.com/profile.php?id=61578312400129" target="_blank" title="Facebook"><svg viewBox="0 0 24 24"><path d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.323-1.325z"/></svg></a>
+                        <a href="https://www.linkedin.com/company/pmania-hub" target="_blank" title="LinkedIn"><svg viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p data-lang-key="footerRights">&copy; 2025 PMania Hub. Bütün hüquqlar qorunur.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        if (!window.pmaniaScriptLoaded) {
+            window.pmaniaScriptLoaded = true;
+
+            const translations = {
+                az: {
+                    navHome: "Əsas Səhifə",
+                    navAbout: "Haqqımızda",
+                    navServices: "Xidmətlər",
+                    navBlog: "Bloq",
+                    navContact: "Əlaqə",
+                    aboutTagline: "BİZİM HEKAYƏMİZ",
+                    aboutTitle: "“PMania” ilə Tanış ol",
+                    aboutDesc: "PMania Hub, layihə idarəetməsi sahəsində karyera qurmaq və ya mövcud bacarıqlarını təkmilləşdirmək istəyənlər üçün yaradılmış hərtərəfli bir platformadır. Məqsədimiz, hər kəsə keyfiyyətli təhsil və peşəkar dəstək təqdim etməklə onların uğuruna töhfə verməkdir.",
+                    missionModalTitle: "Missiyamız",
+                    missionModalDesc: "Layihə idarəetməsini maarifləndirici, əyləncəli və motivasiyaedici yanaşma ilə hər kəs üçün daha maraqlı və əlçatan etmək!",
+                    visionModalTitle: "Vizyonumuz",
+                    visionModalDesc: "Layihə idarəetməsini yeni baxışla təqdim edən aparıcı platforma olmaq.",
+                    footerTitle1: "PMania Hub",
+                    footerDesc1: "Layihə idarəetməsində peşəkar dəstəkçiniz.",
+                    footerTitle2: "Sürətli Keçidlər",
+                    footerTitle3: "Əlaqə",
+                    footerPhone: "Telefon: +994 50 972 63 84",
+                    footerTitle4: "Bizi İzləyin",
+                    footerRights: "&copy; 2025 PMania Hub. Bütün hüquqlar qorunur."
+                },
+                en: {
+                    navHome: "Home",
+                    navAbout: "About Us",
+                    navServices: "Services",
+                    navBlog: "Blog",
+                    navContact: "Contact",
+                    aboutTagline: "OUR STORY",
+                    aboutTitle: "Meet “PMania”",
+                    aboutDesc: "PMania Hub is a comprehensive platform created for those who want to build a career in project management or improve their existing skills. Our goal is to contribute to their success by providing quality education and professional support to everyone.",
+                    missionModalTitle: "Our Mission",
+                    missionModalDesc: "To make project management more interesting and accessible for everyone with an enlightening, fun, and motivational approach!",
+                    visionModalTitle: "Our Vision",
+                    visionModalDesc: "To be the leading platform that presents project management with a new perspective.",
+                    footerTitle1: "PMania Hub",
+                    footerDesc1: "Your professional support in project management.",
+                    footerTitle2: "Quick Links",
+                    footerTitle3: "Contact",
+                    footerPhone: "Phone: +994 50 972 63 84",
+                    footerTitle4: "Follow Us",
+                    footerRights: "&copy; 2025 PMania Hub. All rights reserved."
+                }
+            };
+            
+            // Hamburger menu toggle
+            const hamburger = document.getElementById('hamburger-menu');
+            const navLinks = document.getElementById('main-nav-links');
+            hamburger.addEventListener('click', () => {
+                hamburger.classList.toggle('active');
+                navLinks.classList.toggle('active');
+            });
+
+            // Language switching function
+            function switchLanguage(lang) {
+                localStorage.setItem('language', lang); // Save language choice
+                document.documentElement.lang = lang;
+                document.querySelectorAll('[data-lang-key]').forEach(el => {
+                    const key = el.getAttribute('data-lang-key');
+                    if (translations[lang] && translations[lang][key]) {
+                        el.innerHTML = translations[lang][key];
+                    }
+                });
+                document.getElementById('lang-az').classList.toggle('active', lang === 'az');
+                document.getElementById('lang-en').classList.toggle('active', lang === 'en');
+            }
+
+            document.addEventListener('DOMContentLoaded', () => {
+                const savedLang = localStorage.getItem('language') || 'az';
+                switchLanguage(savedLang);
+
+                document.getElementById('lang-az').addEventListener('click', () => switchLanguage('az'));
+                document.getElementById('lang-en').addEventListener('click', () => switchLanguage('en'));
+            });
+        }
+    </script>
+
+</body>
+</html>
+
