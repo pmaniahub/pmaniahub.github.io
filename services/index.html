@@ -193,7 +193,7 @@
             display: inline-block;
             background: var(--secondary-gradient); /* Use gradient */
             color: var(--white-color);
-            padding: 15px 35px; /* Slightly more padding */
+            padding: 12px 25px; /* Compact padding */
             border-radius: 50px;
             text-decoration: none;
             font-weight: 600;
@@ -213,60 +213,54 @@
         .trainings-section { background-color: var(--background-color); }
         .training-cards-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 25px;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
         }
         .training-card {
             background: var(--white-color);
             border-radius: var(--border-radius-lg);
             border: 1px solid rgba(0,0,0,0.07);
-            padding: 35px;
+            padding: 25px;
             display: flex;
             flex-direction: column;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: center;
         }
         .training-card:hover {
             transform: translateY(-10px);
             box-shadow: 0 10px 40px rgba(0,0,0,0.1);
         }
-        .training-card .card-header { text-align: center; margin-bottom: 20px; }
         .training-card .icon-wrapper {
-            width: 60px;
-            height: 60px;
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 20px;
+            margin: 0 auto 15px;
             background: var(--secondary-gradient);
             color: var(--white-color);
-            font-size: 1.8em;
+            font-size: 1.6em;
         }
-        .training-card h3 { font-size: 1.6em; color: var(--primary-color); }
+        .training-card h3 { 
+            font-size: 1.25em; 
+            color: var(--primary-color); 
+            min-height: 55px; /* Align titles */
+            margin-bottom: 10px;
+        }
         .training-card .card-desc {
-            font-size: 1em;
+            font-size: 0.9em;
             color: var(--text-color);
-            margin-bottom: 25px;
-            min-height: 75px; /* Ensures cards align vertically */
+            margin-bottom: 20px;
+            flex-grow: 1;
         }
-        .training-card .features-list { list-style: none; padding: 0; margin: 0 0 30px 0; flex-grow: 1; }
-        .training-card .features-list li { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
-        .training-card .features-list i { color: var(--secondary-color); font-size: 1.2em; }
         .training-card .card-footer {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 20px;
-            border-top: 1px solid rgba(0,0,0,0.07);
-            padding-top: 25px;
             margin-top: auto;
+            text-align: center;
         }
-        .training-card .price { font-size: 2.2em; font-weight: 700; color: var(--primary-color); line-height: 1; }
-        .training-card .price-note { font-size: 0.9em; opacity: 0.7; }
-        .training-card.featured { background: var(--primary-color); color: var(--white-color); border: none; }
-        .training-card.featured h3, .training-card.featured .price { color: var(--white-color); }
-        .training-card.featured .card-desc { color: rgba(255,255,255,0.8); }
-        .training-card.featured .features-list, .training-card.featured .price-note { color: rgba(255,255,255,0.7); }
+        .training-card .price { font-size: 2em; font-weight: 700; color: var(--primary-color); line-height: 1; }
+        .training-card .price-note { font-size: 0.85em; opacity: 0.7; margin-bottom: 20px; display: block; }
+        
 
         /* --- [NEW] Consulting & Coaching Sections --- */
         .consulting-section { background-color: var(--background-color); }
@@ -353,6 +347,7 @@
 
         /* --- Responsive Design --- */
         @media (max-width: 1080px) {
+            .training-cards-container { grid-template-columns: repeat(2, 1fr); }
             .main-nav { display: none; width: 100%; flex-direction: column; align-items: flex-start; background-color: var(--white-color); position: fixed; top: 101px; left: 0; padding: 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); height: calc(100vh - 101px); }
             .main-nav.active { display: flex; }
             .main-nav ul { flex-direction: column; width: 100%; gap: 15px; }
@@ -368,48 +363,21 @@
         }
         @media (max-width: 768px) {
             .section-title { font-size: 2.2em; }
-            /* Updated training cards for 2-column mobile layout */
             .training-cards-container { 
                 grid-template-columns: repeat(2, 1fr);
                 gap: 15px;
             }
             .training-card { padding: 20px; }
-            .training-card h3 { font-size: 1.3em; }
-            .training-card .card-desc {
-                min-height: auto;
-                font-size: 0.9em;
-                margin-bottom: 15px;
-            }
-            .training-card .features-list {
-                margin-bottom: 20px;
-                font-size: 0.9em;
-            }
-            .training-card .card-footer {
-                flex-direction: column;
-                align-items: stretch;
-                gap: 15px;
-                padding-top: 15px;
-            }
-            .training-card .price-section { text-align: center; }
+            .training-card h3 { font-size: 1.1em; min-height: 48px; }
+            .training-card .card-desc { display: none; } /* Hide desc on mobile cards */
+            .training-card .card-footer { padding-top: 15px; }
             .training-card .price { font-size: 1.8em; }
-            .cta-button {
-                padding: 12px 20px;
-                font-size: 0.95em;
-            }
+            .cta-button { padding: 12px 20px; font-size: 0.9em; }
             .bento-box { padding: 30px; }
-
-
             .coaching-section { padding: 0; }
-            .service-nav { top: 85px; /* Adjust for smaller header */ }
+            .service-nav { top: 85px; }
             .service-nav-links a { padding: 8px 15px; font-size: 0.9em; }
             html { scroll-padding-top: 150px; }
-        }
-
-        /* New breakpoint for very small screens */
-        @media (max-width: 480px) {
-            .training-cards-container {
-                grid-template-columns: 1fr;
-            }
         }
     </style>
 </head>
@@ -461,48 +429,59 @@
                 <p class="section-subtitle" data-lang-key="pageSubtitle">Karyeranızı növbəti səviyyəyə qaldırmaq üçün beynəlxalq standartlara əsaslanan, praktiki təlim proqramlarımızla tanış olun.</p>
                 
                 <div class="training-cards-container">
-                    <!-- Card 1: Featured Design -->
-                    <div class="training-card featured">
-                        <div class="card-header">
-                            <div class="icon-wrapper">
-                                <i class="fas fa-sitemap"></i>
-                            </div>
-                            <h3 data-lang-key="training1Title">“360° Layihə İdarəetməsi”</h3>
-                        </div>
+                    <!-- Card 1: 360 -->
+                    <div class="training-card">
+                        <div class="icon-wrapper"><i class="fas fa-sitemap"></i></div>
+                        <h3 data-lang-key="training1Title">“360° Layihə İdarəetməsi”</h3>
                         <p class="card-desc" data-lang-key="training1Desc">Layihə idarəetməsini sıfırdan öyrənmək və bu sahədə peşəkar olmaq üçün 8 həftəlik intensiv proqram.</p>
-                        <ul class="features-list">
-                            <li><i class="fas fa-check-circle"></i><span data-lang-key="training1Point1">Praktiki tapşırıqlar və real nümunələr</span></li>
-                            <li><i class="fas fa-check-circle"></i><span data-lang-key="training1Point2">Agile və Waterfall metodologiyaları</span></li>
-                            <li><i class="fas fa-check-circle"></i><span data-lang-key="training1Point3">Karyera dəstəyi və müsahibə hazırlığı</span></li>
-                        </ul>
                         <div class="card-footer">
                             <div class="price-section">
-                                <div class="price">300 AZN</div>
+                                <div class="price" data-price-azn="300">300 AZN</div>
                                 <div class="price-note" data-lang-key="priceMonthly">(aylıq 150 AZN)</div>
                             </div>
-                            <button class="cta-button" onclick="openModal('modal-360')" data-lang-key="readMore">Daha Çox Öyrən</button>
+                            <button class="cta-button" onclick="openModal('modal-360')" data-lang-key="readMore">Daha Çox</button>
                         </div>
                     </div>
         
-                    <!-- Card 2: Standard Design -->
+                    <!-- Card 2: CAPM -->
                     <div class="training-card">
-                        <div class="card-header">
-                            <div class="icon-wrapper">
-                                <i class="fas fa-certificate"></i>
-                            </div>
-                            <h3 data-lang-key="training2Title">CAPM® Sertifikatına Hazırlıq</h3>
-                        </div>
+                        <div class="icon-wrapper"><i class="fas fa-user-graduate"></i></div>
+                        <h3 data-lang-key="training2Title">CAPM® Sertifikatına Hazırlıq</h3>
                         <p class="card-desc" data-lang-key="training2Desc">PMI® standartları ilə layihə idarəetməsi nəzəriyyəsini mənimsəyin və beynəlxalq CAPM® imtahanına tam hazır olun.</p>
-                        <ul class="features-list">
-                            <li><i class="fas fa-check-circle"></i><span data-lang-key="training2Point1">PMBOK® Guide 7-ci nəşrə tam uyğunluq</span></li>
-                            <li><i class="fas fa-check-circle"></i><span data-lang-key="training2Point2">İmtahan sual tipləri ilə tanışlıq</span></li>
-                            <li><i class="fas fa-check-circle"></i><span data-lang-key="training2Point3">Mövzular üzrə sınaq imtahanları</span></li>
-                        </ul>
                         <div class="card-footer">
                             <div class="price-section">
-                                <div class="price">450 AZN</div>
+                                <div class="price" data-price-azn="450">450 AZN</div>
+                                <div class="price-note">&nbsp;</div>
                             </div>
-                            <button class="cta-button" onclick="openModal('modal-capm')" data-lang-key="readMore">Daha Çox Öyrən</button>
+                            <button class="cta-button" onclick="openModal('modal-capm')" data-lang-key="readMore">Daha Çox</button>
+                        </div>
+                    </div>
+
+                    <!-- Card 3: PMP -->
+                    <div class="training-card">
+                        <div class="icon-wrapper"><i class="fas fa-certificate"></i></div>
+                        <h3 data-lang-key="training3Title">PMP® Sertifikatına Hazırlıq</h3>
+                        <p class="card-desc" data-lang-key="training3Desc">Təcrübəli layihə menecerləri üçün nəzərdə tutulan, qlobal səviyyədə tanınan PMP® sertifikasiya imtahanına hazırlıq.</p>
+                        <div class="card-footer">
+                            <div class="price-section">
+                                <div class="price" data-price-azn="750">750 AZN</div>
+                                <div class="price-note">&nbsp;</div>
+                            </div>
+                            <button class="cta-button" onclick="openModal('modal-pmp')" data-lang-key="readMore">Daha Çox</button>
+                        </div>
+                    </div>
+
+                    <!-- Card 4: Corporate -->
+                    <div class="training-card">
+                        <div class="icon-wrapper"><i class="fas fa-building"></i></div>
+                        <h3 data-lang-key="training4Title">Korporativ Təlim Paketi</h3>
+                        <p class="card-desc" data-lang-key="training4Desc">Şirkətinizin ehtiyaclarına uyğunlaşdırılmış, klassik, çevik və hibrid metodları əhatə edən tam günlük təlim.</p>
+                        <div class="card-footer">
+                            <div class="price-section">
+                                <div class="price" data-price-azn="500">500 AZN</div>
+                                <div class="price-note" data-lang-key="perDay">(günlük)</div>
+                            </div>
+                            <button class="cta-button" onclick="openModal('modal-corporate')" data-lang-key="readMore">Daha Çox</button>
                         </div>
                     </div>
                 </div>
@@ -537,7 +516,7 @@
             <div class="coaching-wrapper">
                 <!-- This column can be used for an image in the future -->
                 <div class="coaching-visual">
-                     <div class="icon-placeholder"><i class="fas fa-hands-helping"></i></div>
+                       <div class="icon-placeholder"><i class="fas fa-hands-helping"></i></div>
                 </div>
                 <div class="coaching-content">
                     <h2 class="section-title" data-lang-key="coachingTitle">Fərdi <span>Kouçinq</span></h2>
@@ -551,41 +530,135 @@
 
     </main>
     
-    <!-- Modals -->
+    <!-- MODALS -->
     <div id="modal-360" class="modal">
-        <!-- ... modal content for training 1 ... -->
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('modal-360')">&times;</span>
+            <div class="training-details">
+                <h2 data-lang-key="training1TitleFull"></h2>
+                <h3 class="tagline" data-lang-key="training1Tagline"></h3>
+                <p data-lang-key="training1ModalDesc"></p>
+                <div class="training-section">
+                    <h4 data-lang-key="training1FormatTitle"></h4>
+                    <ul><li data-lang-key="training1Format1"></li><li data-lang-key="training1Format2"></li><li data-lang-key="training1Format3"></li></ul>
+                </div>
+                <div class="price-box">
+                    <h4 data-lang-key="priceTitle"></h4>
+                    <div class="price" data-price-azn="300">300 AZN</div>
+                    <p data-lang-key="priceMonthly"></p>
+                    <a href="https://wa.me/994509726384?text=Salam%2C%20'360%C2%B0%20Layih%C9%99%20%C4%B0dar%C9%99etm%C9%99si'%20t%C9%99limi%20il%C9%99%20maraqlan%C4%B1ram." target="_blank" class="cta-button" data-lang-key="applyNow"></a>
+                </div>
+            </div>
+        </div>
     </div>
     <div id="modal-capm" class="modal">
-        <!-- ... modal content for training 2 ... -->
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('modal-capm')">&times;</span>
+             <div class="training-details">
+                <h2 data-lang-key="training2TitleFull"></h2>
+                <h3 class="tagline" data-lang-key="training2Tagline"></h3>
+                <p data-lang-key="training2ModalDesc"></p>
+                 <div class="price-box">
+                    <h4 data-lang-key="priceTitle"></h4>
+                    <div class="price" data-price-azn="450">450 AZN</div>
+                    <a href="https://wa.me/994509726384?text=Salam%2C%20CAPM%C2%AE%20Sertifikat%C4%B1na%20Haz%C4%B1rl%C4%B1q%20Proqram%C4%B1%20il%C9%99%20maraqlan%C4%B1ram." target="_blank" class="cta-button" data-lang-key="applyNow"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="modal-pmp" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('modal-pmp')">&times;</span>
+            <div class="training-details">
+                <h2 data-lang-key="training3TitleFull"></h2>
+                <h3 class="tagline" data-lang-key="training3Tagline"></h3>
+                <p data-lang-key="training3ModalDesc"></p>
+                <div class="price-box">
+                    <h4 data-lang-key="priceTitle"></h4>
+                    <div class="price" data-price-azn="750">750 AZN</div>
+                    <a href="https://wa.me/994509726384?text=Salam%2C%20PMP%C2%AE%20Sertifikat%C4%B1na%20Haz%C4%B1rl%C4%B1q%20Proqram%C4%B1%20il%C9%99%20maraqlan%C4%B1ram." target="_blank" class="cta-button" data-lang-key="applyNow"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="modal-corporate" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('modal-corporate')">&times;</span>
+            <div class="training-details">
+                <h2 data-lang-key="training4TitleFull"></h2>
+                <h3 class="tagline" data-lang-key="training4Tagline"></h3>
+                <p data-lang-key="training4ModalDesc"></p>
+                <div class="price-box">
+                    <h4 data-lang-key="priceTitle"></h4>
+                    <div class="price" data-price-azn="500">500 AZN</div>
+                    <a href="https://wa.me/994509726384?text=Salam%2C%20Korporativ%20T%C9%99lim%20Paketi%20il%C9%99%20maraqlan%C4%B1ram." target="_blank" class="cta-button" data-lang-key="applyNow"></a>
+                </div>
+            </div>
+        </div>
     </div>
 
     <div id="calendar-modal" class="modal">
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal('calendar-modal')">&times;</span>
             <h3 data-lang-key="calendarTitle">Görüş Rezerv Edin</h3>
-            <!-- Google Calendar Appointment Scheduling begin -->
             <iframe src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ1XfkZmkcBhOEeY2REOv08Q-OX9uIxSxJxwwu2FvgzLkC0Z4g14IWDxXxM6ETYK3dIxEhMs9Zwd?gv=true" style="border: 0" width="100%" height="600" frameborder="0"></iframe>
-            <!-- end Google Calendar Appointment Scheduling -->
         </div>
     </div>
 
     <footer class="main-footer">
-        <!-- ... same footer content as original file ... -->
-        <!-- For brevity, I'll omit the full footer HTML, but you should place your original footer here -->
-         <div class="container">
-            <div class="footer-content">
-                <!-- Your footer sections here -->
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2024 PMania Hub. Bütün hüquqlar qorunur.</p>
-            </div>
+        <div class="container">
+            <!-- Footer content will be dynamically generated by JS -->
         </div>
     </footer>
     
     <script>
-        // Ensure script only runs once
         if (!window.pmaniaScriptLoaded) {
             window.pmaniaScriptLoaded = true;
+            
+            const translations = {
+                az: {
+                    navHome: "Əsas Səhifə", navAbout: "Haqqımızda", navServices: "Xidmətlər", navReviews: "Rəylər", navBlog: "Bloq", navContact: "Əlaqə",
+                    navTrainings: "Təlimlər", navConsulting: "Konsaltinq", navCoaching: "Kouçinq",
+                    pageTitle: "Təlim Paketlərimiz", pageSubtitle: "Karyeranızı növbəti səviyyəyə qaldırmaq üçün beynəlxalq standartlara əsaslanan, praktiki təlim proqramlarımızla tanış olun.",
+                    training1Title: "“360° Layihə İdarəetməsi”", training1Desc: "Layihə idarəetməsini sıfırdan öyrənmək və bu sahədə peşəkar olmaq üçün 8 həftəlik intensiv proqram.", training1Point1: "Praktiki tapşırıqlar və real nümunələr", training1Point2: "Agile və Waterfall metodologiyaları", training1Point3: "Karyera dəstəyi və müsahibə hazırlığı",
+                    training2Title: "CAPM® Sertifikatına Hazırlıq", training2Desc: "PMI® standartları ilə layihə idarəetməsi nəzəriyyəsini mənimsəyin və beynəlxalq CAPM® imtahanına tam hazır olun.", training2Point1: "PMBOK® Guide 7-ci nəşrə tam uyğunluq", training2Point2: "İmtahan sual tipləri ilə tanışlıq", training2Point3: "Mövzular üzrə sınaq imtahanları",
+                    training3Title: "PMP® Sertifikatına Hazırlıq", training3Desc: "Təcrübəli layihə menecerləri üçün nəzərdə tutulan, qlobal səviyyədə tanınan PMP® sertifikasiya imtahanına hazırlıq.",
+                    training4Title: "Korporativ Təlim Paketi", training4Desc: "Şirkətinizin ehtiyaclarına uyğunlaşdırılmış, klassik, çevik və hibrid metodları əhatə edən tam günlük təlim.",
+                    perDay: "(günlük)", readMore: "Daha Çox",
+                    consultingTitle: "Konsaltinq Xidmətləri", consultingSubtitle: "Biznesinizin və ya şəxsi karyeranızın hədəflərinə çatmaq üçün peşəkar dəstək.",
+                    consultingIndividuals: "Fərdlər üçün", consultingIndividualsDesc: "Karyera planlaması, hədəflərin müəyyən edilməsi və çətinliklərin aradan qaldırılması üçün fərdi məsləhət.", requestCall: "Zəng Sifariş Et",
+                    consultingCompanies: "Şirkətlər üçün", consultingCompaniesDesc: "Layihə idarəetmə proseslərinizin optimallaşdırılması, komandanızın inkişafı və effektivliyin artırılması.", sendInquiry: "Sorğu Göndər",
+                    coachingTitle: "Fərdi Kouçinq", coachingDesc: "Karyeranızda irəliləmək üçün sizə xüsusi hazırlanmış 1:1 mentorluq proqramı. Bu proqram çərçivəsində sizinlə birlikdə güclü tərəflərinizi, inkişaf ehtiyaclarınızı analiz edir və hədəflərinizə çatmaq üçün konkret addımlar planlayırıq.", freeCall: "Pulsuz İlkin Zəng",
+                    footerRights: "&copy; 2024 PMania Hub. Bütün hüquqlar qorunur.", calendarTitle: "Görüş Rezerv Edin",
+                    training1TitleFull: "“360° Layihə İdarəetməsi” Təlim Proqramı", training1Tagline: "QOŞUL, ÖYRƏN, TƏTBİQ ET!", training1ModalDesc: "Layihə idarəetməsini sıfırdan öyrənmək və bu sahədə peşəkar olmaq istəyirsənsə, bu 8 həftəlik intensiv proqram tam sənin üçündür! PMANIA sənə praktiki bilik və real təcrübəyə əsaslanan bir yanaşma təqdim edir.",
+                    training1FormatTitle: "Təlim formatı:", training1Format1: "2 ay müddətini əhatə edir.", training1Format2: "Dərslər həftədə 2 dəfə keçirilir.", training1Format3: "Hər dərs 90 dəqiqə davam edir.",
+                    priceTitle: "Proqramın Tam Ödəniş Məbləği", priceMonthly: "(aylıq 150 AZN)", applyNow: "Müraciət Et",
+                    training2TitleFull: "CAPM® Sertifikatına Hazırlıq Proqramı", training2Tagline: "KARYERANIZIN İLK PEŞƏKAR ZİRVƏSİ!", training2ModalDesc: "Certified Associate in Project Management (CAPM)® sertifikatı karyeranıza güclü bir təməllə başlamaq üçün ideal seçimdir. Bu proqram sizi PMI®-ın rəsmi imtahanına hərtərəfli hazırlayacaq.",
+                    training3TitleFull: "PMP® Sertifikatına Hazırlıq Proqramı", training3Tagline: "PEŞƏKARLIĞIN ZİRVƏSİNƏ DOĞRU ADDIMLA!", training3ModalDesc: "Project Management Professional (PMP)® sertifikatı layihə idarəetməsi sahəsində qızıl standartdır. Bu intensiv proqram, təcrübəli layihə menecerlərini imtahanın bütün aspektlərinə hazırlayaraq uğur qazanmalarını təmin edir.",
+                    training4TitleFull: "Şirkətlər üçün Fərdi Təlim Paketi", training4Tagline: "KOMANDANIZIN POTENSİALINI MAKSİMUMA ÇATDIRIN!", training4ModalDesc: "Bu tam günlük interaktiv təlim, şirkətinizin spesifik ehtiyaclarına və layihələrinə uyğunlaşdırılır. Komandanızın layihə idarəetməsi bacarıqlarını artırmaq, prosesləri optimallaşdırmaq və nəticələri yaxşılaşdırmaq üçün ideal həlldir."
+                },
+                en: {
+                    navHome: "Home", navAbout: "About Us", navServices: "Services", navReviews: "Reviews", navBlog: "Blog", navContact: "Contact",
+                    navTrainings: "Trainings", navConsulting: "Consulting", navCoaching: "Coaching",
+                    pageTitle: "Our Training Packages", pageSubtitle: "Discover our practical training programs based on international standards to take your career to the next level.",
+                    training1Title: "\"360° Project Management\"", training1Desc: "An 8-week intensive program to learn project management from scratch and become a professional.", training1Point1: "Practical tasks and real-world examples", training1Point2: "Agile and Waterfall methodologies", training1Point3: "Career support and interview preparation",
+                    training2Title: "CAPM® Certification Prep", training2Desc: "Master project management theory with PMI® standards and get fully prepared for the international CAPM® exam.", training2Point1: "Full alignment with PMBOK® Guide 7th Edition", training2Point2: "Familiarization with exam question types", training2Point3: "Practice exams by topic",
+                    training3Title: "PMP® Certification Prep", training3Desc: "Globally recognized PMP® certification exam preparation for experienced project managers.",
+                    training4Title: "Corporate Training Package", training4Desc: "A full-day training covering classic, agile, and hybrid methods, tailored to your company's needs.",
+                    perDay: "(per day)", readMore: "Learn More",
+                    consultingTitle: "Consulting Services", consultingSubtitle: "Professional support to achieve your business or personal career goals.",
+                    consultingIndividuals: "For Individuals", consultingIndividualsDesc: "Personalized advice for career planning, goal setting, and overcoming professional challenges.", requestCall: "Request a Call",
+                    consultingCompanies: "For Companies", consultingCompaniesDesc: "Optimization of your project management processes, team development, and increased efficiency.", sendInquiry: "Send Inquiry",
+                    coachingTitle: "Personal Coaching", coachingDesc: "A 1:1 mentorship program tailored for your career advancement. We analyze your strengths, identify areas for growth, and create a concrete action plan to reach your goals.", freeCall: "Free Initial Call",
+                    footerRights: "&copy; 2024 PMania Hub. All rights reserved.", calendarTitle: "Book a Meeting",
+                    training1TitleFull: "\"360° Project Management\" Training Program", training1Tagline: "JOIN, LEARN, APPLY!", training1ModalDesc: "If you want to learn project management from scratch and become a professional, this 8-week intensive program is for you! PMANIA offers a practical, experience-based approach.",
+                    training1FormatTitle: "Training Format:", training1Format1: "Duration of 2 months.", training1Format2: "Classes are held twice a week.", training1Format3: "Each class lasts 90 minutes.",
+                    priceTitle: "Full Program Fee", priceMonthly: "(150 AZN per month)", applyNow: "Apply Now",
+                    training2TitleFull: "CAPM® Certification Preparation Program", training2Tagline: "THE FIRST PROFESSIONAL PEAK OF YOUR CAREER!", training2ModalDesc: "The Certified Associate in Project Management (CAPM)® certification is the ideal choice to start your career with a strong foundation. This program will comprehensively prepare you for the official PMI® exam.",
+                    training3TitleFull: "PMP® Certification Preparation Program", training3Tagline: "STEP TOWARDS THE PINNACLE OF PROFESSIONALISM!", training3ModalDesc: "The Project Management Professional (PMP)® certification is the gold standard in project management. This intensive program prepares experienced project managers for all aspects of the exam to ensure their success.",
+                    training4TitleFull: "Custom Training Package for Companies", training4Tagline: "MAXIMIZE YOUR TEAM'S POTENTIAL!", training4ModalDesc: "This full-day interactive training is tailored to the specific needs and projects of your company. It is the ideal solution to enhance your team's project management skills, optimize processes, and improve results."
+                }
+            };
             
             // --- MODAL CONTROLS ---
             function openModal(modalId) { 
@@ -597,20 +670,42 @@
                 if (modal) modal.style.display = 'none'; 
             }
 
-            // Close modal on outside click
             window.onclick = function(event) {
                 if (event.target.classList.contains('modal')) {
                     event.target.style.display = 'none';
                 }
             }
 
-            // --- LANGUAGE & NAVIGATION SCRIPT ---
-            // NOTE: Add your full translations object here for language switching
-            const translations = { az: {}, en: {} }; 
-            function switchLanguage(lang) { /* Your language switch logic */ }
+            function switchLanguage(lang) {
+                localStorage.setItem('language', lang); 
+                document.documentElement.lang = lang;
+                document.querySelectorAll('[data-lang-key]').forEach(el => {
+                    const key = el.getAttribute('data-lang-key');
+                    if (translations[lang] && translations[lang][key]) {
+                        el.innerHTML = translations[lang][key];
+                    }
+                });
+                document.getElementById('lang-az').classList.toggle('active', lang === 'az');
+                document.getElementById('lang-en').classList.toggle('active', lang === 'en');
+
+                document.querySelectorAll('.price[data-price-azn]').forEach(el => {
+                    const priceAZN = parseFloat(el.getAttribute('data-price-azn'));
+                    if (lang === 'en') {
+                        const priceEUR = Math.round(priceAZN / 2);
+                        el.innerHTML = `€${priceEUR}`;
+                    } else {
+                        el.innerHTML = `${priceAZN} AZN`;
+                    }
+                });
+            }
 
             document.addEventListener('DOMContentLoaded', () => {
-                // Hamburger menu toggle
+                const savedLang = localStorage.getItem('language') || 'az';
+                switchLanguage(savedLang);
+
+                document.getElementById('lang-az').addEventListener('click', () => switchLanguage('az'));
+                document.getElementById('lang-en').addEventListener('click', () => switchLanguage('en'));
+                
                 const hamburger = document.getElementById('hamburger-menu');
                 const navLinks = document.getElementById('main-nav-links');
                 hamburger.addEventListener('click', () => {
@@ -618,7 +713,6 @@
                     navLinks.classList.toggle('active');
                 });
                 
-                // Service Nav active state on scroll
                 const sections = document.querySelectorAll('main section');
                 const serviceNavLinks = document.querySelectorAll('.service-nav-links a');
                 
