@@ -170,7 +170,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.5);
+            background: transparent; /* Changed for full transparency */
             z-index: 1000;
         }
         .mobile-menu-overlay.active {
@@ -1136,7 +1136,6 @@
                     testimonialsTitle: "Tələbələrimiz Nə Deyir?", highlight1: "Aydın İzah", highlight2: "Praktiki Nümunələr", highlight3: "İnteraktiv Təlim", highlight4: "Peşəkar Təlimçi", highlight5: "Sistemli Yanaşma", testimonialsDesc: "Bizimlə təcrübələrini bölüşən məzunlarımızın fikirləri ilə tanış olun.", testimonialsButton: "Bütün Rəyləri Oxu",
                     blogTitle: "Son Bloq Yazıları", blog1Title: "Agile və Scrum Arasındakı Fərqlər", blog1Desc: "Bu məqalədə çevik metodologiyaların əsas prinsiplərini və onların tətbiqini araşdırırıq.", blog2Title: "Uğurlu Layihə Üçün 5 Vacib Addım", blog2Desc: "Layihə planlamasından yekun təhvilə qədər olan mərhələlərdə diqqət etməli olduğunuz məqamlar.", blog3Title: "Risk İdarəetməsi Nədir?", blog3Desc: "Layihələrinizdə qarşılaşa biləcəyiniz riskləri necə müəyyən edə və idarə edə bilərsiniz?", blog4Title: "Layihə Meneceri yoxsa Lider? Hər İkisi!", blog4Desc: "Uğurlu layihələrin arxasında dayanan liderlik keyfiyyətlərini və onların komandaya təsirini araşdırın.", blog5Title: "Təcili yoxsa Vacib? Prioritetləri Düzgün Müəyyən Etməyin Yolları", blog5Desc: "MoSCoW və Eisenhower Matrisi kimi effektiv prioritetləşdirmə üsulları ilə tanış olun.", readMore: "Daha çox oxu &rarr;",
                     ctaTitle: "Layihələrinizi Növbəti Səviyyəyə Qaldırmağa Hazırsınız?", ctaSubtitle: "İndi başlayın – inkişaf üçün ilk addımı atın.", ctaBtn1: "Ödənişsiz Konsultasiya al", ctaBtn2: "Bütün Xidmətlərə Bax",
-                    quickNavHome: "Əsas Səhifə", quickNavAbout: "Haqqımızda", quickNavServices: "Xidmətlər", quickNavReviews: "Rəylər", quickNavBlog: "Bloq", quickNavContact: "Əlaqə",
                     footerTitle1: "PMania Hub", footerDesc1: "Layihə idarəetməsində peşəkar dəstəkçiniz.", footerTitle2: "Sürətli Keçidlər", footerTitle3: "Əlaqə", footerPhone: "Telefon: +372 5824 3097", footerTitle4: "Bizi İzləyin", footerRights: "&copy; 2025 PMania Hub. Bütün hüquqlar qorunur.",
                     calendarTitle: "Görüş Rezerv Edin"
                 },
@@ -1150,7 +1149,6 @@
                     testimonialsTitle: "What Our Students Say", highlight1: "Clear Explanation", highlight2: "Practical Examples", highlight3: "Interactive Training", highlight4: "Professional Instructor", highlight5: "Systematic Approach", testimonialsDesc: "Read the opinions of our graduates who shared their experiences with us.", testimonialsButton: "Read All Reviews",
                     blogTitle: "Latest Blog Posts", blog1Title: "Differences Between Agile and Scrum", blog1Desc: "In this article, we explore the core principles of agile methodologies and their application.", blog2Title: "5 Essential Steps for a Successful Project", blog2Desc: "Key points to consider from project planning to final delivery.", blog3Title: "What is Risk Management?", blog3Desc: "How can you identify and manage potential risks in your projects?", blog4Title: "Project Manager or Leader? Both!", blog4Desc: "Explore the leadership qualities behind successful projects and their impact on the team.", blog5Title: "Urgent or Important? How to Prioritize Correctly", blog5Desc: "Learn effective prioritization methods like MoSCoW and Eisenhower Matrix.", readMore: "Read more &rarr;",
                     ctaTitle: "Ready to Take Your Projects to the Next Level?", ctaSubtitle: "Start now – take the first step towards growth.", ctaBtn1: "Book a Free Consultation", ctaBtn2: "View All Services",
-                    quickNavHome: "Home", quickNavAbout: "About Us", quickNavServices: "Services", quickNavReviews: "Reviews", quickNavBlog: "Blog", quickNavContact: "Contact",
                     footerTitle1: "PMania Hub", footerDesc1: "Your professional support in project management.", footerTitle2: "Quick Links", footerTitle3: "Contact", footerPhone: "Phone: +372 5824 3097", footerTitle4: "Follow Us", footerRights: "&copy; 2025 PMania Hub. All rights reserved.",
                     calendarTitle: "Book a Meeting"
                 }
@@ -1167,8 +1165,16 @@
             }
 
             window.onclick = function(event) {
-                if (event.target.classList.contains('modal')) {
-                    event.target.style.display = 'none';
+                if (event.target.classList.contains('modal') || event.target.classList.contains('mobile-menu-overlay')) {
+                    closeModal('calendar-modal');
+                    closeModal('all-testimonials-modal');
+                    // Add other modal IDs here if needed
+                    const hamburger = document.getElementById('hamburger-menu');
+                    const navLinks = document.getElementById('main-nav-links');
+                    const overlay = document.getElementById('mobile-menu-overlay');
+                    hamburger.classList.remove('active');
+                    navLinks.classList.remove('active');
+                    overlay.classList.remove('active');
                 }
             }
 
@@ -1196,7 +1202,8 @@
                 const navLinks = document.getElementById('main-nav-links');
                 const overlay = document.getElementById('mobile-menu-overlay');
 
-                hamburger.addEventListener('click', () => {
+                hamburger.addEventListener('click', (event) => {
+                    event.stopPropagation(); // Prevents the window.onclick from firing immediately
                     hamburger.classList.toggle('active');
                     navLinks.classList.toggle('active');
                     overlay.classList.toggle('active');
