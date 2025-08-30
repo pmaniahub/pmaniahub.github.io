@@ -618,7 +618,7 @@
         /* --- Final CTA Section --- */
         .final-cta {
             background-color: #f9f9f9;
-            padding: 80px 0;
+            padding: 80px 0 40px; /* Reduced bottom padding */
             text-align: center;
         }
         .final-cta h2 {
@@ -637,7 +637,6 @@
             justify-content: center;
             gap: 20px;
             flex-wrap: wrap;
-            margin-bottom: 50px;
         }
         .final-cta-buttons .cta-button.cta-button-outline {
             background-color: transparent;
@@ -648,29 +647,7 @@
             background-color: var(--secondary-color);
             color: var(--white-color);
         }
-        .quick-nav ul {
-            list-style: none;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            align-items: center;
-            flex-wrap: wrap;
-        }
-        .quick-nav li {
-            color: var(--text-color);
-        }
-        .quick-nav a {
-            text-decoration: none;
-            color: var(--text-color);
-            font-weight: 500;
-            transition: color 0.3s ease;
-        }
-        .quick-nav a:hover {
-            color: var(--secondary-color);
-            text-decoration: underline;
-        }
-
+       
         /* --- Footer --- */
         .main-footer {
             background-color: var(--primary-color);
@@ -1055,21 +1032,6 @@
                 <button class="cta-button" onclick="openModal('calendar-modal')" data-lang-key="ctaBtn1">Ödənişsiz Konsultasiya al</button>
                 <a href="/services/" class="cta-button cta-button-outline" data-lang-key="ctaBtn2">Bütün Xidmətlərə Bax</a>
             </div>
-            <nav class="quick-nav">
-                <ul>
-                    <li><a href="/" data-lang-key="navHome">Əsas Səhifə</a></li>
-                    <li>&rarr;</li>
-                    <li><a href="/about/" data-lang-key="navAbout">Haqqımızda</a></li>
-                    <li>&rarr;</li>
-                    <li><a href="/services/" data-lang-key="navServices">Xidmətlər</a></li>
-                     <li>&rarr;</li>
-                    <li><a href="#testimonials-section" data-lang-key="navReviews">Rəylər</a></li>
-                    <li>&rarr;</li>
-                    <li><a href="#blog-section" data-lang-key="navBlog">Bloq</a></li>
-                    <li>&rarr;</li>
-                    <li><a href="/contact/" data-lang-key="navContact">Əlaqə</a></li>
-                </ul>
-            </nav>
         </div>
     </section>
 
