@@ -3,18 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Təlimlər - PMania Hub</title>
+    <title>Xidmətlər - PMania Hub</title>
+    <!-- Favicon -->
     <link rel="icon" href="/images/logo.png" type="image/png">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         /* --- Google Fonts Import --- */
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Roboto:wght@400;500&display=swap');
 
         /* --- CSS Reset & Basic Styles --- */
         :root {
-            --primary-color: #222831; /* Neutral Dark Grey */
-            --secondary-color: #4a1ad1; /* Your Brand's Purple */
-            --background-color: #ecf0f1; /* Light Gray */
-            --text-color: #34495e; /* Dark Gray */
+            --primary-color: #222831;
+            --secondary-color: #4a1ad1;
+            --background-color: #ecf0f1;
+            --text-color: #34495e;
             --white-color: #ffffff;
             --heading-font: 'Poppins', sans-serif;
             --body-font: 'Roboto', sans-serif;
@@ -41,18 +44,30 @@
         
         @media (min-width: 1400px) {
             .container {
-                max-width: 1300px; /* Wider container for large screens */
+                max-width: 1300px;
             }
         }
 
-        h1, h2, h3 {
+        h1, h2, h3, h4 {
             font-family: var(--heading-font);
             font-weight: 600;
             color: var(--primary-color);
         }
 
         section {
-            padding: 60px 0;
+            padding: 80px 0;
+        }
+        .section-title {
+            text-align: center;
+            font-size: 2.8em;
+            margin-bottom: 15px;
+        }
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2em;
+            max-width: 600px;
+            margin: 0 auto 60px auto;
+            color: var(--text-color);
         }
 
         /* --- Header & Navigation --- */
@@ -71,10 +86,6 @@
             align-items: center;
         }
 
-        .logo {
-            text-decoration: none;
-        }
-        
         .logo img {
             height: 70px;
             width: auto;
@@ -105,7 +116,6 @@
             color: var(--secondary-color);
         }
         
-        /* Language Switcher */
         .lang-switcher button {
             background: none;
             border: none;
@@ -119,7 +129,6 @@
             color: var(--secondary-color);
         }
         
-        /* Hamburger Menu */
         .hamburger {
             display: none;
             cursor: pointer;
@@ -130,15 +139,6 @@
             background-color: var(--primary-color);
             margin: 5px 0;
             transition: 0.4s;
-        }
-        .hamburger.active .bar:nth-child(1) {
-            transform: rotate(-45deg) translate(-5px, 6px);
-        }
-        .hamburger.active .bar:nth-child(2) {
-            opacity: 0;
-        }
-        .hamburger.active .bar:nth-child(3) {
-            transform: rotate(45deg) translate(-5px, -6px);
         }
         
         .cta-button {
@@ -160,47 +160,105 @@
             transform: translateY(-3px);
         }
         
-        /* --- Training List Section --- */
-        .trainings-list {
+        /* --- Training Packages Section --- */
+        .trainings-section {
             background-color: var(--background-color);
-            min-height: 60vh;
-        }
-        .trainings-list h2 {
-            text-align: center;
-            font-size: 2.5em;
-            margin-bottom: 50px;
         }
         .training-cards-container {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            flex-wrap: wrap;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
         }
         .training-card {
             background: var(--white-color);
-            border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-            padding: 30px;
-            width: 100%;
-            max-width: 450px;
-            text-align: center;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            padding: 40px;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .training-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.12);
         }
         .training-card h3 {
             color: var(--secondary-color);
+            font-size: 1.8em;
             margin-bottom: 15px;
         }
         .training-card .price {
-            font-size: 1.8em;
+            font-size: 2.5em;
             font-weight: 700;
+            color: var(--primary-color);
             margin: 20px 0;
+        }
+        .training-card .price-note {
+            font-size: 0.9em;
+            opacity: 0.7;
+            margin-top: -15px;
+            margin-bottom: 25px;
+        }
+        .training-card ul {
+            list-style: none;
+            padding: 0;
+            margin: 20px 0 30px 0;
+            text-align: left;
+        }
+        .training-card ul li {
+            margin-bottom: 12px;
+            padding-left: 30px;
+            position: relative;
+        }
+        .training-card ul li::before {
+            content: '✓';
+            color: var(--secondary-color);
+            position: absolute;
+            left: 0;
+            font-weight: 900;
+        }
+
+        /* --- Consulting & Coaching Sections --- */
+        .consulting-section {
+            background-color: var(--white-color);
+        }
+        .consulting-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+        .coaching-section {
+            background-color: var(--primary-color);
+            color: var(--white-color);
+            border-radius: 20px;
+            margin: 0 auto;
+            max-width: 1100px;
+            padding: 60px;
+        }
+        .coaching-section .section-title, .coaching-section h3 {
+            color: var(--white-color);
+        }
+        .coaching-section .section-subtitle {
+            color: rgba(255, 255, 255, 0.8);
+        }
+        .service-box {
+            background-color: var(--background-color);
+            padding: 40px;
+            border-radius: 12px;
+            text-align: center;
+        }
+        .service-box h3 {
+            font-size: 1.8em;
+            margin-bottom: 15px;
+        }
+        .service-box p {
+            margin-bottom: 30px;
         }
 
         /* --- Modal (Pop-up) Styles --- */
         .modal {
-            display: none; /* Hidden by default */
+            display: none;
             position: fixed;
             z-index: 2000;
             left: 0;
@@ -237,8 +295,6 @@
             from {opacity: 0; transform: translateY(-20px);}
             to {opacity: 1; transform: translateY(0);}
         }
-
-        /* Modal Inner Content Styling */
         .training-details h2 { font-size: 2em; text-align: center; margin-bottom: 10px; }
         .training-details .tagline { text-align: center; font-size: 1.2em; font-weight: 600; color: var(--secondary-color); margin-bottom: 25px; }
         .training-details .training-section { margin-bottom: 30px; }
@@ -250,7 +306,6 @@
         .training-details .price-box { background: var(--background-color); border-radius: 10px; padding: 20px; text-align: center; margin-top: 25px; }
         .training-details .price-box h4 { font-size: 1.3em; margin-bottom: 10px; }
         .training-details .price-box .price { font-size: 1.8em; font-weight: 700; color: var(--secondary-color); margin-bottom: 15px; }
-
 
         /* --- Footer --- */
         .main-footer {
@@ -275,12 +330,13 @@
         }
         .footer-section ul {
             list-style: none;
+            padding: 0;
         }
         .footer-section ul li {
             margin-bottom: 10px;
         }
         .footer-section a {
-            color: var(--background-color);
+            color: #ecf0f1;
             text-decoration: none;
             transition: color 0.3s ease;
         }
@@ -338,8 +394,12 @@
             }
         }
         @media (max-width: 768px) {
-            .trainings-list h2, .training-details h2 {
-                font-size: 2em;
+            .section-title { font-size: 2.2em; }
+            .training-cards-container, .consulting-grid {
+                grid-template-columns: 1fr;
+            }
+            .coaching-section {
+                padding: 40px 25px;
             }
         }
     </style>
@@ -351,25 +411,23 @@
             <a href="/" class="logo">
                 <img src="/images/logo.png" alt="PMania Hub Logo">
             </a>
-            
             <div class="header-actions">
                 <nav class="main-nav" id="main-nav-links">
                     <ul>
                         <li><a href="/" data-lang-key="navHome">Əsas Səhifə</a></li>
-                        <li><a href="/#about-section" data-lang-key="navAbout">Haqqımızda</a></li>
+                        <li><a href="/about/" data-lang-key="navAbout">Haqqımızda</a></li>
                         <li><a href="/services/" data-lang-key="navServices">Xidmətlər</a></li>
+                        <li><a href="/#testimonials-section" data-lang-key="navReviews">Rəylər</a></li>
                         <li><a href="/#blog-section" data-lang-key="navBlog">Bloq</a></li>
                         <li><a href="/contact/" data-lang-key="navContact">Əlaqə</a></li>
                     </ul>
                 </nav>
-
                 <div class="header-controls">
                     <div class="lang-switcher">
                         <button id="lang-az" class="active">AZ</button> |
                         <button id="lang-en">EN</button>
                     </div>
                 </div>
-
                 <div class="hamburger" id="hamburger-menu">
                     <div class="bar"></div>
                     <div class="bar"></div>
@@ -380,36 +438,77 @@
     </header>
 
     <main>
-        <section class="trainings-list">
+        <section class="trainings-section">
             <div class="container">
-                <h2 data-lang-key="pageTitle">Təlim Paketlərimiz</h2>
+                <h2 class="section-title" data-lang-key="pageTitle">Təlim Paketlərimiz</h2>
+                <p class="section-subtitle" data-lang-key="pageSubtitle">Karyeranızı növbəti səviyyəyə qaldırmaq üçün beynəlxalq standartlara əsaslanan, praktiki təlim proqramlarımızla tanış olun.</p>
                 <div class="training-cards-container">
                     <div class="training-card">
                         <div>
-                            <h3 data-lang-key="training1Title">“360° Layihə İdarəetməsi” Təlim Proqramı</h3>
+                            <h3 data-lang-key="training1Title">“360° Layihə İdarəetməsi”</h3>
                             <p data-lang-key="training1Desc">Layihə idarəetməsini sıfırdan öyrənmək və bu sahədə peşəkar olmaq üçün 8 həftəlik intensiv proqram.</p>
+                            <ul>
+                                <li data-lang-key="training1Point1">Praktiki tapşırıqlar və real nümunələr</li>
+                                <li data-lang-key="training1Point2">Agile və Waterfall metodologiyaları</li>
+                                <li data-lang-key="training1Point3">Karyera dəstəyi və müsahibə hazırlığı</li>
+                            </ul>
                             <div class="price">300 AZN</div>
+                            <div class="price-note" data-lang-key="priceMonthly">(aylıq 150 AZN)</div>
                         </div>
-                        <button class="cta-button" onclick="openModal('modal-360')" data-lang-key="readMore">Daha Çox</button>
+                        <button class="cta-button" onclick="openModal('modal-360')" data-lang-key="readMore">Daha Çox Öyrən</button>
                     </div>
                     <div class="training-card">
                         <div>
-                            <h3 data-lang-key="training2Title">CAPM® Sertifikatına Hazırlıq Proqramı</h3>
+                            <h3 data-lang-key="training2Title">CAPM® Sertifikatına Hazırlıq</h3>
                             <p data-lang-key="training2Desc">PMI® standartları ilə layihə idarəetməsi nəzəriyyəsini mənimsəyin və beynəlxalq CAPM® imtahanına tam hazır olun.</p>
+                            <ul>
+                                <li data-lang-key="training2Point1">PMBOK® Guide 7-ci nəşrə tam uyğunluq</li>
+                                <li data-lang-key="training2Point2">İmtahan sual tipləri ilə tanışlıq</li>
+                                <li data-lang-key="training2Point3">Mövzular üzrə sınaq imtahanları</li>
+                            </ul>
                             <div class="price">450 AZN</div>
+                            <div class="price-note">&nbsp;</div>
                         </div>
-                        <button class="cta-button" onclick="openModal('modal-capm')" data-lang-key="readMore">Daha Çox</button>
+                        <button class="cta-button" onclick="openModal('modal-capm')" data-lang-key="readMore">Daha Çox Öyrən</button>
                     </div>
                 </div>
             </div>
         </section>
+
+        <section class="consulting-section">
+            <div class="container">
+                <h2 class="section-title" data-lang-key="consultingTitle">Konsaltinq Xidmətləri</h2>
+                <p class="section-subtitle" data-lang-key="consultingSubtitle">Biznesinizin və ya şəxsi karyeranızın hədəflərinə çatmaq üçün peşəkar dəstək.</p>
+                <div class="consulting-grid">
+                    <div class="service-box">
+                        <h3 data-lang-key="consultingIndividuals">Fərdlər üçün</h3>
+                        <p data-lang-key="consultingIndividualsDesc">Karyera planlaması, hədəflərin müəyyən edilməsi və çətinliklərin aradan qaldırılması üçün fərdi məsləhət.</p>
+                        <a href="/contact/" class="cta-button" data-lang-key="requestCall">Zəng Sifariş Et</a>
+                    </div>
+                    <div class="service-box">
+                        <h3 data-lang-key="consultingCompanies">Şirkətlər üçün</h3>
+                        <p data-lang-key="consultingCompaniesDesc">Layihə idarəetmə proseslərinizin optimallaşdırılması, komandanızın inkişafı və effektivliyin artırılması.</p>
+                        <a href="/contact/" class="cta-button" data-lang-key="sendInquiry">Sorğu Göndər</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="container">
+            <div class="coaching-section">
+                <h2 class="section-title" data-lang-key="coachingTitle">Fərdi Kouçinq</h2>
+                <p class="section-subtitle" data-lang-key="coachingDesc">Karyeranızda irəliləmək üçün sizə xüsusi hazırlanmış 1:1 mentorluq proqramı. Bu proqram çərçivəsində sizinlə birlikdə güclü tərəflərinizi, inkişaf ehtiyaclarınızı analiz edir və hədəflərinizə çatmaq üçün konkret addımlar planlayırıq.</p>
+                <a href="/contact/" class="cta-button" data-lang-key="freeCall">Pulsuz İlkin Zəng</a>
+            </div>
+        </section>
+
     </main>
     
     <div id="modal-360" class="modal">
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal('modal-360')">&times;</span>
             <div class="training-details">
-                <h2 data-lang-key="training1Title"></h2>
+                <h2 data-lang-key="training1TitleFull"></h2>
                 <h3 class="tagline" data-lang-key="training1Tagline"></h3>
                 <p data-lang-key="training1ModalDesc"></p>
                 <div class="training-section">
@@ -472,7 +571,7 @@
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal('modal-capm')">&times;</span>
             <div class="training-details">
-                <h2 data-lang-key="training2Title"></h2>
+                <h2 data-lang-key="training2TitleFull"></h2>
                 <h3 class="tagline" data-lang-key="training2Tagline"></h3>
                 <p data-lang-key="training2ModalDesc"></p>
                 <div class="training-section">
@@ -531,8 +630,9 @@
                     <h4 data-lang-key="footerTitle2">Sürətli Keçidlər</h4>
                     <ul>
                         <li><a href="/" data-lang-key="navHome">Əsas Səhifə</a></li>
-                        <li><a href="/#about-section" data-lang-key="navAbout">Haqqımızda</a></li>
+                        <li><a href="/about/" data-lang-key="navAbout">Haqqımızda</a></li>
                         <li><a href="/services/" data-lang-key="navServices">Xidmətlər</a></li>
+                        <li><a href="/#testimonials-section" data-lang-key="navReviews">Rəylər</a></li>
                         <li><a href="/#blog-section" data-lang-key="navBlog">Bloq</a></li>
                         <li><a href="/contact/" data-lang-key="navContact">Əlaqə</a></li>
                     </ul>
@@ -545,15 +645,9 @@
                 <div class="footer-section">
                     <h4 data-lang-key="footerTitle4">Bizi İzləyin</h4>
                     <div class="social-icons">
-                        <a href="https://www.instagram.com/pmania_hub/" target="_blank" title="Instagram">
-                            <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.85s-.011 3.585-.069 4.85c-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07s-3.585-.012-4.85-.07c-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.85s.012-3.584.07-4.85c.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.85-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948s.014 3.667.072 4.947c.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072s3.667-.014 4.947-.072c4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.947s-.014-3.667-.072-4.947c-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.689-.073-4.948-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.162 6.162 6.162 6.162-2.759 6.162-6.162-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4s1.791-4 4-4 4 1.79 4 4-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.441 1.441 1.441 1.441-.645 1.441-1.441-.645-1.44-1.441-1.44z"/></svg>
-                        </a>
-                        <a href="https://www.facebook.com/profile.php?id=61578312400129" target="_blank" title="Facebook">
-                            <svg viewBox="0 0 24 24"><path d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.323-1.325z"/></svg>
-                        </a>
-                        <a href="https://www.linkedin.com/company/pmania-hub" target="_blank" title="LinkedIn">
-                            <svg viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-                        </a>
+                        <a href="https://www.instagram.com/pmania_hub/" target="_blank" title="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.85s-.011 3.585-.069 4.85c-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07s-3.585-.012-4.85-.07c-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.85s.012-3.584.07-4.85c.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.85-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948s.014 3.667.072 4.947c.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072s3.667-.014 4.947-.072c4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.947s-.014-3.667-.072-4.947c-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.689-.073-4.948-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.162 6.162 6.162 6.162-2.759 6.162-6.162-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4s1.791-4 4-4 4 1.79 4 4-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.441 1.441 1.441 1.441-.645 1.441-1.441-.645-1.44-1.441-1.44z"/></svg></a>
+                        <a href="https://www.facebook.com/profile.php?id=61578312400129" target="_blank" title="Facebook"><svg viewBox="0 0 24 24"><path d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.323-1.325z"/></svg></a>
+                        <a href="https://www.linkedin.com/company/pmania-hub" target="_blank" title="LinkedIn"><svg viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg></a>
                     </div>
                 </div>
             </div>
@@ -571,14 +665,33 @@
                     navHome: "Əsas Səhifə",
                     navAbout: "Haqqımızda",
                     navServices: "Xidmətlər",
+                    navReviews: "Rəylər",
                     navBlog: "Bloq",
                     navContact: "Əlaqə",
                     pageTitle: "Təlim Paketlərimiz",
-                    training1Title: "“360° Layihə İdarəetməsi” Təlim Proqramı",
+                    pageSubtitle: "Karyeranızı növbəti səviyyəyə qaldırmaq üçün beynəlxalq standartlara əsaslanan, praktiki təlim proqramlarımızla tanış olun.",
+                    training1Title: "“360° Layihə İdarəetməsi”",
                     training1Desc: "Layihə idarəetməsini sıfırdan öyrənmək və bu sahədə peşəkar olmaq üçün 8 həftəlik intensiv proqram.",
-                    training2Title: "CAPM® Sertifikatına Hazırlıq Proqramı",
+                    training1Point1: "Praktiki tapşırıqlar və real nümunələr",
+                    training1Point2: "Agile və Waterfall metodologiyaları",
+                    training1Point3: "Karyera dəstəyi və müsahibə hazırlığı",
+                    training2Title: "CAPM® Sertifikatına Hazırlıq",
                     training2Desc: "PMI® standartları ilə layihə idarəetməsi nəzəriyyəsini mənimsəyin və beynəlxalq CAPM® imtahanına tam hazır olun.",
-                    readMore: "Daha Çox",
+                    training2Point1: "PMBOK® Guide 7-ci nəşrə tam uyğunluq",
+                    training2Point2: "İmtahan sual tipləri ilə tanışlıq",
+                    training2Point3: "Mövzular üzrə sınaq imtahanları",
+                    readMore: "Daha Çox Öyrən",
+                    consultingTitle: "Konsaltinq Xidmətləri",
+                    consultingSubtitle: "Biznesinizin və ya şəxsi karyeranızın hədəflərinə çatmaq üçün peşəkar dəstək.",
+                    consultingIndividuals: "Fərdlər üçün",
+                    consultingIndividualsDesc: "Karyera planlaması, hədəflərin müəyyən edilməsi və çətinliklərin aradan qaldırılması üçün fərdi məsləhət.",
+                    requestCall: "Zəng Sifariş Et",
+                    consultingCompanies: "Şirkətlər üçün",
+                    consultingCompaniesDesc: "Layihə idarəetmə proseslərinizin optimallaşdırılması, komandanızın inkişafı və effektivliyin artırılması.",
+                    sendInquiry: "Sorğu Göndər",
+                    coachingTitle: "Fərdi Kouçinq",
+                    coachingDesc: "Karyeranızda irəliləmək üçün sizə xüsusi hazırlanmış 1:1 mentorluq proqramı. Bu proqram çərçivəsində sizinlə birlikdə güclü tərəflərinizi, inkişaf ehtiyaclarınızı analiz edir və hədəflərinizə çatmaq üçün konkret addımlar planlayırıq.",
+                    freeCall: "Pulsuz İlkin Zəng",
                     footerTitle1: "PMania Hub",
                     footerDesc1: "Layihə idarəetməsində peşəkar dəstəkçiniz.",
                     footerTitle2: "Sürətli Keçidlər",
@@ -586,6 +699,7 @@
                     footerPhone: "Telefon: +994 50 972 63 84",
                     footerTitle4: "Bizi İzləyin",
                     footerRights: "&copy; 2025 PMania Hub. Bütün hüquqlar qorunur.",
+                    training1TitleFull: "“360° Layihə İdarəetməsi” Təlim Proqramı",
                     training1Tagline: "QOŞUL, ÖYRƏN, TƏTBİQ ET!",
                     training1ModalDesc: "Layihə idarəetməsini sıfırdan öyrənmək və bu sahədə peşəkar olmaq istəyirsənsə, bu 8 həftəlik intensiv proqram tam sənin üçündür! PMANIA sənə praktiki bilik və real təcrübəyə əsaslanan bir yanaşma təqdim edir.",
                     trainerTitle: "Təlimçi: <span class='trainer-name'>Mahmud Mahmudlu</span>",
@@ -619,6 +733,7 @@
                     training1Result2: "Beynəlxalq yanaşmalara uyğun biliklər",
                     training1Result3: "İdarəçilikdə özünə inam və liderlik səriştəsi",
                     training1Result4: "Karyera inkişafına təsir edəcək sertifikat və praktik biliklər",
+                    training2TitleFull: "CAPM® Sertifikatına Hazırlıq Proqramı",
                     training2Tagline: "KARYERANIZIN İLK PEŞƏKAR ZİRVƏSİ!",
                     training2ModalDesc: "Layihə idarəetməsi sahəsində karyeranıza güclü bir təməllə başlamaq istəyirsinizsə, Certified Associate in Project Management (CAPM)® sertifikatı sizin üçün ideal seçimdir. Bu proqram sizi PMI®-ın rəsmi imtahanına hərtərəfli hazırlayacaq.",
                     training2Content1: "PMI® Etika Kodu və Peşəkar Davranış",
@@ -643,14 +758,33 @@
                     navHome: "Home",
                     navAbout: "About Us",
                     navServices: "Services",
+                    navReviews: "Reviews",
                     navBlog: "Blog",
                     navContact: "Contact",
                     pageTitle: "Our Training Packages",
-                    training1Title: "“360° Project Management” Training Program",
+                    pageSubtitle: "Discover our practical training programs based on international standards to take your career to the next level.",
+                    training1Title: "“360° Project Management”",
                     training1Desc: "An 8-week intensive program to learn project management from scratch and become a professional in the field.",
-                    training2Title: "CAPM® Certification Preparation Program",
+                    training1Point1: "Practical assignments and real-world case studies",
+                    training1Point2: "Agile and Waterfall methodologies",
+                    training1Point3: "Career support and interview preparation",
+                    training2Title: "CAPM® Certification Prep",
                     training2Desc: "Master project management theory with PMI® standards and get fully prepared for the international CAPM® exam.",
-                    readMore: "Read More",
+                    training2Point1: "Full alignment with PMBOK® Guide 7th Edition",
+                    training2Point2: "Familiarization with exam question types",
+                    training2Point3: "Practice exams by topic",
+                    readMore: "Learn More",
+                    consultingTitle: "Consulting Services",
+                    consultingSubtitle: "Professional support to achieve your business or personal career goals.",
+                    consultingIndividuals: "For Individuals",
+                    consultingIndividualsDesc: "Personalized advice for career planning, goal setting, and overcoming professional challenges.",
+                    requestCall: "Request a Call",
+                    consultingCompanies: "For Companies",
+                    consultingCompaniesDesc: "Optimization of your project management processes, team development, and increased efficiency.",
+                    sendInquiry: "Send Inquiry",
+                    coachingTitle: "Personal Coaching",
+                    coachingDesc: "A 1:1 mentorship program tailored to help you advance in your career. We work with you to analyze your strengths, identify areas for growth, and create a concrete action plan to reach your goals.",
+                    freeCall: "Free Initial Call",
                     footerTitle1: "PMania Hub",
                     footerDesc1: "Your professional support in project management.",
                     footerTitle2: "Quick Links",
@@ -658,6 +792,7 @@
                     footerPhone: "Phone: +994 50 972 63 84",
                     footerTitle4: "Follow Us",
                     footerRights: "&copy; 2025 PMania Hub. All rights reserved.",
+                    training1TitleFull: "“360° Project Management” Training Program",
                     training1Tagline: "JOIN, LEARN, APPLY!",
                     training1ModalDesc: "If you want to learn project management from scratch and become a professional, this 8-week intensive program is for you! PMANIA offers you an approach based on practical knowledge and real experience.",
                     trainerTitle: "Instructor: <span class='trainer-name'>Mahmud Mahmudlu</span>",
@@ -691,6 +826,7 @@
                     training1Result2: "Knowledge aligned with international approaches",
                     training1Result3: "Self-confidence in management and leadership competence",
                     training1Result4: "A certificate and practical knowledge that will impact career development",
+                    training2TitleFull: "CAPM® Certification Preparation Program",
                     training2Tagline: "THE FIRST PROFESSIONAL PEAK OF YOUR CAREER!",
                     training2ModalDesc: "If you want to start your career in project management with a strong foundation, the Certified Associate in Project Management (CAPM)® certification is the ideal choice for you. This program will comprehensively prepare you for the official PMI® exam.",
                     training2Content1: "PMI® Code of Ethics and Professional Conduct",
