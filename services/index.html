@@ -14,10 +14,10 @@
 
         /* --- MODERN CSS RESET & ENHANCED BASIC STYLES --- */
         :root {
-            --primary-color: #1A1D24; /* A slightly softer, deeper black */
+            --primary-color: #222831;
             --secondary-color: #4a1ad1;
             --secondary-gradient: linear-gradient(45deg, #4a1ad1, #6a32f1);
-            --background-color: #F8F9FA; /* A brighter, cleaner light gray */
+            --background-color: #F8F9FA;
             --text-color: #34495e;
             --white-color: #ffffff;
             --heading-font: 'Poppins', sans-serif;
@@ -41,7 +41,7 @@
             font-family: var(--body-font);
             line-height: 1.6;
             color: var(--text-color);
-            background-color: var(--background-color); /* Use the new background */
+            background-color: var(--background-color);
         }
         
         body.nav-open {
@@ -71,14 +71,12 @@
             overflow: hidden; /* Prevents box-shadow clipping */
         }
 
-        /* --- Refined Section Title --- */
         .section-title {
             text-align: center;
             font-size: 2.8em;
             margin-bottom: 15px;
         }
 
-        /* Highlight part of the title */
         .section-title span {
             background: var(--secondary-gradient);
             -webkit-background-clip: text;
@@ -95,45 +93,40 @@
             color: var(--text-color);
         }
 
-        /* --- Header & Navigation with Frosted Glass Effect --- */
+        /* --- Header & Navigation --- */
         .main-header, .service-nav {
             background-color: rgba(255, 255, 255, 0.85);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
             border-bottom: 1px solid rgba(0, 0, 0, 0.05);
         }
-
         .main-header {
             padding: 15px 0;
             position: sticky;
             top: 0;
             z-index: 1000;
         }
-
         .main-header .container {
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
-
         .logo img {
             height: 70px;
-            width: auto;
-            vertical-align: middle; 
         }
-
         .header-actions {
             display: flex;
             align-items: center;
             gap: 25px;
         }
-
+        .main-nav {
+            display: flex;
+        }
         .main-nav ul {
             list-style: none;
             display: flex;
             gap: 30px;
         }
-
         .main-nav a {
             text-decoration: none;
             color: var(--primary-color);
@@ -141,11 +134,9 @@
             font-size: 1.1em;
             transition: color 0.3s ease;
         }
-
         .main-nav a:hover {
             color: var(--secondary-color);
         }
-        
         .lang-switcher button {
             background: none;
             border: none;
@@ -158,7 +149,6 @@
         .lang-switcher button.active {
             color: var(--secondary-color);
         }
-        
         .hamburger { display: none; cursor: pointer; }
         .hamburger .bar { width: 25px; height: 3px; background-color: var(--primary-color); margin: 5px 0; transition: 0.4s; }
         .hamburger.active .bar:nth-child(1) { transform: rotate(-45deg) translate(-5px, 6px); }
@@ -167,9 +157,9 @@
 
         /* --- Service Navigator --- */
         .service-nav {
-            padding: 10px 0; /* Slightly reduce padding */
+            padding: 10px 0;
             position: sticky;
-            top: 101px; /* Height of the main header */
+            top: 101px; /* Matches header height */
             z-index: 999;
             display: flex;
             justify-content: center;
@@ -195,12 +185,11 @@
             box-shadow: 0 4px 15px rgba(74, 26, 209, 0.2);
         }
         
-        /* --- Updated CTA Button --- */
         .cta-button {
             display: inline-block;
-            background: var(--secondary-gradient); /* Use gradient */
+            background: var(--secondary-gradient);
             color: var(--white-color);
-            padding: 12px 25px; /* Compact padding */
+            padding: 12px 25px;
             border-radius: 50px;
             text-decoration: none;
             font-weight: 600;
@@ -208,15 +197,13 @@
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             border: none;
             cursor: pointer;
-            box-shadow: 0 4px 15px rgba(74, 26, 209, 0.2); /* Softer shadow */
+            box-shadow: 0 4px 15px rgba(74, 26, 209, 0.2);
         }
-
         .cta-button:hover {
             transform: translateY(-4px) scale(1.02);
-            box-shadow: 0 8px 25px rgba(74, 26, 209, 0.3); /* Enhanced hover shadow */
+            box-shadow: 0 8px 25px rgba(74, 26, 209, 0.3);
         }
         
-        /* --- [NEW] Training Packages Section --- */
         .trainings-section { background-color: var(--background-color); }
         .training-cards-container {
             display: grid;
@@ -238,62 +225,31 @@
             box-shadow: 0 10px 40px rgba(0,0,0,0.1);
         }
         .training-card .icon-wrapper {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 15px;
-            background: var(--secondary-gradient);
-            color: var(--white-color);
-            font-size: 1.6em;
+            width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 15px; background: var(--secondary-gradient); color: var(--white-color); font-size: 1.6em;
         }
         .training-card h3 { 
-            font-size: 1.25em; 
-            color: var(--primary-color); 
-            min-height: 55px; /* Align titles */
-            margin-bottom: 10px;
+            font-size: 1.25em; color: var(--primary-color); min-height: 55px; margin-bottom: 10px;
         }
         .training-card .card-desc {
-            font-size: 0.9em;
-            color: var(--text-color);
-            margin-bottom: 20px;
-            flex-grow: 1;
+            font-size: 0.9em; color: var(--text-color); margin-bottom: 20px; flex-grow: 1;
         }
         .training-card .card-footer {
-            margin-top: auto;
-            text-align: center;
+            margin-top: auto; text-align: center;
         }
         .training-card .price { font-size: 2em; font-weight: 700; color: var(--primary-color); line-height: 1; }
         .training-card .price-note { font-size: 0.85em; opacity: 0.7; margin-bottom: 20px; display: block; }
         
 
-        /* --- [NEW] Consulting & Coaching Sections --- */
         .consulting-section { background-color: var(--background-color); }
         .consulting-bento-grid {
-            display: grid;
-            grid-template-columns: 2fr 1fr; /* 2/3 and 1/3 split */
-            grid-template-rows: auto;
-            gap: 25px;
+            display: grid; grid-template-columns: 2fr 1fr; grid-template-rows: auto; gap: 25px;
         }
         .bento-box {
-            background-color: var(--white-color);
-            border-radius: var(--border-radius-lg);
-            padding: 40px;
-            border: 1px solid rgba(0,0,0,0.07);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            background-color: var(--white-color); border-radius: var(--border-radius-lg); padding: 40px; border: 1px solid rgba(0,0,0,0.07); transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
         .bento-box:hover { transform: translateY(-8px); box-shadow: 0 8px 30px rgba(0,0,0,0.08); }
         .bento-box i {
-            font-size: 2.5em;
-            margin-bottom: 20px;
-            display: block;
-            background: var(--secondary-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            text-fill-color: transparent;
+            font-size: 2.5em; margin-bottom: 20px; display: block; background: var(--secondary-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; text-fill-color: transparent;
         }
         .bento-box h3 { font-size: 1.8em; margin-bottom: 15px; }
         .bento-box p { margin-bottom: 30px; }
@@ -301,24 +257,15 @@
         .coaching-section { padding: 0; background: var(--primary-color); }
         .coaching-wrapper { display: grid; grid-template-columns: 1fr 1.5fr; align-items: center; min-height: 500px; }
         .coaching-visual {
-            width: 100%;
-            height: 100%;
-            background: var(--secondary-gradient);
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            width: 100%; height: 100%; background: var(--secondary-gradient); display: flex; align-items: center; justify-content: center;
         }
         .coaching-visual .icon-placeholder i { font-size: 8em; color: rgba(255, 255, 255, 0.5); }
         .coaching-content { padding: 60px; color: var(--white-color); }
         .coaching-content .section-title, .coaching-content .section-subtitle { text-align: left; margin-left: 0; margin-right: 0; }
         .coaching-content .section-title { color: var(--white-color); }
         .coaching-content .section-subtitle { color: rgba(255, 255, 255, 0.8); max-width: none; margin-bottom: 40px; }
-        
-        .coaching-content .coaching-cta {
-            text-align: center;
-        }
+        .coaching-content .coaching-cta { text-align: center; }
 
-        /* --- Modal (Pop-up) Styles --- */
         .modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.6); }
         .modal-content { background-color: var(--white-color); margin: 5% auto; padding: 40px; border-radius: 10px; width: 90%; max-width: 800px; position: relative; animation: fadeIn 0.3s; }
         .close-btn { color: #aaa; position: absolute; top: 15px; right: 25px; font-size: 28px; font-weight: bold; cursor: pointer; }
@@ -340,7 +287,7 @@
 
         /* --- Footer --- */
         .main-footer {
-            background-color: var(--primary-color);
+            background-color: #222831;
             color: var(--white-color);
             padding: 50px 0;
         }
@@ -465,16 +412,33 @@
         @media (max-width: 768px) {
             .section-title { font-size: 2.2em; }
             .training-cards-container { 
-                grid-template-columns: 1fr;
+                grid-template-columns: repeat(2, 1fr);
                 gap: 15px;
+            }
+            .consulting-bento-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 15px;
+            }
+            .coaching-wrapper {
+                 grid-template-columns: 1fr 1.5fr;
+                 text-align: left;
+            }
+             .coaching-content {
+                padding: 30px;
+            }
+            .coaching-content .section-title, .coaching-content .section-subtitle {
+                text-align: left;
+                margin-left: 0;
+                margin-right: 0;
             }
             .training-card { padding: 20px; }
             .training-card h3 { font-size: 1.1em; min-height: 48px; }
-            .training-card .card-desc { display: none; } /* Hide desc on mobile cards */
+            .training-card .card-desc { display: none; }
             .training-card .card-footer { padding-top: 15px; }
             .training-card .price { font-size: 1.8em; }
             .cta-button { padding: 12px 20px; font-size: 0.9em; }
-            .bento-box { padding: 30px; }
+            .bento-box { padding: 25px; }
+            .bento-box h3 { font-size: 1.5em; }
             .coaching-section { padding: 0; }
             .service-nav { top: 85px; }
             .service-nav-links a { padding: 8px 15px; font-size: 0.9em; }
@@ -891,3 +855,4 @@
 
 </body>
 </html>
+
