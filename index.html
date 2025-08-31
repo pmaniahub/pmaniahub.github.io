@@ -678,7 +678,6 @@
             justify-content: center;
             gap: 20px;
             flex-wrap: wrap;
-            margin-bottom: 50px;
         }
         .final-cta-buttons .cta-button.cta-button-outline {
             background-color: transparent;
@@ -688,28 +687,6 @@
         .final-cta-buttons .cta-button.cta-button-outline:hover {
             background-color: var(--secondary-color);
             color: var(--white-color);
-        }
-        .quick-nav ul {
-            list-style: none;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            align-items: center;
-            flex-wrap: wrap;
-        }
-        .quick-nav li {
-            color: var(--text-color);
-        }
-        .quick-nav a {
-            text-decoration: none;
-            color: var(--text-color);
-            font-weight: 500;
-            transition: color 0.3s ease;
-        }
-        .quick-nav a:hover {
-            color: var(--secondary-color);
-            text-decoration: underline;
         }
 
         /* --- Footer --- */
@@ -752,12 +729,13 @@
         .footer-contact-info li {
             display: flex;
             align-items: center;
+            gap: 12px;
         }
         .footer-contact-info i {
-            margin-right: 12px;
             font-size: 1.1em;
             width: 20px;
             text-align: center;
+            color: rgba(255, 255, 255, 0.7);
         }
         .social-icons a { 
             margin-right: 15px;
@@ -917,7 +895,7 @@
                 <p data-lang-key="heroSubtitle">Fərdlər və şirkətlər üçün hazırlanmış təlim və konsaltinq xidmətləri – real nəticələr, praktik alətlər.</p>
                 <div class="hero-buttons">
                     <a href="/services/" class="cta-button" data-lang-key="heroButton">Təlimə Qoşul</a>
-                    <a href="/services/#consulting" class="cta-button cta-button-secondary" data-lang-key="aboutButton">Konsultasiya Al</a>
+                    <a href="/services/#consulting" class="cta-button cta-button-secondary" data-lang-key="aboutButton">Konsultasiya al</a>
                 </div>
             </div>
         </section>
@@ -1133,24 +1111,9 @@
             <h2 data-lang-key="ctaTitle">Layihələrinizi Növbəti Səviyyəyə Qaldırmağa Hazırsınız?</h2>
             <p data-lang-key="ctaSubtitle">İndi başlayın – inkişaf üçün ilk addımı atın.</p>
             <div class="final-cta-buttons">
-                <button class="cta-button" onclick="openModal('calendar-modal')" data-lang-key="ctaBtn1">Pulsuz Zəng Rezerv Et</button>
+                <button class="cta-button" onclick="openModal('calendar-modal')" data-lang-key="ctaBtn1">Ödənişsiz konsultasiya al</button>
                 <a href="/services/" class="cta-button cta-button-outline" data-lang-key="ctaBtn2">Bütün Xidmətlərə Bax</a>
             </div>
-            <nav class="quick-nav">
-                <ul>
-                    <li><a href="/" data-lang-key="navHome">Əsas Səhifə</a></li>
-                    <li>&rarr;</li>
-                    <li><a href="/about/" data-lang-key="navAbout">Haqqımızda</a></li>
-                    <li>&rarr;</li>
-                    <li><a href="/services/" data-lang-key="navServices">Xidmətlər</a></li>
-                     <li>&rarr;</li>
-                    <li><a href="#testimonials-section" data-lang-key="navReviews">Rəylər</a></li>
-                    <li>&rarr;</li>
-                    <li><a href="#blog-section" data-lang-key="navBlog">Bloq</a></li>
-                    <li>&rarr;</li>
-                    <li><a href="/contact/" data-lang-key="navContact">Əlaqə</a></li>
-                </ul>
-            </nav>
         </div>
     </section>
 
@@ -1159,22 +1122,22 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
-                    <h4 data-lang-key="footerTitle1">PMania Hub</h4>
-                    <p data-lang-key="footerDesc1">Layihə idarəetməsində peşəkar dəstəkçiniz.</p>
+                    <h4 data-lang-key="footerTitle1"></h4>
+                    <p data-lang-key="footerDesc1"></p>
                 </div>
                 <div class="footer-section">
-                    <h4 data-lang-key="footerTitle2">Sürətli Keçidlər</h4>
+                    <h4 data-lang-key="footerTitle2"></h4>
                     <ul>
-                        <li><a href="/" data-lang-key="navHome">Əsas Səhifə</a></li>
-                        <li><a href="/about/" data-lang-key="navAbout">Haqqımızda</a></li>
-                        <li><a href="/services/" data-lang-key="navServices">Xidmətlər</a></li>
-                        <li><a href="#testimonials-section" data-lang-key="navReviews">Rəylər</a></li>
-                        <li><a href="#blog-section" data-lang-key="navBlog">Bloq</a></li>
-                        <li><a href="/contact/" data-lang-key="navContact">Əlaqə</a></li>
+                        <li><a href="/" data-lang-key="navHome"></a></li>
+                        <li><a href="/about/" data-lang-key="navAbout"></a></li>
+                        <li><a href="/services/" data-lang-key="navServices"></a></li>
+                        <li><a href="#testimonials-section" data-lang-key="navReviews"></a></li>
+                        <li><a href="#blog-section" data-lang-key="navBlog"></a></li>
+                        <li><a href="/contact/" data-lang-key="navContact"></a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
-                    <h4 data-lang-key="footerTitle3">Əlaqə</h4>
+                    <h4 data-lang-key="footerTitle3"></h4>
                      <ul class="footer-contact-info">
                         <li><i class="fas fa-envelope"></i> <a href="mailto:info@pmaniahub.com">info@pmaniahub.com</a></li>
                         <li><i class="fas fa-phone"></i> <a href="tel:+37258243097">+372 5824 3097</a></li>
@@ -1182,7 +1145,7 @@
                     </ul>
                 </div>
                 <div class="footer-section">
-                    <h4 data-lang-key="footerTitle4">Bizi İzləyin</h4>
+                    <h4 data-lang-key="footerTitle4"></h4>
                     <div class="social-icons">
                         <a href="https://www.instagram.com/pmania_hub/" target="_blank" title="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.85s-.011 3.585-.069 4.85c-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07s-3.585-.012-4.85-.07c-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.85s.012-3.584.07-4.85c.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.85-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948s.014 3.667.072 4.947c.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072s3.667-.014 4.947-.072c4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.947s-.014-3.667-.072-4.947c-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.689-.073-4.948-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.162 6.162 6.162 6.162-2.759 6.162-6.162-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4s1.791-4 4-4 4 1.79 4 4-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.441 1.441 1.441 1.441-.645 1.441-1.441-.645-1.44-1.441-1.44z"/></svg></a>
                         <a href="https://www.facebook.com/profile.php?id=61578312400129" target="_blank" title="Facebook"><svg viewBox="0 0 24 24"><path d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.323-1.325z"/></svg></a>
@@ -1409,13 +1372,13 @@
                 az: {
                     navHome: "Əsas Səhifə", navAbout: "Haqqımızda", navServices: "Xidmətlər", navReviews: "Rəylər", navBlog: "Bloq", navContact: "Əlaqə",
                     heroTitle: "Layihələrinizi Peşəkarcasına İdarə Edin. Gələcəyinizi Dəyişin.", heroSubtitle: "Fərdlər və şirkətlər üçün hazırlanmış təlim və konsaltinq xidmətləri – real nəticələr, praktik alətlər.",
-                    heroButton: "Təlimə Qoşul", aboutButton: "Konsultasiya Al",
+                    heroButton: "Təlimə Qoşul", aboutButton: "Konsultasiya al",
                     valuePropTitle: "Niyə Biz?", value1Title: "Praktiki Təlim", value1Desc: "Real nümunələr və alətlər", value2Title: "Beynəlxalq Standartlar", value2Desc: "PMI və Agile yanaşmaları", value3Title: "Fərdi Konsaltinq", value3Desc: "Biznesinizə uyğun həllər", value4Title: "Sübut Olunmuş Təcrübə", value4Desc: "15M+ € layihə idarəetməsi",
                     servicesTitle: "Xidmətlərimiz", service1Title: "Təlimlər", service1Desc: "Layihə idarəetməni praktik nümunələrlə və sübut olunmuş metodlarla öyrənin.", service2Title: "Konsaltinq", service2Desc: "Şirkətinizin layihə nəticələrini yaxşılaşdırmaq üçün xüsusi həllər.", service3Title: "Şəxsi Kouçinq", service3Desc: "Karyera inkişafınız üçün 1:1 mentorluq və dəstək.",
                     learnMore: "Daha Çox Öyrən &rarr;", newsTitle: "Xəbərlər", news1Title: "Qeydiyyat Başladı: 360° Layihə İdarəetməsi", news2Title: "Keçirilmiş Seminar: Çevik və Klassik Metodlar", news3Title: "Təqaüd Proqramı Uğurla Başa Çatdı",
                     testimonialsTitle: "Tələbələrimiz Nə Deyir?", highlight1: "Aydın İzah", highlight2: "Praktiki Nümunələr", highlight3: "İnteraktiv Təlim", highlight4: "Peşəkar Təlimçi", highlight5: "Sistemli Yanaşma", testimonialsDesc: "Bizimlə təcrübələrini bölüşən məzunlarımızın fikirləri ilə tanış olun.", testimonialsButton: "Bütün Rəyləri Oxu",
                     blogTitle: "Son Bloq Yazıları", blog1Title: "Agile və Scrum Arasındakı Fərqlər", blog1Desc: "Bu məqalədə çevik metodologiyaların əsas prinsiplərini və onların tətbiqini araşdırırıq.", blog2Title: "Uğurlu Layihə Üçün 5 Vacib Addım", blog2Desc: "Layihə planlamasından yekun təhvilə qədər olan mərhələlərdə diqqət etməli olduğunuz məqamlar.", blog3Title: "Risk İdarəetməsi Nədir?", blog3Desc: "Layihələrinizdə qarşılaşa biləcəyiniz riskləri necə müəyyən edə və idarə edə bilərsiniz?", blog4Title: "Layihə Meneceri yoxsa Lider? Hər İkisi!", blog4Desc: "Uğurlu layihələrin arxasında dayanan liderlik keyfiyyətlərini və onların komandaya təsirini araşdırın.", blog5Title: "Təcili yoxsa Vacib? Prioritetləri Düzgün Müəyyən Etməyin Yolları", blog5Desc: "MoSCoW və Eisenhower Matrisi kimi effektiv prioritetləşdirmə üsulları ilə tanış olun.", readMore: "Daha çox oxu &rarr;",
-                    ctaTitle: "Layihələrinizi Növbəti Səviyyəyə Qaldırmağa Hazırsınız?", ctaSubtitle: "İndi başlayın – inkişaf üçün ilk addımı atın.", ctaBtn1: "Pulsuz Zəng Rezerv Et", ctaBtn2: "Bütün Xidmətlərə Bax",
+                    ctaTitle: "Layihələrinizi Növbəti Səviyyəyə Qaldırmağa Hazırsınız?", ctaSubtitle: "İndi başlayın – inkişaf üçün ilk addımı atın.", ctaBtn1: "Ödənişsiz konsultasiya al", ctaBtn2: "Bütün Xidmətlərə Bax",
                     quickNavHome: "Əsas Səhifə", quickNavAbout: "Haqqımızda", quickNavServices: "Xidmətlər", quickNavReviews: "Rəylər", quickNavBlog: "Bloq", quickNavContact: "Əlaqə",
                     footerTitle1: "PMania Hub", footerDesc1: "Layihə idarəetməsində peşəkar dəstəkçiniz.", footerTitle2: "Sürətli Keçidlər", footerTitle3: "Əlaqə", footerPhone: "Telefon: +372 5824 3097", footerTitle4: "Bizi İzləyin", footerRights: "&copy; 2025 PMania Hub. Bütün hüquqlar qorunur.",
                     calendarTitle: "Görüş Rezerv Edin",
@@ -1518,7 +1481,7 @@
                 en: {
                     navHome: "Home", navAbout: "About Us", navServices: "Services", navReviews: "Reviews", navBlog: "Blog", navContact: "Contact",
                     heroTitle: "Master Project Management. Transform Your Future.", heroSubtitle: "Training and consulting designed for individuals and companies – real results, practical tools.",
-                    heroButton: "Join a Training", aboutButton: "Get a Consultation",
+                    heroButton: "Join a Training", aboutButton: "Get a Free Consultation",
                     valuePropTitle: "Why Choose Us?", value1Title: "Practical Training", value1Desc: "Real examples and tools", value2Title: "International Standards", value2Desc: "PMI and Agile approaches", value3Title: "Personalized Consulting", value3Desc: "Solutions tailored to your business", value4Title: "Proven Expertise", value4Desc: "15M+ € project management",
                     servicesTitle: "Our Services", service1Title: "Trainings", service1Desc: "Learn project management with practical examples and proven methods.", service2Title: "Consulting", service2Desc: "Custom solutions to improve your company's project outcomes.", service3Title: "Personal Coaching", service3Desc: "1:1 mentoring and support for your career development.",
                     learnMore: "Learn More &rarr;", newsTitle: "News", news1Title: "Registration Open: 360° Project Management", news2Title: "Past Seminar: Agile vs. Classic Methods", news3Title: "Scholarship Program Successfully Concluded",
