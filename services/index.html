@@ -43,6 +43,10 @@
             color: var(--text-color);
             background-color: var(--background-color); /* Use the new background */
         }
+        
+        body.nav-open {
+            overflow: hidden;
+        }
 
         .container {
             width: 90%;
@@ -157,6 +161,9 @@
         
         .hamburger { display: none; cursor: pointer; }
         .hamburger .bar { width: 25px; height: 3px; background-color: var(--primary-color); margin: 5px 0; transition: 0.4s; }
+        .hamburger.active .bar:nth-child(1) { transform: rotate(-45deg) translate(-5px, 6px); }
+        .hamburger.active .bar:nth-child(2) { opacity: 0; }
+        .hamburger.active .bar:nth-child(3) { transform: rotate(45deg) translate(-5px, -6px); }
 
         /* --- Service Navigator --- */
         .service-nav {
@@ -332,27 +339,121 @@
         #calendar-modal h3 { margin-bottom: 20px; }
 
         /* --- Footer --- */
-        .main-footer { background-color: var(--primary-color); color: var(--white-color); padding: 50px 0; }
-        .footer-content { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 30px; }
-        .footer-section { flex: 1; min-width: 200px; }
-        .footer-section h4 { font-family: var(--heading-font); color: var(--white-color); font-size: 1.2em; margin-bottom: 15px; }
-        .footer-section ul { list-style: none; padding: 0; }
-        .footer-section ul li { margin-bottom: 10px; }
-        .footer-section a { color: #ecf0f1; text-decoration: none; transition: color 0.3s ease; }
-        .footer-section a:hover { color: var(--secondary-color); }
-        .social-icons a { margin-right: 15px; }
-        .social-icons svg { width: 24px; height: 24px; fill: var(--white-color); transition: fill 0.3s ease; }
-        .social-icons a:hover svg { fill: var(--secondary-color); }
-        .footer-bottom { text-align: center; margin-top: 40px; padding-top: 20px; border-top: 1px solid #4a4e56; }
+        .main-footer {
+            background-color: var(--primary-color);
+            color: var(--white-color);
+            padding: 50px 0;
+        }
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+        .footer-section {
+            flex: 1;
+            min-width: 200px;
+        }
+        .footer-section h4 {
+            font-family: var(--heading-font);
+            font-size: 1.2em;
+            margin-bottom: 15px;
+            color: var(--white-color);
+        }
+        .footer-section ul { 
+            list-style: none;
+            padding: 0;
+        }
+        .footer-section ul li { 
+            margin-bottom: 12px;
+        }
+        .footer-section a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .footer-section a:hover { 
+            color: var(--white-color); 
+        }
+        .footer-contact-info li {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .footer-contact-info i {
+            font-size: 1.1em;
+            width: 20px;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.7);
+        }
+        .social-icons a { 
+            margin-right: 15px;
+            display: inline-block;
+        }
+        .social-icons svg {
+            width: 24px;
+            height: 24px;
+            fill: rgba(255, 255, 255, 0.7);
+            transition: fill 0.3s ease, transform 0.3s ease;
+        }
+        .social-icons a:hover svg { 
+            fill: var(--white-color); 
+            transform: scale(1.1);
+        }
+        .footer-bottom {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #4a4e56;
+        }
 
         /* --- Responsive Design --- */
         @media (max-width: 1080px) {
             .training-cards-container { grid-template-columns: repeat(2, 1fr); }
-            .main-nav { display: none; width: 100%; flex-direction: column; align-items: flex-start; background-color: var(--white-color); position: fixed; top: 101px; left: 0; padding: 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); height: calc(100vh - 101px); }
-            .main-nav.active { display: flex; }
-            .main-nav ul { flex-direction: column; width: 100%; gap: 15px; }
-            .main-nav ul li { width: 100%; text-align: center; }
-            .hamburger { display: block; }
+            .hamburger {
+                display: block;
+                position: relative;
+                z-index: 1001;
+            }
+            .hamburger.active .bar {
+                background-color: var(--white-color);
+            }
+            .main-nav {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100vh;
+                background-color: rgba(34, 40, 49, 0.95);
+                backdrop-filter: blur(8px);
+                -webkit-backdrop-filter: blur(8px);
+                opacity: 0;
+                visibility: hidden;
+                transition: opacity 0.35s ease, visibility 0.35s;
+                z-index: 1000;
+            }
+            .main-nav.active {
+                opacity: 1;
+                visibility: visible;
+            }
+            .main-nav ul {
+                flex-direction: column;
+                width: 100%;
+                gap: 30px;
+            }
+            .main-nav ul li {
+                width: 100%;
+                text-align: center;
+            }
+            .main-nav a {
+                font-size: 1.6em;
+                font-weight: 500;
+                color: var(--white-color);
+            }
         }
         @media (max-width: 900px) {
             .consulting-bento-grid { grid-template-columns: 1fr; }
@@ -364,7 +465,7 @@
         @media (max-width: 768px) {
             .section-title { font-size: 2.2em; }
             .training-cards-container { 
-                grid-template-columns: repeat(2, 1fr);
+                grid-template-columns: 1fr;
                 gap: 15px;
             }
             .training-card { padding: 20px; }
@@ -546,7 +647,7 @@
                     <h4 data-lang-key="priceTitle"></h4>
                     <div class="price" data-price-azn="300">300 AZN</div>
                     <p data-lang-key="priceMonthly"></p>
-                    <a href="https://wa.me/994509726384?text=Salam%2C%20'360%C2%B0%20Layih%C9%99%20%C4%B0dar%C9%99etm%C9%99si'%20t%C9%99limi%20il%C9%99%20maraqlan%C4%B1ram." target="_blank" class="cta-button" data-lang-key="applyNow"></a>
+                    <a href="https://wa.me/37258243097?text=Salam%2C%20'360%C2%B0%20Layih%C9%99%20%C4%B0dar%C9%99etm%C9%99si'%20t%C9%99limi%20il%C9%99%20maraqlan%C4%B1ram." target="_blank" class="cta-button" data-lang-key="applyNow"></a>
                 </div>
             </div>
         </div>
@@ -561,7 +662,7 @@
                  <div class="price-box">
                     <h4 data-lang-key="priceTitle"></h4>
                     <div class="price" data-price-azn="450">450 AZN</div>
-                    <a href="https://wa.me/994509726384?text=Salam%2C%20CAPM%C2%AE%20Sertifikat%C4%B1na%20Haz%C4%B1rl%C4%B1q%20Proqram%C4%B1%20il%C9%99%20maraqlan%C4%B1ram." target="_blank" class="cta-button" data-lang-key="applyNow"></a>
+                    <a href="https://wa.me/37258243097?text=Salam%2C%20CAPM%C2%AE%20Sertifikat%C4%B1na%20Haz%C4%B1rl%C4%B1q%20Proqram%C4%B1%20il%C9%99%20maraqlan%C4%B1ram." target="_blank" class="cta-button" data-lang-key="applyNow"></a>
                 </div>
             </div>
         </div>
@@ -576,7 +677,7 @@
                 <div class="price-box">
                     <h4 data-lang-key="priceTitle"></h4>
                     <div class="price" data-price-azn="750">750 AZN</div>
-                    <a href="https://wa.me/994509726384?text=Salam%2C%20PMP%C2%AE%20Sertifikat%C4%B1na%20Haz%C4%B1rl%C4%B1q%20Proqram%C4%B1%20il%C9%99%20maraqlan%C4%B1ram." target="_blank" class="cta-button" data-lang-key="applyNow"></a>
+                    <a href="https://wa.me/37258243097?text=Salam%2C%20PMP%C2%AE%20Sertifikat%C4%B1na%20Haz%C4%B1rl%C4%B1q%20Proqram%C4%B1%20il%C9%99%20maraqlan%C4%B1ram." target="_blank" class="cta-button" data-lang-key="applyNow"></a>
                 </div>
             </div>
         </div>
@@ -591,7 +692,7 @@
                 <div class="price-box">
                     <h4 data-lang-key="priceTitle"></h4>
                     <div class="price" data-price-azn="500">500 AZN</div>
-                    <a href="https://wa.me/994509726384?text=Salam%2C%20Korporativ%20T%C9%99lim%20Paketi%20il%C9%99%20maraqlan%C4%B1ram." target="_blank" class="cta-button" data-lang-key="applyNow"></a>
+                    <a href="https://wa.me/37258243097?text=Salam%2C%20Korporativ%20T%C9%99lim%20Paketi%20il%C9%99%20maraqlan%C4%B1ram." target="_blank" class="cta-button" data-lang-key="applyNow"></a>
                 </div>
             </div>
         </div>
@@ -605,9 +706,45 @@
         </div>
     </div>
 
+    <!-- Footer -->
     <footer class="main-footer">
         <div class="container">
-            <!-- Footer content will be dynamically generated by JS -->
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4 data-lang-key="footerTitle1"></h4>
+                    <p data-lang-key="footerDesc1"></p>
+                </div>
+                <div class="footer-section">
+                    <h4 data-lang-key="footerTitle2"></h4>
+                    <ul>
+                        <li><a href="/" data-lang-key="navHome"></a></li>
+                        <li><a href="/about/" data-lang-key="navAbout"></a></li>
+                        <li><a href="/services/" data-lang-key="navServices"></a></li>
+                        <li><a href="/#testimonials-section" data-lang-key="navReviews"></a></li>
+                        <li><a href="/#blog-section" data-lang-key="navBlog"></a></li>
+                        <li><a href="/contact/" data-lang-key="navContact"></a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4 data-lang-key="footerTitle3"></h4>
+                     <ul class="footer-contact-info">
+                        <li><i class="fas fa-envelope"></i> <a href="mailto:info@pmaniahub.com">info@pmaniahub.com</a></li>
+                        <li><i class="fas fa-phone"></i> <a href="tel:+37258243097">+372 5824 3097</a></li>
+                        <li><i class="fas fa-globe"></i> <a href="http://www.pmaniahub.com" target="_blank">www.pmaniahub.com</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4 data-lang-key="footerTitle4"></h4>
+                    <div class="social-icons">
+                        <a href="https://www.instagram.com/pmania_hub/" target="_blank" title="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.85s-.011 3.585-.069 4.85c-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07s-3.585-.012-4.85-.07c-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.85s.012-3.584.07-4.85c.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.85-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948s.014 3.667.072 4.947c.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072s3.667-.014 4.947-.072c4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.947s-.014-3.667-.072-4.947c-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.689-.073-4.948-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.162 6.162 6.162 6.162-2.759 6.162-6.162-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4s1.791-4 4-4 4 1.79 4 4-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.441 1.441 1.441 1.441-.645 1.441-1.441-.645-1.44-1.441-1.44z"/></svg></a>
+                        <a href="https://www.facebook.com/profile.php?id=61578312400129" target="_blank" title="Facebook"><svg viewBox="0 0 24 24"><path d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.323-1.325z"/></svg></a>
+                        <a href="https://www.linkedin.com/company/pmania-hub" target="_blank" title="LinkedIn"><svg viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p data-lang-key="footerRights"></p>
+            </div>
         </div>
     </footer>
     
@@ -629,7 +766,8 @@
                     consultingIndividuals: "Fərdlər üçün", consultingIndividualsDesc: "Karyera planlaması, hədəflərin müəyyən edilməsi və çətinliklərin aradan qaldırılması üçün fərdi məsləhət.", requestCall: "Zəng Sifariş Et",
                     consultingCompanies: "Şirkətlər üçün", consultingCompaniesDesc: "Layihə idarəetmə proseslərinizin optimallaşdırılması, komandanızın inkişafı və effektivliyin artırılması.", sendInquiry: "Sorğu Göndər",
                     coachingTitle: "Fərdi Kouçinq", coachingDesc: "Karyeranızda irəliləmək üçün sizə xüsusi hazırlanmış 1:1 mentorluq proqramı. Bu proqram çərçivəsində sizinlə birlikdə güclü tərəflərinizi, inkişaf ehtiyaclarınızı analiz edir və hədəflərinizə çatmaq üçün konkret addımlar planlayırıq.", freeCall: "Pulsuz İlkin Zəng",
-                    footerRights: "&copy; 2024 PMania Hub. Bütün hüquqlar qorunur.", calendarTitle: "Görüş Rezerv Edin",
+                    footerTitle1: "PMania Hub", footerDesc1: "Layihə idarəetməsində peşəkar dəstəkçiniz.", footerTitle2: "Sürətli Keçidlər", footerTitle3: "Əlaqə", footerPhone: "Telefon: +372 5824 3097", footerTitle4: "Bizi İzləyin", footerRights: "&copy; 2025 PMania Hub. Bütün hüquqlar qorunur.",
+                    calendarTitle: "Görüş Rezerv Edin",
                     training1TitleFull: "“360° Layihə İdarəetməsi” Təlim Proqramı", training1Tagline: "QOŞUL, ÖYRƏN, TƏTBİQ ET!", training1ModalDesc: "Layihə idarəetməsini sıfırdan öyrənmək və bu sahədə peşəkar olmaq istəyirsənsə, bu 8 həftəlik intensiv proqram tam sənin üçündür! PMANIA sənə praktiki bilik və real təcrübəyə əsaslanan bir yanaşma təqdim edir.",
                     training1FormatTitle: "Təlim formatı:", training1Format1: "2 ay müddətini əhatə edir.", training1Format2: "Dərslər həftədə 2 dəfə keçirilir.", training1Format3: "Hər dərs 90 dəqiqə davam edir.",
                     priceTitle: "Proqramın Tam Ödəniş Məbləği", priceMonthly: "(aylıq 150 AZN)", applyNow: "Müraciət Et",
@@ -650,7 +788,8 @@
                     consultingIndividuals: "For Individuals", consultingIndividualsDesc: "Personalized advice for career planning, goal setting, and overcoming professional challenges.", requestCall: "Request a Call",
                     consultingCompanies: "For Companies", consultingCompaniesDesc: "Optimization of your project management processes, team development, and increased efficiency.", sendInquiry: "Send Inquiry",
                     coachingTitle: "Personal Coaching", coachingDesc: "A 1:1 mentorship program tailored for your career advancement. We analyze your strengths, identify areas for growth, and create a concrete action plan to reach your goals.", freeCall: "Free Initial Call",
-                    footerRights: "&copy; 2024 PMania Hub. All rights reserved.", calendarTitle: "Book a Meeting",
+                    footerTitle1: "PMania Hub", footerDesc1: "Your professional support in project management.", footerTitle2: "Quick Links", footerTitle3: "Contact", footerPhone: "Phone: +372 5824 3097", footerTitle4: "Follow Us", footerRights: "&copy; 2025 PMania Hub. All rights reserved.",
+                    calendarTitle: "Book a Meeting",
                     training1TitleFull: "\"360° Project Management\" Training Program", training1Tagline: "JOIN, LEARN, APPLY!", training1ModalDesc: "If you want to learn project management from scratch and become a professional, this 8-week intensive program is for you! PMANIA offers a practical, experience-based approach.",
                     training1FormatTitle: "Training Format:", training1Format1: "Duration of 2 months.", training1Format2: "Classes are held twice a week.", training1Format3: "Each class lasts 90 minutes.",
                     priceTitle: "Full Program Fee", priceMonthly: "(150 AZN per month)", applyNow: "Apply Now",
@@ -706,11 +845,25 @@
                 document.getElementById('lang-az').addEventListener('click', () => switchLanguage('az'));
                 document.getElementById('lang-en').addEventListener('click', () => switchLanguage('en'));
                 
+                // --- UPDATED HAMBURGER MENU LOGIC ---
                 const hamburger = document.getElementById('hamburger-menu');
                 const navLinks = document.getElementById('main-nav-links');
+                const navMenuLinks = navLinks.querySelectorAll('a');
+
+                function closeMenu() {
+                    hamburger.classList.remove('active');
+                    navLinks.classList.remove('active');
+                    document.body.classList.remove('nav-open');
+                }
+
                 hamburger.addEventListener('click', () => {
                     hamburger.classList.toggle('active');
                     navLinks.classList.toggle('active');
+                    document.body.classList.toggle('nav-open');
+                });
+
+                navMenuLinks.forEach(link => {
+                    link.addEventListener('click', closeMenu);
                 });
                 
                 const sections = document.querySelectorAll('main section');
@@ -738,4 +891,3 @@
 
 </body>
 </html>
-
