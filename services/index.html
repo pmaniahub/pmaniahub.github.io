@@ -272,15 +272,13 @@
         .close-btn:hover, .close-btn:focus { color: var(--primary-color); }
         @keyframes fadeIn { from {opacity: 0; transform: translateY(-20px);} to {opacity: 1; transform: translateY(0);} }
         .training-details h2 { font-size: 2em; text-align: center; margin-bottom: 10px; }
+        .training-details h4 { font-size: 1.3em; margin-top: 25px; margin-bottom: 15px; color: var(--primary-color); }
         .training-details .tagline { text-align: center; font-size: 1.2em; font-weight: 600; color: var(--secondary-color); margin-bottom: 25px; }
-        .training-details .training-section { margin-bottom: 30px; }
-        .training-details .training-section h4 { font-size: 1.3em; margin-bottom: 15px; padding-bottom: 5px; border-bottom: 2px solid var(--secondary-color); display: inline-block; }
-        .training-details .training-section ul { list-style: none; padding-left: 0; }
-        .training-details .training-section ul li { margin-bottom: 10px; padding-left: 25px; position: relative; }
-        .training-details .training-section ul li::before { content: '✓'; color: var(--secondary-color); position: absolute; left: 0; font-weight: 600; }
-        .training-details .trainer-name { font-weight: 700; color: var(--primary-color); }
+        .training-details ul { list-style: none; padding-left: 0; }
+        .training-details ul li { margin-bottom: 10px; padding-left: 25px; position: relative; }
+        .training-details ul li::before { content: '✓'; color: var(--secondary-color); position: absolute; left: 0; font-weight: 600; }
         .training-details .price-box { background: var(--background-color); border-radius: 10px; padding: 20px; text-align: center; margin-top: 25px; }
-        .training-details .price-box h4 { font-size: 1.3em; margin-bottom: 10px; }
+        .training-details .price-box h4 { font-size: 1.3em; margin-bottom: 10px; margin-top: 0; }
         .training-details .price-box .price { font-size: 1.8em; font-weight: 700; color: var(--secondary-color); margin-bottom: 15px; }
         #calendar-modal .modal-content { max-width: 1024px; }
         #calendar-modal h3 { margin-bottom: 20px; }
@@ -502,7 +500,7 @@
                         <div class="card-footer">
                             <div class="price-section">
                                 <div class="price" data-price-azn="300">300 AZN</div>
-                                <div class="price-note" data-lang-key="priceMonthly">(aylıq 150 AZN)</div>
+                                <div class="price-note" data-lang-key="priceFull">&nbsp;</div>
                             </div>
                             <button class="cta-button" onclick="openModal('modal-360')" data-lang-key="readMore">Daha Çox</button>
                         </div>
@@ -516,7 +514,7 @@
                         <div class="card-footer">
                             <div class="price-section">
                                 <div class="price" data-price-azn="450">450 AZN</div>
-                                <div class="price-note">&nbsp;</div>
+                                <div class="price-note" data-lang-key="priceFull">&nbsp;</div>
                             </div>
                             <button class="cta-button" onclick="openModal('modal-capm')" data-lang-key="readMore">Daha Çox</button>
                         </div>
@@ -530,7 +528,7 @@
                         <div class="card-footer">
                             <div class="price-section">
                                 <div class="price" data-price-azn="750">750 AZN</div>
-                                <div class="price-note">&nbsp;</div>
+                                <div class="price-note" data-lang-key="priceFull">&nbsp;</div>
                             </div>
                             <button class="cta-button" onclick="openModal('modal-pmp')" data-lang-key="readMore">Daha Çox</button>
                         </div>
@@ -603,14 +601,52 @@
                 <h2 data-lang-key="training1TitleFull"></h2>
                 <h3 class="tagline" data-lang-key="training1Tagline"></h3>
                 <p data-lang-key="training1ModalDesc"></p>
-                <div class="training-section">
-                    <h4 data-lang-key="training1FormatTitle"></h4>
-                    <ul><li data-lang-key="training1Format1"></li><li data-lang-key="training1Format2"></li><li data-lang-key="training1Format3"></li></ul>
-                </div>
+                
+                <h4 data-lang-key="training1FormatTitle"></h4>
+                <ul>
+                    <li data-lang-key="training1Format1"></li>
+                    <li data-lang-key="training1Format2"></li>
+                    <li data-lang-key="training1Format3"></li>
+                </ul>
+
+                <h4 data-lang-key="training1InstructorTitle"></h4>
+                <ul>
+                    <li data-lang-key="training1InstructorP1"></li>
+                    <li data-lang-key="training1InstructorP2"></li>
+                    <li data-lang-key="training1InstructorP3"></li>
+                    <li data-lang-key="training1InstructorP4"></li>
+                    <li data-lang-key="training1InstructorP5"></li>
+                </ul>
+
+                <h4 data-lang-key="training1AudienceTitle"></h4>
+                <ul>
+                    <li data-lang-key="training1AudienceP1"></li>
+                    <li data-lang-key="training1AudienceP2"></li>
+                    <li data-lang-key="training1AudienceP3"></li>
+                    <li data-lang-key="training1AudienceP4"></li>
+                </ul>
+
+                <h4 data-lang-key="training1ContentTitle"></h4>
+                <ul>
+                    <li data-lang-key="training1ContentP1"></li>
+                    <li data-lang-key="training1ContentP2"></li>
+                    <li data-lang-key="training1ContentP3"></li>
+                    <li data-lang-key="training1ContentP4"></li>
+                    <li data-lang-key="training1ContentP5"></li>
+                    <li data-lang-key="training1ContentP6"></li>
+                </ul>
+
+                <h4 data-lang-key="training1BenefitsTitle"></h4>
+                <ul>
+                    <li data-lang-key="training1BenefitsP1"></li>
+                    <li data-lang-key="training1BenefitsP2"></li>
+                    <li data-lang-key="training1BenefitsP3"></li>
+                    <li data-lang-key="training1BenefitsP4"></li>
+                </ul>
+
                 <div class="price-box">
                     <h4 data-lang-key="priceTitle"></h4>
                     <div class="price" data-price-azn="300">300 AZN</div>
-                    <p data-lang-key="priceMonthly"></p>
                     <a href="https://wa.me/37258243097?text=Salam%2C%20'360%C2%B0%20Layih%C9%99%20%C4%B0dar%C9%99etm%C9%99si'%20t%C9%99limi%20il%C9%99%20maraqlan%C4%B1ram." target="_blank" class="cta-button" data-lang-key="applyNow"></a>
                 </div>
             </div>
@@ -623,6 +659,20 @@
                 <h2 data-lang-key="training2TitleFull"></h2>
                 <h3 class="tagline" data-lang-key="training2Tagline"></h3>
                 <p data-lang-key="training2ModalDesc"></p>
+
+                <h4 data-lang-key="training2AudienceTitle"></h4>
+                <ul>
+                    <li data-lang-key="training2AudienceP1"></li>
+                    <li data-lang-key="training2AudienceP2"></li>
+                    <li data-lang-key="training2AudienceP3"></li>
+                </ul>
+
+                <h4 data-lang-key="training2ContentTitle"></h4>
+                <ul>
+                    <li data-lang-key="training2ContentP1"></li>
+                    <li data-lang-key="training2ContentP2"></li>
+                    <li data-lang-key="training2ContentP3"></li>
+                </ul>
                  <div class="price-box">
                     <h4 data-lang-key="priceTitle"></h4>
                     <div class="price" data-price-azn="450">450 AZN</div>
@@ -638,6 +688,20 @@
                 <h2 data-lang-key="training3TitleFull"></h2>
                 <h3 class="tagline" data-lang-key="training3Tagline"></h3>
                 <p data-lang-key="training3ModalDesc"></p>
+
+                <h4 data-lang-key="training3AudienceTitle"></h4>
+                <ul>
+                    <li data-lang-key="training3AudienceP1"></li>
+                    <li data-lang-key="training3AudienceP2"></li>
+                </ul>
+
+                <h4 data-lang-key="training3ContentTitle"></h4>
+                <ul>
+                    <li data-lang-key="training3ContentP1"></li>
+                    <li data-lang-key="training3ContentP2"></li>
+                    <li data-lang-key="training3ContentP3"></li>
+                </ul>
+
                 <div class="price-box">
                     <h4 data-lang-key="priceTitle"></h4>
                     <div class="price" data-price-azn="750">750 AZN</div>
@@ -653,6 +717,14 @@
                 <h2 data-lang-key="training4TitleFull"></h2>
                 <h3 class="tagline" data-lang-key="training4Tagline"></h3>
                 <p data-lang-key="training4ModalDesc"></p>
+
+                 <h4 data-lang-key="training4BenefitsTitle"></h4>
+                <ul>
+                    <li data-lang-key="training4BenefitsP1"></li>
+                    <li data-lang-key="training4BenefitsP2"></li>
+                    <li data-lang-key="training4BenefitsP3"></li>
+                </ul>
+
                 <div class="price-box">
                     <h4 data-lang-key="priceTitle"></h4>
                     <div class="price" data-price-azn="500">500 AZN</div>
@@ -721,45 +793,139 @@
                     navHome: "Əsas Səhifə", navAbout: "Haqqımızda", navServices: "Xidmətlər", navReviews: "Rəylər", navBlog: "Bloq", navContact: "Əlaqə",
                     navTrainings: "Təlimlər", navConsulting: "Konsaltinq", navCoaching: "Kouçinq",
                     pageTitle: "Təlim Paketlərimiz", pageSubtitle: "Karyeranızı növbəti səviyyəyə qaldırmaq üçün beynəlxalq standartlara əsaslanan, praktiki təlim proqramlarımızla tanış olun.",
-                    training1Title: "“360° Layihə İdarəetməsi”", training1Desc: "Layihə idarəetməsini sıfırdan öyrənmək və bu sahədə peşəkar olmaq üçün 8 həftəlik intensiv proqram.", training1Point1: "Praktiki tapşırıqlar və real nümunələr", training1Point2: "Agile və Waterfall metodologiyaları", training1Point3: "Karyera dəstəyi və müsahibə hazırlığı",
-                    training2Title: "CAPM® Sertifikatına Hazırlıq", training2Desc: "PMI® standartları ilə layihə idarəetməsi nəzəriyyəsini mənimsəyin və beynəlxalq CAPM® imtahanına tam hazır olun.", training2Point1: "PMBOK® Guide 7-ci nəşrə tam uyğunluq", training2Point2: "İmtahan sual tipləri ilə tanışlıq", training2Point3: "Mövzular üzrə sınaq imtahanları",
+                    training1Title: "“360° Layihə İdarəetməsi”", training1Desc: "Layihə idarəetməsini sıfırdan öyrənmək və bu sahədə peşəkar olmaq üçün 8 həftəlik intensiv proqram.",
+                    training2Title: "CAPM® Sertifikatına Hazırlıq", training2Desc: "PMI® standartları ilə layihə idarəetməsi nəzəriyyəsini mənimsəyin və beynəlxalq CAPM® imtahanına tam hazır olun.",
                     training3Title: "PMP® Sertifikatına Hazırlıq", training3Desc: "Təcrübəli layihə menecerləri üçün nəzərdə tutulan, qlobal səviyyədə tanınan PMP® sertifikasiya imtahanına hazırlıq.",
                     training4Title: "Korporativ Təlim Paketi", training4Desc: "Şirkətinizin ehtiyaclarına uyğunlaşdırılmış, klassik, çevik və hibrid metodları əhatə edən tam günlük təlim.",
                     perDay: "(günlük)", readMore: "Daha Çox",
+                    priceFull: "(tam paket)",
                     consultingTitle: "Konsaltinq Xidmətləri", consultingSubtitle: "Biznesinizin və ya şəxsi karyeranızın hədəflərinə çatmaq üçün peşəkar dəstək.",
                     consultingIndividuals: "Fərdlər üçün", consultingIndividualsDesc: "Karyera planlaması, hədəflərin müəyyən edilməsi və çətinliklərin aradan qaldırılması üçün fərdi məsləhət.", requestCall: "Zəng Sifariş Et",
                     consultingCompanies: "Şirkətlər üçün", consultingCompaniesDesc: "Layihə idarəetmə proseslərinizin optimallaşdırılması, komandanızın inkişafı və effektivliyin artırılması.", sendInquiry: "Sorğu Göndər",
                     coachingTitle: "Fərdi Kouçinq", coachingDesc: "Karyeranızda irəliləmək üçün sizə xüsusi hazırlanmış 1:1 mentorluq proqramı. Bu proqram çərçivəsində sizinlə birlikdə güclü tərəflərinizi, inkişaf ehtiyaclarınızı analiz edir və hədəflərinizə çatmaq üçün konkret addımlar planlayırıq.", freeCall: "Pulsuz İlkin Zəng",
                     footerTitle1: "PMania Hub", footerDesc1: "Layihə idarəetməsində peşəkar dəstəkçiniz.", footerTitle2: "Sürətli Keçidlər", footerTitle3: "Əlaqə", footerPhone: "Telefon: +372 5824 3097", footerTitle4: "Bizi İzləyin", footerRights: "&copy; 2025 PMania Hub. Bütün hüquqlar qorunur.",
                     calendarTitle: "Görüş Rezerv Edin",
-                    training1TitleFull: "“360° Layihə İdarəetməsi” Təlim Proqramı", training1Tagline: "QOŞUL, ÖYRƏN, TƏTBİQ ET!", training1ModalDesc: "Layihə idarəetməsini sıfırdan öyrənmək və bu sahədə peşəkar olmaq istəyirsənsə, bu 8 həftəlik intensiv proqram tam sənin üçündür! PMANIA sənə praktiki bilik və real təcrübəyə əsaslanan bir yanaşma təqdim edir.",
-                    training1FormatTitle: "Təlim formatı:", training1Format1: "2 ay müddətini əhatə edir.", training1Format2: "Dərslər həftədə 2 dəfə keçirilir.", training1Format3: "Hər dərs 90 dəqiqə davam edir.",
-                    priceTitle: "Proqramın Tam Ödəniş Məbləği", priceMonthly: "(aylıq 150 AZN)", applyNow: "Müraciət Et",
+                    training1TitleFull: "“360° Layihə İdarəetməsi” Təlim Proqramı", training1Tagline: "QOŞUL, ÖYRƏN, TƏTBİQ ET! 🚀", 
+                    training1ModalDesc: "Layihə idarəetməsini sıfırdan öyrənmək və bu sahədə peşəkar olmaq istəyirsənsə, bu 8 həftəlik intensiv proqram tam sənin üçündür! PMANIA sənə praktiki bilik və real təcrübəyə əsaslanan bir yanaşma təqdim edir.",
+                    training1FormatTitle: "Təlim formatı:", 
+                    training1Format1: "2 ay müddətini əhatə edir.", 
+                    training1Format2: "Dərslər həftədə 2 dəfə keçirilir, nəzəriyyə və praktika olaraq bölünmüşdür.", 
+                    training1Format3: "Hər dərs 90 dəqiqə davam edir və online şəkildə aparılır.",
+                    training1InstructorTitle: "Təlimçi: Mahmud Mahmudlu",
+                    training1InstructorP1: "PMP® və Lean Six Sigma sertifikatlı layihə idarəetməsi mütəxəssisi",
+                    training1InstructorP2: "Hal-hazırda qlobal telekommunikasiya lideri Ericsson şirkətində layihə meneceri kimi çalışır",
+                    training1InstructorP3: "Yerli və xarici bazarlarda 7 ildən çox peşəkar təcrübəyə malikdir",
+                    training1InstructorP4: "İnnovasiya və Texnologiya Menecmenti üzrə magistr dərəcəsini xaricdə tamamlamışdır",
+                    training1InstructorP5: "Agile, prediktiv və hibrid layihə idarəetməsi, proses və resurs idarəetməsi, komanda rəhbərliyi üzrə ixtisaslaşmışdır.",
+                    training1AudienceTitle: "Bu proqram kimlər üçündür?",
+                    training1AudienceP1: "Layihə idarəetməsi sahəsinə yeni başlayanlar",
+                    training1AudienceP2: "Mövcud biliklərini sistemləşdirmək istəyənlər",
+                    training1AudienceP3: "Öz layihələrində uğur əldə etmək istəyən sahibkarlar və menecerlər",
+                    training1AudienceP4: "Karyerasını beynəlxalq standartlara uyğun inkişaf etdirmək istəyən hər kəs",
+                    training1ContentTitle: "Təlimin Məzmunu Nələrdən İbarətdir?",
+                    training1ContentP1: "Layihənin planlaşdırılması, icrası və monitorinqi",
+                    training1ContentP2: "Agile və Waterfall metodologiyaları (Scrum, Kanban, Lean)",
+                    training1ContentP3: "Risk, büdcə və keyfiyyətin idarə edilməsi",
+                    training1ContentP4: "Liderlik bacarıqları, komanda idarəetməsi və effektiv kommunikasiya",
+                    training1ContentP5: "Praktiki tapşırıqlar, real nümunələr və case study-lər",
+                    training1ContentP6: "Karyera inkişafına dəstək və müsahibə üçün hazırlıq",
+                    training1BenefitsTitle: "Nəticədə Nə Qazanacaqsan?",
+                    training1BenefitsP1: "Sistemli və peşəkar layihə idarəetmə bacarığı",
+                    training1BenefitsP2: "Beynəlxalq yanaşmalara uyğun biliklər",
+                    training1BenefitsP3: "İdarəçilikdə özünə inam və liderlik səriştəsi",
+                    training1BenefitsP4: "Karyera inkişafına təsir edəcək sertifikat və praktik biliklər",
+                    priceTitle: "Proqramın tam ödəniş məbləği:", applyNow: "Müraciət Et",
                     training2TitleFull: "CAPM® Sertifikatına Hazırlıq Proqramı", training2Tagline: "KARYERANIZIN İLK PEŞƏKAR ZİRVƏSİ!", training2ModalDesc: "Certified Associate in Project Management (CAPM)® sertifikatı karyeranıza güclü bir təməllə başlamaq üçün ideal seçimdir. Bu proqram sizi PMI®-ın rəsmi imtahanına hərtərəfli hazırlayacaq.",
+                    training2AudienceTitle: "Bu proqram kimlər üçündür?",
+                    training2AudienceP1: "Layihə idarəetməsi sahəsində yeni olanlar və ya az təcrübəsi olanlar.",
+                    training2AudienceP2: "Karyerasına yeni bir istiqamət vermək istəyən tələbələr və məzunlar.",
+                    training2AudienceP3: "Layihə komandalarında çalışan və fundamental biliklərini artırmaq istəyən mütəxəssislər.",
+                    training2ContentTitle: "Təlimin Məzmunu:",
+                    training2ContentP1: "PMBOK® Guide 7-ci nəşrə tam uyğunluq.",
+                    training2ContentP2: "İmtahan sual tipləri ilə tanışlıq və həll strategiyaları.",
+                    training2ContentP3: "Mövzular üzrə sınaq imtahanları və detallı izahlar.",
                     training3TitleFull: "PMP® Sertifikatına Hazırlıq Proqramı", training3Tagline: "PEŞƏKARLIĞIN ZİRVƏSİNƏ DOĞRU ADDIMLA!", training3ModalDesc: "Project Management Professional (PMP)® sertifikatı layihə idarəetməsi sahəsində qızıl standartdır. Bu intensiv proqram, təcrübəli layihə menecerlərini imtahanın bütün aspektlərinə hazırlayaraq uğur qazanmalarını təmin edir.",
-                    training4TitleFull: "Şirkətlər üçün Fərdi Təlim Paketi", training4Tagline: "KOMANDANIZIN POTENSİALINI MAKSİMUMA ÇATDIRIN!", training4ModalDesc: "Bu tam günlük interaktiv təlim, şirkətinizin spesifik ehtiyaclarına və layihələrinə uyğunlaşdırılır. Komandanızın layihə idarəetməsi bacarıqlarını artırmaq, prosesləri optimallaşdırmaq və nəticələri yaxşılaşdırmaq üçün ideal həlldir."
+                    training3AudienceTitle: "Bu proqram kimlər üçündür?",
+                    training3AudienceP1: "Ən az 3 il layihə idarəetməsi təcrübəsi olan peşəkarlar.",
+                    training3AudienceP2: "Karyeralarında növbəti addımı atmaq və qlobal səviyyədə tanınmaq istəyən menecerlər.",
+                    training3ContentTitle: "Təlimin Məzmunu:",
+                    training3ContentP1: "İnsanlar, Proseslər və Biznes Mühiti daxil olmaqla PMP imtahanının üç əsas domeninin dərin təhlili.",
+                    training3ContentP2: "Agile, Hibrid və Prediktiv yanaşmalar üzrə situasiya suallarının həlli.",
+                    training3ContentP3: "Real imtahan təcrübəsi üçün tam həcmli simulyasiya testləri.",
+                    training4TitleFull: "Şirkətlər üçün Fərdi Təlim Paketi", training4Tagline: "KOMANDANIZIN POTENSİALINI MAKSİMUMA ÇATDIRIN!", training4ModalDesc: "Bu tam günlük interaktiv təlim, şirkətinizin spesifik ehtiyaclarına və layihələrinə uyğunlaşdırılır. Komandanızın layihə idarəetməsi bacarıqlarını artırmaq, prosesləri optimallaşdırmaq və nəticələri yaxşılaşdırmaq üçün ideal həlldir.",
+                    training4BenefitsTitle: "Paketin Faydaları:",
+                    training4BenefitsP1: "Şirkətinizin hədəflərinə uyğunlaşdırılmış təlim məzmunu.",
+                    training4BenefitsP2: "Komanda daxilində vahid layihə idarəetmə dilinin və yanaşmasının formalaşması.",
+                    training4BenefitsP3: "Praktiki çalışmalarla real iş problemlərinin həlli."
                 },
                 en: {
                     navHome: "Home", navAbout: "About Us", navServices: "Services", navReviews: "Reviews", navBlog: "Blog", navContact: "Contact",
                     navTrainings: "Trainings", navConsulting: "Consulting", navCoaching: "Coaching",
                     pageTitle: "Our Training Packages", pageSubtitle: "Discover our practical training programs based on international standards to take your career to the next level.",
-                    training1Title: "\"360° Project Management\"", training1Desc: "An 8-week intensive program to learn project management from scratch and become a professional.", training1Point1: "Practical tasks and real-world examples", training1Point2: "Agile and Waterfall methodologies", training1Point3: "Career support and interview preparation",
-                    training2Title: "CAPM® Certification Prep", training2Desc: "Master project management theory with PMI® standards and get fully prepared for the international CAPM® exam.", training2Point1: "Full alignment with PMBOK® Guide 7th Edition", training2Point2: "Familiarization with exam question types", training2Point3: "Practice exams by topic",
+                    training1Title: "\"360° Project Management\"", training1Desc: "An 8-week intensive program to learn project management from scratch and become a professional.",
+                    training2Title: "CAPM® Certification Prep", training2Desc: "Master project management theory with PMI® standards and get fully prepared for the international CAPM® exam.",
                     training3Title: "PMP® Certification Prep", training3Desc: "Globally recognized PMP® certification exam preparation for experienced project managers.",
                     training4Title: "Corporate Training Package", training4Desc: "A full-day training covering classic, agile, and hybrid methods, tailored to your company's needs.",
                     perDay: "(per day)", readMore: "Learn More",
+                    priceFull: "(full package)",
                     consultingTitle: "Consulting Services", consultingSubtitle: "Professional support to achieve your business or personal career goals.",
                     consultingIndividuals: "For Individuals", consultingIndividualsDesc: "Personalized advice for career planning, goal setting, and overcoming professional challenges.", requestCall: "Request a Call",
                     consultingCompanies: "For Companies", consultingCompaniesDesc: "Optimization of your project management processes, team development, and increased efficiency.", sendInquiry: "Send Inquiry",
                     coachingTitle: "Personal Coaching", coachingDesc: "A 1:1 mentorship program tailored for your career advancement. We analyze your strengths, identify areas for growth, and create a concrete action plan to reach your goals.", freeCall: "Free Initial Call",
                     footerTitle1: "PMania Hub", footerDesc1: "Your professional support in project management.", footerTitle2: "Quick Links", footerTitle3: "Contact", footerPhone: "Phone: +372 5824 3097", footerTitle4: "Follow Us", footerRights: "&copy; 2025 PMania Hub. All rights reserved.",
                     calendarTitle: "Book a Meeting",
-                    training1TitleFull: "\"360° Project Management\" Training Program", training1Tagline: "JOIN, LEARN, APPLY!", training1ModalDesc: "If you want to learn project management from scratch and become a professional, this 8-week intensive program is for you! PMANIA offers a practical, experience-based approach.",
-                    training1FormatTitle: "Training Format:", training1Format1: "Duration of 2 months.", training1Format2: "Classes are held twice a week.", training1Format3: "Each class lasts 90 minutes.",
-                    priceTitle: "Full Program Fee", priceMonthly: "(150 AZN per month)", applyNow: "Apply Now",
+                    training1TitleFull: "\"360° Project Management\" Training Program", training1Tagline: "JOIN, LEARN, APPLY! 🚀", 
+                    training1ModalDesc: "If you want to learn project management from scratch and become a professional, this 8-week intensive program is for you! PMANIA offers an approach based on practical knowledge and real experience.",
+                    training1FormatTitle: "Training Format:", 
+                    training1Format1: "Covers a period of 2 months.", 
+                    training1Format2: "Classes are held twice a week, divided into theory and practice.", 
+                    training1Format3: "Each class lasts 90 minutes and is conducted online.",
+                    training1InstructorTitle: "Instructor: Mahmud Mahmudlu",
+                    training1InstructorP1: "PMP® and Lean Six Sigma certified project management specialist.",
+                    training1InstructorP2: "Currently works as a project manager at the global telecommunications leader, Ericsson.",
+                    training1InstructorP3: "Has over 7 years of professional experience in local and foreign markets.",
+                    training1InstructorP4: "Completed a Master's degree in Innovation and Technology Management abroad.",
+                    training1InstructorP5: "Specializes in Agile, predictive, and hybrid project management, process and resource management, and team leadership.",
+                    training1AudienceTitle: "Who is this program for?",
+                    training1AudienceP1: "Beginners in the field of project management.",
+                    training1AudienceP2: "Those who want to systemize their existing knowledge.",
+                    training1AudienceP3: "Entrepreneurs and managers who want to succeed in their own projects.",
+                    training1AudienceP4: "Anyone who wants to develop their career in line with international standards.",
+                    training1ContentTitle: "What Does the Training Content Include?",
+                    training1ContentP1: "Project planning, execution, and monitoring.",
+                    training1ContentP2: "Agile and Waterfall methodologies (Scrum, Kanban, Lean).",
+                    training1ContentP3: "Risk, budget, and quality management.",
+                    training1ContentP4: "Leadership skills, team management, and effective communication.",
+                    training1ContentP5: "Practical assignments, real examples, and case studies.",
+                    training1ContentP6: "Career development support and interview preparation.",
+                    training1BenefitsTitle: "What Will You Gain in the End?",
+                    training1BenefitsP1: "Systematic and professional project management skills.",
+                    training1BenefitsP2: "Knowledge in line with international approaches.",
+                    training1BenefitsP3: "Self-confidence in management and leadership competence.",
+                    training1BenefitsP4: "A certificate and practical knowledge that will impact your career development.",
+                    priceTitle: "Full Program Fee:", applyNow: "Apply Now",
                     training2TitleFull: "CAPM® Certification Preparation Program", training2Tagline: "THE FIRST PROFESSIONAL PEAK OF YOUR CAREER!", training2ModalDesc: "The Certified Associate in Project Management (CAPM)® certification is the ideal choice to start your career with a strong foundation. This program will comprehensively prepare you for the official PMI® exam.",
+                    training2AudienceTitle: "Who is this program for?",
+                    training2AudienceP1: "Newcomers or those with little experience in project management.",
+                    training2AudienceP2: "Students and graduates looking to give their careers a new direction.",
+                    training2AudienceP3: "Professionals working in project teams who want to enhance their fundamental knowledge.",
+                    training2ContentTitle: "Training Content:",
+                    training2ContentP1: "Full alignment with the PMBOK® Guide 7th Edition.",
+                    training2ContentP2: "Familiarization with exam question types and solving strategies.",
+                    training2ContentP3: "Practice exams by topic with detailed explanations.",
                     training3TitleFull: "PMP® Certification Preparation Program", training3Tagline: "STEP TOWARDS THE PINNACLE OF PROFESSIONALISM!", training3ModalDesc: "The Project Management Professional (PMP)® certification is the gold standard in project management. This intensive program prepares experienced project managers for all aspects of the exam to ensure their success.",
-                    training4TitleFull: "Custom Training Package for Companies", training4Tagline: "MAXIMIZE YOUR TEAM'S POTENTIAL!", training4ModalDesc: "This full-day interactive training is tailored to the specific needs and projects of your company. It is the ideal solution to enhance your team's project management skills, optimize processes, and improve results."
+                    training3AudienceTitle: "Who is this program for?",
+                    training3AudienceP1: "Professionals with at least 3 years of project management experience.",
+                    training3AudienceP2: "Managers who want to take the next step in their careers and gain global recognition.",
+                    training3ContentTitle: "Training Content:",
+                    training3ContentP1: "In-depth analysis of the three main domains of the PMP exam: People, Processes, and Business Environment.",
+                    training3ContentP2: "Solving situational questions on Agile, Hybrid, and Predictive approaches.",
+                    training3ContentP3: "Full-length simulation tests for a real exam experience.",
+                    training4TitleFull: "Custom Training Package for Companies", training4Tagline: "MAXIMIZE YOUR TEAM'S POTENTIAL!", training4ModalDesc: "This full-day interactive training is tailored to the specific needs and projects of your company. It is the ideal solution to enhance your team's project management skills, optimize processes, and improve results.",
+                    training4BenefitsTitle: "Package Benefits:",
+                    training4BenefitsP1: "Training content customized to your company's goals.",
+                    training4BenefitsP2: "Formation of a unified project management language and approach within the team.",
+                    training4BenefitsP3: "Solving real work problems through practical exercises."
                 }
             };
             
