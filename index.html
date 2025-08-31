@@ -550,11 +550,17 @@
             from {opacity: 0; transform: translateY(-20px);}
             to {opacity: 1; transform: translateY(0);}
         }
-        .modal-body h3 {
+        .modal-body h3, .modal-body h4 {
             color: var(--secondary-color);
-            text-align: center;
+            text-align: left;
             font-size: 1.8em;
             margin-bottom: 25px;
+        }
+        .modal-body h4 {
+            font-size: 1.3em;
+            color: var(--primary-color);
+            margin-top: 30px;
+            margin-bottom: 15px;
         }
         .modal-body p {
             margin-bottom: 15px;
@@ -572,7 +578,8 @@
             margin-bottom: 10px;
         }
         .modal-body ul li::before {
-            content: '💡';
+            content: '✓';
+            color: var(--secondary-color);
             position: absolute;
             left: 0;
         }
@@ -614,6 +621,9 @@
         .modal-body.text-left p, .modal-body.text-left h3 { text-align: left; }
         
         /* Styles for the Testimonials Modal */
+        #all-testimonials-modal .modal-body h3 {
+             text-align: center;
+        }
         #all-testimonials-modal .modal-body {
             max-height: 70vh;
             overflow-y: auto;
@@ -1267,6 +1277,94 @@
         </div>
     </div>
 
+    <!-- Blog Modals -->
+    <div id="blog-modal-1" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('blog-modal-1')">&times;</span>
+            <div class="modal-body text-left">
+                <h3 data-lang-key="blog1Title"></h3>
+                <p data-lang-key="blog1p1"></p>
+                <h4 data-lang-key="blog1h1"></h4>
+                <p data-lang-key="blog1p2"></p>
+                <h4 data-lang-key="blog1h2"></h4>
+                <p data-lang-key="blog1p3"></p>
+                <h4 data-lang-key="blog1h3"></h4>
+                <p data-lang-key="blog1p4"></p>
+            </div>
+        </div>
+    </div>
+     <div id="blog-modal-2" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('blog-modal-2')">&times;</span>
+            <div class="modal-body text-left">
+                <h3 data-lang-key="blog2Title"></h3>
+                <p data-lang-key="blog2p1"></p>
+                <h4 data-lang-key="blog2h1"></h4>
+                <p data-lang-key="blog2p2"></p>
+                <h4 data-lang-key="blog2h2"></h4>
+                <p data-lang-key="blog2p3"></p>
+                <h4 data-lang-key="blog2h3"></h4>
+                <p data-lang-key="blog2p4"></p>
+                 <h4 data-lang-key="blog2h4"></h4>
+                <p data-lang-key="blog2p5"></p>
+                 <h4 data-lang-key="blog2h5"></h4>
+                <p data-lang-key="blog2p6"></p>
+            </div>
+        </div>
+    </div>
+     <div id="blog-modal-3" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('blog-modal-3')">&times;</span>
+            <div class="modal-body text-left">
+                <h3 data-lang-key="blog3Title"></h3>
+                <p data-lang-key="blog3p1"></p>
+                <h4 data-lang-key="blog3h1"></h4>
+                <p data-lang-key="blog3p2"></p>
+                <ul>
+                    <li data-lang-key="blog3li1"></li>
+                    <li data-lang-key="blog3li2"></li>
+                    <li data-lang-key="blog3li3"></li>
+                    <li data-lang-key="blog3li4"></li>
+                </ul>
+                <h4 data-lang-key="blog3h2"></h4>
+                <p data-lang-key="blog3p3"></p>
+            </div>
+        </div>
+    </div>
+     <div id="blog-modal-4" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('blog-modal-4')">&times;</span>
+            <div class="modal-body text-left">
+                <h3 data-lang-key="blog4Title"></h3>
+                <p data-lang-key="blog4p1"></p>
+                <h4 data-lang-key="blog4h1"></h4>
+                <p data-lang-key="blog4p2"></p>
+                 <h4 data-lang-key="blog4h2"></h4>
+                <p data-lang-key="blog4p3"></p>
+                <h4 data-lang-key="blog4h3"></h4>
+                <p data-lang-key="blog4p4"></p>
+            </div>
+        </div>
+    </div>
+     <div id="blog-modal-5" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('blog-modal-5')">&times;</span>
+            <div class="modal-body text-left">
+                <h3 data-lang-key="blog5Title"></h3>
+                <p data-lang-key="blog5p1"></p>
+                <h4 data-lang-key="blog5h1"></h4>
+                <p data-lang-key="blog5p2"></p>
+                <ul>
+                    <li data-lang-key="blog5li1"></li>
+                    <li data-lang-key="blog5li2"></li>
+                    <li data-lang-key="blog5li3"></li>
+                    <li data-lang-key="blog5li4"></li>
+                </ul>
+                <p data-lang-key="blog5p3"></p>
+            </div>
+        </div>
+    </div>
+
     <div id="calendar-modal" class="modal">
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal('calendar-modal')">&times;</span>
@@ -1341,7 +1439,54 @@
                     review9Quote: "“Çox aydındır, çox bəyənirəm və tələbələrlə əlaqə yaratmağı yaxşıdı, yəni prosta gəlib dərsi keçib getmir, həmçinin care edir, bu da dərslərə necə önəm dəyər verdiyini göstərir.”",
                     review9Author: "- Təlim İştirakçısı",
                     review10Quote: "“Çox razı qaldım, qısa aydın izah etdi.”",
-                    review10Author: "- Vebinar İştirakçısı"
+                    review10Author: "- Vebinar İştirakçısı",
+                    
+                    blog1p1: "Layihə idarəetməsi dünyasında tez-tez bir-birinin yerinə istifadə edilən iki termin var: Agile və Scrum. Bəs onlar həqiqətən eyni şeydirmi? Qısa cavab: xeyr. Gəlin onların arasındakı əsas fərqləri aydınlaşdıraq.",
+                    blog1h1: "Agile nədir?",
+                    blog1p2: "Agile bir metodologiya deyil, bir fəlsəfədir. Bu, layihələri daha çevik, uyğunlaşa bilən və müştəri mərkəzli şəkildə idarə etmək üçün bir düşüncə tərzidir. Agile Manifestində təsbit edilmiş 4 əsas dəyər və 12 prinsipdən ibarətdir. Əsas məqsəd, dəyişikliklərə tez reaksiya vermək və davamlı olaraq dəyər yaratmaqdır.",
+                    blog1h2: "Scrum nədir?",
+                    blog1p3: "Scrum, Agile fəlsəfəsini tətbiq etmək üçün istifadə olunan ən populyar çərçivələrdən (framework) biridir. Scrum, komandaların mürəkkəb problemləri həll etməsinə kömək edən konkret rollar (Product Owner, Scrum Master, Development Team), hadisələr (Sprint, Sprint Planning, Daily Scrum) və artefaktlar (Product Backlog, Sprint Backlog) təyin edir.",
+                    blog1h3: "Əsas Fərq",
+                    blog1p4: "Sadə bir bənzətmə ilə desək, Agile \"sağlam həyat tərzi sürmək\" fəlsəfəsidirsə, Scrum bu fəlsəfəyə çatmaq üçün seçdiyiniz \"xüsusi pəhriz və məşq proqramı\" kimidir. Yəni, Scrum çevik olmağın bir yoludur, lakin tək yolu deyil. Kanban, XP kimi digər Agile çərçivələr də mövcuddur.",
+
+                    blog2p1: "Hər bir uğurlu layihənin arxasında yaxşı düşünülmüş bir plan və ardıcıl icra dayanır. Layihənin ölçüsündən və mürəkkəbliyindən asılı olmayaraq, bu 5 əsas addımı izləmək sizi uğura daha da yaxınlaşdıracaq.",
+                    blog2h1: "1. Başlanğıc (Initiation)",
+                    blog2p2: "Bu, layihənin doğuş mərhələsidir. Burada layihənin məqsədləri, gözləntiləri və əsas maraqlı tərəfləri müəyyən edilir. “Biz nəyə nail olmaq istəyirik?” və “Bu layihə niyə vacibdir?” suallarına cavab tapmaq lazımdır.",
+                    blog2h2: "2. Planlaşdırma (Planning)",
+                    blog2p3: "Uğurun təməli detallı planlaşdırmadır. Bu mərhələdə layihənin həcmi, büdcəsi, zaman qrafiki, tələb olunan resurslar və potensial risklər müəyyən edilir. Aydın bir yol xəritəsi çəkmək bütün komandanın eyni hədəfə doğru irəliləməsini təmin edir.",
+                    blog2h3: "3. İcra (Execution)",
+                    blog2p4: "Planın həyata keçirildiyi mərhələdir. Komanda üzvləri tapşırıqları yerinə yetirir, resurslar paylanır və layihənin əsas məhsul və ya xidməti yaradılır. Bu mərhələdə effektiv kommunikasiya və komanda işi kritik əhəmiyyət daşıyır.",
+                    blog2h4: "4. Nəzarət və Monitorinq (Monitoring & Control)",
+                    blog2p5: "Bu mərhələ icra ilə paralel gedir. Layihənin gedişatı plana uyğun olaraq izlənilir, performans ölçülür və hər hansı bir yayınma olarsa, düzəldici tədbirlər görülür. Məqsəd, layihəni büdcə, zaman və keyfiyyət çərçivəsində saxlamaqdır.",
+                    blog2h5: "5. Yekunlaşdırma (Closure)",
+                    blog2p6: "Layihənin uğurla başa çatdırıldığı son mərhələdir. Yekun məhsul müştəriyə təhvil verilir, sənədləşmə tamamlanır və layihədən əldə edilən təcrübələr (“lessons learned”) qeydə alınır. Bu, gələcək layihələr üçün dəyərli bir məlumat bazası yaradır.",
+
+                    blog3p1: "Layihə idarəetməsində ən yaxşı planlar belə gözlənilməz hadisələrlə üzləşə bilər. Risk idarəetməsi, bu qeyri-müəyyənlikləri qabaqcadan görməyə və onların layihəyə mənfi təsirini minimuma endirməyə kömək edən bir prosesdir.",
+                    blog3h1: "Risk Nədir və Növləri Hansılardır?",
+                    blog3p2: "Risk, baş verəcəyi təqdirdə layihənin məqsədlərinə (büdcə, zaman, keyfiyyət) müsbət və ya mənfi təsir göstərə biləcək qeyri-müəyyən bir hadisədir. Risklər texniki (texnologiya problemi), xarici (bazar dəyişikliyi), təşkilati (resurs çatışmazlığı) və ya idarəetmə (zəif planlama) kimi fərqli kateqoriyalara ayrıla bilər.",
+                    blog3h2: "Risk İdarəetmə Prosesi",
+                    blog3p3: "Effektiv risk idarəetməsi adətən dörd əsas addımdan ibarətdir:",
+                    blog3li1: "<strong>Risk Analizi:</strong> Hər bir riskin baş vermə ehtimalı və potensial təsiri qiymətləndirilir.",
+                    blog3li2: "<strong>Risk Cavabının Planlaşdırılması:</strong> Risklərə qarşı strategiyalar hazırlanır (qəbul etmək, qarşısını almaq, təsirini azaltmaq və ya başqasına ötürmək).",
+                    blog3li3: "<strong>Risk İdentifikasiyası:</strong> Potensial risklərin müəyyən edilməsi və siyahısının hazırlanması.",
+                    blog3li4: "<strong>Risk Monitorinqi:</strong> Proses boyu yeni risklərin izlənilməsi və mövcud risklərə qarşı planların effektivliyinin yoxlanılması.",
+                    
+                    blog4p1: "Layihə idarəetməsi terminologiyasında \"menecer\" və \"lider\" sözləri tez-tez bir-birini əvəz etsə də, əslində fərqli mənaları və funksiyaları ifadə edirlər. Uğurlu bir layihə meneceri hər iki rolu da özündə birləşdirməyi bacarmalıdır.",
+                    blog4h1: "Layihə Meneceri: Sistem və Proses",
+                    blog4p2: "Menecer, ilk növbədə, sistem və nizam-intizamla bağlıdır. O, planlar qurur, büdcələr təyin edir, resursları paylayır və tapşırıqların vaxtında və keyfiyyətlə yerinə yetirilməsinə nəzarət edir. Menecerin əsas sualları \"necə?\" və \"nə zaman?\" olur. O, proseslərin düzgün işləməsini təmin edir.",
+                    blog4h2: "Lider: İnsanlar və Vizyon",
+                    blog4p3: "Lider isə daha çox vizyon və motivasiya ilə bağlıdır. O, komandanı ruhlandırır, onlara ümumi hədəfi göstərir və çətinliklər qarşısında onlara dəstək olur. Liderin əsas sualları \"nə?\" və \"niyə?\" olur. O, komandanın hədəfə inanmasını və bu yolda həvəslə çalışmasını təmin edir.",
+                    blog4h3: "Nəticə: Hər İkisi Olmaq Şərtdir",
+                    blog4p4: "Yalnız idarə edən, lakin ilham verməyən bir menecer komandanın tam potensialını ortaya çıxara bilməz. Yalnız ilham verən, lakin planlama və nəzarət bacarığı olmayan bir lider isə layihəni xaosdan xilas edə bilməz. Buna görə də müasir layihə meneceri həm menecer kimi prosesləri mükəmməl idarə etməli, həm də lider kimi komandasına yol göstərməlidir.",
+
+                    blog5p1: "Gündəlik iş həyatında qarşımıza çıxan tapşırıqların hamısı eyni dərəcədə vacib deyil. Vaxtımızı səmərəli idarə etmək və həqiqətən əhəmiyyətli olan işlərə fokuslanmaq üçün tapşırıqları düzgün prioritetləşdirmək vacibdir. Bunun üçün ən effektiv üsullardan biri Eisenhower Matrisidir.",
+                    blog5h1: "Eisenhower Matrisi: 4 Kvadrant",
+                    blog5p2: "Bu metod, ABŞ-ın 34-cü prezidenti Dwight D. Eisenhower tərəfindən istifadə edildiyi üçün onun adını daşıyır. Matris bütün tapşırıqları iki meyar üzrə qiymətləndirir: Təcililik (Urgency) və Vaciblik (Importance). Bu, dörd fərqli kvadrant yaradır:",
+                    blog5li1: "<strong>1. Təcili və Vacib (Do):</strong> Bu tapşırıqları dərhal yerinə yetirmək lazımdır. Məsələn, müştəri ilə bağlı kritik bir problem və ya yaxınlaşan bir son tarix.",
+                    blog5li2: "<strong>2. Vacib, lakin Təcili Deyil (Schedule):</strong> Bu, uzunmüddətli hədəflərinizə çatmağınıza kömək edən tapşırıqlardır. Məsələn, yeni bir bacarıq öyrənmək, gələcək layihəni planlaşdırmaq. Bu tapşırıqları təqviminizdə planlaşdırın.",
+                    blog5li3: "<strong>3. Təcili, lakin Vacib Deyil (Delegate):</strong> Bu tapşırıqlar başqası tərəfindən edilə bilər. Məsələn, bəzi zənglərə cavab vermək, hesabatları tərtib etmək. Mümkünsə, bu işləri həvalə edin.",
+                    blog5li4: "<strong>4. Nə Təcili, Nə də Vacib (Eliminate):</strong> Bu tapşırıqlar vaxt itkisidir və onlardan yayınmaq lazımdır. Məsələn, sosial mediada məqsədsiz gəzmək.",
+                    blog5p3: "Bu matrisi istifadə edərək, \"reaktiv\" (yalnız təcili işlərə reaksiya verən) rejimdən çıxıb, \"proaktiv\" (həqiqətən vacib olan işlərə fokuslanan) bir iş rejiminə keçə bilərsiniz."
                 },
                 en: {
                     navHome: "Home", navAbout: "About Us", navServices: "Services", navReviews: "Reviews", navBlog: "Blog", navContact: "Contact",
@@ -1403,7 +1548,54 @@
                     review9Quote: "“Very clear, I like it a lot, and he is good at connecting with students, meaning he doesn't just come, teach, and leave; he also cares, which shows how much he values the lessons.”",
                     review9Author: "- Training Participant",
                     review10Quote: "“I was very satisfied, he explained it briefly and clearly.”",
-                    review10Author: "- Webinar Participant"
+                    review10Author: "- Webinar Participant",
+                    
+                    blog1p1: "In the world of project management, two terms are often used interchangeably: Agile and Scrum. But are they really the same thing? The short answer is no. Let's clarify the main differences between them.",
+                    blog1h1: "What is Agile?",
+                    blog1p2: "Agile is not a methodology, but a philosophy. It is a mindset for managing projects in a more flexible, adaptable, and customer-centric way. It consists of 4 core values and 12 principles set out in the Agile Manifesto. The main goal is to react quickly to change and continuously create value.",
+                    blog1h2: "What is Scrum?",
+                    blog1p3: "Scrum is one of the most popular frameworks used to implement the Agile philosophy. Scrum defines specific roles (Product Owner, Scrum Master, Development Team), events (Sprint, Sprint Planning, Daily Scrum), and artifacts (Product Backlog, Sprint Backlog) that help teams solve complex problems.",
+                    blog1h3: "The Main Difference",
+                    blog1p4: "To put it simply, if Agile is the philosophy of \"living a healthy lifestyle,\" then Scrum is the \"specific diet and exercise program\" you choose to achieve that philosophy. In other words, Scrum is one way to be agile, but it is not the only way. Other Agile frameworks like Kanban and XP also exist.",
+
+                    blog2p1: "Behind every successful project lies a well-thought-out plan and consistent execution. Regardless of the project's size or complexity, following these 5 essential steps will bring you closer to success.",
+                    blog2h1: "1. Initiation",
+                    blog2p2: "This is the birth stage of the project. Here, the project's goals, expectations, and key stakeholders are identified. It's crucial to answer the questions, “What do we want to achieve?” and “Why is this project important?”",
+                    blog2h2: "2. Planning",
+                    blog2p3: "The foundation of success is detailed planning. In this phase, the project's scope, budget, timeline, required resources, and potential risks are determined. Drawing a clear roadmap ensures the entire team moves towards the same goal.",
+                    blog2h3: "3. Execution",
+                    blog2p4: "This is the stage where the plan is brought to life. Team members carry out tasks, resources are allocated, and the project's main product or service is created. Effective communication and teamwork are critical in this phase.",
+                    blog2h4: "4. Monitoring & Control",
+                    blog2p5: "This phase runs parallel to execution. The project's progress is tracked against the plan, performance is measured, and corrective actions are taken if any deviations occur. The goal is to keep the project within budget, on time, and up to quality standards.",
+                    blog2h5: "5. Closure",
+                    blog2p6: "This is the final stage where the project is successfully completed. The final product is delivered to the client, documentation is finalized, and lessons learned are recorded. This creates a valuable knowledge base for future projects.",
+
+                    blog3p1: "In project management, even the best-laid plans can face unexpected events. Risk management is a process that helps to foresee these uncertainties and minimize their negative impact on the project.",
+                    blog3h1: "What is Risk and What Are Its Types?",
+                    blog3p2: "A risk is an uncertain event that, if it occurs, can have a positive or negative effect on the project's objectives (budget, time, quality). Risks can be categorized as technical (technology failure), external (market changes), organizational (resource shortages), or management (poor planning).",
+                    blog3h2: "The Risk Management Process",
+                    blog3p3: "Effective risk management typically consists of four main steps:",
+                    blog3li1: "<strong>Risk Identification:</strong> Identifying potential risks and creating a list of them.",
+                    blog3li2: "<strong>Risk Analysis:</strong> Assessing the probability and potential impact of each risk.",
+                    blog3li3: "<strong>Risk Response Planning:</strong> Developing strategies to address risks (accept, avoid, mitigate, or transfer).",
+                    blog3li4: "<strong>Risk Monitoring:</strong> Tracking new risks throughout the process and checking the effectiveness of plans for existing risks.",
+                    
+                    blog4p1: "In project management terminology, the words \"manager\" and \"leader\" are often used interchangeably, but they actually represent different meanings and functions. A successful project manager must be able to embody both roles.",
+                    blog4h1: "The Project Manager: System and Process",
+                    blog4p2: "A manager is primarily concerned with systems and order. They create plans, set budgets, allocate resources, and oversee the timely and quality completion of tasks. A manager's main questions are \"how?\" and \"when?\". They ensure that processes run correctly.",
+                    blog4h2: "The Leader: People and Vision",
+                    blog4p3: "A leader, on the other hand, is more about vision and motivation. They inspire the team, show them the common goal, and support them through challenges. A leader's main questions are \"what?\" and \"why?\". They ensure the team believes in the goal and works enthusiastically towards it.",
+                    blog4h3: "Conclusion: Being Both is Essential",
+                    blog4p4: "A manager who only manages but does not inspire cannot unlock the team's full potential. A leader who only inspires but lacks planning and control skills cannot save the project from chaos. Therefore, a modern project manager must both manage processes perfectly like a manager and guide their team like a leader.",
+
+                    blog5p1: "Not all tasks that come our way in daily work life are equally important. To manage our time effectively and focus on what truly matters, it's essential to prioritize tasks correctly. One of the most effective methods for this is the Eisenhower Matrix.",
+                    blog5h1: "The Eisenhower Matrix: 4 Quadrants",
+                    blog5p2: "This method is named after Dwight D. Eisenhower, the 34th President of the United States, who was known for using it. The matrix evaluates all tasks based on two criteria: Urgency and Importance. This creates four distinct quadrants:",
+                    blog5li1: "<strong>1. Urgent & Important (Do):</strong> These tasks need to be done immediately. For example, a critical client issue or an approaching deadline.",
+                    blog5li2: "<strong>2. Important, but Not Urgent (Schedule):</strong> These are tasks that help you achieve your long-term goals. For instance, learning a new skill or planning a future project. Schedule these tasks on your calendar.",
+                    blog5li3: "<strong>3. Urgent, but Not Important (Delegate):</strong> These tasks can be done by someone else. For example, answering some calls or compiling reports. If possible, delegate this work.",
+                    blog5li4: "<strong>4. Neither Urgent nor Important (Eliminate):</strong> These tasks are a waste of time and should be avoided. For example, aimlessly scrolling through social media.",
+                    blog5p3: "By using this matrix, you can move from a \"reactive\" mode (only reacting to urgent tasks) to a \"proactive\" work mode (focusing on what is truly important)."
                 }
             };
             
