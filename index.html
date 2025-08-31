@@ -613,6 +613,31 @@
         }
         .modal-body.text-left p, .modal-body.text-left h3 { text-align: left; }
         
+        /* Styles for the Testimonials Modal */
+        #all-testimonials-modal .modal-body {
+            max-height: 70vh;
+            overflow-y: auto;
+        }
+        .review-item {
+            background-color: var(--background-color);
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border-left: 4px solid var(--secondary-color);
+        }
+        .review-item p {
+            margin: 0;
+            font-style: italic;
+        }
+        .review-item .author {
+            text-align: right;
+            font-weight: bold;
+            font-style: normal;
+            margin-top: 10px;
+            opacity: 0.8;
+            font-size: 1em;
+        }
+        
         #calendar-modal .modal-content {
             max-width: 1024px; /* Wider for calendar */
         }
@@ -1183,6 +1208,7 @@
                     <li data-lang-key="news2ModalPoint2"></li>
                     <li data-lang-key="news2ModalPoint3"></li>
                     <li data-lang-key="news2ModalPoint4"></li>
+                     <li data-lang-key="news2ModalDate"></li>
                 </ul>
                 <button class="cta-button disabled" data-lang-key="news2ModalCTA"></button>
             </div>
@@ -1208,6 +1234,55 @@
         </div>
     </div>
     
+    <div id="all-testimonials-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('all-testimonials-modal')">&times;</span>
+            <div class="modal-body">
+                <h3 data-lang-key="allReviewsTitle"></h3>
+                <div class="review-item">
+                    <p data-lang-key="review1Quote"></p>
+                    <p class="author" data-lang-key="review1Author"></p>
+                </div>
+                <div class="review-item">
+                    <p data-lang-key="review2Quote"></p>
+                    <p class="author" data-lang-key="review2Author"></p>
+                </div>
+                <div class="review-item">
+                    <p data-lang-key="review3Quote"></p>
+                    <p class="author" data-lang-key="review3Author"></p>
+                </div>
+                <div class="review-item">
+                    <p data-lang-key="review4Quote"></p>
+                    <p class="author" data-lang-key="review4Author"></p>
+                </div>
+                <div class="review-item">
+                    <p data-lang-key="review5Quote"></p>
+                    <p class="author" data-lang-key="review5Author"></p>
+                </div>
+                <div class="review-item">
+                    <p data-lang-key="review6Quote"></p>
+                    <p class="author" data-lang-key="review6Author"></p>
+                </div>
+                <div class="review-item">
+                    <p data-lang-key="review7Quote"></p>
+                    <p class="author" data-lang-key="review7Author"></p>
+                </div>
+                 <div class="review-item">
+                    <p data-lang-key="review8Quote"></p>
+                    <p class="author" data-lang-key="review8Author"></p>
+                </div>
+                 <div class="review-item">
+                    <p data-lang-key="review9Quote"></p>
+                    <p class="author" data-lang-key="review9Author"></p>
+                </div>
+                 <div class="review-item">
+                    <p data-lang-key="review10Quote"></p>
+                    <p class="author" data-lang-key="review10Author"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div id="calendar-modal" class="modal">
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal('calendar-modal')">&times;</span>
@@ -1260,7 +1335,29 @@
                     news3ModalDesc2: "Ümumilikdə 100-dən çox müraciət qeydə alınmış, 40 nəfər müsahibə mərhələsinə keçmişdir. Müsahibə mərhələsindən uğurla keçən 11 nəfər 2 aylıq ödənişsiz \"360° Layihə İdarəetməsi təlim proqramı\"na cəlb edilmişdir.",
                     news3ModalDesc3: "İndi isə yeni biliklər, böyük hədəflər və fərq yaradan layihələr üçün səhnə onlarındır!",
                     news3ModalDesc4: "Təqaüd proqramı üzrə qaliblərimizi təbrik edir, fəaliyyətlərində uğurlar arzulayırıq.",
-                    news3ModalHashtags: "#AYAFEAZERBAIJAN #PMANİA #ProjectManagement"
+                    news3ModalHashtags: "#AYAFEAZERBAIJAN #PMANİA #ProjectManagement",
+                    
+                    allReviewsTitle: "Tələbə Rəyləri",
+                    review1Quote: "“Təlimçinin dərsi təqdim etmə tərzi çox maraqlı və aydın idi. Mövzunu hərtərəfli izah edir, real nümunələr gətirərək mövzunu daha da anlaşıqlı edirdi. Ritmi uyğun, izahı əyləncəli idi və iştirakçılarla yaxşı əlaqə qurmağı bacarırdı.”",
+                    review1Author: "- Vebinar İştirakçısı",
+                    review2Quote: "“Mən stomatologiya ixtisasında təhsil alıram, lakin fakültə startap sədri kimi layihə idarəetməsi üzrə biliklərimi genişləndirmək məqsədilə Project Manager mövzulu vebinarlarda iştirak edirəm. Təlimçinin izahı olduca aydın və məzmunlu idi, dərsin ritmi uyğun şəkildə qurulmuşdu. Nəticədə, mövzunun bütün məqamlarını asanlıqla mənimsəyə bildim.”",
+                    review2Author: "- Vebinar İştirakçısı",
+                    review3Quote: "“Tecrubeli olmasini hiss eletdiren telimcidir, aydin, sistematik ve sual isaresi qalmayacaq sekilde izah edir.”",
+                    review3Author: "- Təlim İştirakçısı",
+                    review4Quote: "“Təlimçi həqiqətən həm vaxtını ayırır aydın izah edir həm də tələbələrə xüsusi yanaşır.”",
+                    review4Author: "- Təlim İştirakçısı",
+                    review5Quote: "“Hər kəsin fikrini dinliyib, sonda ən optimal variantla aydın başa salır.”",
+                    review5Author: "- Vebinar İştirakçısı",
+                    review6Quote: "“İnteraktiv, dinləyicini nəzərə alaraq ona uyğun sadə dildə izah etməsi, sonda əyləncəli metodla öyrəndiklərimizin yoxlanılması.”",
+                    review6Author: "- Təlim İştirakçısı",
+                    review7Quote: "“Çox aydındır və real həyat təcrübələrinə əsaslanır.”",
+                    review7Author: "- Təlim İştirakçısı",
+                    review8Quote: "“Təlimçi mövzunu sadə və aydın şəkildə təqdim etdi. Ritm balanslı idi, izahları həyatdakı nümunələrlə zənginləşdirməsi dərsi daha anlaşılan etdi.”",
+                    review8Author: "- Vebinar İştirakçısı",
+                    review9Quote: "“Çox aydındır, çox bəyənirəm və tələbələrlə əlaqə yaratmağı yaxşıdı, yəni prosta gəlib dərsi keçib getmir, həmçinin care edir, bu da dərslərə necə önəm dəyər verdiyini göstərir.”",
+                    review9Author: "- Təlim İştirakçısı",
+                    review10Quote: "“Çox razı qaldım, qısa aydın izah etdi.”",
+                    review10Author: "- Vebinar İştirakçısı"
                 },
                 en: {
                     navHome: "Home", navAbout: "About Us", navServices: "Services", navReviews: "Reviews", navBlog: "Blog", navContact: "Contact",
@@ -1300,7 +1397,29 @@
                     news3ModalDesc2: "Over 100 applications were received, with 40 candidates advancing to the interview stage. 11 successful candidates were selected for the 2-month free \"360° Project Management training program.\"",
                     news3ModalDesc3: "Now, the stage is theirs for new knowledge, big goals, and projects that make a difference!",
                     news3ModalDesc4: "We congratulate our scholarship winners and wish them success in their activities.",
-                    news3ModalHashtags: "#AYAFEAZERBAIJAN #PMANIA #ProjectManagement"
+                    news3ModalHashtags: "#AYAFEAZERBAIJAN #PMANIA #ProjectManagement",
+                    
+                    allReviewsTitle: "Student Reviews",
+                    review1Quote: "“The instructor's style of presenting the lesson was very interesting and clear. He explained the topic comprehensively, making it even more understandable by providing real examples. The pace was appropriate, the explanation was enjoyable, and he was able to establish a good connection with the participants.”",
+                    review1Author: "- Webinar Participant",
+                    review2Quote: "“I am studying dentistry, but as the faculty startup chairman, I participate in webinars on Project Management to expand my knowledge. The instructor's explanation was very clear and informative, and the pace of the lesson was well-structured. As a result, I was able to easily grasp all aspects of the topic.”",
+                    review2Author: "- Webinar Participant",
+                    review3Quote: "“He is an instructor who makes you feel his experience; he explains clearly, systematically, and in a way that leaves no questions unanswered.”",
+                    review3Author: "- Training Participant",
+                    review4Quote: "“The instructor truly takes the time to explain clearly and also approaches students with special care.”",
+                    review4Author: "- Training Participant",
+                    review5Quote: "“He listens to everyone's opinion and, in the end, explains clearly with the most optimal option.”",
+                    review5Author: "- Webinar Participant",
+                    review6Quote: "“Interactive, explaining in simple language tailored to the listener, and finally, checking what we learned with a fun method.”",
+                    review6Author: "- Training Participant",
+                    review7Quote: "“Very clear and based on real-life experiences.”",
+                    review7Author: "- Training Participant",
+                    review8Quote: "“The instructor presented the topic in a simple and clear manner. The rhythm was balanced, and enriching his explanations with real-life examples made the lesson more understandable.”",
+                    review8Author: "- Webinar Participant",
+                    review9Quote: "“Very clear, I like it a lot, and he is good at connecting with students, meaning he doesn't just come, teach, and leave; he also cares, which shows how much he values the lessons.”",
+                    review9Author: "- Training Participant",
+                    review10Quote: "“I was very satisfied, he explained it briefly and clearly.”",
+                    review10Author: "- Webinar Participant"
                 }
             };
             
