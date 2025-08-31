@@ -748,61 +748,45 @@
 
         /* --- Responsive Design --- */
         @media (max-width: 1080px) {
-            /* --- FIXED HAMBURGER MENU STYLES --- */
             .hamburger {
                 display: block;
-                position: relative; /* Needed for z-index to work */
-                z-index: 1001; /* Above the menu overlay */
+                position: relative;
+                z-index: 1001;
             }
-
-            /* Change hamburger bar color to white when menu is active/open */
             .hamburger.active .bar {
                 background-color: var(--white-color);
             }
-
             .main-nav {
-                /* Layout */
                 display: flex;
                 flex-direction: column;
                 align-items: center;
                 justify-content: center;
-                
-                /* Positioning: Full-screen overlay */
                 position: fixed;
                 top: 0;
                 left: 0;
                 width: 100%;
                 height: 100vh;
-                
-                /* Appearance */
-                background-color: rgba(34, 40, 49, 0.95); /* Dark, semi-transparent background */
+                background-color: rgba(34, 40, 49, 0.95);
                 backdrop-filter: blur(8px);
                 -webkit-backdrop-filter: blur(8px);
-                
-                /* Visibility & Animation */
                 opacity: 0;
                 visibility: hidden;
                 transition: opacity 0.35s ease, visibility 0.35s;
-                z-index: 1000; /* Below the hamburger icon, but above all other content */
+                z-index: 1000;
             }
-
             .main-nav.active {
                 opacity: 1;
                 visibility: visible;
             }
-            
             .main-nav ul {
                 flex-direction: column;
                 width: 100%;
-                gap: 30px; /* More space for easier tapping */
+                gap: 30px;
             }
-
             .main-nav ul li {
                 width: 100%;
                 text-align: center;
             }
-
-            /* Make links larger and white for the overlay */
             .main-nav a {
                 font-size: 1.6em;
                 font-weight: 500;
@@ -1462,11 +1446,22 @@
                 // --- UPDATED HAMBURGER MENU LOGIC ---
                 const hamburger = document.getElementById('hamburger-menu');
                 const navLinks = document.getElementById('main-nav-links');
+                const navMenuLinks = navLinks.querySelectorAll('a');
+
+                function closeMenu() {
+                    hamburger.classList.remove('active');
+                    navLinks.classList.remove('active');
+                    document.body.classList.remove('nav-open');
+                }
+
                 hamburger.addEventListener('click', () => {
                     hamburger.classList.toggle('active');
                     navLinks.classList.toggle('active');
-                    // Add class to body to prevent scrolling when nav is open
                     document.body.classList.toggle('nav-open');
+                });
+
+                navMenuLinks.forEach(link => {
+                    link.addEventListener('click', closeMenu);
                 });
                 
                 const scrollers = ['services-scroller', 'news-scroller', 'blog-scroller', 'testimonials-scroller'];
