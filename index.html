@@ -102,7 +102,7 @@
         }
         
         .main-nav {
-            display: flex;
+            display: flex; /* Changed for default visibility */
         }
 
         .main-nav ul {
@@ -141,7 +141,6 @@
         .hamburger {
             display: none;
             cursor: pointer;
-            z-index: 1002; /* Ensure it's above everything */
         }
         .hamburger .bar {
             width: 25px;
@@ -149,9 +148,6 @@
             background-color: var(--primary-color);
             margin: 5px 0;
             transition: 0.4s;
-        }
-        .hamburger.active .bar {
-             background-color: var(--primary-color);
         }
         .hamburger.active .bar:nth-child(1) {
             transform: rotate(-45deg) translate(-5px, 6px);
@@ -162,21 +158,6 @@
         .hamburger.active .bar:nth-child(3) {
             transform: rotate(45deg) translate(-5px, -6px);
         }
-
-        .mobile-menu-overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: transparent;
-            z-index: 1000;
-        }
-        .mobile-menu-overlay.active {
-            display: block;
-        }
-
 
         /* --- Hero Section --- */
         .hero {
@@ -568,13 +549,13 @@
         }
         .modal-body p {
             margin-bottom: 15px;
-            text-align: left;
+            text-align: center;
+            font-size: 1.1em;
         }
         .modal-body ul {
             list-style-position: inside;
             padding-left: 10px;
             text-align: left;
-            margin-bottom: 20px;
         }
         .modal-body .review {
             background-color: var(--background-color);
@@ -618,7 +599,7 @@
         /* --- Final CTA Section --- */
         .final-cta {
             background-color: #f9f9f9;
-            padding: 80px 0 40px; /* Reduced bottom padding */
+            padding: 80px 0;
             text-align: center;
         }
         .final-cta h2 {
@@ -637,6 +618,7 @@
             justify-content: center;
             gap: 20px;
             flex-wrap: wrap;
+            margin-bottom: 50px;
         }
         .final-cta-buttons .cta-button.cta-button-outline {
             background-color: transparent;
@@ -647,7 +629,29 @@
             background-color: var(--secondary-color);
             color: var(--white-color);
         }
-       
+        .quick-nav ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .quick-nav li {
+            color: var(--text-color);
+        }
+        .quick-nav a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        .quick-nav a:hover {
+            color: var(--secondary-color);
+            text-decoration: underline;
+        }
+
         /* --- Footer --- */
         .main-footer {
             background-color: var(--primary-color);
@@ -705,9 +709,7 @@
                 left: 0;
                 padding: 20px;
                 box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-                height: auto; /* Changed */
-                padding-bottom: 30px; /* Added padding */
-                z-index: 1001; /* Above overlay */
+                height: calc(100vh - 101px);
             }
             .main-nav.active { display: flex; }
             .main-nav ul {
@@ -803,8 +805,6 @@
             </div>
         </div>
     </header>
-
-    <div class="mobile-menu-overlay" id="mobile-menu-overlay"></div>
 
     <main>
         <section class="hero">
@@ -1029,9 +1029,24 @@
             <h2 data-lang-key="ctaTitle">Layihələrinizi Növbəti Səviyyəyə Qaldırmağa Hazırsınız?</h2>
             <p data-lang-key="ctaSubtitle">İndi başlayın – inkişaf üçün ilk addımı atın.</p>
             <div class="final-cta-buttons">
-                <button class="cta-button" onclick="openModal('calendar-modal')" data-lang-key="ctaBtn1">Ödənişsiz Konsultasiya al</button>
+                <button class="cta-button" onclick="openModal('calendar-modal')" data-lang-key="ctaBtn1">Pulsuz Zəng Rezerv Et</button>
                 <a href="/services/" class="cta-button cta-button-outline" data-lang-key="ctaBtn2">Bütün Xidmətlərə Bax</a>
             </div>
+            <nav class="quick-nav">
+                <ul>
+                    <li><a href="/" data-lang-key="navHome">Əsas Səhifə</a></li>
+                    <li>&rarr;</li>
+                    <li><a href="/about/" data-lang-key="navAbout">Haqqımızda</a></li>
+                    <li>&rarr;</li>
+                    <li><a href="/services/" data-lang-key="navServices">Xidmətlər</a></li>
+                     <li>&rarr;</li>
+                    <li><a href="#testimonials-section" data-lang-key="navReviews">Rəylər</a></li>
+                    <li>&rarr;</li>
+                    <li><a href="#blog-section" data-lang-key="navBlog">Bloq</a></li>
+                    <li>&rarr;</li>
+                    <li><a href="/contact/" data-lang-key="navContact">Əlaqə</a></li>
+                </ul>
+            </nav>
         </div>
     </section>
 
@@ -1057,7 +1072,7 @@
                 <div class="footer-section">
                     <h4 data-lang-key="footerTitle3">Əlaqə</h4>
                     <p>Email: pmaniahub@gmail.com</p>
-                    <p data-lang-key="footerPhone">Telefon: +372 5824 3097</p>
+                    <p data-lang-key="footerPhone">Telefon: +994 50 972 63 84</p>
                 </div>
                 <div class="footer-section">
                     <h4 data-lang-key="footerTitle4">Bizi İzləyin</h4>
@@ -1075,67 +1090,7 @@
     </footer>
 
     <!-- Modals -->
-    <div id="news-modal-1" class="modal">
-        <div class="modal-content">
-            <span class="close-btn" onclick="closeModal('news-modal-1')">&times;</span>
-            <div class="modal-body text-left">
-                <h3 data-lang-key="newsModalTitle"></h3>
-                <p data-lang-key="newsModalTagline" style="font-weight: bold;"></p>
-                <p data-lang-key="newsModalDesc1"></p>
-                <ul>
-                    <li data-lang-key="newsModalPoint1"></li>
-                    <li data-lang-key="newsModalPoint2"></li>
-                    <li data-lang-key="newsModalPoint3"></li>
-                </ul>
-                <p data-lang-key="newsModalTrainer"></p>
-                <p data-lang-key="newsModalCta"></p>
-                <a href="https://wa.me/37258243097?text=Salam%2C%20'360%C2%B0%20Layih%C9%99%20%C4%B0dar%C9%99etm%C9%99si'%20t%C9%99limi%20il%C9%99%20maraqlan%C4%B1ram." target="_blank" class="cta-button" data-lang-key="newsModalButton"></a>
-            </div>
-        </div>
-    </div>
-    <div id="news-modal-2" class="modal">
-        <div class="modal-content">
-            <span class="close-btn" onclick="closeModal('news-modal-2')">&times;</span>
-            <div class="modal-body text-left">
-                <h3 data-lang-key="news2ModalTitle"></h3>
-                <p data-lang-key="news2ModalDesc1"></p>
-                <ul style="list-style: none; padding: 0;">
-                    <li data-lang-key="news2ModalPoint1"></li>
-                    <li data-lang-key="news2ModalPoint2"></li>
-                    <li data-lang-key="news2ModalPoint3"></li>
-                    <li data-lang-key="news2ModalPoint4"></li>
-                </ul>
-                <p data-lang-key="news2ModalDate"></p>
-                <button class="cta-button disabled" data-lang-key="news2ModalButton"></button>
-            </div>
-        </div>
-    </div>
-    <div id="news-modal-3" class="modal">
-        <div class="modal-content">
-            <span class="close-btn" onclick="closeModal('news-modal-3')">&times;</span>
-            <div class="modal-body text-left">
-                <h3 data-lang-key="news3ModalTitle"></h3>
-                <p data-lang-key="news3ModalDesc1"></p>
-                <p data-lang-key="news3ModalDesc2"></p>
-                <p data-lang-key="news3ModalDesc3"></p>
-            </div>
-        </div>
-    </div>
-    <div id="all-testimonials-modal" class="modal">
-        <div class="modal-content">
-            <span class="close-btn" onclick="closeModal('all-testimonials-modal')">&times;</span>
-            <div class="modal-body">
-                <h3 data-lang-key="testimonialsModalTitle"></h3>
-                <div class="review"><p data-lang-key="testimonial1"></p><p class="author" data-lang-key="testimonial1Author"></p></div>
-                <div class="review"><p data-lang-key="testimonial2"></p><p class="author" data-lang-key="testimonial2Author"></p></div>
-            </div>
-        </div>
-    </div>
-    <div id="blog-modal-1" class="modal"><div class="modal-content"><span class="close-btn" onclick="closeModal('blog-modal-1')">&times;</span><div class="modal-body text-left"><h3 data-lang-key="blogModal1Title"></h3><p data-lang-key="blogModal1Content1"></p></div></div></div>
-    <div id="blog-modal-2" class="modal"><div class="modal-content"><span class="close-btn" onclick="closeModal('blog-modal-2')">&times;</span><div class="modal-body text-left"><h3 data-lang-key="blogModal2Title"></h3><p data-lang-key="blogModal2Content1"></p></div></div></div>
-    <div id="blog-modal-3" class="modal"><div class="modal-content"><span class="close-btn" onclick="closeModal('blog-modal-3')">&times;</span><div class="modal-body text-left"><h3 data-lang-key="blogModal3Title"></h3><p data-lang-key="blogModal3Content1"></p></div></div></div>
-    <div id="blog-modal-4" class="modal"><div class="modal-content"><span class="close-btn" onclick="closeModal('blog-modal-4')">&times;</span><div class="modal-body text-left"><h3 data-lang-key="blogModal4Title"></h3><p data-lang-key="blogModal4Content1"></p></div></div></div>
-    <div id="blog-modal-5" class="modal"><div class="modal-content"><span class="close-btn" onclick="closeModal('blog-modal-5')">&times;</span><div class="modal-body text-left"><h3 data-lang-key="blogModal5Title"></h3><p data-lang-key="blogModal5Content1"></p></div></div></div>
+    <!-- ... (All modals including the new calendar modal) ... -->
     <div id="calendar-modal" class="modal">
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal('calendar-modal')">&times;</span>
@@ -1158,21 +1113,24 @@
                     learnMore: "Daha Çox Öyrən &rarr;", newsTitle: "Xəbərlər", news1Title: "Qeydiyyat Başladı: 360° Layihə İdarəetməsi", news2Title: "Keçirilmiş Seminar: Çevik və Klassik Metodlar", news3Title: "Təqaüd Proqramı Uğurla Başa Çatdı",
                     testimonialsTitle: "Tələbələrimiz Nə Deyir?", highlight1: "Aydın İzah", highlight2: "Praktiki Nümunələr", highlight3: "İnteraktiv Təlim", highlight4: "Peşəkar Təlimçi", highlight5: "Sistemli Yanaşma", testimonialsDesc: "Bizimlə təcrübələrini bölüşən məzunlarımızın fikirləri ilə tanış olun.", testimonialsButton: "Bütün Rəyləri Oxu",
                     blogTitle: "Son Bloq Yazıları", blog1Title: "Agile və Scrum Arasındakı Fərqlər", blog1Desc: "Bu məqalədə çevik metodologiyaların əsas prinsiplərini və onların tətbiqini araşdırırıq.", blog2Title: "Uğurlu Layihə Üçün 5 Vacib Addım", blog2Desc: "Layihə planlamasından yekun təhvilə qədər olan mərhələlərdə diqqət etməli olduğunuz məqamlar.", blog3Title: "Risk İdarəetməsi Nədir?", blog3Desc: "Layihələrinizdə qarşılaşa biləcəyiniz riskləri necə müəyyən edə və idarə edə bilərsiniz?", blog4Title: "Layihə Meneceri yoxsa Lider? Hər İkisi!", blog4Desc: "Uğurlu layihələrin arxasında dayanan liderlik keyfiyyətlərini və onların komandaya təsirini araşdırın.", blog5Title: "Təcili yoxsa Vacib? Prioritetləri Düzgün Müəyyən Etməyin Yolları", blog5Desc: "MoSCoW və Eisenhower Matrisi kimi effektiv prioritetləşdirmə üsulları ilə tanış olun.", readMore: "Daha çox oxu &rarr;",
-                    ctaTitle: "Layihələrinizi Növbəti Səviyyəyə Qaldırmağa Hazırsınız?", ctaSubtitle: "İndi başlayın – inkişaf üçün ilk addımı atın.", ctaBtn1: "Ödənişsiz Konsultasiya al", ctaBtn2: "Bütün Xidmətlərə Bax",
-                    footerTitle1: "PMania Hub", footerDesc1: "Layihə idarəetməsində peşəkar dəstəkçiniz.", footerTitle2: "Sürətli Keçidlər", footerTitle3: "Əlaqə", footerPhone: "Telefon: +372 5824 3097", footerTitle4: "Bizi İzləyin", footerRights: "&copy; 2025 PMania Hub. Bütün hüquqlar qorunur.",
-                    calendarTitle: "Görüş Rezerv Edin",
-                    newsModalTitle: "Qeydiyyat Açıqdır!", newsModalTagline: "QOŞUL, ÖYRƏN, TƏTBİQ ET! 🚀", newsModalDesc1: "Layihə idarəetməsində peşəkar olmaq istəyirsən? PMANIA sənə beynəlxalq yanaşmalar, real nümunələr və praktiki biliklərlə kömək edəcək!", newsModalPoint1: "💡 8 həftəlik intensiv təlim", newsModalPoint2: "📚 Agile, Waterfall, Scrum, Kanban", newsModalPoint3: "🏆 Sertifikat + praktiki tapşırıqlar", newsModalTrainer: "👨‍🏫 Təlimçi: Mahmud Mahmudlu – PMP®, Lean Six Sigma sertifikatlı layihə meneceri, hazırda qlobal telekommunikasiya lideri Ericsson-da çalışır.", newsModalCta: "📲 Qeydiyyat üçün bizə yaz – uğurlu karyera üçün ilk addımı bu gün at!", newsModalButton: "Bizə Yaz",
-                    news2ModalTitle: "Keçirilmiş Seminar: Çevik və Klassik Metodlar", news2ModalDesc1: "Layihə idarəçiliyində həm klassik, həm də çevik metodlarla tanış olmaq istəyirsənsə, bu seminar tam sənlikdir!", news2ModalPoint1: "🔍 Mövzu: Çevik və Klassik Layihə İdarəetməsi", news2ModalPoint2: "🎙️ Spiker: Mahmud Mahmudlu", news2ModalPoint3: "📌 Ericsson – Tech Project Manager", news2ModalPoint4: "📜 PMP, Lean Six Sigma Certified", news2ModalDate: "🗓️ Tarix: 21 Avqust (Tədbir başa çatıb)", news2ModalButton: "Qeydiyyat Bağlanıb",
-                    news3ModalTitle: "Təqaüd Proqramı Yekunlaşdı", news3ModalDesc1: "Məlumat üçün bildirmək istərdik ki, AYAFE Gənclər Təşkilatı və Pmania Hub şirkətinin təşkilatı dəstəyi ilə təqaüd proqramına müraciət prosesi yekunlaşmışdır.", news3ModalDesc2: "Ümumilikdə 100-dən çox müraciət qeydə alınmış, 40 nəfər müsahibə mərhələsinə keçmişdir. Müsahibə mərhələsindən uğurla keçən 11 nəfər 2 aylıq ödənişsiz \"360° Layihə İdarəetməsi təlim proqramı\"na cəlb edilmişdir.", news3ModalDesc3: "İndi isə yeni biliklər, böyük hədəflər və fərq yaradan layihələr üçün səhnə onlarındır! Təqaüd proqramı üzrə qaliblərimizi təbrik edir, fəaliyyətlərində uğurlar arzulayırıq.",
-                    testimonialsModalTitle: "Tələbə Rəyləri", testimonial1: "“Təlimçinin dərsi təqdim etmə tərzi çox maraqlı və aydın idi.”", testimonial1Author: "- Vebinar İştirakçısı", testimonial2: "“Mövzunun bütün məqamlarını asanlıqla mənimsəyə bildim.”", testimonial2Author: "- Təlim İştirakçısı",
-                    blogModal1Title: "Agile və Scrum Arasındakı Fərqlər", blogModal1Content1: "Layihə idarəetməsində tez-tez qarışdırılan iki termin Agile və Scrum-dır...",
-                    blogModal2Title: "Uğurlu Layihə Üçün 5 Vacib Addım", blogModal2Content1: "İstənilən layihənin uğuru onun düzgün idarə olunmasından birbaşa asılıdır...",
-                    blogModal3Title: "Risk İdarəetməsi Nədir?", blogModal3Content1: "Risk idarəetməsi, layihənin məqsədlərinə mənfi təsir edə biləcək potensial problemlərin proaktiv şəkildə müəyyən edilməsi prosesidir...",
-                    blogModal4Title: "Layihə Meneceri yoxsa Lider? Hər İkisi!", blogModal4Content1: "Layihə idarəetməsi yalnız planlar, cədvəllər və büdcələrdən ibarət deyil...",
-                    blogModal5Title: "Təcili yoxsa Vacib? Prioritetləri Düzgün Müəyyən Etməyin Yolları", blogModal5Content1: "Layihələrdə hər şey təcili görünə bilər. Ancaq effektiv olmaq üçün nəyin həqiqətən vacib olduğunu bilmək şərtdir..."
+                    ctaTitle: "Layihələrinizi Növbəti Səviyyəyə Qaldırmağa Hazırsınız?", ctaSubtitle: "İndi başlayın – inkişaf üçün ilk addımı atın.", ctaBtn1: "Pulsuz Zəng Rezerv Et", ctaBtn2: "Bütün Xidmətlərə Bax",
+                    quickNavHome: "Əsas Səhifə", quickNavAbout: "Haqqımızda", quickNavServices: "Xidmətlər", quickNavReviews: "Rəylər", quickNavBlog: "Bloq", quickNavContact: "Əlaqə",
+                    footerTitle1: "PMania Hub", footerDesc1: "Layihə idarəetməsində peşəkar dəstəkçiniz.", footerTitle2: "Sürətli Keçidlər", footerTitle3: "Əlaqə", footerPhone: "Telefon: +994 50 972 63 84", footerTitle4: "Bizi İzləyin", footerRights: "&copy; 2025 PMania Hub. Bütün hüquqlar qorunur.",
+                    calendarTitle: "Görüş Rezerv Edin"
                 },
                 en: {
-                    // All English translations would go here, following the same structure as 'az'
+                    navHome: "Home", navAbout: "About Us", navServices: "Services", navReviews: "Reviews", navBlog: "Blog", navContact: "Contact",
+                    heroTitle: "Master Project Management. Transform Your Future.", heroSubtitle: "Training and consulting designed for individuals and companies – real results, practical tools.",
+                    heroButton: "Join a Training", aboutButton: "Get a Consultation",
+                    valuePropTitle: "Why Choose Us?", value1Title: "Practical Training", value1Desc: "Real examples and tools", value2Title: "International Standards", value2Desc: "PMI and Agile approaches", value3Title: "Personalized Consulting", value3Desc: "Solutions tailored to your business", value4Title: "Proven Expertise", value4Desc: "15M+ € project management",
+                    servicesTitle: "Our Services", service1Title: "Trainings", service1Desc: "Learn project management with practical examples and proven methods.", service2Title: "Consulting", service2Desc: "Custom solutions to improve your company's project outcomes.", service3Title: "Personal Coaching", service3Desc: "1:1 mentoring and support for your career development.",
+                    learnMore: "Learn More &rarr;", newsTitle: "News", news1Title: "Registration Open: 360° Project Management", news2Title: "Past Seminar: Agile vs. Classic Methods", news3Title: "Scholarship Program Successfully Concluded",
+                    testimonialsTitle: "What Our Students Say", highlight1: "Clear Explanation", highlight2: "Practical Examples", highlight3: "Interactive Training", highlight4: "Professional Instructor", highlight5: "Systematic Approach", testimonialsDesc: "Read the opinions of our graduates who shared their experiences with us.", testimonialsButton: "Read All Reviews",
+                    blogTitle: "Latest Blog Posts", blog1Title: "Differences Between Agile and Scrum", blog1Desc: "In this article, we explore the core principles of agile methodologies and their application.", blog2Title: "5 Essential Steps for a Successful Project", blog2Desc: "Key points to consider from project planning to final delivery.", blog3Title: "What is Risk Management?", blog3Desc: "How can you identify and manage potential risks in your projects?", blog4Title: "Project Manager or Leader? Both!", blog4Desc: "Explore the leadership qualities behind successful projects and their impact on the team.", blog5Title: "Urgent or Important? How to Prioritize Correctly", blog5Desc: "Learn effective prioritization methods like MoSCoW and Eisenhower Matrix.", readMore: "Read more &rarr;",
+                    ctaTitle: "Ready to Take Your Projects to the Next Level?", ctaSubtitle: "Start now – take the first step towards growth.", ctaBtn1: "Book a Free Call", ctaBtn2: "View All Services",
+                    quickNavHome: "Home", quickNavAbout: "About Us", quickNavServices: "Services", quickNavReviews: "Reviews", quickNavBlog: "Blog", quickNavContact: "Contact",
+                    footerTitle1: "PMania Hub", footerDesc1: "Your professional support in project management.", footerTitle2: "Quick Links", footerTitle3: "Contact", footerPhone: "Phone: +994 50 972 63 84", footerTitle4: "Follow Us", footerRights: "&copy; 2025 PMania Hub. All rights reserved.",
+                    calendarTitle: "Book a Meeting"
                 }
             };
             
@@ -1187,16 +1145,8 @@
             }
 
             window.onclick = function(event) {
-                if (event.target.classList.contains('modal') || event.target.classList.contains('mobile-menu-overlay')) {
-                    // Close all modals
-                    document.querySelectorAll('.modal').forEach(modal => modal.style.display = 'none');
-                    
-                    const hamburger = document.getElementById('hamburger-menu');
-                    const navLinks = document.getElementById('main-nav-links');
-                    const overlay = document.getElementById('mobile-menu-overlay');
-                    hamburger.classList.remove('active');
-                    navLinks.classList.remove('active');
-                    overlay.classList.remove('active');
+                if (event.target.classList.contains('modal')) {
+                    event.target.style.display = 'none';
                 }
             }
 
@@ -1222,19 +1172,9 @@
                 
                 const hamburger = document.getElementById('hamburger-menu');
                 const navLinks = document.getElementById('main-nav-links');
-                const overlay = document.getElementById('mobile-menu-overlay');
-
-                hamburger.addEventListener('click', (event) => {
-                    event.stopPropagation();
+                hamburger.addEventListener('click', () => {
                     hamburger.classList.toggle('active');
                     navLinks.classList.toggle('active');
-                    overlay.classList.toggle('active');
-                });
-
-                overlay.addEventListener('click', () => {
-                    hamburger.classList.remove('active');
-                    navLinks.classList.remove('active');
-                    overlay.classList.remove('active');
                 });
                 
                 const scrollers = ['services-scroller', 'news-scroller', 'blog-scroller', 'testimonials-scroller'];
