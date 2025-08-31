@@ -732,23 +732,47 @@
             font-family: var(--heading-font);
             font-size: 1.2em;
             margin-bottom: 15px;
+            color: var(--white-color);
         }
-        .footer-section ul { list-style: none; }
-        .footer-section ul li { margin-bottom: 10px; }
+        .footer-section ul { 
+            list-style: none;
+            padding: 0;
+        }
+        .footer-section ul li { 
+            margin-bottom: 12px;
+        }
         .footer-section a {
-            color: var(--background-color);
+            color: rgba(255, 255, 255, 0.7);
             text-decoration: none;
             transition: color 0.3s ease;
         }
-        .footer-section a:hover { color: var(--secondary-color); }
-        .social-icons a { margin-right: 15px; }
+        .footer-section a:hover { 
+            color: var(--white-color); 
+        }
+        .footer-contact-info li {
+            display: flex;
+            align-items: center;
+        }
+        .footer-contact-info i {
+            margin-right: 12px;
+            font-size: 1.1em;
+            width: 20px;
+            text-align: center;
+        }
+        .social-icons a { 
+            margin-right: 15px;
+            display: inline-block;
+        }
         .social-icons svg {
             width: 24px;
             height: 24px;
-            fill: var(--white-color);
-            transition: fill 0.3s ease;
+            fill: rgba(255, 255, 255, 0.7);
+            transition: fill 0.3s ease, transform 0.3s ease;
         }
-        .social-icons a:hover svg { fill: var(--secondary-color); }
+        .social-icons a:hover svg { 
+            fill: var(--white-color); 
+            transform: scale(1.1);
+        }
         .footer-bottom {
             text-align: center;
             margin-top: 40px;
@@ -1151,8 +1175,11 @@
                 </div>
                 <div class="footer-section">
                     <h4 data-lang-key="footerTitle3">Əlaqə</h4>
-                    <p>Email: pmaniahub@gmail.com</p>
-                    <p data-lang-key="footerPhone">Telefon: +994 50 972 63 84</p>
+                     <ul class="footer-contact-info">
+                        <li><i class="fas fa-envelope"></i> <a href="mailto:info@pmaniahub.com">info@pmaniahub.com</a></li>
+                        <li><i class="fas fa-phone"></i> <a href="tel:+37258243097">+372 5824 3097</a></li>
+                        <li><i class="fas fa-globe"></i> <a href="http://www.pmaniahub.com" target="_blank">www.pmaniahub.com</a></li>
+                    </ul>
                 </div>
                 <div class="footer-section">
                     <h4 data-lang-key="footerTitle4">Bizi İzləyin</h4>
@@ -1186,7 +1213,7 @@
                     <p data-lang-key="news1ModalTrainer"></p>
                 </div>
                 <p data-lang-key="news1ModalRegister"></p>
-                <a href="https://wa.me/994509726384?text=Salam%2C%20'360%C2%B0%20Layih%C9%99%20%C4%B0dar%C9%99etm%C9%99si'%20t%C9%99limin%C9%99%20qeydiyyatdan%20keçm%C9%99k%20ist%C9%99yir%C9%99m." target="_blank" class="cta-button" data-lang-key="news1ModalCTA"></a>
+                <a href="https://wa.me/37258243097?text=Salam%2C%20'360%C2%B0%20Layih%C9%99%20%C4%B0dar%C9%99etm%C9%99si'%20t%C9%99limin%C9%99%20qeydiyyatdan%20keçm%C9%99k%20ist%C9%99yir%C9%99m." target="_blank" class="cta-button" data-lang-key="news1ModalCTA"></a>
             </div>
         </div>
     </div>
@@ -1390,7 +1417,7 @@
                     blogTitle: "Son Bloq Yazıları", blog1Title: "Agile və Scrum Arasındakı Fərqlər", blog1Desc: "Bu məqalədə çevik metodologiyaların əsas prinsiplərini və onların tətbiqini araşdırırıq.", blog2Title: "Uğurlu Layihə Üçün 5 Vacib Addım", blog2Desc: "Layihə planlamasından yekun təhvilə qədər olan mərhələlərdə diqqət etməli olduğunuz məqamlar.", blog3Title: "Risk İdarəetməsi Nədir?", blog3Desc: "Layihələrinizdə qarşılaşa biləcəyiniz riskləri necə müəyyən edə və idarə edə bilərsiniz?", blog4Title: "Layihə Meneceri yoxsa Lider? Hər İkisi!", blog4Desc: "Uğurlu layihələrin arxasında dayanan liderlik keyfiyyətlərini və onların komandaya təsirini araşdırın.", blog5Title: "Təcili yoxsa Vacib? Prioritetləri Düzgün Müəyyən Etməyin Yolları", blog5Desc: "MoSCoW və Eisenhower Matrisi kimi effektiv prioritetləşdirmə üsulları ilə tanış olun.", readMore: "Daha çox oxu &rarr;",
                     ctaTitle: "Layihələrinizi Növbəti Səviyyəyə Qaldırmağa Hazırsınız?", ctaSubtitle: "İndi başlayın – inkişaf üçün ilk addımı atın.", ctaBtn1: "Pulsuz Zəng Rezerv Et", ctaBtn2: "Bütün Xidmətlərə Bax",
                     quickNavHome: "Əsas Səhifə", quickNavAbout: "Haqqımızda", quickNavServices: "Xidmətlər", quickNavReviews: "Rəylər", quickNavBlog: "Bloq", quickNavContact: "Əlaqə",
-                    footerTitle1: "PMania Hub", footerDesc1: "Layihə idarəetməsində peşəkar dəstəkçiniz.", footerTitle2: "Sürətli Keçidlər", footerTitle3: "Əlaqə", footerPhone: "Telefon: +994 50 972 63 84", footerTitle4: "Bizi İzləyin", footerRights: "&copy; 2025 PMania Hub. Bütün hüquqlar qorunur.",
+                    footerTitle1: "PMania Hub", footerDesc1: "Layihə idarəetməsində peşəkar dəstəkçiniz.", footerTitle2: "Sürətli Keçidlər", footerTitle3: "Əlaqə", footerPhone: "Telefon: +372 5824 3097", footerTitle4: "Bizi İzləyin", footerRights: "&copy; 2025 PMania Hub. Bütün hüquqlar qorunur.",
                     calendarTitle: "Görüş Rezerv Edin",
                     
                     news1ModalTitle: "Qeydiyyat Başladı: 360° Layihə İdarəetməsi",
@@ -1447,7 +1474,7 @@
                     blog1h2: "Scrum nədir?",
                     blog1p3: "Scrum, Agile fəlsəfəsini tətbiq etmək üçün istifadə olunan ən populyar çərçivələrdən (framework) biridir. Scrum, komandaların mürəkkəb problemləri həll etməsinə kömək edən konkret rollar (Product Owner, Scrum Master, Development Team), hadisələr (Sprint, Sprint Planning, Daily Scrum) və artefaktlar (Product Backlog, Sprint Backlog) təyin edir.",
                     blog1h3: "Əsas Fərq",
-                    blog1p4: "Sadə bir bənzətmə ilə desək, Agile \"sağlam həyat tərzi sürmək\" fəlsəfəsidirsə, Scrum bu fəlsəfəyə çatmaq üçün seçdiyiniz \"xüsusi pəhriz və məşq proqramı\" kimidir. Yəni, Scrum çevik olmağın bir yoludur, lakin tək yolu deyil. Kanban, XP kimi digər Agile çərçivələr də mövcuddur.",
+                    blog1p4: "Sadə bir bənətmə ilə desək, Agile \"sağlam həyat tərzi sürmək\" fəlsəfəsidirsə, Scrum bu fəlsəfəyə çatmaq üçün seçdiyiniz \"xüsusi pəhriz və məşq proqramı\" kimidir. Yəni, Scrum çevik olmağın bir yoludur, lakin tək yolu deyil. Kanban, XP kimi digər Agile çərçivələr də mövcuddur.",
 
                     blog2p1: "Hər bir uğurlu layihənin arxasında yaxşı düşünülmüş bir plan və ardıcıl icra dayanır. Layihənin ölçüsündən və mürəkkəbliyindən asılı olmayaraq, bu 5 əsas addımı izləmək sizi uğura daha da yaxınlaşdıracaq.",
                     blog2h1: "1. Başlanğıc (Initiation)",
@@ -1499,7 +1526,7 @@
                     blogTitle: "Latest Blog Posts", blog1Title: "Differences Between Agile and Scrum", blog1Desc: "In this article, we explore the core principles of agile methodologies and their application.", blog2Title: "5 Essential Steps for a Successful Project", blog2Desc: "Key points to consider from project planning to final delivery.", blog3Title: "What is Risk Management?", blog3Desc: "How can you identify and manage potential risks in your projects?", blog4Title: "Project Manager or Leader? Both!", blog4Desc: "Explore the leadership qualities behind successful projects and their impact on the team.", blog5Title: "Urgent or Important? How to Prioritize Correctly", blog5Desc: "Learn effective prioritization methods like MoSCoW and Eisenhower Matrix.", readMore: "Read more &rarr;",
                     ctaTitle: "Ready to Take Your Projects to the Next Level?", ctaSubtitle: "Start now – take the first step towards growth.", ctaBtn1: "Book a Free Call", ctaBtn2: "View All Services",
                     quickNavHome: "Home", quickNavAbout: "About Us", quickNavServices: "Services", quickNavReviews: "Reviews", quickNavBlog: "Blog", quickNavContact: "Contact",
-                    footerTitle1: "PMania Hub", footerDesc1: "Your professional support in project management.", footerTitle2: "Quick Links", footerTitle3: "Contact", footerPhone: "Phone: +994 50 972 63 84", footerTitle4: "Follow Us", footerRights: "&copy; 2025 PMania Hub. All rights reserved.",
+                    footerTitle1: "PMania Hub", footerDesc1: "Your professional support in project management.", footerTitle2: "Quick Links", footerTitle3: "Contact", footerPhone: "Phone: +372 5824 3097", footerTitle4: "Follow Us", footerRights: "&copy; 2025 PMania Hub. All rights reserved.",
                     calendarTitle: "Book a Meeting",
 
                     news1ModalTitle: "Registration Started: 360° Project Management",
