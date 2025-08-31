@@ -150,6 +150,7 @@
         .contact-section {
             background-color: var(--background-color);
             min-height: 70vh;
+            padding-bottom: 80px;
         }
         .contact-container {
             max-width: 900px;
@@ -261,6 +262,36 @@
             background-color: #1EBE57;
             transform: translateY(-3px);
         }
+
+        .direct-contact-info {
+            margin-top: 50px;
+            padding-top: 50px;
+            border-top: 1px solid #ddd;
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+        .direct-contact-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 1.1em;
+        }
+        .direct-contact-item i {
+            font-size: 1.5em;
+            color: var(--secondary-color);
+        }
+        .direct-contact-item a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        .direct-contact-item a:hover {
+            color: var(--secondary-color);
+        }
+
 
         /* --- Modal (Pop-up) Styles --- */
         .modal {
@@ -416,7 +447,20 @@
                 font-size: 2em;
             }
             .contact-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .contact-card {
+                padding: 25px;
+            }
+        }
+        @media (max-width: 500px) {
+             .contact-grid {
                 grid-template-columns: 1fr;
+            }
+            .direct-contact-info {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 20px;
             }
         }
     </style>
@@ -475,7 +519,7 @@
                             <svg fill="#4a1ad1" viewBox="0 0 24 24"><path d="M22 6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6zm-2 0l-8 5-8-5h16zm0 12H4V8l8 5 8-5v10z"/></svg>
                         </div>
                         <h3 data-lang-key="emailTitle">Ətraflı Məlumat üçün: Email</h3>
-                        <form id="contact-form" action="https://formspree.io/f/YOUR_UNIQUE_ID" method="POST">
+                        <form id="contact-form" action="https://formspree.io/f/xqadbjwp" method="POST">
                             <div class="form-group">
                                 <label for="name" data-lang-key="formName">Adınız</label>
                                 <input type="text" id="name" name="name" required>
@@ -490,6 +534,17 @@
                             </div>
                             <button type="submit" class="submit-button" data-lang-key="formSubmit">Göndər</button>
                         </form>
+                    </div>
+                </div>
+
+                <div class="direct-contact-info">
+                    <div class="direct-contact-item">
+                        <i class="fas fa-phone"></i>
+                        <a href="tel:+37258243097">+372 5824 3097</a>
+                    </div>
+                    <div class="direct-contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <a href="mailto:info@pmaniahub.com">info@pmaniahub.com</a>
                     </div>
                 </div>
 
@@ -697,3 +752,4 @@
 
 </body>
 </html>
+
