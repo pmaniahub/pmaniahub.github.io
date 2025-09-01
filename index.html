@@ -856,11 +856,22 @@
             }
         }
 
-        /* ADDED: Better layout for very small mobile screens */
+        /* Better layout for very small mobile screens */
         @media (max-width: 576px) {
             .value-prop-grid {
-                grid-template-columns: 1fr; /* Single column for small phones */
+                grid-template-columns: repeat(2, 1fr); /* Ensures 2 columns on small phones */
+                gap: 15px; /* Reduce gap between cards */
             }
+            .value-card {
+                padding: 20px 15px; /* Adjust padding for smaller cards */
+            }
+            .value-card h3 {
+                font-size: 1.1em; /* Slightly smaller title */
+            }
+            .value-card p {
+                font-size: 0.9em; /* Slightly smaller description */
+            }
+
             .footer-content {
                 flex-direction: column;
                 align-items: center;
@@ -1478,7 +1489,7 @@
                     blog3h1: "Risk Nədir və Növləri Hansılardır?",
                     blog3p2: "Risk, baş verəcəyi təqdirdə layihənin məqsədlərinə (büdcə, zaman, keyfiyyət) müsbət və ya mənfi təsir göstərə biləcək qeyri-müəyyən bir hadisədir. Risklər texniki (texnologiya problemi), xarici (bazar dəyişikliyi), təşkilati (resurs çatışmazlığı) və ya idarəetmə (zəif planlama) kimi fərqli kateqoriyalara ayrıla bilər.",
                     blog3h2: "Risk İdarəetmə Prosesi",
-                    blog3p3: "Effektiv risk idarəetməsi adətən dörd əsas addımdan ibarətdir:",
+                    blog3p3: "Effektiv risk idarəetməsi adətən dörd əsas addımdan ibəətdir:",
                     blog3li1: "<strong>Risk Analizi:</strong> Hər bir riskin baş vermə ehtimalı və potensial təsiri qiymətləndirilir.",
                     blog3li2: "<strong>Risk Cavabının Planlaşdırılması:</strong> Risklərə qarşı strategiyalar hazırlanır (qəbul etmək, qarşısını almaq, təsirini azaltmaq və ya başqasına ötürmək).",
                     blog3li3: "<strong>Risk İdentifikasiyası:</strong> Potensial risklərin müəyyən edilməsi və siyahısının hazırlanması.",
@@ -1701,3 +1712,4 @@
 
 </body>
 </html>
+
