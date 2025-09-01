@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="az">
 <head>
@@ -38,7 +39,6 @@
             line-height: 1.6;
             color: var(--text-color);
             background-color: var(--white-color);
-            overflow-x: hidden; /* Prevents horizontal overflow */
         }
 
         /* Prevent background scroll when mobile nav is open */
@@ -360,7 +360,6 @@
         /* --- Horizontal Scroll Section (For Services/News/Blog) --- */
         .scroll-wrapper {
             position: relative;
-            overflow: hidden; /* FIX: Prevents scroll buttons from overflowing */
         }
         .scroll-container {
             display: flex;
@@ -832,11 +831,11 @@
                 font-size: 1.1em;
             }
             .hero-buttons {
-                flex-wrap: wrap; /* FIX: Allow hero buttons to wrap */
+                flex-wrap: nowrap; /* Prevent hero buttons from wrapping */
             }
             .hero-buttons .cta-button {
-                padding: 12px 20px;
-                font-size: 0.9em;
+                padding: 12px 20px; /* Adjust padding to fit */
+                font-size: 0.9em; /* Adjust font size to fit */
             }
             .value-prop-grid {
                 grid-template-columns: repeat(2, 1fr);
@@ -848,11 +847,11 @@
                 font-size: 2.2em;
             }
             .final-cta-buttons {
-                flex-wrap: wrap; /* FIX: Allow CTA buttons to wrap */
+                flex-wrap: nowrap; /* Prevent CTA buttons from wrapping */
             }
             .final-cta-buttons .cta-button {
-                padding: 12px 20px;
-                font-size: 0.9em;
+                padding: 12px 20px; /* Adjust padding to fit */
+                font-size: 0.9em; /* Adjust font size to fit */
             }
         }
     </style>
@@ -1680,3 +1679,4 @@
 
 </body>
 </html>
+
