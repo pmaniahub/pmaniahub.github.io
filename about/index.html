@@ -16,7 +16,7 @@
         :root {
             --primary-color: #222831;
             --secondary-color: #4a1ad1;
-            --background-color: #ecf0f1;
+            --background-color: #f9f9f9;
             --text-color: #34495e;
             --white-color: #ffffff;
             --heading-font: 'Poppins', sans-serif;
@@ -38,9 +38,9 @@
             line-height: 1.6;
             color: var(--text-color);
             background-color: var(--white-color);
+            overflow-x: hidden;
         }
 
-        /* Prevent background scroll when mobile nav is open */
         body.nav-open {
             overflow: hidden;
         }
@@ -49,15 +49,8 @@
             width: 90%;
             max-width: 1100px;
             margin: 0 auto;
-            transition: max-width 0.3s ease;
         }
         
-        @media (min-width: 1400px) {
-            .container {
-                max-width: 1300px;
-            }
-        }
-
         h1, h2, h3 {
             font-family: var(--heading-font);
             font-weight: 600;
@@ -68,11 +61,17 @@
             padding: 80px 0;
         }
 
+        .section-title {
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 50px;
+        }
+
         /* --- Header & Navigation --- */
         .main-header {
             background-color: var(--white-color);
             padding: 15px 0;
-            border-bottom: 1px solid var(--background-color);
+            border-bottom: 1px solid #ecf0f1;
             position: sticky;
             top: 0;
             z-index: 1000;
@@ -82,7 +81,6 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            flex-wrap: wrap;
         }
 
         .logo img {
@@ -97,15 +95,10 @@
             gap: 25px;
         }
         
-        .main-nav {
-            display: flex; 
-        }
-
         .main-nav ul {
             list-style: none;
             display: flex;
             gap: 30px;
-            flex-wrap: wrap;
             margin: 0;
         }
 
@@ -137,6 +130,7 @@
         .hamburger {
             display: none;
             cursor: pointer;
+            z-index: 1001;
         }
         .hamburger .bar {
             width: 25px;
@@ -145,16 +139,36 @@
             margin: 5px 0;
             transition: 0.4s;
         }
-        .hamburger.active .bar:nth-child(1) {
-            transform: rotate(-45deg) translate(-5px, 6px);
-        }
-        .hamburger.active .bar:nth-child(2) {
-            opacity: 0;
-        }
-        .hamburger.active .bar:nth-child(3) {
-            transform: rotate(45deg) translate(-5px, -6px);
-        }
         
+        /* --- Internal Page Navigation --- */
+        .page-nav {
+            position: sticky;
+            top: 101px; /* Height of the main header */
+            background-color: var(--white-color);
+            z-index: 999;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.07);
+            border-bottom: 1px solid #ecf0f1;
+        }
+        .page-nav-container {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+        }
+        .page-nav a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-family: var(--heading-font);
+            font-weight: 600;
+            padding: 15px 20px;
+            border-bottom: 3px solid transparent;
+            transition: color 0.3s ease, border-color 0.3s ease;
+        }
+        .page-nav a:hover,
+        .page-nav a.active {
+            color: var(--secondary-color);
+            border-bottom-color: var(--secondary-color);
+        }
+
         /* --- About Page Section --- */
         .about-hero {
             position: relative;
@@ -174,18 +188,26 @@
             bottom: 0;
             background-color: rgba(34, 40, 49, 0.75);
             backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
         }
 
         .about-hero .container {
             position: relative;
             z-index: 2;
-            text-align: center;
         }
         
+        .about-hero-layout {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+
         .about-hero-content {
-            max-width: 850px;
-            margin: 0 auto;
+            flex: 1;
+            text-align: left;
+        }
+        
+        .values-section {
+            flex: 1;
         }
 
         .about-hero .tagline {
@@ -197,52 +219,168 @@
         }
 
         .about-hero h1 {
-            font-size: 3.5em;
+            font-size: 3.2em;
             margin-bottom: 25px;
             color: var(--white-color);
             text-shadow: 0 2px 4px rgba(0,0,0,0.3);
         }
 
         .about-hero p {
-            font-size: 1.15em;
+            font-size: 1.1em;
             line-height: 1.8;
-            max-width: 750px;
-            margin: 0 auto 50px auto;
             opacity: 0.95;
+            margin-bottom: 0;
         }
 
         .values-container {
             display: flex;
-            gap: 30px;
-            justify-content: center;
-            text-align: left;
+            gap: 20px;
+            flex-direction: column;
         }
 
         .value-card {
             background: rgba(255, 255, 255, 0.1);
             border: 1px solid rgba(255, 255, 255, 0.2);
-            padding: 30px;
+            padding: 25px;
             border-radius: 12px;
-            width: 50%;
             backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
+            text-align: left;
         }
         
         .value-card .icon {
-            font-size: 2.5em;
+            font-size: 2em;
             margin-bottom: 15px;
+            display: block;
         }
 
         .value-card h3 {
-            font-size: 1.5em;
+            font-size: 1.4em;
             margin-bottom: 10px;
             color: var(--white-color);
         }
 
         .value-card p {
-            font-size: 1.05em;
+            font-size: 1em;
             margin: 0;
-            text-align: left;
+            line-height: 1.6;
+            opacity: 0.9;
+        }
+
+        /* --- Team Section --- */
+        .team-section {
+            background-color: var(--background-color);
+        }
+
+        .team-grid {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .team-card {
+            position: relative;
+            width: 320px;
+            height: 400px;
+            background-image: url('mahmud.png'), url('https://placehold.co/320x400/222831/ffffff?text=Mahmud+M.');
+            background-size: cover;
+            background-position: center;
+            border-radius: 15px;
+            overflow: hidden;
+            cursor: pointer;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .team-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+
+        .team-card-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 25px;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            color: var(--white-color);
+        }
+        
+        .team-card h3 {
+            color: var(--white-color);
+            font-size: 1.6em;
+            margin: 0;
+        }
+        
+        .team-card p {
+            margin: 5px 0 0;
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+
+        /* --- Modal Styles --- */
+        .modal {
+            display: none; 
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.6);
+            animation: fadeIn 0.3s;
+        }
+        @keyframes fadeIn {
+            from {opacity: 0;}
+            to {opacity: 1;}
+        }
+
+        .modal-content {
+            background-color: var(--white-color);
+            margin: 5% auto;
+            padding: 30px 40px;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 700px;
+            position: relative;
+        }
+        .close-btn {
+            color: #aaa;
+            position: absolute;
+            top: 15px;
+            right: 25px;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        
+        #mahmud-modal .modal-body h3 {
+            font-size: 1.8em;
+            margin-bottom: 5px;
+        }
+
+        #mahmud-modal .modal-body .subtitle {
+            font-size: 1.1em;
+            color: var(--secondary-color);
+            margin-bottom: 25px;
+            font-weight: 500;
+        }
+
+        #mahmud-modal .modal-body h4 {
+            font-size: 1.2em;
+            color: var(--primary-color);
+            margin-top: 20px;
+            margin-bottom: 10px;
+            border-bottom: 2px solid var(--secondary-color);
+            padding-bottom: 5px;
+        }
+        #mahmud-modal .modal-body ul {
+            list-style-position: inside;
+            padding-left: 5px;
+        }
+        #mahmud-modal .modal-body ul li {
+            margin-bottom: 8px;
         }
 
         /* --- Footer --- */
@@ -316,16 +454,9 @@
 
         /* --- Responsive Design --- */
         @media (max-width: 1080px) {
-            .hamburger {
-                display: block;
-                position: relative;
-                z-index: 1001;
-            }
-            .hamburger.active .bar {
-                background-color: var(--white-color);
-            }
+            .hamburger { display: block; }
             .main-nav {
-                display: flex;
+                display: none;
                 flex-direction: column;
                 align-items: center;
                 justify-content: center;
@@ -334,53 +465,50 @@
                 left: 0;
                 width: 100%;
                 height: 100vh;
-                background-color: rgba(34, 40, 49, 0.95);
-                backdrop-filter: blur(8px);
-                -webkit-backdrop-filter: blur(8px);
-                opacity: 0;
-                visibility: hidden;
-                transition: opacity 0.35s ease, visibility 0.35s;
+                background-color: rgba(34, 40, 49, 0.98);
                 z-index: 1000;
             }
-            .main-nav.active {
-                opacity: 1;
-                visibility: visible;
-            }
-            .main-nav ul {
-                flex-direction: column;
-                width: 100%;
-                gap: 30px;
-            }
-            .main-nav ul li {
-                width: 100%;
-                text-align: center;
-            }
-            .main-nav a {
-                font-size: 1.6em;
-                font-weight: 500;
-                color: var(--white-color);
+            .main-nav.active { display: flex; }
+            .main-nav ul { flex-direction: column; gap: 30px; }
+            .main-nav a { font-size: 1.8em; color: var(--white-color); }
+            
+            .page-nav {
+                top: 101px; /* Adjust if header height changes */
             }
         }
         @media (max-width: 768px) {
-            .about-hero h1 {
-                font-size: 2.5em;
-            }
-            .about-hero p {
-                font-size: 1.1em;
-            }
+            section { padding: 60px 0; }
+            .section-title { font-size: 2em; }
+            .about-hero { padding: 60px 0; }
+            .about-hero-layout { flex-direction: column; text-align: center; }
+            .about-hero-content { text-align: center; }
+            .about-hero h1 { font-size: 2.5em; }
+            .about-hero p { margin: 0 auto 30px auto; }
+            .values-section { width: 100%; }
             .values-container {
-                flex-direction: column; /* Stack on smaller screens */
-                gap: 20px;
+                flex-direction: row; /* Side by side on mobile */
+                gap: 15px;
             }
             .value-card {
-                width: 100%; /* Full width for smaller screens */
+                width: 50%; /* Each takes half width */
                 padding: 20px;
             }
-            .value-card h3 {
-                font-size: 1.2em;
+            .value-card h3 { font-size: 1.2em; }
+
+            .page-nav {
+                top: 101px; /* Ensure it's correct on mobile */
             }
-            .value-card p {
-                font-size: 0.95em;
+            .page-nav a {
+                padding: 12px 10px;
+                font-size: 0.9em;
+            }
+            .page-nav-container {
+                gap: 15px;
+            }
+            .footer-content {
+                flex-direction: column;
+                align-items: flex-start;
+                text-align: left;
             }
         }
     </style>
@@ -404,11 +532,9 @@
                         <li><a href="/contact/" data-lang-key="navContact">Əlaqə</a></li>
                     </ul>
                 </nav>
-                <div class="header-controls">
-                    <div class="lang-switcher">
-                        <button id="lang-az" class="active">AZ</button> |
-                        <button id="lang-en">EN</button>
-                    </div>
+                <div class="lang-switcher">
+                    <button id="lang-az" class="active">AZ</button> |
+                    <button id="lang-en">EN</button>
                 </div>
                 <div class="hamburger" id="hamburger-menu">
                     <div class="bar"></div>
@@ -419,24 +545,48 @@
         </div>
     </header>
 
+    <nav class="page-nav">
+        <div class="page-nav-container">
+            <a href="#our-story" class="active" data-lang-key="navStory">Bizim Hekayəmiz</a>
+            <a href="#our-team" data-lang-key="navTeam">Komandamız</a>
+        </div>
+    </nav>
+
     <main>
-        <section class="about-hero">
+        <section id="our-story" class="about-hero scroll-section">
             <div class="container">
-                <div class="about-hero-content">
-                    <span class="tagline" data-lang-key="aboutTagline">BİZİM HEKAYƏMİZ</span>
-                    <h1 data-lang-key="aboutTitle">“PMania” ilə Tanış ol</h1>
-                    <p data-lang-key="aboutDesc">PMania Hub, layihə idarəetməsi sahəsində karyera qurmaq və ya mövcud bacarıqlarını təkmilləşdirmək istəyənlər üçün yaradılmış hərtərəfli bir platformadır. Məqsədimiz, hər kəsə keyfiyyətli təhsil və peşəkar dəstək təqdim etməklə onların uğuruna töhfə verməkdir.</p>
-                    
-                    <div class="values-container">
-                        <div class="value-card">
-                            <div class="icon">💡</div>
-                            <h3 data-lang-key="missionModalTitle"></h3>
-                            <p data-lang-key="missionModalDesc"></p>
+                <div class="about-hero-layout">
+                    <div class="about-hero-content">
+                        <span class="tagline" data-lang-key="aboutTagline">BİZİM HEKAYƏMİZ</span>
+                        <h1 data-lang-key="aboutTitle">“PMania” ilə Tanış ol</h1>
+                        <p data-lang-key="aboutDesc">PMania Hub, layihə idarəetməsi sahəsində karyera qurmaq və ya mövcud bacarıqlarını təkmilləşdirmək istəyənlər üçün yaradılmış hərtərəfli bir platformadır. Məqsədimiz, hər kəsə keyfiyyətli təhsil və peşəkar dəstək təqdim etməklə onların uğuruna töhfə verməkdir.</p>
+                    </div>
+                    <div class="values-section">
+                        <div class="values-container">
+                            <div class="value-card">
+                                <span class="icon">💡</span>
+                                <h3 data-lang-key="missionModalTitle"></h3>
+                                <p data-lang-key="missionModalDesc"></p>
+                            </div>
+                            <div class="value-card">
+                                <span class="icon">🎯</span>
+                                <h3 data-lang-key="visionModalTitle"></h3>
+                                <p data-lang-key="visionModalDesc"></p>
+                            </div>
                         </div>
-                        <div class="value-card">
-                            <div class="icon">🎯</div>
-                            <h3 data-lang-key="visionModalTitle"></h3>
-                            <p data-lang-key="visionModalDesc"></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="our-team" class="team-section scroll-section">
+            <div class="container">
+                <h2 class="section-title" data-lang-key="teamTitle">Komandamızla Tanış Olun</h2>
+                <div class="team-grid">
+                    <div class="team-card" onclick="openModal('mahmud-modal')">
+                        <div class="team-card-overlay">
+                            <h3 data-lang-key="teamMemberName">Mahmud Mahmudlu</h3>
+                            <p data-lang-key="teamMemberTitle">Təsisçi, Layihə İdarəetməsi Təlimçisi</p>
                         </div>
                     </div>
                 </div>
@@ -449,22 +599,22 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
-                    <h4 data-lang-key="footerTitle1"></h4>
-                    <p data-lang-key="footerDesc1"></p>
+                    <h4 data-lang-key="footerTitle1">PMania Hub</h4>
+                    <p data-lang-key="footerDesc1">Layihə idarəetməsində peşəkar dəstəkçiniz.</p>
                 </div>
                 <div class="footer-section">
-                    <h4 data-lang-key="footerTitle2"></h4>
+                    <h4 data-lang-key="footerTitle2">Sürətli Keçidlər</h4>
                     <ul>
-                        <li><a href="/" data-lang-key="navHome"></a></li>
-                        <li><a href="/about/" data-lang-key="navAbout"></a></li>
-                        <li><a href="/services/" data-lang-key="navServices"></a></li>
-                        <li><a href="/#testimonials-section" data-lang-key="navReviews"></a></li>
-                        <li><a href="/#blog-section" data-lang-key="navBlog"></a></li>
-                        <li><a href="/contact/" data-lang-key="navContact"></a></li>
+                        <li><a href="/" data-lang-key="navHome">Əsas Səhifə</a></li>
+                        <li><a href="/about/" data-lang-key="navAbout">Haqqımızda</a></li>
+                        <li><a href="/services/" data-lang-key="navServices">Xidmətlər</a></li>
+                        <li><a href="/#testimonials-section" data-lang-key="navReviews">Rəylər</a></li>
+                        <li><a href="/#blog-section" data-lang-key="navBlog">Bloq</a></li>
+                        <li><a href="/contact/" data-lang-key="navContact">Əlaqə</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
-                    <h4 data-lang-key="footerTitle3"></h4>
+                    <h4 data-lang-key="footerTitle3">Əlaqə</h4>
                      <ul class="footer-contact-info">
                         <li><i class="fas fa-envelope"></i> <a href="mailto:info@pmaniahub.com">info@pmaniahub.com</a></li>
                         <li><i class="fas fa-phone"></i> <a href="tel:+37258243097">+372 5824 3097</a></li>
@@ -472,7 +622,7 @@
                     </ul>
                 </div>
                 <div class="footer-section">
-                    <h4 data-lang-key="footerTitle4"></h4>
+                    <h4 data-lang-key="footerTitle4">Bizi İzləyin</h4>
                     <div class="social-icons">
                         <a href="https://www.instagram.com/pmania_hub/" target="_blank" title="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.85s-.011 3.585-.069 4.85c-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07s-3.585-.012-4.85-.07c-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.85s.012-3.584.07-4.85c.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.85-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948s.014 3.667.072 4.947c.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072s3.667-.014 4.947-.072c4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.947s-.014-3.667-.072-4.947c-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.689-.073-4.948-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.162 6.162 6.162 6.162-2.759 6.162-6.162-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4s1.791-4 4-4 4 1.79 4 4-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.441 1.441 1.441 1.441-.645 1.441-1.441-.645-1.44-1.441-1.44z"/></svg></a>
                         <a href="https://www.facebook.com/profile.php?id=61578312400129" target="_blank" title="Facebook"><svg viewBox="0 0 24 24"><path d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.323-1.325z"/></svg></a>
@@ -481,66 +631,91 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p data-lang-key="footerRights"></p>
+                <p data-lang-key="footerRights">&copy; 2025 PMania Hub. Bütün hüquqlar qorunur.</p>
             </div>
         </div>
     </footer>
 
+    <!-- Mahmud's Profile Modal -->
+    <div id="mahmud-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('mahmud-modal')">&times;</span>
+            <div class="modal-body">
+                <h3 data-lang-key="mahmudName">Mahmud Mahmudlu</h3>
+                <p class="subtitle" data-lang-key="mahmudRole">PMP® | Senior Project & Program Leader</p>
+                
+                <h4 data-lang-key="summaryTitle">Peşəkar Xülasə</h4>
+                <p data-lang-key="summaryContent">PMP® və Lean Six Sigma sertifikatlı, mürəkkəb və yüksək dəyərli texnologiya proqramlarını tam həyat dövrü boyunca uğurla təslim etmə təcrübəsinə malik lider. 6 ildən çox beynəlxalq təcrübə ilə yüksək texnologiyalı sənaye mühitində çoxmilyonluq avro dəyərində NPI layihələrini idarə etməkdə üstünəm.</p>
+                
+                <h4 data-lang-key="experienceTitle">Əsas Təcrübə (Ericsson)</h4>
+                <ul>
+                    <li data-lang-key="expPoint1">Büdcəsi 7 milyon avroya çatan əsas NPI platforma layihələrini idarə edib.</li>
+                    <li data-lang-key="expPoint2">Müxtəlif qlobal istehsalat sahələrində funksiyalararası komandalara (mühəndislik, keyfiyyət, satınalma) rəhbərlik edib.</li>
+                    <li data-lang-key="expPoint3">Kiçik PM-lərə mentorluq edərək komandanın performansını yüksəldib və ən yaxşı performans mükafatlarına layiq görülüb.</li>
+                </ul>
+
+                <h4 data-lang-key="certsTitle">Sertifikatlar</h4>
+                <ul>
+                    <li data-lang-key="cert1">Project Management Professional (PMP)® - PMI</li>
+                    <li data-lang-key="cert2">Lean Six Sigma Yellow Belt - Ericsson</li>
+                    <li data-lang-key="cert3">Practical Gen AI for Project Managers – PMI</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
     <script>
-        // Check if the script has already been loaded to avoid re-running it
         if (!window.pmaniaScriptLoaded) {
             window.pmaniaScriptLoaded = true;
 
             const translations = {
                 az: {
-                    navHome: "Əsas Səhifə",
-                    navAbout: "Haqqımızda",
-                    navServices: "Xidmətlər",
-                    navReviews: "Rəylər",
-                    navBlog: "Bloq",
-                    navContact: "Əlaqə",
-                    aboutTagline: "BİZİM HEKAYƏMİZ",
-                    aboutTitle: "“PMania” ilə Tanış ol",
+                    navHome: "Əsas Səhifə", navAbout: "Haqqımızda", navServices: "Xidmətlər", navReviews: "Rəylər", navBlog: "Bloq", navContact: "Əlaqə",
+                    navStory: "Bizim Hekayəmiz", navTeam: "Komandamız",
+                    aboutTagline: "BİZİM HEKAYƏMİZ", aboutTitle: "“PMania” ilə Tanış ol",
                     aboutDesc: "PMania Hub, layihə idarəetməsi sahəsində karyera qurmaq və ya mövcud bacarıqlarını təkmilləşdirmək istəyənlər üçün yaradılmış hərtərəfli bir platformadır. Məqsədimiz, hər kəsə keyfiyyətli təhsil və peşəkar dəstək təqdim etməklə onların uğuruna töhfə verməkdir.",
-                    missionModalTitle: "Missiyamız",
-                    missionModalDesc: "Layihə idarəetməsini maarifləndirici, əyləncəli və motivasiyaedici yanaşma ilə hər kəs üçün daha maraqlı və əlçatan etmək!",
-                    visionModalTitle: "Vizyonumuz",
-                    visionModalDesc: "Layihə idarəetməsini yeni baxışla təqdim edən aparıcı platforma olmaq.",
-                    footerTitle1: "PMania Hub",
-                    footerDesc1: "Layihə idarəetməsində peşəkar dəstəkçiniz.",
-                    footerTitle2: "Sürətli Keçidlər",
-                    footerTitle3: "Əlaqə",
-                    footerPhone: "Telefon: +372 5824 3097",
-                    footerTitle4: "Bizi İzləyin",
-                    footerRights: "&copy; 2025 PMania Hub. Bütün hüquqlar qorunur."
+                    missionModalTitle: "Missiyamız", missionModalDesc: "Layihə idarəetməsini maarifləndirici, əyləncəli və motivasiyaedici yanaşma ilə hər kəs üçün daha maraqlı və əlçatan etmək!",
+                    visionModalTitle: "Vizyonumuz", visionModalDesc: "Layihə idarəetməsini yeni baxışla təqdim edən aparıcı platforma olmaq.",
+                    teamTitle: "Komandamızla Tanış Olun", teamMemberName: "Mahmud Mahmudlu", teamMemberTitle: "Təsisçi, Layihə İdarəetməsi Təlimçisi",
+                    mahmudName: "Mahmud Mahmudlu", mahmudRole: "PMP® | Baş Layihə və Proqram Rəhbəri",
+                    summaryTitle: "Peşəkar Xülasə", summaryContent: "PMP® və Lean Six Sigma sertifikatlı, mürəkkəb və yüksək dəyərli texnologiya proqramlarını tam həyat dövrü boyunca uğurla təslim etmə təcrübəsinə malik lider. 6 ildən çox beynəlxalq təcrübə ilə yüksək texnologiyalı sənaye mühitində çoxmilyonluq avro dəyərində NPI layihələrini idarə etməkdə üstünəm.",
+                    experienceTitle: "Əsas Təcrübə (Ericsson)", expPoint1: "Büdcəsi 7 milyon avroya çatan əsas NPI platforma layihələrini idarə edib.", expPoint2: "Müxtəlif qlobal istehsalat sahələrində funksiyalararası komandalara (mühəndislik, keyfiyyət, satınalma) rəhbərlik edib.", expPoint3: "Kiçik PM-lərə mentorluq edərək komandanın performansını yüksəldib və ən yaxşı performans mükafatlarına layiq görülüb.",
+                    certsTitle: "Sertifikatlar", cert1: "Project Management Professional (PMP)® - PMI", cert2: "Lean Six Sigma Yellow Belt - Ericsson", cert3: "Practical Gen AI for Project Managers – PMI",
+                    footerTitle1: "PMania Hub", footerDesc1: "Layihə idarəetməsində peşəkar dəstəkçiniz.", footerTitle2: "Sürətli Keçidlər", footerTitle3: "Əlaqə", footerTitle4: "Bizi İzləyin", footerRights: "&copy; 2025 PMania Hub. Bütün hüquqlar qorunur.",
                 },
                 en: {
-                    navHome: "Home",
-                    navAbout: "About Us",
-                    navServices: "Services",
-                    navReviews: "Reviews",
-                    navBlog: "Blog",
-                    navContact: "Contact",
-                    aboutTagline: "OUR STORY",
-                    aboutTitle: "Meet “PMania”",
+                    navHome: "Home", navAbout: "About Us", navServices: "Services", navReviews: "Reviews", navBlog: "Blog", navContact: "Contact",
+                    navStory: "Our Story", navTeam: "Our Team",
+                    aboutTagline: "OUR STORY", aboutTitle: "Meet “PMania”",
                     aboutDesc: "PMania Hub is a comprehensive platform created for those who want to build a career in project management or improve their existing skills. Our goal is to contribute to their success by providing quality education and professional support to everyone.",
-                    missionModalTitle: "Our Mission",
-                    missionModalDesc: "To make project management more interesting and accessible for everyone with an enlightening, fun, and motivational approach!",
-                    visionModalTitle: "Our Vision",
-                    visionModalDesc: "To be the leading platform that presents project management with a new perspective.",
-                    footerTitle1: "PMania Hub",
-                    footerDesc1: "Your professional support in project management.",
-                    footerTitle2: "Quick Links",
-                    footerTitle3: "Contact",
-                    footerPhone: "Phone: +372 5824 3097",
-                    footerTitle4: "Follow Us",
-                    footerRights: "&copy; 2025 PMania Hub. All rights reserved."
+                    missionModalTitle: "Our Mission", missionModalDesc: "To make project management more interesting and accessible for everyone with an enlightening, fun, and motivational approach!",
+                    visionModalTitle: "Our Vision", visionModalDesc: "To be the leading platform that presents project management with a new perspective.",
+                    teamTitle: "Meet Our Team", teamMemberName: "Mahmud Mahmudlu", teamMemberTitle: "Founder, Project Management Trainer",
+                    mahmudName: "Mahmud Mahmudlu", mahmudRole: "PMP® | Senior Project & Program Leader",
+                    summaryTitle: "Professional Summary", summaryContent: "A PMP® and Lean Six Sigma certified leader with a proven record of delivering complex, high-value technology programs across their full lifecycle. With over 6 years of international experience, I excel at managing multimillion-euro NPI projects in a high-tech, industrial environment.",
+                    experienceTitle: "Key Experience (Ericsson)", expPoint1: "Managed major NPI platform projects with budgets up to €7 million.", expPoint2: "Led and coordinated cross-functional teams (engineering, quality, purchasing) across multiple global manufacturing sites.", expPoint3: "Coached and mentored junior PMs, elevating team performance and maturity, leading to top performance awards.",
+                    certsTitle: "Certifications", cert1: "Project Management Professional (PMP)® - PMI", cert2: "Lean Six Sigma Yellow Belt - Ericsson", cert3: "Practical Gen AI for Project Managers – PMI",
+                    footerTitle1: "PMania Hub", footerDesc1: "Your professional support in project management.", footerTitle2: "Quick Links", footerTitle3: "Contact", footerTitle4: "Follow Us", footerRights: "&copy; 2025 PMania Hub. All rights reserved.",
                 }
             };
             
-            // Language switching function
+            function openModal(modalId) { 
+                const modal = document.getElementById(modalId);
+                if (modal) modal.style.display = 'block'; 
+            }
+            function closeModal(modalId) { 
+                const modal = document.getElementById(modalId);
+                if (modal) modal.style.display = 'none'; 
+            }
+
+            window.onclick = function(event) {
+                if (event.target.classList.contains('modal')) {
+                    event.target.style.display = 'none';
+                }
+            }
+
             function switchLanguage(lang) {
-                localStorage.setItem('language', lang); // Save language choice
+                localStorage.setItem('language', lang);
                 document.documentElement.lang = lang;
                 document.querySelectorAll('[data-lang-key]').forEach(el => {
                     const key = el.getAttribute('data-lang-key');
@@ -559,25 +734,33 @@
                 document.getElementById('lang-az').addEventListener('click', () => switchLanguage('az'));
                 document.getElementById('lang-en').addEventListener('click', () => switchLanguage('en'));
                  
-                // --- UPDATED HAMBURGER MENU LOGIC ---
                 const hamburger = document.getElementById('hamburger-menu');
                 const navLinks = document.getElementById('main-nav-links');
-                const navMenuLinks = navLinks.querySelectorAll('a');
-
-                function closeMenu() {
-                    hamburger.classList.remove('active');
-                    navLinks.classList.remove('active');
-                    document.body.classList.remove('nav-open');
-                }
 
                 hamburger.addEventListener('click', () => {
-                    hamburger.classList.toggle('active');
                     navLinks.classList.toggle('active');
                     document.body.classList.toggle('nav-open');
                 });
 
-                navMenuLinks.forEach(link => {
-                    link.addEventListener('click', closeMenu);
+                // Scroll Spy for page navigation
+                const sections = document.querySelectorAll('.scroll-section');
+                const pageNavLinks = document.querySelectorAll('.page-nav a');
+                
+                const observer = new IntersectionObserver(entries => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            pageNavLinks.forEach(link => {
+                                link.classList.remove('active');
+                                if (link.getAttribute('href').substring(1) === entry.target.id) {
+                                    link.classList.add('active');
+                                }
+                            });
+                        }
+                    });
+                }, { threshold: 0.5 });
+
+                sections.forEach(section => {
+                    observer.observe(section);
                 });
             });
         }
@@ -585,3 +768,4 @@
 
 </body>
 </html>
+
