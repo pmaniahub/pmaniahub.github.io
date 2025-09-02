@@ -431,18 +431,21 @@
         @media (max-width: 768px) {
             .section-title { font-size: 2.2em; }
             .training-cards-container { 
-                grid-template-columns: 1fr; /* MODIFIED: Stack vertically */
-                gap: 20px; /* MODIFIED: Adjusted gap for vertical layout */
+                grid-template-columns: repeat(2, 1fr); /* MODIFIED: 2x2 grid */
+                gap: 15px;
             }
-            .consulting-bento-grid {
-                grid-template-columns: 1fr; /* MODIFIED: Stack vertically */
-                gap: 20px; /* MODIFIED: Adjusted gap */
+             .consulting-bento-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
             }
             .coaching-wrapper {
-                 grid-template-columns: 1fr; /* MODIFIED: Stack vertically */
+                 display: block; /* MODIFIED: Changed from grid to block */
+            }
+            .coaching-visual {
+                min-height: 200px; /* MODIFIED: Reduced height */
             }
             .coaching-visual .icon-placeholder i {
-                font-size: 8em; /* MODIFIED: Smaller icon for mobile */
+                font-size: 8em;
             }
              .coaching-content {
                 padding: 40px 20px;
@@ -451,13 +454,26 @@
                 text-align: center;
             }
             .training-card { 
-                padding: 25px; /* MODIFIED: More padding for vertical layout */
+                padding: 20px 15px; /* MODIFIED: Sleeker padding */
             }
-            .training-card h3 { font-size: 1.2em; min-height: auto; } /* MODIFIED: Adjusted for vertical */
-            .training-card .card-desc { display: block; } /* MODIFIED: Show description on mobile */
-            .training-card .card-footer { padding-top: 15px; }
-            .training-card .price { font-size: 1.8em; }
-            .cta-button { padding: 12px 20px; font-size: 0.9em; }
+            .training-card h3 { 
+                font-size: 1em; /* MODIFIED: Sleeker text */
+                min-height: 40px; /* MODIFIED: Adjusted for new font size */
+                margin-bottom: 5px;
+            }
+            .training-card .card-desc { 
+                display: none; 
+            }
+            .training-card .price { 
+                font-size: 1.6em; /* MODIFIED: Sleeker text */
+            }
+            .training-card .price-note {
+                margin-bottom: 15px;
+            }
+            .cta-button { 
+                padding: 10px 18px; /* MODIFIED: Sleeker button */
+                font-size: 0.85em;
+            }
             .bento-box { padding: 30px; }
             .bento-box h3 { font-size: 1.5em; }
             .coaching-section { padding: 0; }
@@ -1044,4 +1060,17 @@
 
 </body>
 </html>
+"
+I have selected the whole document in the most up-to-date Canvas "Services Page" document above and am asking a query about/based on this code below.
+Instructions to follow:
+  * Don't output/edit the document if the query is Direct/Simple. For example, if the query asks for a simple explanation, output a direct answer.
+  * Make sure to **edit** the document if the query shows the intent of editing the document, in which case output the entire edited document, **not just that section or the edits**.
+    * Don't output the same document/empty document and say that you have edited it.
+    * Don't change unrelated code in the document.
+  * Don't output  and  in your final response.
+  * Any references like "this" or "selected code" refers to the code between  and  tags.
+  * Just acknowledge my request in the introduction.
+  * Make sure to refer to the document as "Canvas" in your response.
+
+good that, but for training section can you make it 2 postcard in one row, so 2 column 2 row at the moment, and scale the text and poscard sizes more sleek for phone view.
 
