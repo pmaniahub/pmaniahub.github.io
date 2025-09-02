@@ -242,7 +242,10 @@
 
         .consulting-section { background-color: var(--background-color); }
         .consulting-bento-grid {
-            display: grid; grid-template-columns: 2fr 1fr; grid-template-rows: auto; gap: 25px;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr); 
+            grid-template-rows: auto;
+            gap: 25px;
         }
         .bento-box {
             background-color: var(--white-color); border-radius: var(--border-radius-lg); padding: 40px; border: 1px solid rgba(0,0,0,0.07); transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -259,7 +262,11 @@
         .coaching-visual {
             width: 100%; height: 100%; background: var(--secondary-gradient); display: flex; align-items: center; justify-content: center;
         }
-        .coaching-visual .icon-placeholder i { font-size: 8em; color: rgba(255, 255, 255, 0.5); }
+        .coaching-visual .icon-placeholder i {
+            font-size: 10em; /* MODIFIED: Increased size */
+            color: rgba(255, 255, 255, 0.8); 
+            animation: pulse 3s infinite ease-in-out; 
+        }
         .coaching-content { padding: 60px; color: var(--white-color); }
         .coaching-content .section-title, .coaching-content .section-subtitle { text-align: left; margin-left: 0; margin-right: 0; }
         .coaching-content .section-title { color: var(--white-color); }
@@ -270,6 +277,21 @@
         .modal-content { background-color: var(--white-color); margin: 5% auto; padding: 40px; border-radius: 10px; width: 90%; max-width: 800px; position: relative; animation: fadeIn 0.3s; }
         .close-btn { color: #aaa; position: absolute; top: 15px; right: 25px; font-size: 28px; font-weight: bold; cursor: pointer; }
         .close-btn:hover, .close-btn:focus { color: var(--primary-color); }
+        
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                text-shadow: 0 0 4px rgba(255, 255, 255, 0.2); /* MODIFIED: Subtler shadow */
+            }
+            50% {
+                transform: scale(1.08); /* MODIFIED: Smaller scale */
+                text-shadow: 0 0 15px rgba(255, 255, 255, 0.5); /* MODIFIED: Subtler shadow */
+            }
+            100% {
+                transform: scale(1);
+                text-shadow: 0 0 4px rgba(255, 255, 255, 0.2); /* MODIFIED: Subtler shadow */
+            }
+        }
         @keyframes fadeIn { from {opacity: 0; transform: translateY(-20px);} to {opacity: 1; transform: translateY(0);} }
         .training-details h2 { font-size: 2em; text-align: center; margin-bottom: 10px; }
         .training-details h4 { font-size: 1.3em; margin-top: 25px; margin-bottom: 15px; color: var(--primary-color); }
@@ -401,7 +423,6 @@
             }
         }
         @media (max-width: 900px) {
-            .consulting-bento-grid { grid-template-columns: 1fr; }
             .coaching-wrapper { grid-template-columns: 1fr; }
             .coaching-visual { min-height: 250px; }
             .coaching-content { padding: 60px 20px; }
@@ -438,7 +459,7 @@
             .bento-box { padding: 25px; }
             .bento-box h3 { font-size: 1.5em; }
             .coaching-section { padding: 0; }
-            .service-nav { top: 101px; } /* MODIFIED: Corrected top value */
+            .service-nav { top: 101px; }
             .service-nav-links a { padding: 8px 15px; font-size: 0.9em; }
             html { scroll-padding-top: 150px; }
         }
