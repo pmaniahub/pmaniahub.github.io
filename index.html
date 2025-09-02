@@ -38,7 +38,7 @@
             line-height: 1.6;
             color: var(--text-color);
             background-color: var(--white-color);
-            overflow-x: hidden; /* ADDED: Prevents horizontal scrolling */
+            overflow-x: hidden; /* Prevents horizontal scrolling */
         }
 
         /* Prevent background scroll when mobile nav is open */
@@ -464,10 +464,12 @@
         .testimonials-cta {
             background-color: var(--background-color);
             text-align: center;
+            padding: 60px 0; /* MODIFIED: Reduced vertical padding */
         }
         .testimonials-cta p {
             font-size: 1.2em;
-            margin-bottom: 30px;
+            max-width: 600px; /* Aligns with other text blocks */
+            margin: 20px auto 25px auto; /* Centered and adjusted margins */
         }
         .highlight-tag {
             background-color: var(--white-color);
@@ -817,6 +819,9 @@
             section {
                 padding: 60px 0;
             }
+            .testimonials-cta {
+                padding: 40px 0; /* Further reduced padding for mobile */
+            }
             .section-title {
                 font-size: 2em;
                 margin-bottom: 40px;
@@ -850,7 +855,7 @@
                 padding: 12px 20px; /* Adjust padding to fit */
                 font-size: 0.9em; /* Adjust font size to fit */
             }
-            /* ADDED: Hide scroll buttons on mobile; users can swipe */
+            /* Hide scroll buttons on mobile; users can swipe */
             .scroll-btn {
                 display: none;
             }
@@ -874,18 +879,13 @@
 
             .footer-content {
                 flex-direction: column;
-                align-items: center;
-                text-align: center;
+                align-items: flex-start; /* MODIFIED: Align items to the left */
+                text-align: left; /* MODIFIED: Align text to the left */
             }
             .footer-section {
                 min-width: 100%;
             }
-            .footer-section ul {
-                text-align: center;
-            }
-            .social-icons {
-                text-align: center;
-            }
+            /* Removed centered text rules for children, they will inherit left-align */
         }
     </style>
 </head>
@@ -1079,7 +1079,7 @@
                         <svg viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/></svg>
                     </button>
                 </div>
-                <p data-lang-key="testimonialsDesc" style="margin-top: 30px;">Bizimlə təcrübələrini bölüşən məzunlarımızın fikirləri ilə tanış olun.</p>
+                <p data-lang-key="testimonialsDesc">Bizimlə təcrübələrini bölüşən məzunlarımızın fikirləri ilə tanış olun.</p>
                 <button class="cta-button" onclick="openModal('all-testimonials-modal')" data-lang-key="testimonialsButton">Bütün Rəyləri Oxu</button>
             </div>
         </section>
@@ -1444,7 +1444,7 @@
                     news3ModalHashtags: "#AYAFEAZERBAIJAN #PMANİA #ProjectManagement",
                     
                     allReviewsTitle: "Tələbə Rəyləri",
-                    review1Quote: "“Təlimçinin dərsi təqdim etmə tərzi çox maraqlı və aydın idi. Mövzunu hərtərəfli izah edir, real nümunələr gətirərək mövzunu daha da anlaşıqlı edirdi. Ritmi uyğun, izahı əyləncəli idi və iştirakçılarla yaxşı əlaqə qurmağı bacarırdı.”",
+                    review1Quote: "“Təlimçinin dərsi təqdim etmə tərzi çox maraıqlı və aydın idi. Mövzunu hərtərəfli izah edir, real nümunələr gətirərək mövzunu daha da anlaşıqlı edirdi. Ritmi uyğun, izahı əyləncəli idi və iştirakçılarla yaxşı əlaqə qurmağı bacarırdı.”",
                     review1Author: "- Vebinar İştirakçısı",
                     review2Quote: "“Mən stomatologiya ixtisasında təhsil alıram, lakin fakültə startap sədri kimi layihə idarəetməsi üzrə biliklərimi genişləndirmək məqsədilə Project Manager mövzulu vebinarlarda iştirak edirəm. Təlimçinin izahı olduca aydın və məzmunlu idi, dərsin ritmi uyğun şəkildə qurulmuşdu. Nəticədə, mövzunun bütün məqamlarını asanlıqla mənimsəyə bildim.”",
                     review2Author: "- Vebinar İştirakçısı",
@@ -1489,13 +1489,13 @@
                     blog3h1: "Risk Nədir və Növləri Hansılardır?",
                     blog3p2: "Risk, baş verəcəyi təqdirdə layihənin məqsədlərinə (büdcə, zaman, keyfiyyət) müsbət və ya mənfi təsir göstərə biləcək qeyri-müəyyən bir hadisədir. Risklər texniki (texnologiya problemi), xarici (bazar dəyişikliyi), təşkilati (resurs çatışmazlığı) və ya idarəetmə (zəif planlama) kimi fərqli kateqoriyalara ayrıla bilər.",
                     blog3h2: "Risk İdarəetmə Prosesi",
-                    blog3p3: "Effektiv risk idarəetməsi adətən dörd əsas addımdan ibəətdir:",
+                    blog3p3: "Effektiv risk idarəetməsi adətən dörd əsas addımdan ibarətdir:",
                     blog3li1: "<strong>Risk Analizi:</strong> Hər bir riskin baş vermə ehtimalı və potensial təsiri qiymətləndirilir.",
                     blog3li2: "<strong>Risk Cavabının Planlaşdırılması:</strong> Risklərə qarşı strategiyalar hazırlanır (qəbul etmək, qarşısını almaq, təsirini azaltmaq və ya başqasına ötürmək).",
                     blog3li3: "<strong>Risk İdentifikasiyası:</strong> Potensial risklərin müəyyən edilməsi və siyahısının hazırlanması.",
                     blog3li4: "<strong>Risk Monitorinqi:</strong> Proses boyu yeni risklərin izlənilməsi və mövcud risklərə qarşı planların effektivliyinin yoxlanılması.",
                     
-                    blog4p1: "Layihə idarəetməsi terminologiyasında \"menecer\" və \"lider\" sözləri tez-tez bir-birini əvəz etsə də, əslində fərqli mənaları və funksiyaları ifadə edirlər. Uğurlu bir layihə meneceri hər iki rolu da özündə birləşdirməyi bacarmalıdır.",
+                    blog4p1: "Layihə idarəetməsi terminologiyasında \"menecer\" və \"lider\" sözləri tez-tez bir-birini əvəz etsə də, əslində fərqli mənaları və funxiyaları ifadə edirlər. Uğurlu bir layihə meneceri hər iki rolu da özündə birləşdirməyi bacarmalıdır.",
                     blog4h1: "Layihə Meneceri: Sistem və Proses",
                     blog4p2: "Menecer, ilk növbədə, sistem və nizam-intizamla bağlıdır. O, planlar qurur, büdcələr təyin edir, resursları paylayır və tapşırıqların vaxtında və keyfiyyətlə yerinə yetirilməsinə nəzarət edir. Menecerin əsas sualları \"necə?\" və \"nə zaman?\" olur. O, proseslərin düzgün işləməsini təmin edir.",
                     blog4h2: "Lider: İnsanlar və Vizyon",
