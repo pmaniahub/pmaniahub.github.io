@@ -263,7 +263,7 @@
             width: 100%; height: 100%; background: var(--secondary-gradient); display: flex; align-items: center; justify-content: center;
         }
         .coaching-visual .icon-placeholder i {
-            font-size: 10em; /* MODIFIED: Increased size */
+            font-size: 10em;
             color: rgba(255, 255, 255, 0.8); 
             animation: pulse 3s infinite ease-in-out; 
         }
@@ -281,15 +281,15 @@
         @keyframes pulse {
             0% {
                 transform: scale(1);
-                text-shadow: 0 0 4px rgba(255, 255, 255, 0.2); /* MODIFIED: Subtler shadow */
+                text-shadow: 0 0 4px rgba(255, 255, 255, 0.2);
             }
             50% {
-                transform: scale(1.08); /* MODIFIED: Smaller scale */
-                text-shadow: 0 0 15px rgba(255, 255, 255, 0.5); /* MODIFIED: Subtler shadow */
+                transform: scale(1.08);
+                text-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
             }
             100% {
                 transform: scale(1);
-                text-shadow: 0 0 4px rgba(255, 255, 255, 0.2); /* MODIFIED: Subtler shadow */
+                text-shadow: 0 0 4px rgba(255, 255, 255, 0.2);
             }
         }
         @keyframes fadeIn { from {opacity: 0; transform: translateY(-20px);} to {opacity: 1; transform: translateY(0);} }
@@ -431,32 +431,34 @@
         @media (max-width: 768px) {
             .section-title { font-size: 2.2em; }
             .training-cards-container { 
-                grid-template-columns: repeat(2, 1fr);
-                gap: 15px;
+                grid-template-columns: 1fr; /* MODIFIED: Stack vertically */
+                gap: 20px; /* MODIFIED: Adjusted gap for vertical layout */
             }
             .consulting-bento-grid {
-                grid-template-columns: 1fr 1fr;
-                gap: 15px;
+                grid-template-columns: 1fr; /* MODIFIED: Stack vertically */
+                gap: 20px; /* MODIFIED: Adjusted gap */
             }
             .coaching-wrapper {
-                 grid-template-columns: 1fr 1.5fr;
-                 text-align: left;
+                 grid-template-columns: 1fr; /* MODIFIED: Stack vertically */
+            }
+            .coaching-visual .icon-placeholder i {
+                font-size: 8em; /* MODIFIED: Smaller icon for mobile */
             }
              .coaching-content {
-                padding: 30px;
+                padding: 40px 20px;
             }
             .coaching-content .section-title, .coaching-content .section-subtitle {
-                text-align: left;
-                margin-left: 0;
-                margin-right: 0;
+                text-align: center;
             }
-            .training-card { padding: 20px; }
-            .training-card h3 { font-size: 1.1em; min-height: 48px; }
-            .training-card .card-desc { display: none; }
+            .training-card { 
+                padding: 25px; /* MODIFIED: More padding for vertical layout */
+            }
+            .training-card h3 { font-size: 1.2em; min-height: auto; } /* MODIFIED: Adjusted for vertical */
+            .training-card .card-desc { display: block; } /* MODIFIED: Show description on mobile */
             .training-card .card-footer { padding-top: 15px; }
             .training-card .price { font-size: 1.8em; }
             .cta-button { padding: 12px 20px; font-size: 0.9em; }
-            .bento-box { padding: 25px; }
+            .bento-box { padding: 30px; }
             .bento-box h3 { font-size: 1.5em; }
             .coaching-section { padding: 0; }
             .service-nav { top: 101px; }
@@ -749,7 +751,7 @@
                 <div class="price-box">
                     <h4 data-lang-key="priceTitle"></h4>
                     <div class="price" data-price-azn="500">500 AZN</div>
-                    <a href="https://wa.me/37258243097?text=Salam%2C%20Korporativ%20T%C9%99lim%20Paketi%20il%C9%99%20maraqlan%C4%B1ram." target="_blank" class="cta-button" data-lang-key="applyNow"></a>
+                    <a href="https://wa.me/37258243097?text=Salam%2C%20Korporativ%20T%C9%9lim%20Paketi%20il%C9%99%20maraqlan%C4%B1ram." target="_blank" class="cta-button" data-lang-key="applyNow"></a>
                 </div>
             </div>
         </div>
