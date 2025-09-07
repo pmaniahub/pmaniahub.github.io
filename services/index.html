@@ -207,6 +207,17 @@
             transform: translateY(-4px) scale(1.02);
             box-shadow: 0 8px 25px rgba(74, 26, 209, 0.3);
         }
+        .cta-button.secondary {
+            background: var(--white-color);
+            color: var(--secondary-color);
+            border: 2px solid var(--secondary-color);
+            padding: 10px 23px;
+        }
+        .cta-button.secondary:hover {
+            background: var(--secondary-gradient);
+            color: var(--white-color);
+            border-color: transparent;
+        }
         
         .trainings-section { background-color: var(--background-color); }
         .training-cards-container {
@@ -243,13 +254,10 @@
         .training-card .price { font-size: 2em; font-weight: 700; color: var(--primary-color); line-height: 1; }
         .training-card .price-note { font-size: 0.85em; opacity: 0.7; margin-bottom: 20px; display: block; }
         
-        .consulting-section { background-color: var(--background-color); }
-        .consulting-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            justify-items: center;
-        }
-        .consulting-box {
+        .consulting-section, .coaching-section { background-color: var(--background-color); }
+        
+        /* --- Reusable Service Box Component --- */
+        .service-box {
             background-color: var(--white-color);
             border-radius: var(--border-radius-lg);
             border: 1px solid rgba(0,0,0,0.07);
@@ -258,28 +266,43 @@
             width: 100%;
             display: flex;
             align-items: center;
-            gap: 30px;
+            gap: 40px;
             padding: 40px;
+            margin: 0 auto; /* Center the box */
         }
-        .consulting-box:hover {
+        .service-box:hover {
             transform: translateY(-8px);
             box-shadow: 0 8px 30px rgba(0,0,0,0.08);
         }
-        .consulting-icon-wrapper {
-            flex-shrink: 0;
-            font-size: 3em;
-            background: var(--secondary-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            text-fill-color: transparent;
+        .service-content-wrapper {
+            flex: 1;
         }
-        .consulting-content-wrapper {
-            text-align: left;
-        }
-        .consulting-content-wrapper h3 {
+        .service-content-wrapper h3 {
             font-size: 1.8em;
             margin-bottom: 20px;
+        }
+        .service-content-wrapper p {
+            margin-bottom: 30px;
+        }
+        .service-image-wrapper {
+            flex: 0 0 300px;
+            height: 280px;
+        }
+        .service-image-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: var(--border-radius-md);
+        }
+        .service-buttons-wrapper {
+            margin-top: 30px;
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        .coaching-box {
+            flex-direction: row-reverse; /* Image on the left for coaching */
         }
         .consulting-highlights {
             list-style: none;
@@ -299,44 +322,6 @@
             left: 0;
             font-weight: 900;
         }
-
-        .coaching-section { padding: 0; }
-        .coaching-wrapper {
-            position: relative;
-            min-height: 500px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            background-image: url('https://images.unsplash.com/photo-1543269865-cbf427effbad?q=80&w=1920&auto=format&fit=crop');
-            background-size: cover;
-            background-position: center;
-            color: var(--white-color);
-        }
-        .coaching-wrapper::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: rgba(34, 40, 49, 0.65);
-            z-index: 1;
-        }
-        .coaching-content {
-            position: relative;
-            z-index: 2;
-            padding: 60px 20px;
-            max-width: 800px;
-        }
-        .coaching-content .section-title, .coaching-content .section-subtitle {
-            text-align: center;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        .coaching-content .section-title { color: var(--white-color); }
-        .coaching-content .section-subtitle { color: rgba(255, 255, 255, 0.85); max-width: none; margin-bottom: 40px; }
-        .coaching-content .coaching-cta { text-align: center; }
 
         .modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.6); }
         .modal-content { 
@@ -529,22 +514,30 @@
                 color: var(--white-color);
             }
         }
-        @media (max-width: 900px) {
-            .coaching-content { padding: 60px 20px; }
-        }
+        
         @media (max-width: 768px) {
             .section-title { font-size: 2.2em; }
             .training-cards-container { 
                 grid-template-columns: repeat(2, 1fr); /* MODIFIED: 2x2 grid */
                 gap: 15px;
             }
-             .consulting-box {
-                flex-direction: column;
-                text-align: center;
+             .service-box {
+                flex-direction: column !important; /* Use important to override row-reverse */
                 padding: 30px 20px;
              }
-             .consulting-content-wrapper {
+             .coaching-box {
+                flex-direction: column-reverse !important;
+             }
+             .service-content-wrapper {
                 text-align: center;
+             }
+             .service-image-wrapper {
+                width: 100%;
+                flex-basis: 220px;
+                height: 220px;
+             }
+             .service-buttons-wrapper {
+                justify-content: center;
              }
              .consulting-highlights li {
                 text-align: left;
@@ -570,7 +563,6 @@
                 padding: 10px 18px; /* MODIFIED: Sleeker button */
                 font-size: 0.85em;
             }
-            .coaching-section { padding: 0; }
             .service-nav { top: 101px; }
             .service-nav-links a { padding: 8px 15px; font-size: 0.9em; }
             html { scroll-padding-top: 150px; }
@@ -695,32 +687,44 @@
                 <h2 class="section-title" data-lang-key="consultingTitle">Biznes <span>Konsaltinq</span></h2>
                 <p class="section-subtitle" data-lang-key="consultingSubtitle">Proseslərinizi optimallaşdırmaq və layihə uğurunuzu artırmaq üçün fərdi strateji dəstək.</p>
         
-                <div class="consulting-grid">
-                    <div class="consulting-box">
-                        <div class="consulting-icon-wrapper">
-                            <i class="fas fa-lightbulb"></i>
-                        </div>
-                        <div class="consulting-content-wrapper">
-                            <h3 data-lang-key="consultingBoxTitle"></h3>
-                            <ul class="consulting-highlights">
-                                <li data-lang-key="consultingBullet1"></li>
-                                <li data-lang-key="consultingBullet2"></li>
-                                <li data-lang-key="consultingBullet3"></li>
-                            </ul>
+                <div class="service-box consulting-box">
+                    <div class="service-content-wrapper">
+                        <h3 data-lang-key="consultingBoxTitle"></h3>
+                        <ul class="consulting-highlights">
+                            <li data-lang-key="consultingBullet1"></li>
+                            <li data-lang-key="consultingBullet2"></li>
+                            <li data-lang-key="consultingBullet3"></li>
+                        </ul>
+                        <div class="service-buttons-wrapper">
                             <button class="cta-button" onclick="openModal('modal-consulting')" data-lang-key="readMore"></button>
+                            <a href="/contact/" class="cta-button secondary" data-lang-key="sendInquiry"></a>
                         </div>
+                    </div>
+                    <div class="service-image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1556761175-b413da4baf72?q=80&w=1920&auto=format&fit=crop" alt="Business Consulting">
                     </div>
                 </div>
             </div>
         </section>
         
         <section id="coaching" class="coaching-section">
-            <div class="coaching-wrapper">
-                <div class="coaching-content">
-                    <h2 class="section-title" data-lang-key="coachingTitle">Fərdi <span>Kouçinq</span></h2>
-                    <p class="section-subtitle" data-lang-key="coachingDesc">Karyeranızda irəliləmək üçün sizə xüsusi hazırlanmış 1:1 mentorluq proqramı. Bu proqram çərçivəsində sizinlə birlikdə güclü tərəflərinizi, inkişaf ehtiyaclarınızı analiz edir və hədəflərinizə çatmaq üçün konkret addımlar planlayırıq.</p>
-                    <div class="coaching-cta">
-                        <button class="cta-button" onclick="openModal('calendar-modal')" data-lang-key="freeCall"></button>
+            <div class="container">
+                <h2 class="section-title" data-lang-key="coachingTitle">Fərdi <span>Kouçinq</span></h2>
+                <p class="section-subtitle" data-lang-key="coachingSubtitle"></p>
+                <div class="service-box coaching-box">
+                    <div class="service-image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=1920&auto=format&fit=crop" alt="Personal Coaching">
+                    </div>
+                    <div class="service-content-wrapper">
+                        <h3 data-lang-key="coachingBoxTitle"></h3>
+                        <ul class="consulting-highlights">
+                            <li data-lang-key="coachingBullet1"></li>
+                            <li data-lang-key="coachingBullet2"></li>
+                            <li data-lang-key="coachingBullet3"></li>
+                        </ul>
+                        <div class="service-buttons-wrapper">
+                            <button class="cta-button" onclick="openModal('calendar-modal')" data-lang-key="freeCall"></button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1018,7 +1022,13 @@
                     consultingBullet3: "Süni İntellekt (AI) əsaslı həllərin inteqrasiyası.",
                     consultingBoxDescFull: "Layihələrinizdə çətinliklərlə üzləşirsiniz? Proseslərinizi optimallaşdırmaq və komandanızın məhsuldarlığını artırmaq istəyirsiniz? PMania Hub-ın biznes konsaltinq xidmətləri, şirkətinizin spesifik ehtiyaclarına uyğunlaşdırılmış strateji həllər təklif edir. Biz sizinlə birlikdə çalışaraq mövcud problemləri analiz edir, səmərəli idarəetmə metodologiyalarını (Agile, Waterfall, Hibrid) tətbiq edir və layihələrinizin uğurla başa çatmasını təmin edirik. Bundan əlavə, layihə idarəetmə praktikalarınıza <strong>Süni İntellekt (AI) əsaslı həllər inteqrasiya edərək</strong> proseslərinizi avtomatlaşdırır və proqnozlaşdırma dəqiqliyini artırırıq. Təcrübəmizlə biznes hədəflərinizə daha sürətli və effektiv şəkildə çatmağınıza dəstək oluruq.",
                     sendInquiry: "Sorğu Göndər",
-                    coachingTitle: "Fərdi Kouçinq", coachingDesc: "Karyeranızda irəliləmək üçün sizə xüsusi hazırlanmış 1:1 mentorluq proqramı. Bu proqram çərçivəsində sizinlə birlikdə güclü tərəflərinizi, inkişaf ehtiyaclarınızı analiz edir və hədəflərinizə çatmaq üçün konkret addımlar planlayırıq.", freeCall: "Ödənişsiz İlkin Zəng Rezerv Et",
+                    coachingTitle: "Fərdi Kouçinq", 
+                    coachingSubtitle: "Karyeranızda irəliləmək və hədəflərinizə çatmaq üçün fərdi mentorluq dəstəyi.",
+                    coachingBoxTitle: "Nə Təklif Edirik?",
+                    coachingBullet1: "Sizə xüsusi hazırlanmış 1:1 fərdi mentorluq proqramı.",
+                    coachingBullet2: "Güclü tərəflərinizin və inkişaf ehtiyaclarınızın analizi.",
+                    coachingBullet3: "Hədəflərinizə çatmaq üçün konkret addımlar planı.",
+                    freeCall: "Ödənişsiz İlkin Zəng Rezerv Et",
                     footerTitle1: "PMania Hub", footerDesc1: "Layihə idarəetməsində peşəkar dəstəkçiniz.", footerTitle2: "Sürətli Keçidlər", footerTitle3: "Əlaqə", footerPhone: "Telefon: +372 5824 3097", footerTitle4: "Bizi İzləyin", footerRights: "&copy; 2025 PMania Hub. Bütün hüquqlar qorunur.",
                     calendarTitle: "Görüş Rezerv Edin",
                     training1TitleFull: "“360° Layihə İdarəetməsi” Təlim Proqramı", training1Tagline: "QOŞUL, ÖYRƏN, TƏTBİQ ET! 🚀", 
@@ -1130,7 +1140,13 @@
                     consultingBullet3: "Integration of AI-powered solutions.",
                     consultingBoxDescFull: "Facing challenges in your projects? Looking to optimize processes and boost team productivity? PMania Hub's business consulting services offer strategic solutions tailored to your company's specific needs. We work with you to analyze existing problems, implement efficient management methodologies (Agile, Waterfall, Hybrid), and ensure your projects are completed successfully. Furthermore, we enhance your project management practices by <strong>integrating AI-powered solutions</strong> to automate processes and improve forecasting accuracy. Let our experience help you achieve your business goals faster and more effectively.",
                     sendInquiry: "Send Inquiry",
-                    coachingTitle: "Personal Coaching", coachingDesc: "A 1:1 mentorship program tailored for your career advancement. We analyze your strengths, identify areas for growth, and create a concrete action plan to reach your goals.", freeCall: "Book a Discovery Call",
+                    coachingTitle: "Personal Coaching", 
+                    coachingSubtitle: "Personalized mentorship support to advance your career and achieve your goals.",
+                    coachingBoxTitle: "What We Offer",
+                    coachingBullet1: "A tailored 1:1 personal mentorship program.",
+                    coachingBullet2: "Analysis of your strengths and areas for development.",
+                    coachingBullet3: "A concrete action plan to achieve your goals.",
+                    freeCall: "Book a Discovery Call",
                     footerTitle1: "PMania Hub", footerDesc1: "Your professional support in project management.", footerTitle2: "Quick Links", footerTitle3: "Contact", footerPhone: "Phone: +372 5824 3097", footerTitle4: "Follow Us", footerRights: "&copy; 2025 PMania Hub. All rights reserved.",
                     calendarTitle: "Book a Meeting",
                     training1TitleFull: "\"360° Project Management\" Training Program", training1Tagline: "JOIN, LEARN, APPLY! 🚀", 
