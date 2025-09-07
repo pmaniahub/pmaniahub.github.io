@@ -243,38 +243,99 @@
         .training-card .price { font-size: 2em; font-weight: 700; color: var(--primary-color); line-height: 1; }
         .training-card .price-note { font-size: 0.85em; opacity: 0.7; margin-bottom: 20px; display: block; }
         
-
         .consulting-section { background-color: var(--background-color); }
-        .consulting-bento-grid {
+        .consulting-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr); 
-            grid-template-rows: auto;
-            gap: 25px;
+            grid-template-columns: 1fr;
+            justify-items: center;
         }
-        .bento-box {
-            background-color: var(--white-color); border-radius: var(--border-radius-lg); padding: 40px; border: 1px solid rgba(0,0,0,0.07); transition: transform 0.3s ease, box-shadow 0.3s ease;
+        .consulting-box {
+            background-color: var(--white-color);
+            border-radius: var(--border-radius-lg);
+            border: 1px solid rgba(0,0,0,0.07);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            max-width: 900px;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            padding: 40px;
         }
-        .bento-box:hover { transform: translateY(-8px); box-shadow: 0 8px 30px rgba(0,0,0,0.08); }
-        .bento-box i {
-            font-size: 2.5em; margin-bottom: 20px; display: block; background: var(--secondary-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; text-fill-color: transparent;
+        .consulting-box:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.08);
         }
-        .bento-box h3 { font-size: 1.8em; margin-bottom: 15px; }
-        .bento-box p { margin-bottom: 30px; }
-        
-        .coaching-section { padding: 0; background: var(--primary-color); }
-        .coaching-wrapper { display: grid; grid-template-columns: 1fr 1.5fr; align-items: center; min-height: 500px; }
-        .coaching-visual {
-            width: 100%; height: 100%; background: var(--secondary-gradient); display: flex; align-items: center; justify-content: center;
+        .consulting-icon-wrapper {
+            flex-shrink: 0;
+            font-size: 3em;
+            background: var(--secondary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-fill-color: transparent;
         }
-        .coaching-visual .icon-placeholder i {
-            font-size: 10em;
-            color: rgba(255, 255, 255, 0.8); 
-            animation: pulse 3s infinite ease-in-out; 
+        .consulting-content-wrapper {
+            text-align: left;
         }
-        .coaching-content { padding: 60px; color: var(--white-color); }
-        .coaching-content .section-title, .coaching-content .section-subtitle { text-align: left; margin-left: 0; margin-right: 0; }
+        .consulting-content-wrapper h3 {
+            font-size: 1.8em;
+            margin-bottom: 20px;
+        }
+        .consulting-highlights {
+            list-style: none;
+            padding-left: 0;
+            margin-bottom: 30px;
+        }
+        .consulting-highlights li {
+            padding-left: 25px;
+            position: relative;
+            margin-bottom: 12px;
+        }
+        .consulting-highlights li::before {
+            font-family: 'Font Awesome 5 Free';
+            content: '\f058';
+            color: var(--secondary-color);
+            position: absolute;
+            left: 0;
+            font-weight: 900;
+        }
+
+        .coaching-section { padding: 0; }
+        .coaching-wrapper {
+            position: relative;
+            min-height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background-image: url('https://images.unsplash.com/photo-1543269865-cbf427effbad?q=80&w=1920&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            color: var(--white-color);
+        }
+        .coaching-wrapper::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(34, 40, 49, 0.65);
+            z-index: 1;
+        }
+        .coaching-content {
+            position: relative;
+            z-index: 2;
+            padding: 60px 20px;
+            max-width: 800px;
+        }
+        .coaching-content .section-title, .coaching-content .section-subtitle {
+            text-align: center;
+            margin-left: auto;
+            margin-right: auto;
+        }
         .coaching-content .section-title { color: var(--white-color); }
-        .coaching-content .section-subtitle { color: rgba(255, 255, 255, 0.8); max-width: none; margin-bottom: 40px; }
+        .coaching-content .section-subtitle { color: rgba(255, 255, 255, 0.85); max-width: none; margin-bottom: 40px; }
         .coaching-content .coaching-cta { text-align: center; }
 
         .modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.6); }
@@ -293,11 +354,6 @@
         .close-btn { color: #aaa; position: absolute; top: 15px; right: 25px; font-size: 28px; font-weight: bold; cursor: pointer; z-index: 10; }
         .close-btn:hover, .close-btn:focus { color: var(--primary-color); }
         
-        @keyframes pulse {
-            0% { transform: scale(1); text-shadow: 0 0 4px rgba(255, 255, 255, 0.2); }
-            50% { transform: scale(1.08); text-shadow: 0 0 15px rgba(255, 255, 255, 0.5); }
-            100% { transform: scale(1); text-shadow: 0 0 4px rgba(255, 255, 255, 0.2); }
-        }
         @keyframes fadeIn { from {opacity: 0; transform: translateY(-20px);} to {opacity: 1; transform: translateY(0);} }
         
         .training-details {
@@ -474,10 +530,7 @@
             }
         }
         @media (max-width: 900px) {
-            .coaching-wrapper { grid-template-columns: 1fr; }
-            .coaching-visual { min-height: 250px; }
             .coaching-content { padding: 60px 20px; }
-            .coaching-content .section-title, .coaching-content .section-subtitle { text-align: center; }
         }
         @media (max-width: 768px) {
             .section-title { font-size: 2.2em; }
@@ -485,31 +538,17 @@
                 grid-template-columns: repeat(2, 1fr); /* MODIFIED: 2x2 grid */
                 gap: 15px;
             }
-             .consulting-bento-grid {
-                grid-template-columns: repeat(2, 1fr); /* CHANGED: Side-by-side on mobile */
-                gap: 15px;
-            }
-            .bento-box {
-                padding: 20px 15px; /* CHANGED: Reduced padding for mobile */
-            }
-            .bento-box h3 {
-                font-size: 1.2em; /* CHANGED: Reduced font size for mobile */
-            }
-            .coaching-wrapper {
-                 display: block; /* MODIFIED: Changed from grid to block */
-            }
-            .coaching-visual {
-                min-height: 200px; /* MODIFIED: Reduced height */
-            }
-            .coaching-visual .icon-placeholder i {
-                font-size: 8em;
-            }
-             .coaching-content {
-                padding: 40px 20px;
-            }
-            .coaching-content .section-title, .coaching-content .section-subtitle {
+             .consulting-box {
+                flex-direction: column;
                 text-align: center;
-            }
+                padding: 30px 20px;
+             }
+             .consulting-content-wrapper {
+                text-align: center;
+             }
+             .consulting-highlights li {
+                text-align: left;
+             }
             .training-card { 
                 padding: 20px 15px; /* MODIFIED: Sleeker padding */
             }
@@ -653,23 +692,23 @@
 
         <section id="consulting" class="consulting-section">
             <div class="container">
-                <h2 class="section-title" data-lang-key="consultingTitle">Konsaltinq <span>Xidmətləri</span></h2>
-                <p class="section-subtitle" data-lang-key="consultingSubtitle">Biznesinizin və ya şəxsi karyeranızın hədəflərinə çatmaq üçün peşəkar dəstək.</p>
+                <h2 class="section-title" data-lang-key="consultingTitle">Biznes <span>Konsaltinq</span></h2>
+                <p class="section-subtitle" data-lang-key="consultingSubtitle">Proseslərinizi optimallaşdırmaq və layihə uğurunuzu artırmaq üçün fərdi strateji dəstək.</p>
         
-                <div class="consulting-bento-grid">
-                    <!-- Large Box -->
-                    <div class="bento-box large-box">
-                        <i class="fas fa-building"></i>
-                        <h3 data-lang-key="consultingCompanies">Şirkətlər üçün</h3>
-                        <p data-lang-key="consultingCompaniesDesc">Layihə idarəetmə proseslərinizin optimallaşdırılması, komandanızın inkişafı və effektivliyin artırılması.</p>
-                        <a href="/contact/" class="cta-button" data-lang-key="sendInquiry">Sorğu Göndər</a>
-                    </div>
-                    <!-- Small Box -->
-                    <div class="bento-box small-box">
-                        <i class="fas fa-user-tie"></i>
-                        <h3 data-lang-key="consultingIndividuals">Fərdlər üçün</h3>
-                        <p data-lang-key="consultingIndividualsDesc">Karyera planlaması, hədəflərin müəyyən edilməsi və çətinliklərin aradan qaldırılması üçün fərdi məsləhət.</p>
-                        <button class="cta-button" onclick="openModal('calendar-modal')" data-lang-key="requestCall">Zəng Sifariş Et</button>
+                <div class="consulting-grid">
+                    <div class="consulting-box">
+                        <div class="consulting-icon-wrapper">
+                            <i class="fas fa-lightbulb"></i>
+                        </div>
+                        <div class="consulting-content-wrapper">
+                            <h3 data-lang-key="consultingBoxTitle"></h3>
+                            <ul class="consulting-highlights">
+                                <li data-lang-key="consultingBullet1"></li>
+                                <li data-lang-key="consultingBullet2"></li>
+                                <li data-lang-key="consultingBullet3"></li>
+                            </ul>
+                            <button class="cta-button" onclick="openModal('modal-consulting')" data-lang-key="readMore"></button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -677,15 +716,11 @@
         
         <section id="coaching" class="coaching-section">
             <div class="coaching-wrapper">
-                <!-- This column can be used for an image in the future -->
-                <div class="coaching-visual">
-                       <div class="icon-placeholder"><i class="fas fa-hands-helping"></i></div>
-                </div>
                 <div class="coaching-content">
                     <h2 class="section-title" data-lang-key="coachingTitle">Fərdi <span>Kouçinq</span></h2>
                     <p class="section-subtitle" data-lang-key="coachingDesc">Karyeranızda irəliləmək üçün sizə xüsusi hazırlanmış 1:1 mentorluq proqramı. Bu proqram çərçivəsində sizinlə birlikdə güclü tərəflərinizi, inkişaf ehtiyaclarınızı analiz edir və hədəflərinizə çatmaq üçün konkret addımlar planlayırıq.</p>
                     <div class="coaching-cta">
-                        <button class="cta-button" onclick="openModal('calendar-modal')" data-lang-key="freeCall">Pulsuz İlkin Zəng</button>
+                        <button class="cta-button" onclick="openModal('calendar-modal')" data-lang-key="freeCall"></button>
                     </div>
                 </div>
             </div>
@@ -694,6 +729,21 @@
     </main>
     
     <!-- MODALS -->
+    <div id="modal-consulting" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('modal-consulting')">&times;</span>
+            <div class="training-details">
+                <div class="training-details-content">
+                    <h2 data-lang-key="consultingBoxTitle"></h2>
+                    <p data-lang-key="consultingBoxDescFull"></p>
+                </div>
+                <div class="price-box">
+                    <a href="/contact/" class="cta-button" data-lang-key="sendInquiry"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div id="modal-360" class="modal">
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal('modal-360')">&times;</span>
@@ -961,10 +1011,14 @@
                     training4Title: "Korporativ Təlim Paketi", training4Desc: "Şirkətinizin ehtiyaclarına uyğunlaşdırılmış, klassik, çevik və hibrid metodları əhatə edən tam günlük təlim.",
                     perDay: "(günlük)", readMore: "Ətraflı Bax",
                     priceFull: "(tam paket)",
-                    consultingTitle: "Konsaltinq Xidmətləri", consultingSubtitle: "Biznesinizin və ya şəxsi karyeranızın hədəflərinə çatmaq üçün peşəkar dəstək.",
-                    consultingIndividuals: "Fərdlər üçün", consultingIndividualsDesc: "Karyera planlaması, hədəflərin müəyyən edilməsi və çətinliklərin aradan qaldırılması üçün fərdi məsləhət.", requestCall: "Zəng Sifariş Et",
-                    consultingCompanies: "Şirkətlər üçün", consultingCompaniesDesc: "Layihə idarəetmə proseslərinizin optimallaşdırılması, komandanızın inkişafı və effektivliyin artırılması.", sendInquiry: "Sorğu Göndər",
-                    coachingTitle: "Fərdi Kouçinq", coachingDesc: "Karyeranızda irəliləmək üçün sizə xüsusi hazırlanmış 1:1 mentorluq proqramı. Bu proqram çərçivəsində sizinlə birlikdə güclü tərəflərinizi, inkişaf ehtiyaclarınızı analiz edir və hədəflərinizə çatmaq üçün konkret addımlar planlayırıq.", freeCall: "Pulsuz İlkin Zəng",
+                    consultingTitle: "Biznes Konsaltinq", consultingSubtitle: "Proseslərinizi optimallaşdırmaq və layihə uğurunuzu artırmaq üçün fərdi strateji dəstək.",
+                    consultingBoxTitle: "Biznesiniz üçün Strateji Həllər",
+                    consultingBullet1: "Strateji layihə idarəetməsi və proses optimallaşdırılması.",
+                    consultingBullet2: "Səmərəli metodologiyaların (Agile, Waterfall, Hibrid) tətbiqi.",
+                    consultingBullet3: "Süni İntellekt (AI) əsaslı həllərin inteqrasiyası.",
+                    consultingBoxDescFull: "Layihələrinizdə çətinliklərlə üzləşirsiniz? Proseslərinizi optimallaşdırmaq və komandanızın məhsuldarlığını artırmaq istəyirsiniz? PMania Hub-ın biznes konsaltinq xidmətləri, şirkətinizin spesifik ehtiyaclarına uyğunlaşdırılmış strateji həllər təklif edir. Biz sizinlə birlikdə çalışaraq mövcud problemləri analiz edir, səmərəli idarəetmə metodologiyalarını (Agile, Waterfall, Hibrid) tətbiq edir və layihələrinizin uğurla başa çatmasını təmin edirik. Bundan əlavə, layihə idarəetmə praktikalarınıza <strong>Süni İntellekt (AI) əsaslı həllər inteqrasiya edərək</strong> proseslərinizi avtomatlaşdırır və proqnozlaşdırma dəqiqliyini artırırıq. Təcrübəmizlə biznes hədəflərinizə daha sürətli və effektiv şəkildə çatmağınıza dəstək oluruq.",
+                    sendInquiry: "Sorğu Göndər",
+                    coachingTitle: "Fərdi Kouçinq", coachingDesc: "Karyeranızda irəliləmək üçün sizə xüsusi hazırlanmış 1:1 mentorluq proqramı. Bu proqram çərçivəsində sizinlə birlikdə güclü tərəflərinizi, inkişaf ehtiyaclarınızı analiz edir və hədəflərinizə çatmaq üçün konkret addımlar planlayırıq.", freeCall: "Ödənişsiz İlkin Zəng Rezerv Et",
                     footerTitle1: "PMania Hub", footerDesc1: "Layihə idarəetməsində peşəkar dəstəkçiniz.", footerTitle2: "Sürətli Keçidlər", footerTitle3: "Əlaqə", footerPhone: "Telefon: +372 5824 3097", footerTitle4: "Bizi İzləyin", footerRights: "&copy; 2025 PMania Hub. Bütün hüquqlar qorunur.",
                     calendarTitle: "Görüş Rezerv Edin",
                     training1TitleFull: "“360° Layihə İdarəetməsi” Təlim Proqramı", training1Tagline: "QOŞUL, ÖYRƏN, TƏTBİQ ET! 🚀", 
@@ -1069,10 +1123,14 @@
                     training4Title: "Corporate Training Package", training4Desc: "A full-day training covering classic, agile, and hybrid methods, tailored to your company's needs.",
                     perDay: "(per day)", readMore: "Learn More",
                     priceFull: "(full package)",
-                    consultingTitle: "Consulting Services", consultingSubtitle: "Professional support to achieve your business or personal career goals.",
-                    consultingIndividuals: "For Individuals", consultingIndividualsDesc: "Personalized advice for career planning, goal setting, and overcoming professional challenges.", requestCall: "Request a Call",
-                    consultingCompanies: "For Companies", consultingCompaniesDesc: "Optimization of your project management processes, team development, and increased efficiency.", sendInquiry: "Send Inquiry",
-                    coachingTitle: "Personal Coaching", coachingDesc: "A 1:1 mentorship program tailored for your career advancement. We analyze your strengths, identify areas for growth, and create a concrete action plan to reach your goals.", freeCall: "Free Initial Call",
+                    consultingTitle: "Business Consulting", consultingSubtitle: "Tailored strategic support to optimize your processes and elevate your project success.",
+                    consultingBoxTitle: "Strategic Solutions for Your Business",
+                    consultingBullet1: "Strategic project management and process optimization.",
+                    consultingBullet2: "Implementation of effective methodologies (Agile, Waterfall, Hybrid).",
+                    consultingBullet3: "Integration of AI-powered solutions.",
+                    consultingBoxDescFull: "Facing challenges in your projects? Looking to optimize processes and boost team productivity? PMania Hub's business consulting services offer strategic solutions tailored to your company's specific needs. We work with you to analyze existing problems, implement efficient management methodologies (Agile, Waterfall, Hybrid), and ensure your projects are completed successfully. Furthermore, we enhance your project management practices by <strong>integrating AI-powered solutions</strong> to automate processes and improve forecasting accuracy. Let our experience help you achieve your business goals faster and more effectively.",
+                    sendInquiry: "Send Inquiry",
+                    coachingTitle: "Personal Coaching", coachingDesc: "A 1:1 mentorship program tailored for your career advancement. We analyze your strengths, identify areas for growth, and create a concrete action plan to reach your goals.", freeCall: "Book a Discovery Call",
                     footerTitle1: "PMania Hub", footerDesc1: "Your professional support in project management.", footerTitle2: "Quick Links", footerTitle3: "Contact", footerPhone: "Phone: +372 5824 3097", footerTitle4: "Follow Us", footerRights: "&copy; 2025 PMania Hub. All rights reserved.",
                     calendarTitle: "Book a Meeting",
                     training1TitleFull: "\"360° Project Management\" Training Program", training1Tagline: "JOIN, LEARN, APPLY! 🚀", 
