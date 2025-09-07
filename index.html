@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PMania Hub - Project Management Platform</title>
+    <!-- Favicon -->
     <link rel="icon" href="/images/logo.png" type="image/png">
+    <!-- Font Awesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         /* --- Google Fonts Import --- */
@@ -366,6 +368,11 @@
             scroll-behavior: smooth;
             -ms-overflow-style: none;
             scrollbar-width: none;
+            cursor: grab;
+            user-select: none;
+        }
+        .scroll-container.active {
+            cursor: grabbing;
         }
         .scroll-container::-webkit-scrollbar {
             display: none;
@@ -986,6 +993,7 @@
             <div class="container">
                 <h2 class="section-title" data-lang-key="valuePropTitle">Niyə Biz?</h2>
                 <div class="value-prop-grid">
+                    <!-- Card 1: Practical Training -->
                     <div class="value-card">
                         <div class="value-card-icon">
                             <i class="fas fa-bullseye"></i>
@@ -994,6 +1002,7 @@
                         <p data-lang-key="value1Desc">Real nümunələr və alətlər</p>
                     </div>
     
+                    <!-- Card 2: Global Standards -->
                     <div class="value-card">
                         <div class="value-card-icon">
                             <i class="fas fa-globe-americas"></i>
@@ -1002,6 +1011,7 @@
                         <p data-lang-key="value2Desc">PMI və Agile yanaşmaları</p>
                     </div>
     
+                    <!-- Card 3: Personalized Consulting -->
                     <div class="value-card">
                         <div class="value-card-icon">
                             <i class="fas fa-lightbulb"></i>
@@ -1010,6 +1020,7 @@
                         <p data-lang-key="value3Desc">Biznesinizə uyğun həllər</p>
                     </div>
     
+                    <!-- Card 4: Proven Expertise -->
                     <div class="value-card">
                         <div class="value-card-icon">
                             <i class="fas fa-trophy"></i>
@@ -1027,6 +1038,7 @@
               <div class="scroll-wrapper">
                 <div class="scroll-container" id="services-scroller">
                   <div class="services-grid-scroll">
+                    <!-- Service 1: Trainings -->
                     <div class="service-card">
                         <div class="service-card-content">
                             <div class="service-card-icon"><i class="fas fa-book-open"></i></div>
@@ -1035,6 +1047,7 @@
                             <a href="/services/#trainings" class="service-card-button" data-lang-key="learnMore">Daha Çox Öyrən &rarr;</a>
                         </div>
                     </div>
+                    <!-- Service 2: Consulting -->
                     <div class="service-card">
                         <div class="service-card-content">
                             <div class="service-card-icon"><i class="fas fa-building"></i></div>
@@ -1043,6 +1056,7 @@
                             <a href="/services/#consulting" class="service-card-button" data-lang-key="learnMore">Daha Çox Öyrən &rarr;</a>
                         </div>
                     </div>
+                    <!-- Service 3: Personal Coaching -->
                     <div class="service-card">
                         <div class="service-card-content">
                             <div class="service-card-icon"><i class="fas fa-user-friends"></i></div>
@@ -1099,12 +1113,14 @@
             </div>
         </section>
         
+        <!-- Testimonials Section - UPDATED -->
         <section id="testimonials-section" class="testimonials">
             <div class="container">
                 <h2 class="section-title" data-lang-key="testimonialsTitle">Tələbələrimiz Nə Deyir?</h2>
                 <div class="scroll-wrapper">
                     <div class="scroll-container" id="testimonials-scroller">
                         <div class="testimonial-grid">
+                             <!-- Review: Rövşən Yasinov -->
                              <div class="testimonial-card">
                                 <div class="testimonial-quote">
                                     <p>
@@ -1122,6 +1138,7 @@
                                     </div>
                                 </div>
                             </div>
+                            <!-- Review: Məsmə Rəcəbova -->
                             <div class="testimonial-card">
                                 <div class="testimonial-quote">
                                     <p>
@@ -1139,6 +1156,7 @@
                                     </div>
                                 </div>
                             </div>
+                            <!-- Review: Gülsüm Tarverdiyeva -->
                             <div class="testimonial-card">
                                 <div class="testimonial-quote">
                                      <p>
@@ -1156,6 +1174,7 @@
                                     </div>
                                 </div>
                             </div>
+                            <!-- Review: Umudova Fatimə -->
                             <div class="testimonial-card">
                                  <div class="testimonial-quote">
                                     <p>
@@ -1173,6 +1192,7 @@
                                     </div>
                                 </div>
                             </div>
+                            <!-- Review: Bağırova Fatimə -->
                             <div class="testimonial-card">
                                 <div class="testimonial-quote">
                                      <p>
@@ -1190,7 +1210,8 @@
                                     </div>
                                 </div>
                             </div>
-                             <div class="testimonial-card">
+                             <!-- Review: Susan Heydərova -->
+                            <div class="testimonial-card">
                                 <div class="testimonial-quote">
                                     <p>
                                         <span data-lang-key="reviewSusanHQuoteShort"></span>
@@ -1207,6 +1228,7 @@
                                     </div>
                                 </div>
                             </div>
+                            <!-- Review: Cəfərova Fatimə -->
                             <div class="testimonial-card">
                                 <div class="testimonial-quote">
                                     <p>
@@ -1237,6 +1259,7 @@
         </section>
 
 
+        <!-- Blog Section -->
         <section id="blog-section" class="blog">
             <div class="container">
                 <h2 class="section-title" data-lang-key="blogTitle">Son Bloq Yazıları</h2>
@@ -1291,6 +1314,7 @@
         </section>
     </main>
 
+    <!-- Final CTA Section -->
     <section class="final-cta">
         <div class="container">
             <h2 data-lang-key="ctaTitle">Layihələrinizi Növbəti Səviyyəyə Qaldırmağa Hazırsınız?</h2>
@@ -1302,6 +1326,7 @@
         </div>
     </section>
 
+    <!-- Footer -->
     <footer class="main-footer">
         <div class="container">
             <div class="footer-content">
@@ -1343,9 +1368,11 @@
         </div>
     </footer>
 
+    <!-- Modals -->
     <div id="news-modal-1" class="modal"><div class="modal-content"><span class="close-btn" onclick="closeModal('news-modal-1')">&times;</span><div class="modal-body text-left"><h3 data-lang-key="news1ModalTitle"></h3><p data-lang-key="news1ModalSub"></p><p data-lang-key="news1ModalDesc"></p><ul><li data-lang-key="news1ModalPoint1"></li><li data-lang-key="news1ModalPoint2"></li><li data-lang-key="news1ModalPoint3"></li></ul><div class="trainer-info"><p data-lang-key="news1ModalTrainer"></p></div><p data-lang-key="news1ModalRegister"></p><a href="https://wa.me/37258243097?text=Salam%2C%20'360%C2%B0%20Layih%C9%99%20%C4%B0dar%C9%99etm%C9%99si'%20t%C9%99limin%C9%99%20qeydiyyatdan%20keçm%C9%99k%20ist%C9%99yir%C9%99m." target="_blank" class="cta-button" data-lang-key="news1ModalCTA"></a></div></div></div>
     <div id="news-modal-2" class="modal"><div class="modal-content"><span class="close-btn" onclick="closeModal('news-modal-2')">&times;</span><div class="modal-body text-left"><h3 data-lang-key="news2ModalTitle"></h3><p data-lang-key="news2ModalDesc"></p><ul><li data-lang-key="news2ModalPoint1"></li><li data-lang-key="news2ModalPoint2"></li><li data-lang-key="news2ModalPoint3"></li><li data-lang-key="news2ModalPoint4"></li><li data-lang-key="news2ModalDate"></li></ul><button class="cta-button disabled" data-lang-key="news2ModalCTA"></button></div></div></div>
     <div id="news-modal-3" class="modal"><div class="modal-content"><span class="close-btn" onclick="closeModal('news-modal-3')">&times;</span><div class="modal-body text-left"><h3 data-lang-key="news3ModalTitle"></h3><p data-lang-key="news3ModalDesc1"></p><p data-lang-key="news3ModalDesc2"></p><p data-lang-key="news3ModalDesc3"></p><p data-lang-key="news3ModalDesc4"></p><div class="hashtags" data-lang-key="news3ModalHashtags"></div><div class="modal-socials"><a href="https://www.instagram.com/pmania_hub/" target="_blank" title="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.85s-.011 3.585-.069 4.85c-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07s-3.585-.012-4.85-.07c-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.85s.012-3.584.07-4.85c.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.85-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948s.014 3.667.072 4.947c.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072s3.667-.014 4.947-.072c4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.947s-.014-3.667-.072-4.947c-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.689-.073-4.948-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.162 6.162 6.162 6.162-2.759 6.162-6.162-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4s1.791-4 4-4 4 1.79 4 4-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.441 1.441 1.441 1.441-.645 1.441-1.441-.645-1.44-1.441-1.44z"/></svg></a><a href="https://www.facebook.com/profile.php?id=61578312400129" target="_blank" title="Facebook"><svg viewBox="0 0 24 24"><path d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.323-1.325z"/></svg></a><a href="https://www.linkedin.com/company/pmania-hub" target="_blank" title="LinkedIn"><svg viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg></a></div></div></div></div>
+    <!-- Blog Modals -->
     <div id="blog-modal-1" class="modal"><div class="modal-content"><span class="close-btn" onclick="closeModal('blog-modal-1')">&times;</span><div class="modal-body text-left"><h3 data-lang-key="blog1Title"></h3><p data-lang-key="blog1p1"></p><h4 data-lang-key="blog1h1"></h4><p data-lang-key="blog1p2"></p><h4 data-lang-key="blog1h2"></h4><p data-lang-key="blog1p3"></p><h4 data-lang-key="blog1h3"></h4><p data-lang-key="blog1p4"></p></div></div></div>
     <div id="blog-modal-2" class="modal"><div class="modal-content"><span class="close-btn" onclick="closeModal('blog-modal-2')">&times;</span><div class="modal-body text-left"><h3 data-lang-key="blog2Title"></h3><p data-lang-key="blog2p1"></p><h4 data-lang-key="blog2h1"></h4><p data-lang-key="blog2p2"></p><h4 data-lang-key="blog2h2"></h4><p data-lang-key="blog2p3"></p><h4 data-lang-key="blog2h3"></h4><p data-lang-key="blog2p4"></p><h4 data-lang-key="blog2h4"></h4><p data-lang-key="blog2p5"></p><h4 data-lang-key="blog2h5"></h4><p data-lang-key="blog2p6"></p></div></div></div>
     <div id="blog-modal-3" class="modal"><div class="modal-content"><span class="close-btn" onclick="closeModal('blog-modal-3')">&times;</span><div class="modal-body text-left"><h3 data-lang-key="blog3Title"></h3><p data-lang-key="blog3p1"></p><h4 data-lang-key="blog3h1"></h4><p data-lang-key="blog3p2"></p><ul><li data-lang-key="blog3li1"></li><li data-lang-key="blog3li2"></li><li data-lang-key="blog3li3"></li><li data-lang-key="blog3li4"></li></ul><h4 data-lang-key="blog3h2"></h4><p data-lang-key="blog3p3"></p></div></div></div>
@@ -1353,6 +1380,7 @@
     <div id="blog-modal-5" class="modal"><div class="modal-content"><span class="close-btn" onclick="closeModal('blog-modal-5')">&times;</span><div class="modal-body text-left"><h3 data-lang-key="blog5Title"></h3><p data-lang-key="blog5p1"></p><h4 data-lang-key="blog5h1"></h4><p data-lang-key="blog5p2"></p><ul><li data-lang-key="blog5li1"></li><li data-lang-key="blog5li2"></li><li data-lang-key="blog5li3"></li><li data-lang-key="blog5li4"></li></ul><p data-lang-key="blog5p3"></p></div></div></div>
     <div id="calendar-modal" class="modal"><div class="modal-content"><span class="close-btn" onclick="closeModal('calendar-modal')">&times;</span><h3 data-lang-key="calendarTitle">Görüş Rezerv Edin</h3><iframe src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ1XfkZmkcBhOEeY2REOv08Q-OX9uIxSxJxwwu2FvgzLkC0Z4g14IWDxXxM6ETYK3dIxEhMs9Zwd?gv=true" style="border: 0" width="100%" height="600" frameborder="0"></iframe></div></div>
     
+    <!-- Review Modals -->
     <div id="review-masma-modal" class="modal"><div class="modal-content review-modal-content"><span class="close-btn" onclick="closeModal('review-masma-modal')">&times;</span><div class="modal-body text-left"><p data-lang-key="reviewMasmaRQuoteFull"></p></div></div></div>
     <div id="review-gulsum-modal" class="modal"><div class="modal-content review-modal-content"><span class="close-btn" onclick="closeModal('review-gulsum-modal')">&times;</span><div class="modal-body text-left"><p data-lang-key="reviewGulsumTQuoteFull"></p></div></div></div>
     <div id="review-fatimau-modal" class="modal"><div class="modal-content review-modal-content"><span class="close-btn" onclick="closeModal('review-fatimau-modal')">&times;</span><div class="modal-body text-left"><p data-lang-key="reviewFatimaUQuoteFull"></p></div></div></div>
@@ -1398,7 +1426,7 @@
                     blog2p1: "Hər bir uğurlu layihənin arxasında yaxşı düşünülmüş bir plan və ardıcıl icra dayanır. Layihənin ölçüsündən və mürəkkəbliyindən asılı olmayaraq, bu 5 əsas addımı izləmək sizi uğura daha da yaxınlaşdıracaq.", blog2h1: "1. Başlanğıc (Initiation)", blog2p2: "Bu, layihənin doğuş mərhələsidir. Burada layihənin məqsədləri, gözləntiləri və əsas maraqlı tərəfləri müəyyən edilir. “Biz nəyə nail olmaq istəyirik?” və “Bu layihə niyə vacibdir?” suallarına cavab tapmaq lazımdır.", blog2h2: "2. Planlaşdırma (Planning)", blog2p3: "Uğurun təməli detallı planlaşdırmadır. Bu mərhələdə layihənin həcmi, büdcəsi, zaman qrafiki, tələb olunan resurslar və potensial risklər müəyyən edilir. Aydın bir yol xəritəsi çəkmək bütün komandanın eyni hədəfə doğru irəliləməsini təmin edir.", blog2h3: "3. İcra (Execution)", blog2p4: "Planın həyata keçirildiyi mərhələdir. Komanda üzvləri tapşırıqları yerinə yetirir, resurslar paylanır və layihənin əsas məhsul və ya xidməti yaradılır. Bu mərhələdə effektiv kommunikasiya və komanda işi kritik əhəmiyyət daşıyır.", blog2h4: "4. Nəzarət və Monitorinq (Monitoring & Control)", blog2p5: "Bu mərhələ icra ilə paralel gedir. Layihənin gedişatı plana uyğun olaraq izlənilir, performans ölçülür və hər hansı bir yayınma olarsa, düzəldici tədbirlər görülür. Məqsəd, layihəni büdcə, zaman və keyfiyyət çərçivəsində saxlamaqdır.", blog2h5: "5. Yekunlaşdırma (Closure)", blog2p6: "Layihənin uğurla başa çatdırıldığı son mərhələdir. Yekun məhsul müştəriyə təhvil verilir, sənədləşmə tamamlanır və layihədən əldə edilən təcrübələr (“lessons learned”) qeydə alınır. Bu, gələcək layihələr üçün dəyərli bir məlumat bazası yaradır.",
                     blog3p1: "Layihə idarəetməsində ən yaxşı planlar belə gözlənilməz hadisələrlə üzləşə bilər. Risk idarəetməsi, bu qeyri-müəyyənlikləri qabaqcadan görməyə və onların layihəyə mənfi təsirini minimuma endirməyə kömək edən bir prosesdir.", blog3h1: "Risk Nədir və Növləri Hansılardır?", blog3p2: "Risk, baş verəcəyi təqdirdə layihənin məqsədlərinə (büdcə, zaman, keyfiyyət) müsbət və ya mənfi təsir göstərə biləcək qeyri-müəyyən bir hadisədir. Risklər texniki (texnologiya problemi), xarici (bazar dəyişikliyi), təşkilati (resurs çatışmazlığı) və ya idarəetmə (zəif planlama) kimi fərqli kateqoriyalara ayrıla bilər.", blog3h2: "Risk İdarəetmə Prosesi", blog3p3: "Effektiv risk idarəetməsi adətən dörd əsas addımdan ibarətrətdir:", blog3li1: "<strong>Risk Analizi:</strong> Hər bir riskin baş vermə ehtimalı və potensial təsiri qiymətləndirilir.", blog3li2: "<strong>Risk Cavabının Planlaşdırılması:</strong> Risklərə qarşı strategiyalar hazırlanır (qəbul etmək, qarşısını almaq, təsirini azaltmaq və ya başqasına ötürmək).", blog3li3: "<strong>Risk İdentifikasiyası:</strong> Potensial risklərin müəyyən edilməsi və siyahısının hazırlanması.", blog3li4: "<strong>Risk Monitorinqi:</strong> Proses boyu yeni risklərin izlənilməsi və mövcud risklərə qarşı planların effektivliyinin yoxlanılması.",
                     blog4p1: "Layihə idarəetməsi terminologiyasında \"menecer\" və \"lider\" sözləri tez-tez bir-birini əvəz etsə də, əslində fərqli mənaları və funxiyaları ifadə edirlər. Uğurlu bir layihə meneceri hər iki rolu da özündə birləşdirməyi bacarmalıdır.", blog4h1: "Layihə Meneceri: Sistem və Proses", blog4p2: "Menecer, ilk növbədə, sistem və nizam-intizamla bağlıdır. O, planlar qurur, büdcələr təyin edir, resursları paylayır və tapşırıqların vaxtında və keyfiyyətlə yerinə yetirilməsinə nəzarət edir. Menecerin əsas sualları \"necə?\" və \"nə zaman?\" olur. O, proseslərin düzgün işləməsini təmin edir.", blog4h2: "Lider: İnsanlar və Vizyon", blog4p3: "Lider isə daha çox vizyon və motivasiya ilə bağlıdır. O, komandanı ruhlandırır, onlara ümumi hədəfi göstərir və çətinliklər qarşısında onlara dəstək olur. Liderin əsas sualları \"nə?\" və \"niyə?\" olur. O, komandanın hədəfə inanmasını və bu yolda həvəslə çalışmasını təmin edir.", blog4h3: "Nəticə: Hər İkisi Olmaq Şərtdir", blog4p4: "Yalnız idarə edən, lakin ilham verməyən bir menecer komandanın tam potensialını ortaya çıxara bilməz. Yalnız ilham verən, lakin planlama və nəzarət bacarığı olmayan bir lider isə layihəni xaosdan xilas edə bilməz. Buna görə də müasir layihə meneceri həm menecer kimi prosesləri mükəmməl idarə etməli, həm də lider kimi komandasına yol göstərməlidir.",
-                    blog5p1: "Gündəlik iş həyatında qarşımıza çıxan tapşırıqların hamısı eyni dərəcədə vacib deyil. Vaxtımızı səmərəli idarə etmək və həqiqətən əhəmiyyətli olan işlərə fokuslanmaq üçün tapşırıqları düzgün prioritetləşdirmək vacibdir. Bunun üçün ən effektiv üsullardan biri Eisenhower Matrisidir.", blog5h1: "Eisenhower Matrisi: 4 Kvadrant", blog5p2: "Bu metod, ABŞ-ın 34-cü prezidenti Dwight D. Eisenhower tərəfindən istifadə edildiyi üçün onun adını daşıyır. Matris bütün tapşırıqları iki meyar üzrə qiymətləndirir: Təcililik (Urgency) və Vaciblik (Importance). Bu, dörd fərqli kvadrant yaradır:", blog5li1: "<strong>1. Təcili və Vacib (Do):</strong> Bu tapşırıqları dərhal yerinə yetirmək lazımdır. Məsələn, müştəri ilə bağlı kritik bir problem və ya yaxınlaşan bir son tarix.", blog5li2: "<strong>2. Vacib, lakin Təcili Deyil (Schedule):</strong> Bu, uzunmüddətli hədəflərinizə çatmağınıza kömək edən tapşırıqlardır. Məsələn, yeni bir bacarıq öyrənmək, gələcək layihəni planlaşdırmaq. Bu tapşırıqları təqviminizdə planlaşdırın.", blog5li3: "<strong>3. Təcili, lakin Vacib Deyil (Delegate):</strong> Bu tapşırıqlar başqası tərəfindən edilə bilər. Məsələn, bəzi zənglərə cavab vermək, hesabatları tərtib etmək. Mümkünsə, bu işləri həvalə edin.", blog5li4: "<strong>4. Nə Təcili, Nə də Vacib (Eliminate):</strong> Bu tapşırıqlar vaxt itkisidir və onlardan yayınmaq lazımdır. Məsələn, sosial mediada məqsədsiz gəzmək.", blog5p3: "Bu matrisi istifadə edərək, \"reaktiv\" (yalnız təcili işlərə reaksiya verən) rejimdən çıxıb, \"proaktiv\" (həqiqətən vacib olan işlərə fokuslanan) bir iş rejiminə keçə bilərsiniz."
+                    blog5p1: "Gündəlik iş həyatında qarşımıza çıxan tapşırıqların hamısı eyni dərəcədə vacib deyil. Vaxtımızı səmərəli idarə etmək və həqiqətən əhəmiyyətli olan işlərə fokuslanmaq üçün tapşırıqları düzgün prioritetləşdirmək vacibdir. Bunun üçün ən effektiv üsullardan biri Eisenhower Matrisidir.", blog5h1: "Eisenhower Matrisi: 4 Kvadrant", blog5p2: "Bu metod, ABŞ-ın 34-cü prezidenti Dwight D. Eisenhower tərəfindən istifadə edildiyi üçün onun adını daşıyır. Matris bütün tapşırıqları iki meyar üzrə qiymətləndirir: Təcililik (Urgency) və Vaciblik (Importance). Bu, dörd fərqli kvadrant yaradır:", blog5li1: "<strong>1. Təcili və Vacib (Do):</strong> Bu tapşırıqları dərhal yerinə yetirmək lazımdır. Məsələn, müştəri ilə bağlı kritik bir problem və ya yaxınlaşan bir son tarix.", blog5li2: "<strong>2. Vacib, lakin Təcili Deyil (Schedule):</strong> Bu, uzunmüddətli hədəflərinizə çatmağınıza kömək edən tapşırıqlar üçün. Məsələn, yeni bir bacarıq öyrənmək, gələcək layihəni planlaşdırmaq. Bu tapşırıqları təqviminizdə planlaşdırın.", blog5li3: "<strong>3. Təcili, lakin Vacib Deyil (Delegate):</strong> Bu tapşırıqlar başqası tərəfindən edilə bilər. Məsələn, bəzi zənglərə cavab vermək, hesabatları tərtib etmək. Mümkünsə, bu işləri həvalə edin.", blog5li4: "<strong>4. Nə Təcili, Nə də Vacib (Eliminate):</strong> Bu tapşırıqlar vaxt itkisidir və onlardan yayınmaq lazımdır. Məsələn, sosial mediada məqsədsiz gəzmək.", blog5p3: "Bu matrisi istifadə edərək, \"reaktiv\" (yalnız təcili işlərə reaksiya verən) rejimdən çıxıb, \"proaktiv\" (həqiqətən vacib olan işlərə fokuslanan) bir iş rejiminə keçə bilərsiniz."
                 },
                 en: {
                     navHome: "Home", navAbout: "About Us", navServices: "Services", navReviews: "Reviews", navBlog: "Blog", navContact: "Contact",
@@ -1471,7 +1499,7 @@
                 document.getElementById('lang-az').addEventListener('click', () => switchLanguage('az'));
                 document.getElementById('lang-en').addEventListener('click', () => switchLanguage('en'));
                 
-                // --- UPDATED HAMBURGER MENU LOGIC ---
+                // --- HAMBURGER MENU LOGIC ---
                 const hamburger = document.getElementById('hamburger-menu');
                 const navLinks = document.getElementById('main-nav-links');
                 const navMenuLinks = navLinks.querySelectorAll('a');
@@ -1492,18 +1520,18 @@
                     link.addEventListener('click', closeMenu);
                 });
                 
+                // Setup for standard manual scrollers
                 const scrollers = ['services-scroller', 'news-scroller', 'blog-scroller'];
                 scrollers.forEach(id => {
                     setupScroller(id, `${id.split('-')[0]}-scroll-left`, `${id.split('-')[0]}-scroll-right`);
                 });
 
-                // --- TESTIMONIALS CAROUSEL LOGIC ---
+                // --- TESTIMONIALS CAROUSEL (AUTO + MANUAL) ---
                 const testimonialsScroller = document.getElementById('testimonials-scroller');
                 if (testimonialsScroller) {
                     const testimonialGrid = testimonialsScroller.querySelector('.testimonial-grid');
                     const testimonials = Array.from(testimonialGrid.children);
-                    const scrollWrapper = testimonialsScroller.parentElement;
-
+                    
                     // Clone testimonials for infinite loop effect
                     testimonials.forEach(testimonial => {
                         const clone = testimonial.cloneNode(true);
@@ -1511,29 +1539,72 @@
                     });
 
                     let scrollInterval;
+                    let isDown = false;
+                    let startX;
+                    let scrollLeft;
 
-                    const startScrolling = () => {
+                    const startAutoScrolling = () => {
+                        clearInterval(scrollInterval); // Clear any existing interval
                         scrollInterval = setInterval(() => {
-                            testimonialsScroller.scrollLeft += 1; // Move 1 pixel at a time for smooth scroll
-                            
-                            // If scrolled past the original content, loop back to the beginning
+                            testimonialsScroller.scrollLeft += 1;
                             if (testimonialsScroller.scrollLeft >= testimonialGrid.scrollWidth / 2) {
                                 testimonialsScroller.scrollLeft = 0;
                             }
-                        }, 25); // Adjust speed of the scroll here (lower is faster)
+                        }, 25);
                     };
 
-                    const stopScrolling = () => {
+                    const stopAutoScrolling = () => {
                         clearInterval(scrollInterval);
                     };
 
-                    scrollWrapper.addEventListener('mouseenter', stopScrolling);
-                    scrollWrapper.addEventListener('mouseleave', startScrolling);
+                    // Manual Drag-to-Scroll Listeners
+                    testimonialsScroller.addEventListener('mousedown', (e) => {
+                        isDown = true;
+                        stopAutoScrolling();
+                        testimonialsScroller.classList.add('active');
+                        startX = e.pageX - testimonialsScroller.offsetLeft;
+                        scrollLeft = testimonialsScroller.scrollLeft;
+                    });
 
-                    startScrolling(); // Initial start
+                    testimonialsScroller.addEventListener('mouseleave', () => {
+                        if (isDown) { // only restart if dragging was in progress
+                           startAutoScrolling();
+                        }
+                        isDown = false;
+                        testimonialsScroller.classList.remove('active');
+                    });
+
+                    testimonialsScroller.addEventListener('mouseup', () => {
+                        if(isDown) { // only restart if dragging was in progress
+                           startAutoScrolling();
+                        }
+                        isDown = false;
+                        testimonialsScroller.classList.remove('active');
+                    });
+
+                    testimonialsScroller.addEventListener('mousemove', (e) => {
+                        if (!isDown) return;
+                        e.preventDefault();
+                        const x = e.pageX - testimonialsScroller.offsetLeft;
+                        const walk = (x - startX) * 2; // scroll-fast
+                        testimonialsScroller.scrollLeft = scrollLeft - walk;
+
+                        // Loop back if dragged to the end
+                        if (testimonialsScroller.scrollLeft >= testimonialGrid.scrollWidth / 2) {
+                            testimonialsScroller.scrollLeft = 0;
+                            scrollLeft = 0; // reset reference point
+                        } else if (testimonialsScroller.scrollLeft === 0 && walk < 0) {
+                            // If user tries to scroll left from the beginning, loop to the end
+                            testimonialsScroller.scrollLeft = testimonialGrid.scrollWidth / 2;
+                            scrollLeft = testimonialGrid.scrollWidth / 2; // reset reference point
+                        }
+                    });
+                    
+                    startAutoScrolling(); // Initial start
                 }
             });
 
+            // Standard scroller setup for other sections
             function setupScroller(containerId, leftBtnId, rightBtnId) {
                 const container = document.getElementById(containerId);
                 if (!container) return;
@@ -1554,6 +1625,33 @@
                     new ResizeObserver(updateArrows).observe(container);
                     updateArrows();
                 }
+
+                // Add drag-to-scroll for these sections too
+                let isDown = false;
+                let startX;
+                let scrollLeft;
+
+                container.addEventListener('mousedown', (e) => {
+                    isDown = true;
+                    container.classList.add('active');
+                    startX = e.pageX - container.offsetLeft;
+                    scrollLeft = container.scrollLeft;
+                });
+                container.addEventListener('mouseleave', () => {
+                    isDown = false;
+                    container.classList.remove('active');
+                });
+                container.addEventListener('mouseup', () => {
+                    isDown = false;
+                    container.classList.remove('active');
+                });
+                container.addEventListener('mousemove', (e) => {
+                    if (!isDown) return;
+                    e.preventDefault();
+                    const x = e.pageX - container.offsetLeft;
+                    const walk = (x - startX) * 2; // scroll-fast
+                    container.scrollLeft = scrollLeft - walk;
+                });
             }
         }
     </script>
