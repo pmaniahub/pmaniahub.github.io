@@ -47,6 +47,10 @@
         body.nav-open {
             overflow: hidden;
         }
+        
+        body.modal-open {
+            overflow: hidden;
+        }
 
         .container {
             width: 90%;
@@ -274,34 +278,81 @@
         .coaching-content .coaching-cta { text-align: center; }
 
         .modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.6); }
-        .modal-content { background-color: var(--white-color); margin: 5% auto; padding: 40px; border-radius: 10px; width: 90%; max-width: 800px; position: relative; animation: fadeIn 0.3s; }
-        .close-btn { color: #aaa; position: absolute; top: 15px; right: 25px; font-size: 28px; font-weight: bold; cursor: pointer; }
+        .modal-content { 
+            background-color: var(--white-color); 
+            margin: 5vh auto; 
+            border-radius: 10px; 
+            width: 90%; 
+            max-width: 800px; 
+            position: relative; 
+            animation: fadeIn 0.3s;
+            display: flex;
+            flex-direction: column;
+            max-height: 90vh; /* Set a max height */
+        }
+        .close-btn { color: #aaa; position: absolute; top: 15px; right: 25px; font-size: 28px; font-weight: bold; cursor: pointer; z-index: 10; }
         .close-btn:hover, .close-btn:focus { color: var(--primary-color); }
         
         @keyframes pulse {
-            0% {
-                transform: scale(1);
-                text-shadow: 0 0 4px rgba(255, 255, 255, 0.2);
-            }
-            50% {
-                transform: scale(1.08);
-                text-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
-            }
-            100% {
-                transform: scale(1);
-                text-shadow: 0 0 4px rgba(255, 255, 255, 0.2);
-            }
+            0% { transform: scale(1); text-shadow: 0 0 4px rgba(255, 255, 255, 0.2); }
+            50% { transform: scale(1.08); text-shadow: 0 0 15px rgba(255, 255, 255, 0.5); }
+            100% { transform: scale(1); text-shadow: 0 0 4px rgba(255, 255, 255, 0.2); }
         }
         @keyframes fadeIn { from {opacity: 0; transform: translateY(-20px);} to {opacity: 1; transform: translateY(0);} }
+        
+        .training-details {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            overflow: hidden; /* Hide outer scrollbar */
+        }
+        .training-details-content {
+            padding: 40px 40px 20px 40px;
+            overflow-y: auto; /* Enable scrolling for content */
+            flex-grow: 1; /* Allow content to take available space */
+        }
         .training-details h2 { font-size: 2em; text-align: center; margin-bottom: 10px; }
         .training-details h4 { font-size: 1.3em; margin-top: 25px; margin-bottom: 15px; color: var(--primary-color); }
         .training-details .tagline { text-align: center; font-size: 1.2em; font-weight: 600; color: var(--secondary-color); margin-bottom: 25px; }
         .training-details ul { list-style: none; padding-left: 0; }
         .training-details ul li { margin-bottom: 10px; padding-left: 25px; position: relative; }
-        .training-details ul li::before { content: '✓'; color: var(--secondary-color); position: absolute; left: 0; font-weight: 600; }
-        .training-details .price-box { background: var(--background-color); border-radius: 10px; padding: 20px; text-align: center; margin-top: 25px; }
-        .training-details .price-box h4 { font-size: 1.3em; margin-bottom: 10px; margin-top: 0; }
-        .training-details .price-box .price { font-size: 1.8em; font-weight: 700; color: var(--secondary-color); margin-bottom: 15px; }
+        .training-details ul li::before { 
+            font-family: 'Font Awesome 5 Free';
+            content: '\f058'; /* Solid check circle */
+            color: var(--secondary-color); 
+            position: absolute; 
+            left: 0; 
+            font-weight: 900; 
+        }
+        
+        .price-box { 
+            background: #F8F9FA; 
+            padding: 15px 40px; 
+            border-top: 1px solid #e0e0e0;
+            margin-top: auto;
+            flex-shrink: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+        }
+        .price-info {
+            text-align: left;
+        }
+        .price-box h4 {
+            font-size: 1em;
+            margin-top: 0;
+            margin-bottom: 4px;
+            color: var(--text-color);
+            font-weight: 500;
+        }
+        .price-box .price {
+            font-size: 1.6em;
+            font-weight: 700;
+            color: var(--secondary-color);
+            margin-bottom: 0;
+        }
+        
         #calendar-modal .modal-content { max-width: 1024px; }
         #calendar-modal h3 { margin-bottom: 20px; }
 
@@ -484,6 +535,12 @@
             .service-nav { top: 101px; }
             .service-nav-links a { padding: 8px 15px; font-size: 0.9em; }
             html { scroll-padding-top: 150px; }
+            .price-box {
+                flex-direction: column;
+                padding: 15px 20px;
+                text-align: center;
+            }
+            .price-info { text-align: center; margin-bottom: 10px; }
         }
     </style>
 </head>
@@ -545,7 +602,7 @@
                                 <div class="price" data-price-azn="300">300 AZN</div>
                                 <div class="price-note" data-lang-key="priceFull">&nbsp;</div>
                             </div>
-                            <button class="cta-button" onclick="openModal('modal-360')" data-lang-key="readMore">Daha Çox</button>
+                            <button class="cta-button" onclick="openModal('modal-360')" data-lang-key="readMore">Ətraflı Bax</button>
                         </div>
                     </div>
         
@@ -559,7 +616,7 @@
                                 <div class="price" data-price-azn="450">450 AZN</div>
                                 <div class="price-note" data-lang-key="priceFull">&nbsp;</div>
                             </div>
-                            <button class="cta-button" onclick="openModal('modal-capm')" data-lang-key="readMore">Daha Çox</button>
+                            <button class="cta-button" onclick="openModal('modal-capm')" data-lang-key="readMore">Ətraflı Bax</button>
                         </div>
                     </div>
 
@@ -573,7 +630,7 @@
                                 <div class="price" data-price-azn="750">750 AZN</div>
                                 <div class="price-note" data-lang-key="priceFull">&nbsp;</div>
                             </div>
-                            <button class="cta-button" onclick="openModal('modal-pmp')" data-lang-key="readMore">Daha Çox</button>
+                            <button class="cta-button" onclick="openModal('modal-pmp')" data-lang-key="readMore">Ətraflı Bax</button>
                         </div>
                     </div>
 
@@ -587,7 +644,7 @@
                                 <div class="price" data-price-azn="500">500 AZN</div>
                                 <div class="price-note" data-lang-key="perDay">(günlük)</div>
                             </div>
-                            <button class="cta-button" onclick="openModal('modal-corporate')" data-lang-key="readMore">Daha Çox</button>
+                            <button class="cta-button" onclick="openModal('modal-corporate')" data-lang-key="readMore">Ətraflı Bax</button>
                         </div>
                     </div>
                 </div>
@@ -641,55 +698,59 @@
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal('modal-360')">&times;</span>
             <div class="training-details">
-                <h2 data-lang-key="training1TitleFull"></h2>
-                <h3 class="tagline" data-lang-key="training1Tagline"></h3>
-                <p data-lang-key="training1ModalDesc"></p>
-                
-                <h4 data-lang-key="training1FormatTitle"></h4>
-                <ul>
-                    <li data-lang-key="training1Format1"></li>
-                    <li data-lang-key="training1Format2"></li>
-                    <li data-lang-key="training1Format3"></li>
-                </ul>
+                <div class="training-details-content">
+                    <h2 data-lang-key="training1TitleFull"></h2>
+                    <h3 class="tagline" data-lang-key="training1Tagline"></h3>
+                    <p data-lang-key="training1ModalDesc"></p>
+                    
+                    <h4 data-lang-key="training1FormatTitle"></h4>
+                    <ul>
+                        <li data-lang-key="training1Format1"></li>
+                        <li data-lang-key="training1Format2"></li>
+                        <li data-lang-key="training1Format3"></li>
+                    </ul>
 
-                <h4 data-lang-key="training1InstructorTitle"></h4>
-                <ul>
-                    <li data-lang-key="training1InstructorP1"></li>
-                    <li data-lang-key="training1InstructorP2"></li>
-                    <li data-lang-key="training1InstructorP3"></li>
-                    <li data-lang-key="training1InstructorP4"></li>
-                    <li data-lang-key="training1InstructorP5"></li>
-                </ul>
+                    <h4 data-lang-key="training1InstructorTitle"></h4>
+                    <ul>
+                        <li data-lang-key="training1InstructorP1"></li>
+                        <li data-lang-key="training1InstructorP2"></li>
+                        <li data-lang-key="training1InstructorP3"></li>
+                        <li data-lang-key="training1InstructorP4"></li>
+                        <li data-lang-key="training1InstructorP5"></li>
+                    </ul>
 
-                <h4 data-lang-key="training1AudienceTitle"></h4>
-                <ul>
-                    <li data-lang-key="training1AudienceP1"></li>
-                    <li data-lang-key="training1AudienceP2"></li>
-                    <li data-lang-key="training1AudienceP3"></li>
-                    <li data-lang-key="training1AudienceP4"></li>
-                </ul>
+                    <h4 data-lang-key="training1AudienceTitle"></h4>
+                    <ul>
+                        <li data-lang-key="training1AudienceP1"></li>
+                        <li data-lang-key="training1AudienceP2"></li>
+                        <li data-lang-key="training1AudienceP3"></li>
+                        <li data-lang-key="training1AudienceP4"></li>
+                    </ul>
 
-                <h4 data-lang-key="training1ContentTitle"></h4>
-                <ul>
-                    <li data-lang-key="training1ContentP1"></li>
-                    <li data-lang-key="training1ContentP2"></li>
-                    <li data-lang-key="training1ContentP3"></li>
-                    <li data-lang-key="training1ContentP4"></li>
-                    <li data-lang-key="training1ContentP5"></li>
-                    <li data-lang-key="training1ContentP6"></li>
-                </ul>
+                    <h4 data-lang-key="training1ContentTitle"></h4>
+                    <ul>
+                        <li data-lang-key="training1ContentP1"></li>
+                        <li data-lang-key="training1ContentP2"></li>
+                        <li data-lang-key="training1ContentP3"></li>
+                        <li data-lang-key="training1ContentP4"></li>
+                        <li data-lang-key="training1ContentP5"></li>
+                        <li data-lang-key="training1ContentP6"></li>
+                    </ul>
 
-                <h4 data-lang-key="training1BenefitsTitle"></h4>
-                <ul>
-                    <li data-lang-key="training1BenefitsP1"></li>
-                    <li data-lang-key="training1BenefitsP2"></li>
-                    <li data-lang-key="training1BenefitsP3"></li>
-                    <li data-lang-key="training1BenefitsP4"></li>
-                </ul>
+                    <h4 data-lang-key="training1BenefitsTitle"></h4>
+                    <ul>
+                        <li data-lang-key="training1BenefitsP1"></li>
+                        <li data-lang-key="training1BenefitsP2"></li>
+                        <li data-lang-key="training1BenefitsP3"></li>
+                        <li data-lang-key="training1BenefitsP4"></li>
+                    </ul>
+                </div>
 
                 <div class="price-box">
-                    <h4 data-lang-key="priceTitle"></h4>
-                    <div class="price" data-price-azn="300">300 AZN</div>
+                    <div class="price-info">
+                        <h4 data-lang-key="priceTitle"></h4>
+                        <div class="price" data-price-azn="300">300 AZN</div>
+                    </div>
                     <a href="https://wa.me/37258243097?text=Salam%2C%20'360%C2%B0%20Layih%C9%99%20%C4%B0dar%C9%99etm%C9%99si'%20t%C9%99limi%20il%C9%99%20maraqlan%C4%B1ram." target="_blank" class="cta-button" data-lang-key="applyNow"></a>
                 </div>
             </div>
@@ -699,26 +760,46 @@
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal('modal-capm')">&times;</span>
              <div class="training-details">
-                <h2 data-lang-key="training2TitleFull"></h2>
-                <h3 class="tagline" data-lang-key="training2Tagline"></h3>
-                <p data-lang-key="training2ModalDesc"></p>
+                <div class="training-details-content">
+                    <h2 data-lang-key="training2TitleFull"></h2>
+                    <p data-lang-key="training2ModalDesc"></p>
 
-                <h4 data-lang-key="training2AudienceTitle"></h4>
-                <ul>
-                    <li data-lang-key="training2AudienceP1"></li>
-                    <li data-lang-key="training2AudienceP2"></li>
-                    <li data-lang-key="training2AudienceP3"></li>
-                </ul>
+                    <h4 data-lang-key="training2AudienceTitle"></h4>
+                    <ul>
+                        <li data-lang-key="training2AudienceP1"></li>
+                        <li data-lang-key="training2AudienceP2"></li>
+                        <li data-lang-key="training2AudienceP3"></li>
+                        <li data-lang-key="training2AudienceP4"></li>
+                    </ul>
+                    
+                    <h4 data-lang-key="training2BenefitsTitle"></h4>
+                    <ul>
+                        <li data-lang-key="training2BenefitsP1"></li>
+                        <li data-lang-key="training2BenefitsP2"></li>
+                        <li data-lang-key="training2BenefitsP3"></li>
+                        <li data-lang-key="training2BenefitsP4"></li>
+                    </ul>
 
-                <h4 data-lang-key="training2ContentTitle"></h4>
-                <ul>
-                    <li data-lang-key="training2ContentP1"></li>
-                    <li data-lang-key="training2ContentP2"></li>
-                    <li data-lang-key="training2ContentP3"></li>
-                </ul>
+                    <h4 data-lang-key="training2ContentTitle"></h4>
+                    <ul>
+                        <li data-lang-key="training2ContentP1"></li>
+                        <li data-lang-key="training2ContentP2"></li>
+                        <li data-lang-key="training2ContentP3"></li>
+                        <li data-lang-key="training2ContentP4"></li>
+                    </ul>
+                    
+                     <h4 data-lang-key="training2FormatTitle"></h4>
+                    <ul>
+                        <li data-lang-key="training2FormatP1"></li>
+                        <li data-lang-key="training2FormatP2"></li>
+                        <li data-lang-key="training2FormatP3"></li>
+                    </ul>
+                </div>
                  <div class="price-box">
-                    <h4 data-lang-key="priceTitle"></h4>
-                    <div class="price" data-price-azn="450">450 AZN</div>
+                    <div class="price-info">
+                        <h4 data-lang-key="priceTitle"></h4>
+                        <div class="price" data-price-azn="450">450 AZN</div>
+                    </div>
                     <a href="https://wa.me/37258243097?text=Salam%2C%20CAPM%C2%AE%20Sertifikat%C4%B1na%20Haz%C4%B1rl%C4%B1q%20Proqram%C4%B1%20il%C9%99%20maraqlan%C4%B1ram." target="_blank" class="cta-button" data-lang-key="applyNow"></a>
                 </div>
             </div>
@@ -728,27 +809,61 @@
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal('modal-pmp')">&times;</span>
             <div class="training-details">
-                <h2 data-lang-key="training3TitleFull"></h2>
-                <h3 class="tagline" data-lang-key="training3Tagline"></h3>
-                <p data-lang-key="training3ModalDesc"></p>
+                <div class="training-details-content">
+                    <h2 data-lang-key="training3TitleFull"></h2>
+                    <p data-lang-key="training3ModalDesc"></p>
 
-                <h4 data-lang-key="training3AudienceTitle"></h4>
-                <ul>
-                    <li data-lang-key="training3AudienceP1"></li>
-                    <li data-lang-key="training3AudienceP2"></li>
-                </ul>
+                    <h4 data-lang-key="training3AudienceTitle"></h4>
+                    <ul>
+                        <li data-lang-key="training3AudienceP1"></li>
+                        <li data-lang-key="training3AudienceP2"></li>
+                        <li data-lang-key="training3AudienceP3"></li>
+                        <li data-lang-key="training3AudienceP4"></li>
+                    </ul>
 
-                <h4 data-lang-key="training3ContentTitle"></h4>
-                <ul>
-                    <li data-lang-key="training3ContentP1"></li>
-                    <li data-lang-key="training3ContentP2"></li>
-                    <li data-lang-key="training3ContentP3"></li>
-                </ul>
+                    <h4 data-lang-key="training3BenefitsTitle"></h4>
+                    <ul>
+                        <li data-lang-key="training3BenefitsP1"></li>
+                        <li data-lang-key="training3BenefitsP2"></li>
+                        <li data-lang-key="training3BenefitsP3"></li>
+                        <li data-lang-key="training3BenefitsP4"></li>
+                        <li data-lang-key="training3BenefitsP5"></li>
+                    </ul>
+
+                    <h4 data-lang-key="training3ContentTitle"></h4>
+                    <p data-lang-key="training3ContentIntro"></p>
+                    <ul>
+                        <li data-lang-key="training3ContentP1"></li>
+                        <li data-lang-key="training3ContentP2"></li>
+                        <li data-lang-key="training3ContentP3"></li>
+                        <li data-lang-key="training3ContentP4"></li>
+                        <li data-lang-key="training3ContentP5"></li>
+                        <li data-lang-key="training3ContentP6"></li>
+                    </ul>
+                    
+                    <h4 data-lang-key="training3FormatTitle"></h4>
+                    <ul>
+                        <li data-lang-key="training3FormatP1"></li>
+                        <li data-lang-key="training3FormatP2"></li>
+                        <li data-lang-key="training3FormatP3"></li>
+                        <li data-lang-key="training3FormatP4"></li>
+                    </ul>
+
+                    <h4 data-lang-key="training3WhyUsTitle"></h4>
+                    <ul>
+                        <li data-lang-key="training3WhyUsP1"></li>
+                        <li data-lang-key="training3WhyUsP2"></li>
+                        <li data-lang-key="training3WhyUsP3"></li>
+                        <li data-lang-key="training3WhyUsP4"></li>
+                    </ul>
+                </div>
 
                 <div class="price-box">
-                    <h4 data-lang-key="priceTitle"></h4>
-                    <div class="price" data-price-azn="750">750 AZN</div>
-                    <a href="https://wa.me/37258243097?text=Salam%2C%20PMP%C2%AE%20Sertifikat%C4%B1na%20Haz%C4%B1rl%C4%B1q%20Proqram%C4%B1%20il%C9%99%20maraqlan%C4%B1ram." target="_blank" class="cta-button" data-lang-key="applyNow"></a>
+                    <div class="price-info">
+                        <h4 data-lang-key="priceTitle"></h4>
+                        <div class="price" data-price-azn="750">750 AZN</div>
+                    </div>
+                    <a href="https://wa.me/37258243097?text=Salam%2C%20PMP%C2%AE%20Sertifikat%C4%B1na%20Haz%C4%B1rl%C4%B1q%20Proqram%C4%B1%20il%C9%99%20maraqlan%C4%B1ram." target="_blank" class="cta-button" data-lang-key="training3Enroll"></a>
                 </div>
             </div>
         </div>
@@ -757,21 +872,24 @@
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal('modal-corporate')">&times;</span>
             <div class="training-details">
-                <h2 data-lang-key="training4TitleFull"></h2>
-                <h3 class="tagline" data-lang-key="training4Tagline"></h3>
-                <p data-lang-key="training4ModalDesc"></p>
+                <div class="training-details-content">
+                    <h2 data-lang-key="training4TitleFull"></h2>
+                    <h3 class="tagline" data-lang-key="training4Tagline"></h3>
+                    <p data-lang-key="training4ModalDesc"></p>
 
-                 <h4 data-lang-key="training4BenefitsTitle"></h4>
-                <ul>
-                    <li data-lang-key="training4BenefitsP1"></li>
-                    <li data-lang-key="training4BenefitsP2"></li>
-                    <li data-lang-key="training4BenefitsP3"></li>
-                </ul>
-
+                     <h4 data-lang-key="training4BenefitsTitle"></h4>
+                    <ul>
+                        <li data-lang-key="training4BenefitsP1"></li>
+                        <li data-lang-key="training4BenefitsP2"></li>
+                        <li data-lang-key="training4BenefitsP3"></li>
+                    </ul>
+                </div>
                 <div class="price-box">
-                    <h4 data-lang-key="priceTitle"></h4>
-                    <div class="price" data-price-azn="500">500 AZN</div>
-                    <a href="https://wa.me/37258243097?text=Salam%2C%20Korporativ%20T%C9%9lim%20Paketi%20il%C9%99%20maraqlan%C4%B1ram." target="_blank" class="cta-button" data-lang-key="applyNow"></a>
+                    <div class="price-info">
+                        <h4 data-lang-key="priceTitle"></h4>
+                        <div class="price" data-price-azn="500">500 AZN</div>
+                    </div>
+                    <a href="https://wa.me/37258243097?text=Salam%2C%20Korporativ%20T%C9%99lim%20Paketi%20il%C9%99%20maraqlan%C4%B1ram." target="_blank" class="cta-button" data-lang-key="applyNow"></a>
                 </div>
             </div>
         </div>
@@ -841,7 +959,7 @@
                     training2Title: "CAPM® Sertifikatına Hazırlıq", training2Desc: "PMI® standartları ilə layihə idarəetməsi nəzəriyyəsini mənimsəyin və beynəlxalq CAPM® imtahanına tam hazır olun.",
                     training3Title: "PMP® Sertifikatına Hazırlıq", training3Desc: "Təcrübəli layihə menecerləri üçün nəzərdə tutulan, qlobal səviyyədə tanınan PMP® sertifikasiya imtahanına hazırlıq.",
                     training4Title: "Korporativ Təlim Paketi", training4Desc: "Şirkətinizin ehtiyaclarına uyğunlaşdırılmış, klassik, çevik və hibrid metodları əhatə edən tam günlük təlim.",
-                    perDay: "(günlük)", readMore: "Daha Çox",
+                    perDay: "(günlük)", readMore: "Ətraflı Bax",
                     priceFull: "(tam paket)",
                     consultingTitle: "Konsaltinq Xidmətləri", consultingSubtitle: "Biznesinizin və ya şəxsi karyeranızın hədəflərinə çatmaq üçün peşəkar dəstək.",
                     consultingIndividuals: "Fərdlər üçün", consultingIndividualsDesc: "Karyera planlaması, hədəflərin müəyyən edilməsi və çətinliklərin aradan qaldırılması üçün fərdi məsləhət.", requestCall: "Zəng Sifariş Et",
@@ -878,24 +996,63 @@
                     training1BenefitsP2: "Beynəlxalq yanaşmalara uyğun biliklər",
                     training1BenefitsP3: "İdarəçilikdə özünə inam və liderlik səriştəsi",
                     training1BenefitsP4: "Karyera inkişafına təsir edəcək sertifikat və praktik biliklər",
-                    priceTitle: "Proqramın tam ödəniş məbləği:", applyNow: "Müraciət Et",
-                    training2TitleFull: "CAPM® Sertifikatına Hazırlıq Proqramı", training2Tagline: "KARYERANIZIN İLK PEŞƏKAR ZİRVƏSİ!", training2ModalDesc: "Certified Associate in Project Management (CAPM)® sertifikatı karyeranıza güclü bir təməllə başlamaq üçün ideal seçimdir. Bu proqram sizi PMI®-ın rəsmi imtahanına hərtərəfli hazırlayacaq.",
-                    training2AudienceTitle: "Bu proqram kimlər üçündür?",
-                    training2AudienceP1: "Layihə idarəetməsi sahəsində yeni olanlar və ya az təcrübəsi olanlar.",
-                    training2AudienceP2: "Karyerasına yeni bir istiqamət vermək istəyən tələbələr və məzunlar.",
-                    training2AudienceP3: "Layihə komandalarında çalışan və fundamental biliklərini artırmaq istəyən mütəxəssislər.",
-                    training2ContentTitle: "Təlimin Məzmunu:",
-                    training2ContentP1: "PMBOK® Guide 7-ci nəşrə tam uyğunluq.",
-                    training2ContentP2: "İmtahan sual tipləri ilə tanışlıq və həll strategiyaları.",
-                    training2ContentP3: "Mövzular üzrə sınaq imtahanları və detallı izahlar.",
-                    training3TitleFull: "PMP® Sertifikatına Hazırlıq Proqramı", training3Tagline: "PEŞƏKARLIĞIN ZİRVƏSİNƏ DOĞRU ADDIMLA!", training3ModalDesc: "Project Management Professional (PMP)® sertifikatı layihə idarəetməsi sahəsində qızıl standartdır. Bu intensiv proqram, təcrübəli layihə menecerlərini imtahanın bütün aspektlərinə hazırlayaraq uğur qazanmalarını təmin edir.",
-                    training3AudienceTitle: "Bu proqram kimlər üçündür?",
-                    training3AudienceP1: "Ən az 3 il layihə idarəetməsi təcrübəsi olan peşəkarlar.",
-                    training3AudienceP2: "Karyeralarında növbəti addımı atmaq və qlobal səviyyədə tanınmaq istəyən menecerlər.",
-                    training3ContentTitle: "Təlimin Məzmunu:",
-                    training3ContentP1: "İnsanlar, Proseslər və Biznes Mühiti daxil olmaqla PMP imtahanının üç əsas domeninin dərin təhlili.",
-                    training3ContentP2: "Agile, Hibrid və Prediktiv yanaşmalar üzrə situasiya suallarının həlli.",
-                    training3ContentP3: "Real imtahan təcrübəsi üçün tam həcmli simulyasiya testləri.",
+                    priceTitle: "Proqramın ödənişi:", applyNow: "Müraciət Et",
+
+                    training2TitleFull: "CAPM® Sertifikasiya Təlimi",
+                    training2ModalDesc: "Layihə idarəetməsi karyeranıza güclü bir başlanğıc edin. Bu təlim, sizi Project Management Institute (PMI) tərəfindən təqdim olunan Certified Associate in Project Management (CAPM)® imtahanına hazırlayır və sahənin fundamental biliklərini mənimsəməyinizə kömək edir.",
+                    training2AudienceTitle: "🎯 Kimlər Üçün Nəzərdə Tutulub?",
+                    training2AudienceP1: "Layihə komandalarının üzvləri",
+                    training2AudienceP2: "Karyerasına yeni başlayan layihə menecerləri",
+                    training2AudienceP3: "Layihə idarəetməsi sahəsinə keçid etmək istəyən peşəkarlar",
+                    training2AudienceP4: "Universitet tələbələri və yeni məzunlar",
+                    training2BenefitsTitle: "📌 Əsas Üstünlüklər",
+                    training2BenefitsP1: "Layihə idarəetməsinin fundamental biliklərini, terminologiyasını və proseslərini anlayın.",
+                    training2BenefitsP2: "Sahəyə olan marağınızı və peşəkarlığınızı nümayiş etdirin.",
+                    training2BenefitsP3: "Gələcəkdə PMP® sertifikasiyası üçün möhkəm bir təməl qurun.",
+                    training2BenefitsP4: "Karyeranızın başlanğıcında etibarlılığınızı və özünəinamınızı artırın.",
+                    training2ContentTitle: "📚 Kursun Məzmunu",
+                    training2ContentP1: "Layihə İdarəetməsinə Giriş və Əsas Anlayışlar",
+                    training2ContentP2: "Layihə Mühiti (Daxili, Xarici, Təşkilati Strukturlar)",
+                    training2ContentP3: "Layihə Menecerinin Rolu və Bacarıqları",
+                    training2ContentP4: "Bütün Layihə İdarəetməsi Bilik Sahələri (İnteqrasiya, Həcm, Cədvəl, Xərc, Keyfiyyət, Resurslar, Kommunikasiya, Risk, Təchizat, Maraqlı Tərəflər)",
+                    training2FormatTitle: "🕒 Təlim Formatı",
+                    training2FormatP1: "Müddət: 23 saat (PMI tələbi)",
+                    training2FormatP2: "Rejim: Onlayn",
+                    training2FormatP3: "Materiallar: Rəqəmsal dərsliklər və sınaq imtahanları",
+
+                    training3TitleFull: "PMP® Sertifikat Təlimi", 
+                    training3ModalDesc: "Qlobal səviyyədə tanınan Layihə İdarəetmə Peşəkarı (PMP®) olun və karyeranızı yüksəldin. Onlayn PMP® Təlimimiz sizi praktiki, sənaye ilə əlaqəli bilik və texnikalarla PMP® sertifikat imtahanına hazırlayır. Layihələri effektiv şəkildə idarə etmək və sertifikat uğuru qazanmaq üçün inam qazanın.",
+                    training3AudienceTitle: "🎯 Kimlər İştirak Etməlidir?",
+                    training3AudienceP1: "Layihə Menecerləri, Komanda Liderləri və Rəhbərlər",
+                    training3AudienceP2: "Proqram Menecerləri",
+                    training3AudienceP3: "PMP® sertifikatı əldə etmək istəyən peşəkarlar",
+                    training3AudienceP4: "Layihə planlaşdırılması, icrası və ya dəstəyi ilə məşğul olan hər kəs",
+                    training3BenefitsTitle: "📌 Əsas Üstünlüklər",
+                    training3BenefitsP1: "Hərtərəfli İmtahan Hazırlığı – PMBOK® Bələdçisi və Çevik təcrübələri əhatə edir",
+                    training3BenefitsP2: "İnteraktiv Təlim – Real dünya nümunələri və keys-stadilər",
+                    training3BenefitsP3: "Ekspert Təlimçilər – Praktiki təcrübəyə malik sertifikatlı PM peşəkarları",
+                    training3BenefitsP4: "Praktiki Testlər – İnamı artırmaq üçün sınaq imtahanları",
+                    training3BenefitsP5: "Karyera Yüksəlişi – Etibarlılığı və qlobal imkanları artırın",
+                    training3ContentTitle: "📚 Kursun Məzmununa Baxış",
+                    training3ContentIntro: "Onlayn PMP® Təlimimiz PMI-ın İmtahan Məzmunu Planına uyğundur:",
+                    training3ContentP1: "Layihə İdarəetməsinin Əsasları – Çərçivə, həyat dövrləri və yanaşmalar (Proqnozlaşdırılan, Çevik, Hibrid)",
+                    training3ContentP2: "İnsanlar – Liderlik, komanda quruculuğu və maraqlı tərəflərin cəlb edilməsi",
+                    training3ContentP3: "Proses – Planlaşdırma, cədvəlləmə, büdcə, risk və keyfiyyət idarəetməsi",
+                    training3ContentP4: "Biznes Mühiti – Strategiyaya uyğunlaşma, idarəetmə və dəyər təqdimatı",
+                    training3ContentP5: "Çevik və Hibrid Təcrübələr – Adaptiv metodlar və artımlı təqdimat",
+                    training3ContentP6: "İmtahana Hazırlıq – Sınaq testləri və təhsil strategiyaları",
+                    training3FormatTitle: "🕒 Təlim Formatı",
+                    training3FormatP1: "Müddət: 35 saat (PMI tələbi)",
+                    training3FormatP2: "Rejim: Onlayn",
+                    training3FormatP3: "Cədvəl: Çevik həftəiçi və həftəsonu seçimləri",
+                    training3FormatP4: "Materiallar: Rəqəmsal paylama materialları, şablonlar və praktiki imtahanlar",
+                    training3WhyUsTitle: "✅ Niyə Bizi Seçməlisiniz?",
+                    training3WhyUsP1: "PMI-a uyğun qlobal standartlı təlim",
+                    training3WhyUsP2: "Real dünya anlayışlarına malik təcrübəli təlimçilər",
+                    training3WhyUsP3: "İnteraktiv və praktiki təlim yanaşması",
+                    training3WhyUsP4: "PMP® imtahanında sübut olunmuş yüksək müvəffəqiyyət dərəcələri",
+                    training3Enroll: "Qeydiyyatdan Keçin!",
+                    
                     training4TitleFull: "Şirkətlər üçün Fərdi Təlim Paketi", training4Tagline: "KOMANDANIZIN POTENSİALINI MAKSİMUMA ÇATDIRIN!", training4ModalDesc: "Bu tam günlük interaktiv təlim, şirkətinizin spesifik ehtiyaclarına və layihələrinə uyğunlaşdırılır. Komandanızın layihə idarəetməsi bacarıqlarını artırmaq, prosesləri optimallaşdırmaq və nəticələri yaxşılaşdırmaq üçün ideal həlldir.",
                     training4BenefitsTitle: "Paketin Faydaları:",
                     training4BenefitsP1: "Şirkətinizin hədəflərinə uyğunlaşdırılmış təlim məzmunu.",
@@ -947,24 +1104,63 @@
                     training1BenefitsP2: "Knowledge in line with international approaches.",
                     training1BenefitsP3: "Self-confidence in management and leadership competence.",
                     training1BenefitsP4: "A certificate and practical knowledge that will impact your career development.",
-                    priceTitle: "Full Program Fee:", applyNow: "Apply Now",
-                    training2TitleFull: "CAPM® Certification Preparation Program", training2Tagline: "THE FIRST PROFESSIONAL PEAK OF YOUR CAREER!", training2ModalDesc: "The Certified Associate in Project Management (CAPM)® certification is the ideal choice to start your career with a strong foundation. This program will comprehensively prepare you for the official PMI® exam.",
-                    training2AudienceTitle: "Who is this program for?",
-                    training2AudienceP1: "Newcomers or those with little experience in project management.",
-                    training2AudienceP2: "Students and graduates looking to give their careers a new direction.",
-                    training2AudienceP3: "Professionals working in project teams who want to enhance their fundamental knowledge.",
-                    training2ContentTitle: "Training Content:",
-                    training2ContentP1: "Full alignment with the PMBOK® Guide 7th Edition.",
-                    training2ContentP2: "Familiarization with exam question types and solving strategies.",
-                    training2ContentP3: "Practice exams by topic with detailed explanations.",
-                    training3TitleFull: "PMP® Certification Preparation Program", training3Tagline: "STEP TOWARDS THE PINNACLE OF PROFESSIONALISM!", training3ModalDesc: "The Project Management Professional (PMP)® certification is the gold standard in project management. This intensive program prepares experienced project managers for all aspects of the exam to ensure their success.",
-                    training3AudienceTitle: "Who is this program for?",
-                    training3AudienceP1: "Professionals with at least 3 years of project management experience.",
-                    training3AudienceP2: "Managers who want to take the next step in their careers and gain global recognition.",
-                    training3ContentTitle: "Training Content:",
-                    training3ContentP1: "In-depth analysis of the three main domains of the PMP exam: People, Processes, and Business Environment.",
-                    training3ContentP2: "Solving situational questions on Agile, Hybrid, and Predictive approaches.",
-                    training3ContentP3: "Full-length simulation tests for a real exam experience.",
+                    priceTitle: "Program Fee:", applyNow: "Apply Now",
+
+                    training2TitleFull: "CAPM® Certification Training",
+                    training2ModalDesc: "Give your project management career a strong start. This training prepares you for the Certified Associate in Project Management (CAPM)® exam offered by the Project Management Institute (PMI) and helps you master the fundamental knowledge of the field.",
+                    training2AudienceTitle: "🎯 Who is it for?",
+                    training2AudienceP1: "Project team members",
+                    training2AudienceP2: "Aspiring or entry-level project managers",
+                    training2AudienceP3: "Professionals looking to transition into project management",
+                    training2AudienceP4: "University students and recent graduates",
+                    training2BenefitsTitle: "📌 Key Benefits",
+                    training2BenefitsP1: "Understand the fundamental knowledge, terminology, and processes of project management.",
+                    training2BenefitsP2: "Demonstrate your commitment and professionalism to the field.",
+                    training2BenefitsP3: "Build a solid foundation for future PMP® certification.",
+                    training2BenefitsP4: "Increase your credibility and self-confidence at the start of your career.",
+                    training2ContentTitle: "📚 Course Content",
+                    training2ContentP1: "Introduction to Project Management and Core Concepts",
+                    training2ContentP2: "Project Environment (Internal, External, Organizational Structures)",
+                    training2ContentP3: "Role and Skills of the Project Manager",
+                    training2ContentP4: "All Project Management Knowledge Areas (Integration, Scope, Schedule, Cost, Quality, Resources, Communications, Risk, Procurement, Stakeholder)",
+                    training2FormatTitle: "🕒 Training Format",
+                    training2FormatP1: "Duration: 23 hours (PMI requirement)",
+                    training2FormatP2: "Mode: Online only",
+                    training2FormatP3: "Materials: Digital coursebooks and practice exams",
+
+                    training3TitleFull: "PMP® Certification Training",
+                    training3ModalDesc: "Become a globally recognized Project Management Professional (PMP®) and advance your career. Our online PMP® Training prepares you for the PMP® certification exam with practical, industry-relevant knowledge and techniques. Gain the confidence to manage projects effectively and achieve certification success.",
+                    training3AudienceTitle: "🎯 Who Should Attend?",
+                    training3AudienceP1: "Project Managers, Team Leaders, and Supervisors",
+                    training3AudienceP2: "Program Managers",
+                    training3AudienceP3: "Professionals aiming for PMP® certification",
+                    training3AudienceP4: "Anyone involved in project planning, execution, or support",
+                    training3BenefitsTitle: "📌 Key Benefits",
+                    training3BenefitsP1: "Comprehensive Exam Prep – Covers PMBOK® Guide and Agile practices",
+                    training3BenefitsP2: "Interactive Learning – Real-world examples and case studies",
+                    training3BenefitsP3: "Expert Trainers – Certified PM professionals with practical experience",
+                    training3BenefitsP4: "Practice Tests – Mock exams to build confidence",
+                    training3BenefitsP5: "Career Growth – Boost credibility and global opportunities",
+                    training3ContentTitle: "📚 Course Content Overview",
+                    training3ContentIntro: "Our online PMP® Training follows PMI’s Exam Content Outline:",
+                    training3ContentP1: "Project Management Foundations – Framework, life cycles, and approaches (Predictive, Agile, Hybrid)",
+                    training3ContentP2: "People – Leadership, team building, and stakeholder engagement",
+                    training3ContentP3: "Process – Planning, scheduling, budgeting, risk, and quality management",
+                    training3ContentP4: "Business Environment – Strategy alignment, governance, and value delivery",
+                    training3ContentP5: "Agile & Hybrid Practices – Adaptive methods and incremental delivery",
+                    training3ContentP6: "Exam Readiness – Mock tests and study strategies",
+                    training3FormatTitle: "🕒 Training Format",
+                    training3FormatP1: "Duration: 35 hours (PMI requirement)",
+                    training3FormatP2: "Mode: Online only",
+                    training3FormatP3: "Schedule: Flexible weekday & weekend options",
+                    training3FormatP4: "Materials: Digital handouts, templates, and practice exams",
+                    training3WhyUsTitle: "✅ Why Choose Us?",
+                    training3WhyUsP1: "PMI-aligned global-standard training",
+                    training3WhyUsP2: "Experienced trainers with real-world insights",
+                    training3WhyUsP3: "Interactive and practical learning approach",
+                    training3WhyUsP4: "Proven high success rates in PMP® exam",
+                    training3Enroll: "Enroll Today!",
+
                     training4TitleFull: "Custom Training Package for Companies", training4Tagline: "MAXIMIZE YOUR TEAM'S POTENTIAL!", training4ModalDesc: "This full-day interactive training is tailored to the specific needs and projects of your company. It is the ideal solution to enhance your team's project management skills, optimize processes, and improve results.",
                     training4BenefitsTitle: "Package Benefits:",
                     training4BenefitsP1: "Training content customized to your company's goals.",
@@ -976,16 +1172,22 @@
             // --- MODAL CONTROLS ---
             function openModal(modalId) { 
                 const modal = document.getElementById(modalId);
-                if (modal) modal.style.display = 'block'; 
+                if (modal) {
+                    modal.style.display = 'block'; 
+                    document.body.classList.add('modal-open');
+                }
             }
             function closeModal(modalId) { 
                 const modal = document.getElementById(modalId);
-                if (modal) modal.style.display = 'none'; 
+                if (modal) {
+                    modal.style.display = 'none'; 
+                    document.body.classList.remove('modal-open');
+                }
             }
 
             window.onclick = function(event) {
                 if (event.target.classList.contains('modal')) {
-                    event.target.style.display = 'none';
+                    closeModal(event.target.id);
                 }
             }
 
@@ -1004,7 +1206,7 @@
                 document.querySelectorAll('.price[data-price-azn]').forEach(el => {
                     const priceAZN = parseFloat(el.getAttribute('data-price-azn'));
                     if (lang === 'en') {
-                        const priceEUR = Math.round(priceAZN / 2);
+                        const priceEUR = Math.round(priceAZN / 1.85); // Example conversion rate
                         el.innerHTML = `€${priceEUR}`;
                     } else {
                         el.innerHTML = `${priceAZN} AZN`;
