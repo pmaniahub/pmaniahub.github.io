@@ -472,7 +472,7 @@
             scroll-margin-top: 120px;
         }
         .testimonial-card {
-            flex: 0 0 90%;
+            flex: 0 0 80%;
             max-width: 350px;
             background: var(--white-color);
             border-radius: 8px;
@@ -939,7 +939,7 @@
             }
 
             .testimonial-card {
-                flex: 0 0 80%;
+                flex: 0 0 65%;
             }
         }
     </style>
@@ -1133,6 +1133,24 @@
                                     <div class="testimonial-author-info">
                                         <h4 data-lang-key="reviewRovshanYName"></h4>
                                         <a href="https://www.linkedin.com/in/r%C3%B6v%C5%9F%C9%99n-yasinov-874645222/" target="_blank" rel="noopener noreferrer">
+                                            <i class="fab fa-linkedin"></i> LinkedIn
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Review: Aytac Abbasova -->
+                             <div class="testimonial-card">
+                                <div class="testimonial-quote">
+                                    <p>
+                                        <span data-lang-key="reviewAytacAQuoteShort"></span>
+                                        <button class="read-more-review-btn" onclick="openModal('review-aytac-modal')" data-lang-key="readMoreReview"></button>
+                                    </p>
+                                </div>
+                                <div class="testimonial-author">
+                                    <div class="testimonial-avatar">AA</div>
+                                    <div class="testimonial-author-info">
+                                        <h4 data-lang-key="reviewAytacAName"></h4>
+                                        <a href="https://az.linkedin.com/in/aytaj-abbasli-b44a6837a" target="_blank" rel="noopener noreferrer">
                                             <i class="fab fa-linkedin"></i> LinkedIn
                                         </a>
                                     </div>
@@ -1388,6 +1406,7 @@
     <div id="review-fatimac-modal" class="modal"><div class="modal-content review-modal-content"><span class="close-btn" onclick="closeModal('review-fatimac-modal')">&times;</span><div class="modal-body text-left"><p data-lang-key="reviewFatimaCQuoteFull"></p></div></div></div>
     <div id="review-fatimab-modal" class="modal"><div class="modal-content review-modal-content"><span class="close-btn" onclick="closeModal('review-fatimab-modal')">&times;</span><div class="modal-body text-left"><p data-lang-key="reviewFatimaBQuoteFull"></p></div></div></div>
     <div id="review-rovshan-modal" class="modal"><div class="modal-content review-modal-content"><span class="close-btn" onclick="closeModal('review-rovshan-modal')">&times;</span><div class="modal-body text-left"><p data-lang-key="reviewRovshanYQuoteFull"></p></div></div></div>
+    <div id="review-aytac-modal" class="modal"><div class="modal-content review-modal-content"><span class="close-btn" onclick="closeModal('review-aytac-modal')">&times;</span><div class="modal-body text-left"><p data-lang-key="reviewAytacAQuoteFull"></p></div></div></div>
 
     <script>
         // Check if the script has already been loaded to avoid re-running it
@@ -1414,6 +1433,7 @@
                     
                     readMoreReview: "Davamını Oxu",
                     linkedinComment: "LinkedIn Rəyi",
+                    reviewAytacAName: "Aytac Abbasova", reviewAytacAQuoteShort: "İnteraktiv, dinləyicini nəzərə alaraq ona uyğun sadə dildə izah etməsi...", reviewAytacAQuoteFull: "İnteraktiv, dinləyicini nəzərə alaraq ona uyğun sadə dildə izah etməsi, sonda əyləncəli metodla öyrəndiklərimizin yoxlanılması əla metod idi.",
                     reviewFatimaUName: "Umudova Fatimə", reviewFatimaUQuoteShort: "Dərslər çox aydın və sistematik şəkildə izah edilir, mövzunun həm nəzəri, həm də real...", reviewFatimaUQuoteFull: "Dərslər çox aydın və sistematik şəkildə izah edilir, mövzunun həm nəzəri, həm də real nümunələr ilə izah edilməsi isə mövzunu daha da anlaşıqlı edirdi. Təlimçinin biliyi qədər mövzunu təqdim etmə forması da çox önəmlidir və düşünürəm ki, hər ikisi kifayət qədər yaxşı idi.",
                     reviewFatimaCName: "Cəfərova Fatimə", reviewFatimaCQuoteShort: "Təlimçi mövzunu sadə və aydın şəkildə təqdim etdi. Ritm balanslı idi...", reviewFatimaCQuoteFull: "Təlimçi mövzunu sadə və aydın şəkildə təqdim etdi. Ritm balanslı idi, izahları həyatdakı nümunələrlə zənginləşdirməsi dərsi daha anlaşılan etdi.",
                     reviewGulsumTName: "Gülsüm Tarverdiyeva", reviewGulsumTQuoteShort: "Təlimçinin dərsi təqdim etmə tərzi çox maraqlı və aydın idi. Mövzunu hərtərəfli...", reviewGulsumTQuoteFull: "Təlimçinin dərsi təqdim etmə tərzi çox maraqlı və aydın idi. Mövzunu hərtərəfli izah edir, real nümunələr gətirərək mövzunu daha da anlaşıqlı edirdi. Ritmi uyğun, izahı əyləncəli idi və iştirakçılarla yaxşı əlaqə qurmağı bacarırdı.",
@@ -1447,6 +1467,7 @@
                     
                     readMoreReview: "Read More",
                     linkedinComment: "LinkedIn Comment",
+                    reviewAytacAName: "Aytac Abbasova", reviewAytacAQuoteShort: "The interactive method, explaining in simple language tailored to the listener...", reviewAytacAQuoteFull: "The interactive method, explaining in simple language tailored to the listener, and checking our knowledge with a fun method at the end was an excellent approach.",
                     reviewFatimaUName: "Fatimə Umudova", reviewFatimaUQuoteShort: "The lessons are explained very clearly and systematically, and explaining the topic with both...", reviewFatimaUQuoteFull: "The lessons are explained very clearly and systematically, and explaining the topic with both theoretical and real examples made it even more understandable. The instructor's presentation style is as important as their knowledge, and I think both were quite good.",
                     reviewFatimaCName: "Fatimə Cəfərova", reviewFatimaCQuoteShort: "The instructor presented the topic in a simple and clear manner. The pace was balanced...", reviewFatimaCQuoteFull: "The instructor presented the topic in a simple and clear manner. The pace was balanced, and enriching the explanations with real-life examples made the lesson more understandable.",
                     reviewGulsumTName: "Gülsüm Tarverdiyeva", reviewGulsumTQuoteShort: "The instructor's way of presenting the lesson was very interesting and clear. He explained...", reviewGulsumTQuoteFull: "The instructor's way of presenting the lesson was very interesting and clear. He explained the topic comprehensively, making it even more understandable by providing real examples. The pace was appropriate, the explanation was enjoyable, and he was able to establish a good connection with the participants.",
@@ -1521,90 +1542,13 @@
                 });
                 
                 // Setup for standard manual scrollers
-                const scrollers = ['services-scroller', 'news-scroller', 'blog-scroller'];
+                const scrollers = ['services-scroller', 'news-scroller', 'blog-scroller', 'testimonials-scroller'];
                 scrollers.forEach(id => {
                     setupScroller(id, `${id.split('-')[0]}-scroll-left`, `${id.split('-')[0]}-scroll-right`);
                 });
-
-                // --- TESTIMONIALS CAROUSEL (AUTO + MANUAL) ---
-                const testimonialsScroller = document.getElementById('testimonials-scroller');
-                if (testimonialsScroller) {
-                    const testimonialGrid = testimonialsScroller.querySelector('.testimonial-grid');
-                    const testimonials = Array.from(testimonialGrid.children);
-                    
-                    // Clone testimonials for infinite loop effect
-                    testimonials.forEach(testimonial => {
-                        const clone = testimonial.cloneNode(true);
-                        testimonialGrid.appendChild(clone);
-                    });
-
-                    let scrollInterval;
-                    let isDown = false;
-                    let startX;
-                    let scrollLeft;
-
-                    const startAutoScrolling = () => {
-                        clearInterval(scrollInterval); // Clear any existing interval
-                        scrollInterval = setInterval(() => {
-                            testimonialsScroller.scrollLeft += 1;
-                            if (testimonialsScroller.scrollLeft >= testimonialGrid.scrollWidth / 2) {
-                                testimonialsScroller.scrollLeft = 0;
-                            }
-                        }, 25);
-                    };
-
-                    const stopAutoScrolling = () => {
-                        clearInterval(scrollInterval);
-                    };
-
-                    // Manual Drag-to-Scroll Listeners
-                    testimonialsScroller.addEventListener('mousedown', (e) => {
-                        isDown = true;
-                        stopAutoScrolling();
-                        testimonialsScroller.classList.add('active');
-                        startX = e.pageX - testimonialsScroller.offsetLeft;
-                        scrollLeft = testimonialsScroller.scrollLeft;
-                    });
-
-                    testimonialsScroller.addEventListener('mouseleave', () => {
-                        if (isDown) { // only restart if dragging was in progress
-                           startAutoScrolling();
-                        }
-                        isDown = false;
-                        testimonialsScroller.classList.remove('active');
-                    });
-
-                    testimonialsScroller.addEventListener('mouseup', () => {
-                        if(isDown) { // only restart if dragging was in progress
-                           startAutoScrolling();
-                        }
-                        isDown = false;
-                        testimonialsScroller.classList.remove('active');
-                    });
-
-                    testimonialsScroller.addEventListener('mousemove', (e) => {
-                        if (!isDown) return;
-                        e.preventDefault();
-                        const x = e.pageX - testimonialsScroller.offsetLeft;
-                        const walk = (x - startX) * 2; // scroll-fast
-                        testimonialsScroller.scrollLeft = scrollLeft - walk;
-
-                        // Loop back if dragged to the end
-                        if (testimonialsScroller.scrollLeft >= testimonialGrid.scrollWidth / 2) {
-                            testimonialsScroller.scrollLeft = 0;
-                            scrollLeft = 0; // reset reference point
-                        } else if (testimonialsScroller.scrollLeft === 0 && walk < 0) {
-                            // If user tries to scroll left from the beginning, loop to the end
-                            testimonialsScroller.scrollLeft = testimonialGrid.scrollWidth / 2;
-                            scrollLeft = testimonialGrid.scrollWidth / 2; // reset reference point
-                        }
-                    });
-                    
-                    startAutoScrolling(); // Initial start
-                }
             });
 
-            // Standard scroller setup for other sections
+            // Standard scroller setup for all sections
             function setupScroller(containerId, leftBtnId, rightBtnId) {
                 const container = document.getElementById(containerId);
                 if (!container) return;
@@ -1658,3 +1602,4 @@
 
 </body>
 </html>
+
