@@ -12,18 +12,17 @@
         /* --- Google Fonts Import --- */
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Roboto:wght@400;500&display=swap');
 
-        /* --- MODERN CSS RESET & ENHANCED BASIC STYLES --- */
+        /* --- UI/UX Redesign Styles --- */
         :root {
             --primary-color: #222831;
             --secondary-color: #4a1ad1;
             --secondary-gradient: linear-gradient(45deg, #4a1ad1, #6a32f1);
-            --background-color: #F8F9FA;
-            --text-color: #34495e;
+            --background-color: #f7f9fc;
+            --text-color: #555;
             --white-color: #ffffff;
             --heading-font: 'Poppins', sans-serif;
             --body-font: 'Roboto', sans-serif;
-            --border-radius-md: 12px;
-            --border-radius-lg: 16px;
+            --border-radius: 16px;
         }
 
         * {
@@ -34,125 +33,88 @@
         
         html {
             scroll-behavior: smooth;
-            scroll-padding-top: 180px; /* Offset for sticky headers */
+            scroll-padding-top: 120px; /* Offset for sticky nav */
         }
 
         body {
             font-family: var(--body-font);
-            line-height: 1.6;
+            line-height: 1.7;
             color: var(--text-color);
-            background-color: var(--background-color);
+            background-color: var(--white-color);
+            overflow-x: hidden;
         }
         
-        body.nav-open {
-            overflow: hidden;
-        }
-        
-        body.modal-open {
+        body.nav-open, body.modal-open {
             overflow: hidden;
         }
 
         .container {
             width: 90%;
-            max-width: 1100px;
+            max-width: 1200px;
             margin: 0 auto;
-        }
-        
-        @media (min-width: 1400px) {
-            .container {
-                max-width: 1300px;
-            }
         }
 
         h1, h2, h3, h4 {
             font-family: var(--heading-font);
-            font-weight: 600;
+            font-weight: 700;
             color: var(--primary-color);
         }
 
         section {
-            padding: 80px 0;
-            overflow: hidden; /* Prevents box-shadow clipping */
+            padding: 100px 0;
+            position: relative;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
         }
 
-        .section-title {
-            text-align: center;
-            font-size: 2.8em;
+        .section-header h2 {
+            font-size: 3em;
             margin-bottom: 15px;
         }
 
-        .section-title span {
+        .section-header h2 span {
             background: var(--secondary-gradient);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            text-fill-color: transparent;
+        }
+        
+        .section-header p {
+            font-size: 1.1em;
+            max-width: 650px;
+            margin: 0 auto;
+            color: #6c757d;
         }
 
-        .section-subtitle {
-            text-align: center;
-            font-size: 1.2em;
-            max-width: 600px;
-            margin: 0 auto 60px auto;
-            color: var(--text-color);
-        }
 
         /* --- Header & Navigation --- */
-        .main-header, .service-nav {
-            background-color: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-        }
         .main-header {
+            background-color: rgba(255, 255, 255, 0.85);
             padding: 15px 0;
             position: sticky;
             top: 0;
             z-index: 1000;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
         }
         .main-header .container {
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
-        .logo img {
-            height: 70px;
-        }
-        .header-actions {
-            display: flex;
-            align-items: center;
-            gap: 25px;
-        }
-        .main-nav {
-            display: flex;
-        }
-        .main-nav ul {
-            list-style: none;
-            display: flex;
-            gap: 30px;
-        }
-        .main-nav a {
-            text-decoration: none;
-            color: var(--primary-color);
-            font-weight: 500;
-            font-size: 1.1em;
-            transition: color 0.3s ease;
-        }
-        .main-nav a:hover {
-            color: var(--secondary-color);
-        }
-        .lang-switcher button {
-            background: none;
-            border: none;
-            color: var(--text-color);
-            font-weight: 600;
-            cursor: pointer;
-            padding: 5px;
-            font-size: 1em;
-        }
-        .lang-switcher button.active {
-            color: var(--secondary-color);
-        }
+        .logo img { height: 70px; }
+        .header-actions { display: flex; align-items: center; gap: 25px; }
+        .main-nav ul { list-style: none; display: flex; gap: 35px; margin: 0; }
+        .main-nav a { text-decoration: none; color: var(--primary-color); font-weight: 500; font-size: 1.1em; transition: color 0.3s ease; position: relative; padding-bottom: 5px; }
+        .main-nav a::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px; background: var(--secondary-gradient); transition: width 0.3s ease; }
+        .main-nav a:hover, .main-nav a.active { color: var(--secondary-color); }
+        .main-nav a:hover::after, .main-nav a.active::after { width: 100%; }
+        .lang-switcher button { background: none; border: none; color: var(--text-color); font-weight: 600; cursor: pointer; padding: 5px; font-size: 1em; }
+        .lang-switcher button.active { color: var(--secondary-color); }
         .hamburger { display: none; cursor: pointer; }
         .hamburger .bar { width: 25px; height: 3px; background-color: var(--primary-color); margin: 5px 0; transition: 0.4s; }
         .hamburger.active .bar:nth-child(1) { transform: rotate(-45deg) translate(-5px, 6px); }
@@ -160,20 +122,18 @@
         .hamburger.active .bar:nth-child(3) { transform: rotate(45deg) translate(-5px, -6px); }
 
         /* --- Service Navigator --- */
-        .service-nav {
-            padding: 10px 0;
+        .service-nav-wrapper {
+            background-color: var(--white-color);
             position: sticky;
-            top: 101px; /* Matches header height */
+            top: 101px; /* Header height */
             z-index: 999;
-            display: flex;
-            justify-content: center;
+            padding: 15px 0;
+            border-bottom: 1px solid #e9ecef;
         }
         .service-nav-links {
             display: flex;
-            gap: 15px;
-            background-color: #E9ECEF;
-            padding: 8px;
-            border-radius: 50px;
+            justify-content: center;
+            gap: 10px;
         }
         .service-nav-links a {
             text-decoration: none;
@@ -181,19 +141,25 @@
             padding: 10px 25px;
             border-radius: 50px;
             font-weight: 600;
-            transition: background-color 0.3s ease, color 0.3s ease;
+            font-family: var(--heading-font);
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+        .service-nav-links a:hover {
+            background-color: #e9ecef;
         }
         .service-nav-links a.active {
-            background: var(--secondary-gradient);
-            color: var(--white-color);
-            box-shadow: 0 4px 15px rgba(74, 26, 209, 0.2);
+            color: var(--secondary-color);
+            border-color: var(--secondary-color);
+            background-color: #fff;
         }
-        
+
+        /* --- Buttons --- */
         .cta-button {
             display: inline-block;
             background: var(--secondary-gradient);
             color: var(--white-color);
-            padding: 12px 25px;
+            padding: 15px 35px;
             border-radius: 50px;
             text-decoration: none;
             font-weight: 600;
@@ -201,376 +167,200 @@
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             border: none;
             cursor: pointer;
-            box-shadow: 0 4px 15px rgba(74, 26, 209, 0.2);
+            box-shadow: 0 4px 20px rgba(74, 26, 209, 0.25);
         }
         .cta-button:hover {
-            transform: translateY(-4px) scale(1.02);
-            box-shadow: 0 8px 25px rgba(74, 26, 209, 0.3);
+            transform: translateY(-4px);
+            box-shadow: 0 8px 30px rgba(74, 26, 209, 0.35);
         }
         .cta-button.secondary {
-            background: var(--white-color);
+            background: transparent;
             color: var(--secondary-color);
+            box-shadow: none;
             border: 2px solid var(--secondary-color);
-            padding: 10px 23px;
         }
         .cta-button.secondary:hover {
             background: var(--secondary-gradient);
             color: var(--white-color);
             border-color: transparent;
+            box-shadow: 0 8px 30px rgba(74, 26, 209, 0.35);
         }
-        
-        .trainings-section { background-color: var(--background-color); }
+
+        /* --- Trainings Section --- */
+        #trainings {
+            background-color: var(--background-color);
+        }
         .training-cards-container {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
         }
         .training-card {
             background: var(--white-color);
-            border-radius: var(--border-radius-lg);
-            border: 1px solid rgba(0,0,0,0.07);
-            padding: 25px;
+            border-radius: var(--border-radius);
+            padding: 30px;
             display: flex;
             flex-direction: column;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            text-align: center;
+            transition: all 0.3s ease;
+            text-align: left;
+            border: 1px solid #e9ecef;
         }
         .training-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            box-shadow: 0 15px 45px rgba(0,0,0,0.1);
+            border-color: var(--secondary-color);
         }
         .training-card .icon-wrapper {
-            width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 15px; background: var(--secondary-gradient); color: var(--white-color); font-size: 1.6em;
-        }
-        .training-card h3 { 
-            font-size: 1.25em; color: var(--primary-color); min-height: 55px; margin-bottom: 10px;
-        }
-        .training-card .card-desc {
-            font-size: 0.9em; color: var(--text-color); margin-bottom: 20px; flex-grow: 1;
-        }
-        .training-card .card-footer {
-            margin-top: auto; text-align: center;
-        }
-        .training-card .price { font-size: 2em; font-weight: 700; color: var(--primary-color); line-height: 1; }
-        .training-card .price-note { font-size: 0.85em; opacity: 0.7; margin-bottom: 20px; display: block; }
-        
-        .consulting-section, .coaching-section { background-color: var(--background-color); }
-        
-        /* --- Reusable Service Box Component --- */
-        .service-box {
-            background-color: var(--white-color);
-            border-radius: var(--border-radius-lg);
-            border: 1px solid rgba(0,0,0,0.07);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            max-width: 900px;
-            width: 100%;
-            display: flex;
-            align-items: center;
-            gap: 40px;
-            padding: 40px;
-            margin: 0 auto; /* Center the box */
-        }
-        .service-box:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 8px 30px rgba(0,0,0,0.08);
-        }
-        .service-content-wrapper {
-            flex: 1;
-        }
-        .service-content-wrapper h3 {
-            font-size: 1.8em;
+            font-size: 2.5em;
+            color: var(--secondary-color);
             margin-bottom: 20px;
         }
-        .service-content-wrapper p {
+        .training-card h3 { 
+            font-size: 1.4em;
+            margin-bottom: 10px;
+            min-height: 3.2em;
+        }
+        .training-card .card-desc {
+            color: var(--text-color);
+            margin-bottom: 25px;
+            flex-grow: 1;
+        }
+        .training-card .price {
+            font-size: 2.2em;
+            font-weight: 700;
+            color: var(--primary-color);
+            line-height: 1;
+        }
+        .training-card .price-note {
+            font-size: 0.9em;
+            opacity: 0.7;
+            margin-bottom: 25px;
+            display: block;
+        }
+
+        /* --- Consulting & Coaching Sections --- */
+        #consulting, #coaching {
+            background-color: var(--white-color);
+        }
+        .service-layout {
+            display: flex;
+            align-items: center;
+            gap: 60px;
+        }
+        .service-content { flex: 1; }
+        .service-image { flex: 1; }
+        .service-image img {
+            width: 100%;
+            border-radius: var(--border-radius);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+        .service-content h3 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+        .service-content .subtitle {
+            font-size: 1.1em;
+            color: var(--text-color);
             margin-bottom: 30px;
         }
-        .service-image-wrapper {
-            flex: 0 0 300px;
-            height: 280px;
-        }
-        .service-image-wrapper img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: var(--border-radius-md);
-        }
-        .service-buttons-wrapper {
-            margin-top: 30px;
-            display: flex;
-            gap: 15px;
-            flex-wrap: wrap;
-            align-items: center;
-        }
-        .coaching-box {
-            flex-direction: row-reverse; /* Image on the left for coaching */
-        }
-        .consulting-highlights {
+        .feature-list {
             list-style: none;
             padding-left: 0;
-            margin-bottom: 30px;
+            margin-bottom: 40px;
         }
-        .consulting-highlights li {
-            padding-left: 25px;
+        .feature-list li {
+            padding-left: 35px;
             position: relative;
-            margin-bottom: 12px;
+            margin-bottom: 15px;
+            font-size: 1.1em;
         }
-        .consulting-highlights li::before {
+        .feature-list li::before {
             font-family: 'Font Awesome 5 Free';
             content: '\f058';
+            font-weight: 900;
             color: var(--secondary-color);
             position: absolute;
             left: 0;
-            font-weight: 900;
+            top: 2px;
+            font-size: 1.2em;
+        }
+        .service-buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        /* Alternate layout for coaching */
+        #coaching .service-layout {
+            flex-direction: row-reverse;
         }
 
+        /* --- Modal Styles --- */
         .modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.6); }
-        .modal-content { 
-            background-color: var(--white-color); 
-            margin: 5vh auto; 
-            border-radius: 10px; 
-            width: 90%; 
-            max-width: 800px; 
-            position: relative; 
-            animation: fadeIn 0.3s;
-            display: flex;
-            flex-direction: column;
-            max-height: 90vh; /* Set a max height */
-        }
+        .modal-content { background-color: var(--white-color); margin: 5vh auto; border-radius: 10px; width: 90%; max-width: 800px; position: relative; animation: fadeIn 0.3s; display: flex; flex-direction: column; max-height: 90vh; }
         .close-btn { color: #aaa; position: absolute; top: 15px; right: 25px; font-size: 28px; font-weight: bold; cursor: pointer; z-index: 10; }
         .close-btn:hover, .close-btn:focus { color: var(--primary-color); }
-        
         @keyframes fadeIn { from {opacity: 0; transform: translateY(-20px);} to {opacity: 1; transform: translateY(0);} }
-        
-        .training-details {
-            display: flex;
-            flex-direction: column;
-            height: 100%;
-            overflow: hidden; /* Hide outer scrollbar */
-        }
-        .training-details-content {
-            padding: 40px 40px 20px 40px;
-            overflow-y: auto; /* Enable scrolling for content */
-            flex-grow: 1; /* Allow content to take available space */
-        }
+        .training-details { display: flex; flex-direction: column; height: 100%; overflow: hidden; }
+        .training-details-content { padding: 40px 40px 20px 40px; overflow-y: auto; flex-grow: 1; }
         .training-details h2 { font-size: 2em; text-align: center; margin-bottom: 10px; }
         .training-details h4 { font-size: 1.3em; margin-top: 25px; margin-bottom: 15px; color: var(--primary-color); }
         .training-details .tagline { text-align: center; font-size: 1.2em; font-weight: 600; color: var(--secondary-color); margin-bottom: 25px; }
         .training-details ul { list-style: none; padding-left: 0; }
         .training-details ul li { margin-bottom: 10px; padding-left: 25px; position: relative; }
-        .training-details ul li::before { 
-            font-family: 'Font Awesome 5 Free';
-            content: '\f058'; /* Solid check circle */
-            color: var(--secondary-color); 
-            position: absolute; 
-            left: 0; 
-            font-weight: 900; 
-        }
-        
-        .price-box { 
-            background: #F8F9FA; 
-            padding: 15px 40px; 
-            border-top: 1px solid #e0e0e0;
-            margin-top: auto;
-            flex-shrink: 0;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 20px;
-        }
-        .price-info {
-            text-align: left;
-        }
-        .price-box h4 {
-            font-size: 1em;
-            margin-top: 0;
-            margin-bottom: 4px;
-            color: var(--text-color);
-            font-weight: 500;
-        }
-        .price-box .price {
-            font-size: 1.6em;
-            font-weight: 700;
-            color: var(--secondary-color);
-            margin-bottom: 0;
-        }
-        
+        .training-details ul li::before { font-family: 'Font Awesome 5 Free'; content: '\f058'; color: var(--secondary-color); position: absolute; left: 0; font-weight: 900; }
+        .price-box { background: #F8F9FA; padding: 15px 40px; border-top: 1px solid #e0e0e0; margin-top: auto; flex-shrink: 0; display: flex; justify-content: space-between; align-items: center; gap: 20px; }
+        .price-info { text-align: left; }
+        .price-box h4 { font-size: 1em; margin-top: 0; margin-bottom: 4px; color: var(--text-color); font-weight: 500; }
+        .price-box .price { font-size: 1.6em; font-weight: 700; color: var(--secondary-color); margin-bottom: 0; }
         #calendar-modal .modal-content { max-width: 1024px; }
         #calendar-modal h3 { margin-bottom: 20px; }
-
+        
         /* --- Footer --- */
-        .main-footer {
-            background-color: #222831;
-            color: var(--white-color);
-            padding: 50px 0;
-        }
-        .footer-content {
-            display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 30px;
-        }
-        .footer-section {
-            flex: 1;
-            min-width: 200px;
-        }
-        .footer-section h4 {
-            font-family: var(--heading-font);
-            font-size: 1.2em;
-            margin-bottom: 15px;
-            color: var(--white-color);
-        }
-        .footer-section ul { 
-            list-style: none;
-            padding: 0;
-        }
-        .footer-section ul li { 
-            margin-bottom: 12px;
-        }
-        .footer-section a {
-            color: rgba(255, 255, 255, 0.7);
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-        .footer-section a:hover { 
-            color: var(--white-color); 
-        }
-        .footer-contact-info li {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-        .footer-contact-info i {
-            font-size: 1.1em;
-            width: 20px;
-            text-align: center;
-            color: rgba(255, 255, 255, 0.7);
-        }
-        .social-icons a { 
-            margin-right: 15px;
-            display: inline-block;
-        }
-        .social-icons svg {
-            width: 24px;
-            height: 24px;
-            fill: rgba(255, 255, 255, 0.7);
-            transition: fill 0.3s ease, transform 0.3s ease;
-        }
-        .social-icons a:hover svg { 
-            fill: var(--white-color); 
-            transform: scale(1.1);
-        }
-        .footer-bottom {
-            text-align: center;
-            margin-top: 40px;
-            padding-top: 20px;
-            border-top: 1px solid #4a4e56;
-        }
+        .main-footer { background-color: var(--primary-color); color: var(--white-color); padding: 50px 0; }
+        .footer-content { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 30px; }
+        .footer-section { flex: 1; min-width: 200px; }
+        .footer-section h4 { font-family: var(--heading-font); font-size: 1.2em; margin-bottom: 15px; color: var(--white-color); }
+        .footer-section ul { list-style: none; padding: 0; }
+        .footer-section ul li { margin-bottom: 12px; }
+        .footer-section a { color: rgba(255, 255, 255, 0.7); text-decoration: none; transition: color 0.3s ease; }
+        .footer-section a:hover { color: var(--white-color); }
+        .footer-contact-info li { display: flex; align-items: center; gap: 12px; }
+        .footer-contact-info i { font-size: 1.1em; width: 20px; text-align: center; color: rgba(255, 255, 255, 0.7); }
+        .social-icons a { margin-right: 15px; display: inline-block; }
+        .social-icons svg { width: 24px; height: 24px; fill: rgba(255, 255, 255, 0.7); transition: fill 0.3s ease, transform 0.3s ease; }
+        .social-icons a:hover svg { fill: var(--white-color); transform: scale(1.1); }
+        .footer-bottom { text-align: center; margin-top: 40px; padding-top: 20px; border-top: 1px solid #4a4e56; }
 
         /* --- Responsive Design --- */
         @media (max-width: 1080px) {
-            .training-cards-container { grid-template-columns: repeat(2, 1fr); }
-            .hamburger {
-                display: block;
-                position: relative;
-                z-index: 1001;
-            }
-            .hamburger.active .bar {
-                background-color: var(--white-color);
-            }
-            .main-nav {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                justify-content: center;
-                position: fixed;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100vh;
-                background-color: rgba(34, 40, 49, 0.95);
-                backdrop-filter: blur(8px);
-                -webkit-backdrop-filter: blur(8px);
-                opacity: 0;
-                visibility: hidden;
-                transition: opacity 0.35s ease, visibility 0.35s;
-                z-index: 1000;
-            }
-            .main-nav.active {
-                opacity: 1;
-                visibility: visible;
-            }
-            .main-nav ul {
-                flex-direction: column;
-                width: 100%;
-                gap: 30px;
-            }
-            .main-nav ul li {
-                width: 100%;
-                text-align: center;
-            }
-            .main-nav a {
-                font-size: 1.6em;
-                font-weight: 500;
-                color: var(--white-color);
-            }
+            .hamburger { display: block; position: relative; z-index: 1001; }
+            .hamburger.active .bar { background-color: var(--white-color); }
+            .main-nav { display: flex; flex-direction: column; align-items: center; justify-content: center; position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background-color: rgba(34, 40, 49, 0.95); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); opacity: 0; visibility: hidden; transition: opacity 0.35s ease, visibility 0.35s; z-index: 1000; }
+            .main-nav.active { opacity: 1; visibility: visible; }
+            .main-nav ul { flex-direction: column; width: 100%; gap: 30px; }
+            .main-nav ul li { width: 100%; text-align: center; }
+            .main-nav a { font-size: 1.6em; font-weight: 500; color: var(--white-color); }
         }
         
+        @media (max-width: 992px) {
+            .service-layout, #coaching .service-layout { flex-direction: column; }
+            #coaching .service-layout { flex-direction: column-reverse; }
+            .service-image { max-width: 500px; }
+            .service-content { text-align: center; }
+            .feature-list li { text-align: left; }
+            .service-buttons { justify-content: center; }
+        }
+
         @media (max-width: 768px) {
-            .section-title { font-size: 2.2em; }
-            .training-cards-container { 
-                grid-template-columns: repeat(2, 1fr); /* MODIFIED: 2x2 grid */
-                gap: 15px;
-            }
-             .service-box {
-                flex-direction: column !important; /* Use important to override row-reverse */
-                padding: 30px 20px;
-             }
-             .coaching-box {
-                flex-direction: column-reverse !important;
-             }
-             .service-content-wrapper {
-                text-align: center;
-             }
-             .service-image-wrapper {
-                width: 100%;
-                flex-basis: 220px;
-                height: 220px;
-             }
-             .service-buttons-wrapper {
-                justify-content: center;
-             }
-             .consulting-highlights li {
-                text-align: left;
-             }
-            .training-card { 
-                padding: 20px 15px; /* MODIFIED: Sleeker padding */
-            }
-            .training-card h3 { 
-                font-size: 1em; /* MODIFIED: Sleeker text */
-                min-height: 40px; /* MODIFIED: Adjusted for new font size */
-                margin-bottom: 5px;
-            }
-            .training-card .card-desc { 
-                display: none; 
-            }
-            .training-card .price { 
-                font-size: 1.6em; /* MODIFIED: Sleeker text */
-            }
-            .training-card .price-note {
-                margin-bottom: 15px;
-            }
-            .cta-button { 
-                padding: 10px 18px; /* MODIFIED: Sleeker button */
-                font-size: 0.85em;
-            }
-            .service-nav { top: 101px; }
-            .service-nav-links a { padding: 8px 15px; font-size: 0.9em; }
-            html { scroll-padding-top: 150px; }
-            .price-box {
-                flex-direction: column;
-                padding: 15px 20px;
-                text-align: center;
-            }
+            section { padding: 80px 0; }
+            .section-header h2 { font-size: 2.2em; }
+            html { scroll-padding-top: 100px; }
+            .service-nav-wrapper { top: 101px; padding: 10px 0; }
+            .service-nav-links { overflow-x: auto; justify-content: flex-start; scrollbar-width: none; -ms-overflow-style: none; padding: 5px; }
+            .service-nav-links::-webkit-scrollbar { display: none; }
+            .service-nav-links a { padding: 8px 20px; font-size: 0.9em; flex-shrink: 0; }
+            .training-card .card-desc { display: none; }
+             .price-box { flex-direction: column; padding: 15px 20px; text-align: center; }
             .price-info { text-align: center; margin-bottom: 10px; }
         }
     </style>
@@ -608,19 +398,21 @@
         </div>
     </header>
 
-    <nav class="service-nav">
-        <div class="service-nav-links">
+    <div class="service-nav-wrapper">
+        <nav class="service-nav-links">
             <a href="#trainings" class="active" data-lang-key="navTrainings">Təlimlər</a>
             <a href="#consulting" data-lang-key="navConsulting">Konsaltinq</a>
             <a href="#coaching" data-lang-key="navCoaching">Kouçinq</a>
-        </div>
-    </nav>
+        </nav>
+    </div>
 
     <main>
-        <section id="trainings" class="trainings-section">
+        <section id="trainings">
             <div class="container">
-                <h2 class="section-title" data-lang-key="pageTitle">Təlim <span>Paketlərimiz</span></h2>
-                <p class="section-subtitle" data-lang-key="pageSubtitle">Karyeranızı növbəti səviyyəyə qaldırmaq üçün beynəlxalq standartlara əsaslanan, praktiki təlim proqramlarımızla tanış olun.</p>
+                <div class="section-header">
+                    <h2 data-lang-key="pageTitle"><span>Təlim</span> Paketlərimiz</h2>
+                    <p data-lang-key="pageSubtitle">Karyeranızı növbəti səviyyəyə qaldırmaq üçün beynəlxalq standartlara əsaslanan, praktiki təlim proqramlarımızla tanış olun.</p>
+                </div>
                 
                 <div class="training-cards-container">
                     <!-- Card 1: 360 -->
@@ -628,13 +420,9 @@
                         <div class="icon-wrapper"><i class="fas fa-sitemap"></i></div>
                         <h3 data-lang-key="training1Title">“360° Layihə İdarəetməsi”</h3>
                         <p class="card-desc" data-lang-key="training1Desc">Layihə idarəetməsini sıfırdan öyrənmək və bu sahədə peşəkar olmaq üçün 8 həftəlik intensiv proqram.</p>
-                        <div class="card-footer">
-                            <div class="price-section">
-                                <div class="price" data-price-azn="300">300 AZN</div>
-                                <div class="price-note" data-lang-key="priceFull">&nbsp;</div>
-                            </div>
-                            <button class="cta-button" onclick="openModal('modal-360')" data-lang-key="readMore">Ətraflı Bax</button>
-                        </div>
+                        <div class="price" data-price-azn="300">300 AZN</div>
+                        <div class="price-note" data-lang-key="priceFull">&nbsp;</div>
+                        <button class="cta-button" onclick="openModal('modal-360')" data-lang-key="readMore">Ətraflı Bax</button>
                     </div>
         
                     <!-- Card 2: CAPM -->
@@ -642,13 +430,9 @@
                         <div class="icon-wrapper"><i class="fas fa-user-graduate"></i></div>
                         <h3 data-lang-key="training2Title">CAPM® Sertifikatına Hazırlıq</h3>
                         <p class="card-desc" data-lang-key="training2Desc">PMI® standartları ilə layihə idarəetməsi nəzəriyyəsini mənimsəyin və beynəlxalq CAPM® imtahanına tam hazır olun.</p>
-                        <div class="card-footer">
-                            <div class="price-section">
-                                <div class="price" data-price-azn="450">450 AZN</div>
-                                <div class="price-note" data-lang-key="priceFull">&nbsp;</div>
-                            </div>
-                            <button class="cta-button" onclick="openModal('modal-capm')" data-lang-key="readMore">Ətraflı Bax</button>
-                        </div>
+                        <div class="price" data-price-azn="450">450 AZN</div>
+                        <div class="price-note" data-lang-key="priceFull">&nbsp;</div>
+                        <button class="cta-button" onclick="openModal('modal-capm')" data-lang-key="readMore">Ətraflı Bax</button>
                     </div>
 
                     <!-- Card 3: PMP -->
@@ -656,13 +440,9 @@
                         <div class="icon-wrapper"><i class="fas fa-certificate"></i></div>
                         <h3 data-lang-key="training3Title">PMP® Sertifikatına Hazırlıq</h3>
                         <p class="card-desc" data-lang-key="training3Desc">Təcrübəli layihə menecerləri üçün nəzərdə tutulan, qlobal səviyyədə tanınan PMP® sertifikasiya imtahanına hazırlıq.</p>
-                        <div class="card-footer">
-                            <div class="price-section">
-                                <div class="price" data-price-azn="750">750 AZN</div>
-                                <div class="price-note" data-lang-key="priceFull">&nbsp;</div>
-                            </div>
-                            <button class="cta-button" onclick="openModal('modal-pmp')" data-lang-key="readMore">Ətraflı Bax</button>
-                        </div>
+                        <div class="price" data-price-azn="750">750 AZN</div>
+                        <div class="price-note" data-lang-key="priceFull">&nbsp;</div>
+                        <button class="cta-button" onclick="openModal('modal-pmp')" data-lang-key="readMore">Ətraflı Bax</button>
                     </div>
 
                     <!-- Card 4: Corporate -->
@@ -670,59 +450,52 @@
                         <div class="icon-wrapper"><i class="fas fa-building"></i></div>
                         <h3 data-lang-key="training4Title">Korporativ Təlim Paketi</h3>
                         <p class="card-desc" data-lang-key="training4Desc">Şirkətinizin ehtiyaclarına uyğunlaşdırılmış, klassik, çevik və hibrid metodları əhatə edən tam günlük təlim.</p>
-                        <div class="card-footer">
-                            <div class="price-section">
-                                <div class="price" data-price-azn="500">500 AZN</div>
-                                <div class="price-note" data-lang-key="perDay">(günlük)</div>
-                            </div>
-                            <button class="cta-button" onclick="openModal('modal-corporate')" data-lang-key="readMore">Ətraflı Bax</button>
-                        </div>
+                        <div class="price" data-price-azn="500">500 AZN</div>
+                        <div class="price-note" data-lang-key="perDay">(günlük)</div>
+                        <button class="cta-button" onclick="openModal('modal-corporate')" data-lang-key="readMore">Ətraflı Bax</button>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="consulting" class="consulting-section">
+        <section id="consulting">
             <div class="container">
-                <h2 class="section-title" data-lang-key="consultingTitle">Biznes <span>Konsaltinq</span></h2>
-                <p class="section-subtitle" data-lang-key="consultingSubtitle">Proseslərinizi optimallaşdırmaq və layihə uğurunuzu artırmaq üçün fərdi strateji dəstək.</p>
-        
-                <div class="service-box consulting-box">
-                    <div class="service-content-wrapper">
-                        <h3 data-lang-key="consultingBoxTitle"></h3>
-                        <ul class="consulting-highlights">
+                <div class="service-layout">
+                    <div class="service-content">
+                        <h3 data-lang-key="consultingTitle">Biznes <span>Konsaltinq</span></h3>
+                        <p class="subtitle" data-lang-key="consultingSubtitle">Proseslərinizi optimallaşdırmaq və layihə uğurunuzu artırmaq üçün fərdi strateji dəstək.</p>
+                        <ul class="feature-list">
                             <li data-lang-key="consultingBullet1"></li>
                             <li data-lang-key="consultingBullet2"></li>
                             <li data-lang-key="consultingBullet3"></li>
                         </ul>
-                        <div class="service-buttons-wrapper">
+                        <div class="service-buttons">
                             <button class="cta-button" onclick="openModal('modal-consulting')" data-lang-key="readMore"></button>
                             <a href="/contact/" class="cta-button secondary" data-lang-key="sendInquiry"></a>
                         </div>
                     </div>
-                    <div class="service-image-wrapper">
+                    <div class="service-image">
                         <img src="https://images.unsplash.com/photo-1556761175-b413da4baf72?q=80&w=1920&auto=format&fit=crop" alt="Business Consulting">
                     </div>
                 </div>
             </div>
         </section>
         
-        <section id="coaching" class="coaching-section">
+        <section id="coaching">
             <div class="container">
-                <h2 class="section-title" data-lang-key="coachingTitle">Fərdi <span>Kouçinq</span></h2>
-                <p class="section-subtitle" data-lang-key="coachingSubtitle"></p>
-                <div class="service-box coaching-box">
-                    <div class="service-image-wrapper">
+                 <div class="service-layout">
+                    <div class="service-image">
                         <img src="https://images.unsplash.com/photo-1516321497487-e288fb19713f?q=80&w=1920&auto=format&fit=crop" alt="Personal Coaching">
                     </div>
-                    <div class="service-content-wrapper">
-                        <h3 data-lang-key="coachingBoxTitle"></h3>
-                        <ul class="consulting-highlights">
+                    <div class="service-content">
+                        <h3 data-lang-key="coachingTitle">Fərdi <span>Kouçinq</span></h3>
+                        <p class="subtitle" data-lang-key="coachingSubtitle"></p>
+                        <ul class="feature-list">
                             <li data-lang-key="coachingBullet1"></li>
                             <li data-lang-key="coachingBullet2"></li>
                             <li data-lang-key="coachingBullet3"></li>
                         </ul>
-                        <div class="service-buttons-wrapper">
+                        <div class="service-buttons">
                             <button class="cta-button" onclick="openModal('calendar-modal')" data-lang-key="freeCall"></button>
                         </div>
                     </div>
@@ -732,7 +505,7 @@
 
     </main>
     
-    <!-- MODALS -->
+    <!-- MODALS (Content unchanged, only styling might be affected by global changes) -->
     <div id="modal-consulting" class="modal">
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal('modal-consulting')">&times;</span>
@@ -1000,7 +773,6 @@
     </footer>
     
     <script>
-        // Check if the script has already been loaded to avoid re-running it
         if (!window.pmaniaScriptLoaded) {
             window.pmaniaScriptLoaded = true;
             
@@ -1234,7 +1006,7 @@
                     training3WhyUsP3: "Interactive and practical learning approach",
                     training3WhyUsP4: "Proven high success rates in PMP® exam",
                     training3Enroll: "Enroll Today!",
-
+                    
                     training4TitleFull: "Custom Training Package for Companies", training4Tagline: "MAXIMIZE YOUR TEAM'S POTENTIAL!", training4ModalDesc: "This full-day interactive training is tailored to the specific needs and projects of your company. It is the ideal solution to enhance your team's project management skills, optimize processes, and improve results.",
                     training4BenefitsTitle: "Package Benefits:",
                     training4BenefitsP1: "Training content customized to your company's goals.",
@@ -1341,4 +1113,3 @@
 
 </body>
 </html>
-
