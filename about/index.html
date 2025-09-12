@@ -487,17 +487,17 @@
             .about-hero p { margin: 0 auto 30px auto; }
             .values-section { width: 100%; }
             .values-container {
-                flex-direction: row; /* Side by side on mobile */
+                flex-direction: row; 
                 gap: 15px;
             }
             .value-card {
-                width: 50%; /* Each takes half width */
+                width: 50%; 
                 padding: 20px;
             }
             .value-card h3 { font-size: 1.2em; }
 
             .page-nav {
-                top: 101px; /* Ensure it's correct on mobile */
+                top: 101px; 
             }
             .page-nav a {
                 padding: 12px 10px;
@@ -515,7 +515,7 @@
                 gap: 15px;
             }
             .team-card {
-                width: 48%;
+                width: calc(50% - 8px);
                 height: 250px;
             }
             .team-card h3 {
@@ -600,13 +600,13 @@
                     <div class="team-card" style="background-image: url('/images/mahmud.png'), url('https://placehold.co/320x400/222831/ffffff?text=Mahmud+M.');" onclick="openModal('mahmud-modal')">
                         <div class="team-card-overlay">
                             <h3 data-lang-key="teamMemberName">Mahmud Mahmudlu</h3>
-                            <p data-lang-key="teamMemberTitle">Təsisçi, Layihə İdarəetməsi Təlimçisi</p>
+                            <p data-lang-key="teamMemberTitle">Təsisçi | Layihə İdarəetməsi Təlimçisi</p>
                         </div>
                     </div>
                     <div class="team-card" style="background-image: url('/images/abdallah.png'), url('https://placehold.co/320x400/222831/ffffff?text=Abdallah+H.');" onclick="openModal('abdallah-modal')">
                         <div class="team-card-overlay">
                             <h3 data-lang-key="abdallahName">Abdallah Hussein Sham</h3>
-                            <p data-lang-key="abdallahTitle">AI Eksperti | PHD</p>
+                            <p data-lang-key="abdallahTitle">Süni İntellekt Eksperti | PHD</p>
                         </div>
                     </div>
                 </div>
@@ -690,7 +690,7 @@
             <span class="close-btn" onclick="closeModal('abdallah-modal')">&times;</span>
             <div class="modal-body">
                 <h3 data-lang-key="abdallahName">Abdallah Hussein Sham</h3>
-                <p class="subtitle" data-lang-key="abdallahRole">AI Researcher | Educator | Junior Research Fellow</p>
+                <p class="subtitle" data-lang-key="abdallahRole">AI Expert | Educator | Junior Research Fellow</p>
                 
                 <h4 data-lang-key="abdallahSummaryTitle">Professional Summary</h4>
                 <p data-lang-key="abdallahSummaryContent">An Artificial Intelligence researcher with expertise in multimodal emotion recognition, speech technologies, and applied machine learning. Abdallah combines academic rigor with practical application, focusing on how AI can understand human behavior while ensuring fairness, ethics, and bias-awareness in intelligent systems. With a growing body of peer-reviewed publications, he is dedicated to making AI concepts accessible to students and professionals.</p>
@@ -726,7 +726,7 @@
                     aboutDesc: "PMania Hub, layihə idarəetməsi sahəsində karyera qurmaq və ya mövcud bacarıqlarını təkmilləşdirmək istəyənlər üçün yaradılmış hərtərəfli bir platformadır. Məqsədimiz, hər kəsə keyfiyyətli təhsil və peşəkar dəstək təqdim etməklə onların uğuruna töhfə verməkdir.",
                     missionModalTitle: "Missiyamız", missionModalDesc: "Layihə idarəetməsini maarifləndirici, əyləncəli və motivasiyaedici yanaşma ilə hər kəs üçün daha maraqlı və əlçatan etmək!",
                     visionModalTitle: "Vizyonumuz", visionModalDesc: "Layihə idarəetməsini yeni baxışla təqdim edən aparıcı platforma olmaq.",
-                    teamTitle: "Komandamızla Tanış Olun", teamMemberName: "Mahmud Mahmudlu", teamMemberTitle: "Təsisçi, Layihə İdarəetməsi Təlimçisi",
+                    teamTitle: "Komandamızla Tanış Olun", teamMemberName: "Mahmud Mahmudlu", teamMemberTitle: "Təsisçi | Layihə İdarəetməsi Təlimçisi",
                     
                     mahmudName: "Mahmud Mahmudlu", mahmudRole: "PMP® | Baş Layihə və Proqram Rəhbəri",
                     summaryTitle: "Peşəkar Xülasə", summaryContent: "PMP® və Lean Six Sigma sertifikatlı, mürəkkəb və yüksək dəyərli texnologiya proqramlarını tam həyat dövrü boyunca uğurla təslim etmə təcrübəsinə malik lider. 6 ildən çox beynəlxalq təcrübə ilə yüksək texnologiyalı sənaye mühitində çoxmilyonluq avro dəyərində NPI layihələrini idarə etməkdə üstünəm.",
@@ -756,15 +756,15 @@
                     aboutDesc: "PMania Hub is a comprehensive platform created for those who want to build a career in project management or improve their existing skills. Our goal is to contribute to their success by providing quality education and professional support to everyone.",
                     missionModalTitle: "Our Mission", missionModalDesc: "To make project management more interesting and accessible for everyone with an enlightening, fun, and motivational approach!",
                     visionModalTitle: "Our Vision", visionModalDesc: "To be the leading platform that presents project management with a new perspective.",
-                    teamTitle: "Meet Our Team", teamMemberName: "Mahmud Mahmudlu", teamMemberTitle: "Founder, Project Management Trainer",
+                    teamTitle: "Meet Our Team", teamMemberName: "Mahmud Mahmudlu", teamMemberTitle: "Founder | Project Management Trainer",
                     
                     mahmudName: "Mahmud Mahmudlu", mahmudRole: "PMP® | Senior Project & Program Leader",
                     summaryTitle: "Professional Summary", summaryContent: "A PMP® and Lean Six Sigma certified leader with a proven record of delivering complex, high-value technology programs across their full lifecycle. With over 6 years of international experience, I excel at managing multimillion-euro NPI projects in a high-tech, industrial environment.",
                     experienceTitle: "Key Experience (Ericsson)", expPoint1: "Managed major NPI platform projects with budgets up to €7 million.", expPoint2: "Led and coordinated cross-functional teams (engineering, quality, purchasing) across multiple global manufacturing sites.", expPoint3: "Coached and mentored junior PMs, elevating team performance and maturity, leading to top performance awards.",
                     certsTitle: "Certifications", cert1: "Project Management Professional (PMP)® - PMI", cert2: "Lean Six Sigma Yellow Belt - Ericsson", cert3: "Practical Gen AI for Project Managers – PMI",
                     
-                    abdallahName: "Abdallah Hussein Sham", abdallahTitle: "AI Researcher | PHD",
-                    abdallahRole: "AI Researcher | PHD | Junior Research Fellow",
+                    abdallahName: "Abdallah Hussein Sham", abdallahTitle: "AI Expert | PHD",
+                    abdallahRole: "AI Expert | PHD | Junior Research Fellow",
                     abdallahSummaryTitle: "Professional Summary",
                     abdallahSummaryContent: "An Artificial Intelligence researcher with expertise in multimodal emotion recognition, speech technologies, and applied machine learning. Abdallah combines academic rigor with practical application, focusing on how AI can understand human behavior while ensuring fairness, ethics, and bias-awareness in intelligent systems. With a growing body of peer-reviewed publications, he is dedicated to making AI concepts accessible to students and professionals.",
                     abdallahExperienceTitle: "Key Experience (Tallinn University & Research Projects)",
