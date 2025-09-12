@@ -289,11 +289,7 @@
             gap: 15px;
             flex-wrap: wrap;
         }
-        /* Alternate layout for coaching */
-        #coaching .service-layout {
-            flex-direction: row-reverse;
-        }
-
+       
         /* --- Modal Styles --- */
         .modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.6); }
         .modal-content { background-color: var(--white-color); margin: 5vh auto; border-radius: 10px; width: 90%; max-width: 800px; position: relative; animation: fadeIn 0.3s; display: flex; flex-direction: column; max-height: 90vh; }
@@ -356,9 +352,13 @@
             .section-header h2 { font-size: 2.2em; }
             html { scroll-padding-top: 100px; }
             .service-nav-wrapper { top: 101px; padding: 10px 0; }
-            .service-nav-links { overflow-x: auto; justify-content: flex-start; scrollbar-width: none; -ms-overflow-style: none; padding: 5px; }
+            .service-nav-links { overflow-x: auto; justify-content: center; scrollbar-width: none; -ms-overflow-style: none; padding: 5px; }
             .service-nav-links::-webkit-scrollbar { display: none; }
             .service-nav-links a { padding: 8px 20px; font-size: 0.9em; flex-shrink: 0; }
+            .training-cards-container {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+            }
             .training-card .card-desc { display: none; }
              .price-box { flex-direction: column; padding: 15px 20px; text-align: center; }
             .price-info { text-align: center; margin-bottom: 10px; }
@@ -421,7 +421,7 @@
                         <h3 data-lang-key="training1Title">“360° Layihə İdarəetməsi”</h3>
                         <p class="card-desc" data-lang-key="training1Desc">Layihə idarəetməsini sıfırdan öyrənmək və bu sahədə peşəkar olmaq üçün 8 həftəlik intensiv proqram.</p>
                         <div class="price" data-price-azn="300">300 AZN</div>
-                        <div class="price-note" data-lang-key="priceFull">&nbsp;</div>
+                        <div class="price-note" data-lang-key="price2Months">(2 ay)</div>
                         <button class="cta-button" onclick="openModal('modal-360')" data-lang-key="readMore">Ətraflı Bax</button>
                     </div>
         
@@ -431,7 +431,7 @@
                         <h3 data-lang-key="training2Title">CAPM® Sertifikatına Hazırlıq</h3>
                         <p class="card-desc" data-lang-key="training2Desc">PMI® standartları ilə layihə idarəetməsi nəzəriyyəsini mənimsəyin və beynəlxalq CAPM® imtahanına tam hazır olun.</p>
                         <div class="price" data-price-azn="450">450 AZN</div>
-                        <div class="price-note" data-lang-key="priceFull">&nbsp;</div>
+                        <div class="price-note" data-lang-key="price23Hours">(23 saat)</div>
                         <button class="cta-button" onclick="openModal('modal-capm')" data-lang-key="readMore">Ətraflı Bax</button>
                     </div>
 
@@ -441,7 +441,7 @@
                         <h3 data-lang-key="training3Title">PMP® Sertifikatına Hazırlıq</h3>
                         <p class="card-desc" data-lang-key="training3Desc">Təcrübəli layihə menecerləri üçün nəzərdə tutulan, qlobal səviyyədə tanınan PMP® sertifikasiya imtahanına hazırlıq.</p>
                         <div class="price" data-price-azn="750">750 AZN</div>
-                        <div class="price-note" data-lang-key="priceFull">&nbsp;</div>
+                        <div class="price-note" data-lang-key="price35Hours">(35 saat)</div>
                         <button class="cta-button" onclick="openModal('modal-pmp')" data-lang-key="readMore">Ətraflı Bax</button>
                     </div>
 
@@ -453,6 +453,16 @@
                         <div class="price" data-price-azn="500">500 AZN</div>
                         <div class="price-note" data-lang-key="perDay">(günlük)</div>
                         <button class="cta-button" onclick="openModal('modal-corporate')" data-lang-key="readMore">Ətraflı Bax</button>
+                    </div>
+
+                    <!-- Card 5: AI PM -->
+                    <div class="training-card">
+                        <div class="icon-wrapper"><i class="fas fa-robot"></i></div>
+                        <h3 data-lang-key="training5Title">AI Layihə İdarəetməsi Təlim Proqramı</h3>
+                        <p class="card-desc" data-lang-key="training5Desc">Süni İntellekt (AI) layihələrini uğurla idarə etmək üçün bilik və alətlər əldə edin.</p>
+                        <div class="price" data-price-azn="500">500 AZN</div>
+                        <div class="price-note" data-lang-key="price2Months">(2 ay)</div>
+                        <button class="cta-button" onclick="openModal('modal-ai-pm')" data-lang-key="readMore">Ətraflı Bax</button>
                     </div>
                 </div>
             </div>
@@ -471,7 +481,7 @@
                         </ul>
                         <div class="service-buttons">
                             <button class="cta-button" onclick="openModal('modal-consulting')" data-lang-key="readMore"></button>
-                            <a href="/contact/" class="cta-button secondary" data-lang-key="sendInquiry"></a>
+                            <a href="mailto:info@pmaniahub.com" class="cta-button secondary" data-lang-key="sendInquiry"></a>
                         </div>
                     </div>
                     <div class="service-image">
@@ -515,7 +525,7 @@
                     <p data-lang-key="consultingBoxDescFull"></p>
                 </div>
                 <div class="price-box">
-                    <a href="/contact/" class="cta-button" data-lang-key="sendInquiry"></a>
+                    <a href="mailto:info@pmaniahub.com" class="cta-button" data-lang-key="sendInquiry"></a>
                 </div>
             </div>
         </div>
@@ -721,6 +731,45 @@
             </div>
         </div>
     </div>
+    
+    <!-- AI PM Modal -->
+    <div id="modal-ai-pm" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('modal-ai-pm')">&times;</span>
+            <div class="training-details">
+                <div class="training-details-content">
+                    <h2 data-lang-key="training5TitleFull"></h2>
+                    
+                    <h4 data-lang-key="training5OverviewTitle"></h4>
+                    <p data-lang-key="training5OverviewContent"></p>
+                    
+                    <h4 data-lang-key="training5LearnTitle"></h4>
+                    <ul>
+                        <li data-lang-key="training5LearnP1"></li>
+                        <li data-lang-key="training5LearnP2"></li>
+                        <li data-lang-key="training5LearnP3"></li>
+                        <li data-lang-key="training5LearnP4"></li>
+                        <li data-lang-key="training5LearnP5"></li>
+                        <li data-lang-key="training5LearnP6"></li>
+                    </ul>
+
+                    <h4 data-lang-key="training5DetailsTitle"></h4>
+                    <ul>
+                        <li data-lang-key="training5DetailsP1"></li>
+                        <li data-lang-key="training5DetailsP2"></li>
+                    </ul>
+                </div>
+                <div class="price-box">
+                    <div class="price-info">
+                        <h4 data-lang-key="priceTitle"></h4>
+                        <div class="price" data-price-azn="500">500 AZN</div>
+                    </div>
+                    <a href="https://wa.me/37258243097?text=Salam%2C%20AI%20Layih%C9%99%20%C4%B0dar%C9%99etm%C9%99si%20T%C9%99lim%20Proqram%C4%B1%20il%C9%99%20maraqlan%C4%B1ram." target="_blank" class="cta-button" data-lang-key="applyNow"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
     <div id="calendar-modal" class="modal">
         <div class="modal-content">
@@ -785,8 +834,11 @@
                     training2Title: "CAPM® Sertifikatına Hazırlıq", training2Desc: "PMI® standartları ilə layihə idarəetməsi nəzəriyyəsini mənimsəyin və beynəlxalq CAPM® imtahanına tam hazır olun.",
                     training3Title: "PMP® Sertifikatına Hazırlıq", training3Desc: "Təcrübəli layihə menecerləri üçün nəzərdə tutulan, qlobal səviyyədə tanınan PMP® sertifikasiya imtahanına hazırlıq.",
                     training4Title: "Korporativ Təlim Paketi", training4Desc: "Şirkətinizin ehtiyaclarına uyğunlaşdırılmış, klassik, çevik və hibrid metodları əhatə edən tam günlük təlim.",
+                    training5Title: "AI Layihə İdarəetməsi Təlim Proqramı", training5Desc: "Süni İntellekt (AI) layihələrini uğurla idarə etmək üçün bilik və alətlər əldə edin.",
                     perDay: "(günlük)", readMore: "Ətraflı Bax",
-                    priceFull: "(tam paket)",
+                    price2Months: "(2 ay)",
+                    price23Hours: "(2 ay)",
+                    price35Hours: "(3 ay)",
                     consultingTitle: "Biznes Konsaltinq", consultingSubtitle: "Proseslərinizi optimallaşdırmaq və layihə uğurunuzu artırmaq üçün fərdi strateji dəstək.",
                     consultingBoxTitle: "Biznesiniz üçün Strateji Həllər",
                     consultingBullet1: "Strateji layihə idarəetməsi və proses optimallaşdırılması.",
@@ -893,7 +945,21 @@
                     training4BenefitsTitle: "Paketin Faydaları:",
                     training4BenefitsP1: "Şirkətinizin hədəflərinə uyğunlaşdırılmış təlim məzmunu.",
                     training4BenefitsP2: "Komanda daxilində vahid layihə idarəetmə dilinin və yanaşmasının formalaşması.",
-                    training4BenefitsP3: "Praktiki çalışmalarla real iş problemlərinin həlli."
+                    training4BenefitsP3: "Praktiki çalışmalarla real iş problemlərinin həlli.",
+                    
+                    training5TitleFull: "AI Layihə İdarəetməsi Təlim Proqramı",
+                    training5OverviewTitle: "Proqram Haqqında",
+                    training5OverviewContent: "Bu proqram iştirakçılara Süni İntellekt (AI) layihələrini uğurla idarə etmək üçün bilik və alətlər təqdim edir. 2 ay ərzində siz həm layihə idarəetməsinin əsaslarını, həm də AI əsaslı layihələrin xüsusi çətinliklərini – məlumatların toplanması, etik məsələlər və maraqlı tərəflərlə uyğunlaşmanı öyrənəcəksiniz.",
+                    training5LearnTitle: "Nələri Öyrənəcəksiniz",
+                    training5LearnP1: "Layihə İdarəetməsinin əsasları (Agile, Scrum, Waterfall – AI kontekstində)",
+                    training5LearnP2: "AI layihə dövrü (məlumat toplanması, modelin hazırlanması, tətbiqi)",
+                    training5LearnP3: "AI layihələrində risklərin idarə olunması",
+                    training5LearnP4: "Maraqlı tərəflər və kommunikasiya idarəetməsi",
+                    training5LearnP5: "AI layihələrinin etik və hüquqi aspektləri",
+                    training5LearnP6: "Praktik nümunələr və qrup tapşırıqları",
+                    training5DetailsTitle: "Proqram Detalları",
+                    training5DetailsP1: "Müddət: 2 ay (16 sessiya, həftədə 2 dəfə)",
+                    training5DetailsP2: "Format: İnteraktiv mühazirələr, nümunələr və viktorinalar"
                 },
                 en: {
                     navHome: "Home", navAbout: "About Us", navServices: "Services", navReviews: "Reviews", navBlog: "Blog", navContact: "Contact",
@@ -903,8 +969,11 @@
                     training2Title: "CAPM® Certification Prep", training2Desc: "Master project management theory with PMI® standards and get fully prepared for the international CAPM® exam.",
                     training3Title: "PMP® Certification Prep", training3Desc: "Globally recognized PMP® certification exam preparation for experienced project managers.",
                     training4Title: "Corporate Training Package", training4Desc: "A full-day training covering classic, agile, and hybrid methods, tailored to your company's needs.",
+                    training5Title: "AI Project Management Training Program", training5Desc: "Equip yourself with the knowledge and tools to manage Artificial Intelligence (AI) projects effectively.",
                     perDay: "(per day)", readMore: "Learn More",
-                    priceFull: "(full package)",
+                    price2Months: "(2 months)",
+                    price23Hours: "(2 months)",
+                    price35Hours: "(3 months)",
                     consultingTitle: "Business Consulting", consultingSubtitle: "Tailored strategic support to optimize your processes and elevate your project success.",
                     consultingBoxTitle: "Strategic Solutions for Your Business",
                     consultingBullet1: "Strategic project management and process optimization.",
@@ -1011,7 +1080,21 @@
                     training4BenefitsTitle: "Package Benefits:",
                     training4BenefitsP1: "Training content customized to your company's goals.",
                     training4BenefitsP2: "Formation of a unified project management language and approach within the team.",
-                    training4BenefitsP3: "Solving real work problems through practical exercises."
+                    training4BenefitsP3: "Solving real work problems through practical exercises.",
+
+                    training5TitleFull: "AI Project Management Training Program",
+                    training5OverviewTitle: "Program Overview",
+                    training5OverviewContent: "This program is designed to equip participants with the knowledge and tools to manage Artificial Intelligence (AI) projects effectively. Over 2 months, you will learn both the fundamentals of project management and the specific challenges of AI-driven projects, including data, ethical considerations, and stakeholder alignment.",
+                    training5LearnTitle: "What You Will Learn",
+                    training5LearnP1: "Basics of Project Management (Agile, Scrum, Waterfall in AI context)",
+                    training5LearnP2: "AI Project Lifecycle (data collection, model development, deployment)",
+                    training5LearnP3: "Risk Management in AI projects",
+                    training5LearnP4: "Stakeholder & communication management",
+                    training5LearnP5: "Ethical & legal aspects of AI projects",
+                    training5LearnP6: "Practical case studies and group exercises",
+                    training5DetailsTitle: "Program Details",
+                    training5DetailsP1: "Duration: 2 months (16 sessions, 2 per week)",
+                    training5DetailsP2: "Format: Interactive lectures, case studies, and quizzes"
                 }
             };
             
@@ -1113,3 +1196,5 @@
 
 </body>
 </html>
+
+
