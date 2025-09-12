@@ -198,7 +198,7 @@
         .training-card {
             background: var(--white-color);
             border-radius: var(--border-radius);
-            padding: 30px;
+            padding: 25px;
             display: flex;
             flex-direction: column;
             transition: all 0.3s ease;
@@ -211,31 +211,32 @@
             border-color: var(--secondary-color);
         }
         .training-card .icon-wrapper {
-            font-size: 2.5em;
+            font-size: 2.2em;
             color: var(--secondary-color);
-            margin-bottom: 20px;
+            margin-bottom: 15px;
         }
         .training-card h3 { 
-            font-size: 1.4em;
-            margin-bottom: 10px;
-            min-height: 3.2em;
+            font-size: 1.2em;
+            margin-bottom: 15px;
         }
-        .training-card .card-desc {
-            color: var(--text-color);
+        .training-card .card-bullets {
+            list-style: none;
+            padding-left: 0;
             margin-bottom: 25px;
             flex-grow: 1;
         }
-        .training-card .price {
-            font-size: 2.2em;
-            font-weight: 700;
-            color: var(--primary-color);
-            line-height: 1;
-        }
-        .training-card .price-note {
+        .training-card .card-bullets li {
             font-size: 0.9em;
-            opacity: 0.7;
-            margin-bottom: 25px;
-            display: block;
+            padding-left: 20px;
+            position: relative;
+            margin-bottom: 8px;
+        }
+        .training-card .card-bullets li::before {
+            content: '✓';
+            color: var(--secondary-color);
+            position: absolute;
+            left: 0;
+            font-weight: 900;
         }
 
         /* --- Consulting & Coaching Sections --- */
@@ -304,10 +305,14 @@
         .training-details ul { list-style: none; padding-left: 0; }
         .training-details ul li { margin-bottom: 10px; padding-left: 25px; position: relative; }
         .training-details ul li::before { font-family: 'Font Awesome 5 Free'; content: '\f058'; color: var(--secondary-color); position: absolute; left: 0; font-weight: 900; }
-        .price-box { background: #F8F9FA; padding: 15px 40px; border-top: 1px solid #e0e0e0; margin-top: auto; flex-shrink: 0; display: flex; justify-content: space-between; align-items: center; gap: 20px; }
-        .price-info { text-align: left; }
-        .price-box h4 { font-size: 1em; margin-top: 0; margin-bottom: 4px; color: var(--text-color); font-weight: 500; }
-        .price-box .price { font-size: 1.6em; font-weight: 700; color: var(--secondary-color); margin-bottom: 0; }
+        
+        .modal-price-info { margin-top: 30px; padding-top: 20px; border-top: 1px solid #e9ecef; }
+        .modal-price-info h4 { font-size: 1.1em; font-weight: 600; margin-bottom: 5px; color: var(--primary-color);}
+        .modal-price-info .price { font-size: 2em; font-weight: 700; color: var(--secondary-color); padding: 0; }
+
+        .price-box { background: #F8F9FA; padding: 15px 40px; border-top: 1px solid #e0e0e0; margin-top: auto; flex-shrink: 0; display: flex; justify-content: flex-end; align-items: center; gap: 20px; flex-wrap: wrap; }
+        .price-box-buttons { display: flex; gap: 10px; flex-wrap: wrap; }
+        
         #calendar-modal .modal-content { max-width: 1024px; }
         #calendar-modal h3 { margin-bottom: 20px; }
         
@@ -339,7 +344,7 @@
         }
         
         @media (max-width: 992px) {
-            .service-layout, #coaching .service-layout { flex-direction: column; }
+            .service-layout { flex-direction: column; }
             #coaching .service-layout { flex-direction: column-reverse; }
             .service-image { max-width: 500px; }
             .service-content { text-align: center; }
@@ -361,15 +366,26 @@
                 gap: 15px;
             }
             .training-card {
-                padding: 20px;
+                padding: 20px 15px;
+            }
+            .training-card .icon-wrapper {
+                font-size: 2em;
+                margin-bottom: 10px;
             }
             .training-card h3 {
-                font-size: 1.2em;
+                font-size: 1.1em;
                 min-height: auto;
             }
+            .training-card .card-bullets li {
+                 font-size: 0.85em;
+            }
+            .training-card .cta-button {
+                padding: 10px 20px;
+                font-size: 0.9em;
+            }
             .training-card .card-desc { display: none; }
-             .price-box { flex-direction: column; padding: 15px 20px; text-align: center; }
-            .price-info { text-align: center; margin-bottom: 10px; }
+            .price-box { flex-direction: column; padding: 15px 20px; text-align: center; }
+            .price-box-buttons { justify-content: center; }
         }
     </style>
 </head>
@@ -427,9 +443,11 @@
                     <div class="training-card">
                         <div class="icon-wrapper"><i class="fas fa-sitemap"></i></div>
                         <h3 data-lang-key="training1Title">“360° Layihə İdarəetməsi”</h3>
-                        <p class="card-desc" data-lang-key="training1Desc">Layihə idarəetməsini sıfırdan öyrənmək və bu sahədə peşəkar olmaq üçün 8 həftəlik intensiv proqram.</p>
-                        <div class="price" data-price-azn="300">300 AZN</div>
-                        <div class="price-note" data-lang-key="price2Months">(2 ay)</div>
+                        <ul class="card-bullets">
+                            <li data-lang-key="training1Bullet1"></li>
+                            <li data-lang-key="training1Bullet2"></li>
+                            <li data-lang-key="training1Bullet3"></li>
+                        </ul>
                         <button class="cta-button" onclick="openModal('modal-360')" data-lang-key="readMore">Ətraflı Bax</button>
                     </div>
         
@@ -437,9 +455,11 @@
                     <div class="training-card">
                         <div class="icon-wrapper"><i class="fas fa-user-graduate"></i></div>
                         <h3 data-lang-key="training2Title">CAPM® Sertifikatına Hazırlıq</h3>
-                        <p class="card-desc" data-lang-key="training2Desc">PMI® standartları ilə layihə idarəetməsi nəzəriyyəsini mənimsəyin və beynəlxalq CAPM® imtahanına tam hazır olun.</p>
-                        <div class="price" data-price-azn="450">450 AZN</div>
-                        <div class="price-note" data-lang-key="price2Months">(2 ay)</div>
+                        <ul class="card-bullets">
+                            <li data-lang-key="training2Bullet1"></li>
+                            <li data-lang-key="training2Bullet2"></li>
+                            <li data-lang-key="training2Bullet3"></li>
+                        </ul>
                         <button class="cta-button" onclick="openModal('modal-capm')" data-lang-key="readMore">Ətraflı Bax</button>
                     </div>
 
@@ -447,9 +467,11 @@
                     <div class="training-card">
                         <div class="icon-wrapper"><i class="fas fa-certificate"></i></div>
                         <h3 data-lang-key="training3Title">PMP® Sertifikatına Hazırlıq</h3>
-                        <p class="card-desc" data-lang-key="training3Desc">Təcrübəli layihə menecerləri üçün nəzərdə tutulan, qlobal səviyyədə tanınan PMP® sertifikasiya imtahanına hazırlıq.</p>
-                        <div class="price" data-price-azn="750">750 AZN</div>
-                        <div class="price-note" data-lang-key="price3Months">(3 ay)</div>
+                         <ul class="card-bullets">
+                            <li data-lang-key="training3Bullet1"></li>
+                            <li data-lang-key="training3Bullet2"></li>
+                            <li data-lang-key="training3Bullet3"></li>
+                        </ul>
                         <button class="cta-button" onclick="openModal('modal-pmp')" data-lang-key="readMore">Ətraflı Bax</button>
                     </div>
 
@@ -457,9 +479,11 @@
                     <div class="training-card">
                         <div class="icon-wrapper"><i class="fas fa-building"></i></div>
                         <h3 data-lang-key="training4Title">Korporativ Təlim Paketi</h3>
-                        <p class="card-desc" data-lang-key="training4Desc">Şirkətinizin ehtiyaclarına uyğunlaşdırılmış, klassik, çevik və hibrid metodları əhatə edən tam günlük təlim.</p>
-                        <div class="price" data-price-azn="500">500 AZN</div>
-                        <div class="price-note" data-lang-key="perDay">(günlük)</div>
+                        <ul class="card-bullets">
+                            <li data-lang-key="training4Bullet1"></li>
+                            <li data-lang-key="training4Bullet2"></li>
+                            <li data-lang-key="training4Bullet3"></li>
+                        </ul>
                         <button class="cta-button" onclick="openModal('modal-corporate')" data-lang-key="readMore">Ətraflı Bax</button>
                     </div>
 
@@ -467,9 +491,11 @@
                     <div class="training-card">
                         <div class="icon-wrapper"><i class="fas fa-robot"></i></div>
                         <h3 data-lang-key="training5Title">AI Layihə İdarəetməsi Təlim Proqramı</h3>
-                        <p class="card-desc" data-lang-key="training5Desc">Süni İntellekt (AI) layihələrini uğurla idarə etmək üçün bilik və alətlər əldə edin.</p>
-                        <div class="price" data-price-azn="500">500 AZN</div>
-                        <div class="price-note" data-lang-key="price2Months">(2 ay)</div>
+                        <ul class="card-bullets">
+                            <li data-lang-key="training5Bullet1"></li>
+                            <li data-lang-key="training5Bullet2"></li>
+                            <li data-lang-key="training5Bullet3"></li>
+                        </ul>
                         <button class="cta-button" onclick="openModal('modal-ai-pm')" data-lang-key="readMore">Ətraflı Bax</button>
                     </div>
                 </div>
@@ -523,7 +549,7 @@
 
     </main>
     
-    <!-- MODALS (Content unchanged, only styling might be affected by global changes) -->
+    <!-- MODALS -->
     <div id="modal-consulting" class="modal">
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal('modal-consulting')">&times;</span>
@@ -533,7 +559,10 @@
                     <p data-lang-key="consultingBoxDescFull"></p>
                 </div>
                 <div class="price-box">
-                    <a href="mailto:info@pmaniahub.com?subject=Biznes%20Konsaltinq%20Sor%C4%9Fusu" class="cta-button" data-lang-key="sendInquiry"></a>
+                    <div class="price-box-buttons">
+                        <a href="mailto:info@pmaniahub.com?subject=Biznes%20Konsaltinq%20Sor%C4%9Fusu" class="cta-button" data-lang-key="sendInquiry"></a>
+                        <button class="cta-button secondary" onclick="openModal('calendar-modal')" data-lang-key="freeConsultation"></button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -548,11 +577,12 @@
                     <h3 class="tagline" data-lang-key="training1Tagline"></h3>
                     <p data-lang-key="training1ModalDesc"></p>
                     
-                    <h4 data-lang-key="training1FormatTitle"></h4>
+                    <h4 data-lang-key="trainingDetailsTitle"></h4>
                     <ul>
                         <li data-lang-key="training1Format1"></li>
                         <li data-lang-key="training1Format2"></li>
                         <li data-lang-key="training1Format3"></li>
+                        <li data-lang-key="groupSize"></li>
                     </ul>
 
                     <h4 data-lang-key="training1InstructorTitle"></h4>
@@ -589,14 +619,17 @@
                         <li data-lang-key="training1BenefitsP3"></li>
                         <li data-lang-key="training1BenefitsP4"></li>
                     </ul>
+                    <div class="modal-price-info">
+                        <h4 data-lang-key="priceTitle"></h4>
+                        <p class="price" data-price-azn="300">300 AZN</p>
+                    </div>
                 </div>
 
                 <div class="price-box">
-                    <div class="price-info">
-                        <h4 data-lang-key="priceTitle"></h4>
-                        <div class="price" data-price-azn="300">300 AZN</div>
+                    <div class="price-box-buttons">
+                        <a href="https://wa.me/37258243097?text=Salam%2C%20'360%C2%B0%20Layih%C9%99%20%C4%B0dar%C9%99etm%C9%99si'%20t%C9%99limi%20il%C9%99%20maraqlan%C4%B1ram." target="_blank" class="cta-button" data-lang-key="applyNow"></a>
+                        <button class="cta-button secondary" onclick="openModal('calendar-modal')" data-lang-key="freeConsultation"></button>
                     </div>
-                    <a href="https://wa.me/37258243097?text=Salam%2C%20'360%C2%B0%20Layih%C9%99%20%C4%B0dar%C9%99etm%C9%99si'%20t%C9%99limi%20il%C9%99%20maraqlan%C4%B1ram." target="_blank" class="cta-button" data-lang-key="applyNow"></a>
                 </div>
             </div>
         </div>
@@ -633,19 +666,23 @@
                         <li data-lang-key="training2ContentP4"></li>
                     </ul>
                     
-                     <h4 data-lang-key="training2FormatTitle"></h4>
+                     <h4 data-lang-key="trainingDetailsTitle"></h4>
                     <ul>
                         <li data-lang-key="training2FormatP1"></li>
                         <li data-lang-key="training2FormatP2"></li>
                         <li data-lang-key="training2FormatP3"></li>
+                        <li data-lang-key="groupSize"></li>
                     </ul>
+                    <div class="modal-price-info">
+                        <h4 data-lang-key="priceTitle"></h4>
+                        <p class="price" data-price-azn="450">450 AZN</p>
+                    </div>
                 </div>
                  <div class="price-box">
-                    <div class="price-info">
-                        <h4 data-lang-key="priceTitle"></h4>
-                        <div class="price" data-price-azn="450">450 AZN</div>
+                    <div class="price-box-buttons">
+                        <a href="https://wa.me/37258243097?text=Salam%2C%20CAPM%C2%AE%20Sertifikat%C4%B1na%20Haz%C4%B1rl%C4%B1q%20Proqram%C4%B1%20il%C9%99%20maraqlan%C4%B1ram." target="_blank" class="cta-button" data-lang-key="applyNow"></a>
+                        <button class="cta-button secondary" onclick="openModal('calendar-modal')" data-lang-key="freeConsultation"></button>
                     </div>
-                    <a href="https://wa.me/37258243097?text=Salam%2C%20CAPM%C2%AE%20Sertifikat%C4%B1na%20Haz%C4%B1rl%C4%B1q%20Proqram%C4%B1%20il%C9%99%20maraqlan%C4%B1ram." target="_blank" class="cta-button" data-lang-key="applyNow"></a>
                 </div>
             </div>
         </div>
@@ -686,12 +723,13 @@
                         <li data-lang-key="training3ContentP6"></li>
                     </ul>
                     
-                    <h4 data-lang-key="training3FormatTitle"></h4>
+                    <h4 data-lang-key="trainingDetailsTitle"></h4>
                     <ul>
                         <li data-lang-key="training3FormatP1"></li>
                         <li data-lang-key="training3FormatP2"></li>
                         <li data-lang-key="training3FormatP3"></li>
                         <li data-lang-key="training3FormatP4"></li>
+                        <li data-lang-key="groupSize"></li>
                     </ul>
 
                     <h4 data-lang-key="training3WhyUsTitle"></h4>
@@ -701,14 +739,17 @@
                         <li data-lang-key="training3WhyUsP3"></li>
                         <li data-lang-key="training3WhyUsP4"></li>
                     </ul>
+                    <div class="modal-price-info">
+                        <h4 data-lang-key="priceTitle"></h4>
+                        <p class="price" data-price-azn="750">750 AZN</p>
+                    </div>
                 </div>
 
                 <div class="price-box">
-                    <div class="price-info">
-                        <h4 data-lang-key="priceTitle"></h4>
-                        <div class="price" data-price-azn="750">750 AZN</div>
+                     <div class="price-box-buttons">
+                        <a href="https://wa.me/37258243097?text=Salam%2C%20PMP%C2%AE%20Sertifikat%C4%B1na%20Haz%C4%B1rl%C4%B1q%20Proqram%C4%B1%20il%C9%99%20maraqlan%C4%B1ram." target="_blank" class="cta-button" data-lang-key="training3Enroll"></a>
+                        <button class="cta-button secondary" onclick="openModal('calendar-modal')" data-lang-key="freeConsultation"></button>
                     </div>
-                    <a href="https://wa.me/37258243097?text=Salam%2C%20PMP%C2%AE%20Sertifikat%C4%B1na%20Haz%C4%B1rl%C4%B1q%20Proqram%C4%B1%20il%C9%99%20maraqlan%C4%B1ram." target="_blank" class="cta-button" data-lang-key="training3Enroll"></a>
                 </div>
             </div>
         </div>
@@ -728,13 +769,16 @@
                         <li data-lang-key="training4BenefitsP2"></li>
                         <li data-lang-key="training4BenefitsP3"></li>
                     </ul>
+                    <div class="modal-price-info">
+                        <h4 data-lang-key="priceTitle"></h4>
+                        <p class="price" data-price-azn="500">500 AZN</p>
+                    </div>
                 </div>
                 <div class="price-box">
-                    <div class="price-info">
-                        <h4 data-lang-key="priceTitle"></h4>
-                        <div class="price" data-price-azn="500">500 AZN</div>
+                     <div class="price-box-buttons">
+                        <a href="https://wa.me/37258243097?text=Salam%2C%20Korporativ%20T%C9%99lim%20Paketi%20il%C9%99%20maraqlan%C4%B1ram." target="_blank" class="cta-button" data-lang-key="applyNow"></a>
+                        <button class="cta-button secondary" onclick="openModal('calendar-modal')" data-lang-key="freeConsultation"></button>
                     </div>
-                    <a href="https://wa.me/37258243097?text=Salam%2C%20Korporativ%20T%C9%99lim%20Paketi%20il%C9%99%20maraqlan%C4%B1ram." target="_blank" class="cta-button" data-lang-key="applyNow"></a>
                 </div>
             </div>
         </div>
@@ -761,18 +805,22 @@
                         <li data-lang-key="training5LearnP6"></li>
                     </ul>
 
-                    <h4 data-lang-key="training5DetailsTitle"></h4>
+                    <h4 data-lang-key="trainingDetailsTitle"></h4>
                     <ul>
                         <li data-lang-key="training5DetailsP1"></li>
                         <li data-lang-key="training5DetailsP2"></li>
+                        <li data-lang-key="groupSize"></li>
                     </ul>
+                    <div class="modal-price-info">
+                        <h4 data-lang-key="priceTitle"></h4>
+                        <p class="price" data-price-azn="500">500 AZN</p>
+                    </div>
                 </div>
                 <div class="price-box">
-                    <div class="price-info">
-                        <h4 data-lang-key="priceTitle"></h4>
-                        <div class="price" data-price-azn="500">500 AZN</div>
+                    <div class="price-box-buttons">
+                        <a href="https://wa.me/37258243097?text=Salam%2C%20AI%20Layih%C9%99%20%C4%B0dar%C9%99etm%C9%99si%20T%C9%99lim%20Proqram%C4%B1%20il%C9%99%20maraqlan%C4%B1ram." target="_blank" class="cta-button" data-lang-key="applyNow"></a>
+                        <button class="cta-button secondary" onclick="openModal('calendar-modal')" data-lang-key="freeConsultation"></button>
                     </div>
-                    <a href="https://wa.me/37258243097?text=Salam%2C%20AI%20Layih%C9%99%20%C4%B0dar%C9%99etm%C9%99si%20T%C9%99lim%20Proqram%C4%B1%20il%C9%99%20maraqlan%C4%B1ram." target="_blank" class="cta-button" data-lang-key="applyNow"></a>
                 </div>
             </div>
         </div>
@@ -838,14 +886,39 @@
                     navHome: "Əsas Səhifə", navAbout: "Haqqımızda", navServices: "Xidmətlər", navReviews: "Rəylər", navBlog: "Bloq", navContact: "Əlaqə",
                     navTrainings: "Təlimlər", navConsulting: "Konsaltinq", navCoaching: "Kouçinq",
                     pageTitle: "Təlim Paketlərimiz", pageSubtitle: "Karyeranızı növbəti səviyyəyə qaldırmaq üçün beynəlxalq standartlara əsaslanan, praktiki təlim proqramlarımızla tanış olun.",
-                    training1Title: "“360° Layihə İdarəetməsi”", training1Desc: "Layihə idarəetməsini sıfırdan öyrənmək və bu sahədə peşəkar olmaq üçün 8 həftəlik intensiv proqram.",
-                    training2Title: "CAPM® Sertifikatına Hazırlıq", training2Desc: "PMI® standartları ilə layihə idarəetməsi nəzəriyyəsini mənimsəyin və beynəlxalq CAPM® imtahanına tam hazır olun.",
-                    training3Title: "PMP® Sertifikatına Hazırlıq", training3Desc: "Təcrübəli layihə menecerləri üçün nəzərdə tutulan, qlobal səviyyədə tanınan PMP® sertifikasiya imtahanına hazırlıq.",
-                    training4Title: "Korporativ Təlim Paketi", training4Desc: "Şirkətinizin ehtiyaclarına uyğunlaşdırılmış, klassik, çevik və hibrid metodları əhatə edən tam günlük təlim.",
-                    training5Title: "AI Layihə İdarəetməsi Təlim Proqramı", training5Desc: "Süni İntellekt (AI) layihələrini uğurla idarə etmək üçün bilik və alətlər əldə edin.",
+                    
+                    training1Title: "“360° Layihə İdarəetməsi”",
+                    training1Bullet1: "Sıfırdan zirvəyə praktiki biliklər",
+                    training1Bullet2: "Real layihə təcrübəsi qazanın",
+                    training1Bullet3: "Karyeranızda kəskin sıçrayış edin",
+
+                    training2Title: "CAPM® Sertifikatına Hazırlıq",
+                    training2Bullet1: "Beynəlxalq sertifikatla fərqlənin",
+                    training2Bullet2: "PMI® standartlarını mənimsəyin",
+                    training2Bullet3: "İmtahandan ilk cəhddə keçin",
+
+                    training3Title: "PMP® Sertifikatına Hazırlıq",
+                    training3Bullet1: "Elita menecerlər sırasına qoşulun",
+                    training3Bullet2: "Mürəkkəb layihələri idarə edin",
+                    training3Bullet3: "Qlobal karyera imkanları yaradın",
+                    
+                    training4Title: "Korporativ Təlim Paketi",
+                    training4Bullet1: "Komandanızın potensialını artırın",
+                    training4Bullet2: "Biznes hədəflərinizə sürətlə çatın",
+                    training4Bullet3: "Şirkətinizə uyğun fərdi proqram",
+
+                    training5Title: "AI Layihə İdarəetməsi Proqramı",
+                    training5Bullet1: "Gələcəyin texnologiyasını idarə edin",
+                    training5Bullet2: "AI layihələrində lider olun",
+                    training5Bullet3: "Tələb olunan yeni bacarıqlar qazanın",
+
                     perDay: "(günlük)", readMore: "Ətraflı Bax",
                     price2Months: "(2 ay)",
                     price3Months: "(3 ay)",
+                    freeConsultation: "Ödənişsiz Konsultasiya",
+                    groupSize: "Qrup ölçüsü: 5 nəfərə qədər",
+                    trainingDetailsTitle: "Təlim Detalları",
+
                     consultingTitle: "Biznes Konsaltinq", consultingSubtitle: "Proseslərinizi optimallaşdırmaq və layihə uğurunuzu artırmaq üçün fərdi strateji dəstək.",
                     consultingBoxTitle: "Biznesiniz üçün Strateji Həllər",
                     consultingBullet1: "Strateji layihə idarəetməsi və proses optimallaşdırılması.",
@@ -864,8 +937,7 @@
                     calendarTitle: "Görüş Rezerv Edin",
                     training1TitleFull: "“360° Layihə İdarəetməsi” Təlim Proqramı", training1Tagline: "QOŞUL, ÖYRƏN, TƏTBİQ ET! 🚀", 
                     training1ModalDesc: "Layihə idarəetməsini sıfırdan öyrənmək və bu sahədə peşəkar olmaq istəyirsənsə, bu 8 həftəlik intensiv proqram tam sənin üçündür! PMANIA sənə praktiki bilik və real təcrübəyə əsaslanan bir yanaşma təqdim edir.",
-                    training1FormatTitle: "Təlim formatı:", 
-                    training1Format1: "2 ay müddətini əhatə edir.", 
+                    training1Format1: "Müddət: 2 ay", 
                     training1Format2: "Dərslər həftədə 2 dəfə keçirilir, nəzəriyyə və praktika olaraq bölünmüşdür.", 
                     training1Format3: "Hər dərs 90 dəqiqə davam edir və online şəkildə aparılır.",
                     training1InstructorTitle: "Təlimçi: Mahmud Mahmudlu",
@@ -910,7 +982,6 @@
                     training2ContentP2: "Layihə Mühiti (Daxili, Xarici, Təşkilati Strukturlar)",
                     training2ContentP3: "Layihə Menecerinin Rolu və Bacarıqları",
                     training2ContentP4: "Bütün Layihə İdarəetməsi Bilik Sahələri (İnteqrasiya, Həcm, Cədvəl, Xərc, Keyfiyyət, Resurslar, Kommunikasiya, Risk, Təchizat, Maraqlı Tərəflər)",
-                    training2FormatTitle: "🕒 Təlim Formatı",
                     training2FormatP1: "Müddət: 2 ay",
                     training2FormatP2: "Rejim: Onlayn",
                     training2FormatP3: "Materiallar: Rəqəmsal dərsliklər və sınaq imtahanları",
@@ -936,7 +1007,6 @@
                     training3ContentP4: "Biznes Mühiti – Strategiyaya uyğunlaşma, idarəetmə və dəyər təqdimatı",
                     training3ContentP5: "Çevik və Hibrid Təcrübələr – Adaptiv metodlar və artımlı təqdimat",
                     training3ContentP6: "İmtahana Hazırlıq – Sınaq testləri və təhsil strategiyaları",
-                    training3FormatTitle: "🕒 Təlim Formatı",
                     training3FormatP1: "Müddət: 3 ay",
                     training3FormatP2: "Rejim: Onlayn",
                     training3FormatP3: "Cədvəl: Çevik həftəiçi və həftəsonu seçimləri",
@@ -964,7 +1034,6 @@
                     training5LearnP4: "Maraqlı tərəflər və kommunikasiya idarəetməsi",
                     training5LearnP5: "AI layihələrinin etik və hüquqi aspektləri",
                     training5LearnP6: "Praktik nümunələr və qrup tapşırıqları",
-                    training5DetailsTitle: "Proqram Detalları",
                     training5DetailsP1: "Müddət: 2 ay (16 sessiya, həftədə 2 dəfə)",
                     training5DetailsP2: "Format: İnteraktiv mühazirələr, nümunələr və viktorinalar"
                 },
@@ -972,14 +1041,39 @@
                     navHome: "Home", navAbout: "About Us", navServices: "Services", navReviews: "Reviews", navBlog: "Blog", navContact: "Contact",
                     navTrainings: "Trainings", navConsulting: "Consulting", navCoaching: "Coaching",
                     pageTitle: "Our Training Packages", pageSubtitle: "Discover our practical training programs based on international standards to take your career to the next level.",
-                    training1Title: "\"360° Project Management\"", training1Desc: "An 8-week intensive program to learn project management from scratch and become a professional.",
-                    training2Title: "CAPM® Certification Prep", training2Desc: "Master project management theory with PMI® standards and get fully prepared for the international CAPM® exam.",
-                    training3Title: "PMP® Certification Prep", training3Desc: "Globally recognized PMP® certification exam preparation for experienced project managers.",
-                    training4Title: "Corporate Training Package", training4Desc: "A full-day training covering classic, agile, and hybrid methods, tailored to your company's needs.",
-                    training5Title: "AI Project Management Training Program", training5Desc: "Equip yourself with the knowledge and tools to manage Artificial Intelligence (AI) projects effectively.",
+
+                    training1Title: "\"360° Project Management\"",
+                    training1Bullet1: "Master practical skills from scratch",
+                    training1Bullet2: "Gain real-world project experience",
+                    training1Bullet3: "Fast-track your career growth",
+
+                    training2Title: "CAPM® Certification Prep",
+                    training2Bullet1: "Stand out with a global certification",
+                    training2Bullet2: "Master the official PMI® standards",
+                    training2Bullet3: "Pass the exam on your first try",
+                    
+                    training3Title: "PMP® Certification Prep",
+                    training3Bullet1: "Join the elite ranks of project managers",
+                    training3Bullet2: "Lead complex projects with confidence",
+                    training3Bullet3: "Unlock global career opportunities",
+
+                    training4Title: "Corporate Training Package",
+                    training4Bullet1: "Maximize your team's potential",
+                    training4Bullet2: "Achieve business goals faster",
+                    training4Bullet3: "Custom programs tailored to you",
+
+                    training5Title: "AI Project Management Program",
+                    training5Bullet1: "Lead the technology of the future",
+                    training5Bullet2: "Become a leader in AI projects",
+                    training5Bullet3: "Gain in-demand, future-proof skills",
+
                     perDay: "(per day)", readMore: "Learn More",
                     price2Months: "(2 months)",
                     price3Months: "(3 months)",
+                    freeConsultation: "Free Consultation",
+                    groupSize: "Group Size: Up to 5 people",
+                    trainingDetailsTitle: "Training Details",
+
                     consultingTitle: "Business Consulting", consultingSubtitle: "Tailored strategic support to optimize your processes and elevate your project success.",
                     consultingBoxTitle: "Strategic Solutions for Your Business",
                     consultingBullet1: "Strategic project management and process optimization.",
@@ -998,8 +1092,7 @@
                     calendarTitle: "Book a Meeting",
                     training1TitleFull: "\"360° Project Management\" Training Program", training1Tagline: "JOIN, LEARN, APPLY! 🚀", 
                     training1ModalDesc: "If you want to learn project management from scratch and become a professional, this 8-week intensive program is for you! PMANIA offers an approach based on practical knowledge and real experience.",
-                    training1FormatTitle: "Training Format:", 
-                    training1Format1: "Covers a period of 2 months.", 
+                    training1Format1: "Duration: 2 months", 
                     training1Format2: "Classes are held twice a week, divided into theory and practice.", 
                     training1Format3: "Each class lasts 90 minutes and is conducted online.",
                     training1InstructorTitle: "Instructor: Mahmud Mahmudlu",
@@ -1044,7 +1137,6 @@
                     training2ContentP2: "Project Environment (Internal, External, Organizational Structures)",
                     training2ContentP3: "Role and Skills of the Project Manager",
                     training2ContentP4: "All Project Management Knowledge Areas (Integration, Scope, Schedule, Cost, Quality, Resources, Communications, Risk, Procurement, Stakeholder)",
-                    training2FormatTitle: "🕒 Training Format",
                     training2FormatP1: "Duration: 2 months",
                     training2FormatP2: "Mode: Online only",
                     training2FormatP3: "Materials: Digital coursebooks and practice exams",
@@ -1070,7 +1162,6 @@
                     training3ContentP4: "Business Environment – Strategy alignment, governance, and value delivery",
                     training3ContentP5: "Agile & Hybrid Practices – Adaptive methods and incremental delivery",
                     training3ContentP6: "Exam Readiness – Mock tests and study strategies",
-                    training3FormatTitle: "🕒 Training Format",
                     training3FormatP1: "Duration: 3 months",
                     training3FormatP2: "Mode: Online only",
                     training3FormatP3: "Schedule: Flexible weekday & weekend options",
@@ -1098,7 +1189,6 @@
                     training5LearnP4: "Stakeholder & communication management",
                     training5LearnP5: "Ethical & legal aspects of AI projects",
                     training5LearnP6: "Practical case studies and group exercises",
-                    training5DetailsTitle: "Program Details",
                     training5DetailsP1: "Duration: 2 months (16 sessions, 2 per week)",
                     training5DetailsP2: "Format: Interactive lectures, case studies, and quizzes"
                 }
