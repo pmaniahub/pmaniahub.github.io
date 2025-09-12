@@ -275,13 +275,14 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            gap: 30px;
+            flex-wrap: wrap;
         }
 
         .team-card {
             position: relative;
             width: 320px;
             height: 400px;
-            background-image: url('/images/mahmud.png'), url('https://placehold.co/320x400/222831/ffffff?text=Mahmud+M.');
             background-size: cover;
             background-position: center;
             border-radius: 15px;
@@ -355,19 +356,19 @@
             cursor: pointer;
         }
         
-        #mahmud-modal .modal-body h3 {
+        .modal-body h3 {
             font-size: 1.8em;
             margin-bottom: 5px;
         }
 
-        #mahmud-modal .modal-body .subtitle {
+        .modal-body .subtitle {
             font-size: 1.1em;
             color: var(--secondary-color);
             margin-bottom: 25px;
             font-weight: 500;
         }
 
-        #mahmud-modal .modal-body h4 {
+        .modal-body h4 {
             font-size: 1.2em;
             color: var(--primary-color);
             margin-top: 20px;
@@ -375,11 +376,11 @@
             border-bottom: 2px solid var(--secondary-color);
             padding-bottom: 5px;
         }
-        #mahmud-modal .modal-body ul {
+        .modal-body ul {
             list-style-position: inside;
             padding-left: 5px;
         }
-        #mahmud-modal .modal-body ul li {
+        .modal-body ul li {
             margin-bottom: 8px;
         }
 
@@ -510,6 +511,19 @@
                 align-items: flex-start;
                 text-align: left;
             }
+            .team-grid {
+                gap: 15px;
+            }
+            .team-card {
+                width: 48%;
+                height: 250px;
+            }
+            .team-card h3 {
+                font-size: 1.2em;
+            }
+            .team-card p {
+                font-size: 0.9em;
+            }
         }
     </style>
 </head>
@@ -583,10 +597,16 @@
             <div class="container">
                 <h2 class="section-title" data-lang-key="teamTitle">Komandamızla Tanış Olun</h2>
                 <div class="team-grid">
-                    <div class="team-card" onclick="openModal('mahmud-modal')">
+                    <div class="team-card" style="background-image: url('/images/mahmud.png'), url('https://placehold.co/320x400/222831/ffffff?text=Mahmud+M.');" onclick="openModal('mahmud-modal')">
                         <div class="team-card-overlay">
                             <h3 data-lang-key="teamMemberName">Mahmud Mahmudlu</h3>
                             <p data-lang-key="teamMemberTitle">Təsisçi, Layihə İdarəetməsi Təlimçisi</p>
+                        </div>
+                    </div>
+                    <div class="team-card" style="background-image: url('/images/abdallah.png'), url('https://placehold.co/320x400/222831/ffffff?text=Abdallah+H.');" onclick="openModal('abdallah-modal')">
+                        <div class="team-card-overlay">
+                            <h3 data-lang-key="abdallahName">Abdallah Hussein Sham</h3>
+                            <p data-lang-key="abdallahTitle">AI Eksperti | PHD</p>
                         </div>
                     </div>
                 </div>
@@ -663,6 +683,36 @@
             </div>
         </div>
     </div>
+    
+    <!-- Abdallah's Profile Modal -->
+    <div id="abdallah-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('abdallah-modal')">&times;</span>
+            <div class="modal-body">
+                <h3 data-lang-key="abdallahName">Abdallah Hussein Sham</h3>
+                <p class="subtitle" data-lang-key="abdallahRole">AI Researcher | Educator | Junior Research Fellow</p>
+                
+                <h4 data-lang-key="abdallahSummaryTitle">Professional Summary</h4>
+                <p data-lang-key="abdallahSummaryContent">An Artificial Intelligence researcher with expertise in multimodal emotion recognition, speech technologies, and applied machine learning. Abdallah combines academic rigor with practical application, focusing on how AI can understand human behavior while ensuring fairness, ethics, and bias-awareness in intelligent systems. With a growing body of peer-reviewed publications, he is dedicated to making AI concepts accessible to students and professionals.</p>
+                
+                <h4 data-lang-key="abdallahExperienceTitle">Key Experience (Tallinn University & Research Projects)</h4>
+                <ul>
+                    <li data-lang-key="abdallahExp1">Conducted research on speech emotion recognition using deep neural networks, mapping emotions to Valence-Arousal-Dominance (VAD) space.</li>
+                    <li data-lang-key="abdallahExp2">Developed multimodal AI models integrating voice and behavioral data for improved emotion recognition accuracy.</li>
+                    <li data-lang-key="abdallahExp3">Published and presented in international conferences and journals on AI, ethics, and applied ML.</li>
+                    <li data-lang-key="abdallahExp4">Active collaborator on cross-disciplinary research teams, bridging AI with psychology and human-computer interaction.</li>
+                </ul>
+
+                <h4 data-lang-key="abdallahCertsTitle">Certifications & Academic Achievements</h4>
+                <ul>
+                    <li data-lang-key="abdallahCert1">Junior Research Fellow – Tallinn University</li>
+                    <li data-lang-key="abdallahCert2">Multiple peer-reviewed AI research publications</li>
+                    <li data-lang-key="abdallahCert3">Recognized contributor in ethical AI and applied machine learning.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
 
     <script>
         if (!window.pmaniaScriptLoaded) {
@@ -677,10 +727,26 @@
                     missionModalTitle: "Missiyamız", missionModalDesc: "Layihə idarəetməsini maarifləndirici, əyləncəli və motivasiyaedici yanaşma ilə hər kəs üçün daha maraqlı və əlçatan etmək!",
                     visionModalTitle: "Vizyonumuz", visionModalDesc: "Layihə idarəetməsini yeni baxışla təqdim edən aparıcı platforma olmaq.",
                     teamTitle: "Komandamızla Tanış Olun", teamMemberName: "Mahmud Mahmudlu", teamMemberTitle: "Təsisçi, Layihə İdarəetməsi Təlimçisi",
+                    
                     mahmudName: "Mahmud Mahmudlu", mahmudRole: "PMP® | Baş Layihə və Proqram Rəhbəri",
                     summaryTitle: "Peşəkar Xülasə", summaryContent: "PMP® və Lean Six Sigma sertifikatlı, mürəkkəb və yüksək dəyərli texnologiya proqramlarını tam həyat dövrü boyunca uğurla təslim etmə təcrübəsinə malik lider. 6 ildən çox beynəlxalq təcrübə ilə yüksək texnologiyalı sənaye mühitində çoxmilyonluq avro dəyərində NPI layihələrini idarə etməkdə üstünəm.",
                     experienceTitle: "Əsas Təcrübə (Ericsson)", expPoint1: "Büdcəsi 7 milyon avroya çatan əsas NPI platforma layihələrini idarə edib.", expPoint2: "Müxtəlif qlobal istehsalat sahələrində funksiyalararası komandalara (mühəndislik, keyfiyyət, satınalma) rəhbərlik edib.", expPoint3: "Kiçik PM-lərə mentorluq edərək komandanın performansını yüksəldib və ən yaxşı performans mükafatlarına layiq görülüb.",
                     certsTitle: "Sertifikatlar", cert1: "Project Management Professional (PMP)® - PMI", cert2: "Lean Six Sigma Yellow Belt - Ericsson", cert3: "Practical Gen AI for Project Managers – PMI",
+
+                    abdallahName: "Abdallah Hussein Sham", abdallahTitle: "Süni İntellekt Eksperti | PHD",
+                    abdallahRole: "Süni İntellekt Eksperti | PHD | Kiçik Elmi İşçi",
+                    abdallahSummaryTitle: "Peşəkar Xülasə",
+                    abdallahSummaryContent: "Multimodal emosiya tanınması, nitq texnologiyaları və tətbiqi maşın öyrənməsi sahəsində təcrübəyə malik Süni İntellekt tədqiqatçısı. Abdallah, akademik ciddiliyi praktiki tətbiqlə birləşdirərək, Sİ-nin insan davranışını necə anlaya biləcəyinə fokuslanır və eyni zamanda intellektual sistemlərdə ədalətlilik, etika və qərəz şüurunu təmin edir. Günü-gündən artan rəyçilənmiş nəşrləri ilə Sİ konsepsiyalarını tələbələr və peşəkarlar üçün əlçatan etməyə sadiqdir.",
+                    abdallahExperienceTitle: "Əsas Təcrübə (Tallinn Universiteti və Tədqiqat Layihələri)",
+                    abdallahExp1: "Dərin neyron şəbəkələrindən istifadə edərək nitq emosiyalarının tanınması üzrə tədqiqatlar aparmış, emosiyaları Valentlik-Oyanıqlıq-Dominantlıq (VAD) fəzasına uyğunlaşdırmışdır.",
+                    abdallahExp2: "Daha dəqiq emosiya tanınması üçün səs və davranış məlumatlarını birləşdirən multimodal Sİ modelləri hazırlamışdır.",
+                    abdallahExp3: "Sİ, etika və tətbiqi maşın öyrənməsi mövzularında beynəlxalq konfrans və jurnallarda məqalələr dərc etdirmiş və təqdimatlar etmişdir.",
+                    abdallahExp4: "Sİ ilə psixologiya və insan-kompüter qarşılıqlı əlaqəsi arasında körpü yaradan fənlərarası tədqiqat qruplarında fəal əməkdaşlıq edir.",
+                    abdallahCertsTitle: "Sertifikatlar və Akademik Nailiyyətlər",
+                    abdallahCert1: "Kiçik Elmi İşçi – Tallinn Universiteti",
+                    abdallahCert2: "Çoxsaylı rəyçilənmiş Sİ tədqiqat nəşrləri",
+                    abdallahCert3: "Etik Sİ və tətbiqi maşın öyrənməsi sahəsində tanınmış töhfəçi.",
+                    
                     footerTitle1: "PMania Hub", footerDesc1: "Layihə idarəetməsində peşəkar dəstəkçiniz.", footerTitle2: "Sürətli Keçidlər", footerTitle3: "Əlaqə", footerTitle4: "Bizi İzləyin", footerRights: "&copy; 2025 PMania Hub. Bütün hüquqlar qorunur.",
                 },
                 en: {
@@ -691,10 +757,26 @@
                     missionModalTitle: "Our Mission", missionModalDesc: "To make project management more interesting and accessible for everyone with an enlightening, fun, and motivational approach!",
                     visionModalTitle: "Our Vision", visionModalDesc: "To be the leading platform that presents project management with a new perspective.",
                     teamTitle: "Meet Our Team", teamMemberName: "Mahmud Mahmudlu", teamMemberTitle: "Founder, Project Management Trainer",
+                    
                     mahmudName: "Mahmud Mahmudlu", mahmudRole: "PMP® | Senior Project & Program Leader",
                     summaryTitle: "Professional Summary", summaryContent: "A PMP® and Lean Six Sigma certified leader with a proven record of delivering complex, high-value technology programs across their full lifecycle. With over 6 years of international experience, I excel at managing multimillion-euro NPI projects in a high-tech, industrial environment.",
                     experienceTitle: "Key Experience (Ericsson)", expPoint1: "Managed major NPI platform projects with budgets up to €7 million.", expPoint2: "Led and coordinated cross-functional teams (engineering, quality, purchasing) across multiple global manufacturing sites.", expPoint3: "Coached and mentored junior PMs, elevating team performance and maturity, leading to top performance awards.",
                     certsTitle: "Certifications", cert1: "Project Management Professional (PMP)® - PMI", cert2: "Lean Six Sigma Yellow Belt - Ericsson", cert3: "Practical Gen AI for Project Managers – PMI",
+                    
+                    abdallahName: "Abdallah Hussein Sham", abdallahTitle: "AI Researcher | PHD",
+                    abdallahRole: "AI Researcher | PHD | Junior Research Fellow",
+                    abdallahSummaryTitle: "Professional Summary",
+                    abdallahSummaryContent: "An Artificial Intelligence researcher with expertise in multimodal emotion recognition, speech technologies, and applied machine learning. Abdallah combines academic rigor with practical application, focusing on how AI can understand human behavior while ensuring fairness, ethics, and bias-awareness in intelligent systems. With a growing body of peer-reviewed publications, he is dedicated to making AI concepts accessible to students and professionals.",
+                    abdallahExperienceTitle: "Key Experience (Tallinn University & Research Projects)",
+                    abdallahExp1: "Conducted research on speech emotion recognition using deep neural networks, mapping emotions to Valence-Arousal-Dominance (VAD) space.",
+                    abdallahExp2: "Developed multimodal AI models integrating voice and behavioral data for improved emotion recognition accuracy.",
+                    abdallahExp3: "Published and presented in international conferences and journals on AI, ethics, and applied ML.",
+                    abdallahExp4: "Active collaborator on cross-disciplinary research teams, bridging AI with psychology and human-computer interaction.",
+                    abdallahCertsTitle: "Certifications & Academic Achievements",
+                    abdallahCert1: "Junior Research Fellow – Tallinn University",
+                    abdallahCert2: "Multiple peer-reviewed AI research publications",
+                    abdallahCert3: "Recognized contributor in ethical AI and applied machine learning.",
+                    
                     footerTitle1: "PMania Hub", footerDesc1: "Your professional support in project management.", footerTitle2: "Quick Links", footerTitle3: "Contact", footerTitle4: "Follow Us", footerRights: "&copy; 2025 PMania Hub. All rights reserved.",
                 }
             };
