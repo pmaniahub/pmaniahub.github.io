@@ -682,21 +682,38 @@
 
         /* --- Final CTA Section --- */
         .final-cta {
-            background: var(--secondary-gradient);
-            padding: 80px 0;
-            text-align: center;
+            position: relative;
+            background-image: url('https://images.pexels.com/photos/3183197/pexels-photo-3183197.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            padding: 100px 0;
             color: var(--white-color);
+            text-align: center;
+        }
+        .final-cta::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(45deg, rgba(74, 26, 209, 0.85), rgba(106, 50, 241, 0.85));
+            z-index: 1;
+        }
+        .final-cta .container {
+            position: relative;
+            z-index: 2;
         }
         .final-cta h2 {
             font-size: 2.8em;
             margin-bottom: 20px;
             color: var(--white-color);
+            text-shadow: 0 2px 5px rgba(0,0,0,0.2);
         }
         .final-cta p {
             font-size: 1.2em;
             max-width: 600px;
             margin: 0 auto 40px auto;
-            color: rgba(255,255,255,0.85);
+            color: rgba(255,255,255,0.9);
+            text-shadow: 0 1px 3px rgba(0,0,0,0.2);
         }
         .final-cta-buttons {
             display: flex;
@@ -704,16 +721,28 @@
             gap: 20px;
             flex-wrap: wrap;
         }
+        .final-cta-buttons .cta-button {
+            padding: 18px 40px;
+            font-size: 1.1em;
+            font-weight: 700;
+            border: none;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+            transform: translateY(0);
+        }
+        .final-cta-buttons .cta-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+        }
         .final-cta-buttons .cta-button.cta-button-outline {
             background: transparent;
             color: var(--white-color);
             border: 2px solid var(--white-color);
-            box-shadow: none;
         }
         .final-cta-buttons .cta-button.cta-button-outline:hover {
             background: var(--white-color);
             color: var(--secondary-color);
         }
+
 
         /* --- Footer --- */
         .main-footer {
@@ -878,6 +907,7 @@
             }
             .final-cta {
                 padding: 60px 0;
+                background-attachment: scroll; /* Disable parallax on mobile for performance */
             }
             .final-cta h2 {
                 font-size: 2.2em;
@@ -1528,6 +1558,34 @@
                 scrollers.forEach(id => {
                     setupScroller(id, `${id.split('-')[0]}-scroll-left`, `${id.split('-')[0]}-scroll-right`);
                 });
+
+                 // --- RANDOMIZE TESTIMONIALS ---
+                const testimonialsContainer = document.querySelector('.testimonial-grid');
+                if (testimonialsContainer) {
+                    const testimonials = Array.from(testimonialsContainer.children);
+                    // Fisher-Yates Shuffle
+                    for (let i = testimonials.length - 1; i > 0; i--) {
+                        const j = Math.floor(Math.random() * (i + 1));
+                        [testimonials[i], testimonials[j]] = [testimonials[j], testimonials[i]];
+                    }
+                    // Clear and append shuffled testimonials
+                    testimonialsContainer.innerHTML = '';
+                    testimonials.forEach(testimonial => testimonialsContainer.appendChild(testimonial));
+                }
+
+                // --- RANDOMIZE BLOGS ---
+                const blogContainer = document.querySelector('.blog-grid');
+                if (blogContainer) {
+                    const blogPosts = Array.from(blogContainer.children);
+                    // Fisher-Yates Shuffle
+                    for (let i = blogPosts.length - 1; i > 0; i--) {
+                        const j = Math.floor(Math.random() * (i + 1));
+                        [blogPosts[i], blogPosts[j]] = [blogPosts[j], blogPosts[i]];
+                    }
+                    // Clear and append shuffled blog posts
+                    blogContainer.innerHTML = '';
+                    blogPosts.forEach(post => blogContainer.appendChild(post));
+                }
             });
 
             // Standard scroller setup for all sections
