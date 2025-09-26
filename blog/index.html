@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PMania Hub - Bloq</title>
+    <!-- Favicon -->
+    <link rel="icon" href="/images/logo.png" type="image/png">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* --- Google Fonts Import --- */
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Roboto:wght@400;500&display=swap');
+
+        /* --- CSS Reset & Basic Styles --- */
+        :root {
+            --primary-color: #222831;
+            --secondary-color: #4a1ad1;
+            --secondary-gradient: linear-gradient(45deg, #4a1ad1, #6a32f1);
+            --background-color: #f7f9fc;
+            --text-color: #555;
+            --white-color: #ffffff;
+            --border-radius: 16px;
+            --heading-font: 'Poppins', sans-serif;
+            --body-font: 'Roboto', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--body-font);
+            line-height: 1.7;
+            color: var(--text-color);
+            background-color: var(--white-color);
+            overflow-x: hidden;
+        }
+        
+        body.nav-open {
+            overflow: hidden;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        
+        @media (min-width: 1400px) {
+            .container { max-width: 1300px; }
+        }
+
+        h1, h2, h3, h4 {
+            font-family: var(--heading-font);
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        section {
+            padding: 60px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-family: var(--heading-font);
+            font-size: 2.8em;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 60px;
+        }
+
+        .section-title span {
+            background: var(--secondary-gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* --- Header & Navigation (Copied from index.html) --- */
+        .main-header {
+            background-color: rgba(255, 255, 255, 0.85);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+        .main-header .container { display: flex; justify-content: space-between; align-items: center; }
+        .logo img { height: 70px; width: auto; vertical-align: middle; }
+        .header-actions { display: flex; align-items: center; gap: 25px; }
+        .main-nav { display: flex; }
+        .main-nav ul { list-style: none; display: flex; gap: 35px; margin: 0; }
+        .main-nav a { text-decoration: none; color: var(--primary-color); font-weight: 500; font-size: 1.1em; transition: color 0.3s ease; position: relative; padding-bottom: 5px; }
+        .main-nav a::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px; background: var(--secondary-gradient); transition: width 0.3s ease; }
+        .main-nav a:hover, .main-nav a.active { color: var(--secondary-color); }
+        .main-nav a:hover::after, .main-nav a.active::after { width: 100%; }
+        .lang-switcher button { background: none; border: none; color: var(--text-color); font-weight: 600; cursor: pointer; padding: 5px; font-size: 1em; }
+        .lang-switcher button.active { color: var(--secondary-color); }
+        .hamburger { display: none; cursor: pointer; }
+        .hamburger .bar { width: 25px; height: 3px; background-color: var(--primary-color); margin: 5px 0; transition: 0.4s; }
+        .hamburger.active .bar:nth-child(1) { transform: rotate(-45deg) translate(-5px, 6px); }
+        .hamburger.active .bar:nth-child(2) { opacity: 0; }
+        .hamburger.active .bar:nth-child(3) { transform: rotate(45deg) translate(-5px, -6px); }
+
+        /* --- Blog Page Specific Styles --- */
+        .blog-hero {
+            background-image: url('https://images.pexels.com/photos/5926382/pexels-photo-5926382.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            padding: 100px 0;
+            text-align: center;
+            color: var(--white-color);
+        }
+        .blog-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(rgba(34, 40, 49, 0.7), rgba(34, 40, 49, 0.9));
+            z-index: 1;
+        }
+        .blog-hero .container {
+            position: relative;
+            z-index: 2;
+        }
+
+        .blog-hero h1 {
+            font-size: 3.5em;
+            margin-bottom: 15px;
+            color: var(--white-color);
+        }
+         .blog-hero h1 span {
+            background: var(--secondary-gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        html[lang="en"] .blog-hero h1,
+        html[lang="en"] .blog-hero h1 span {
+            color: var(--white-color);
+            background: none;
+            -webkit-background-clip: initial;
+            background-clip: initial;
+            -webkit-text-fill-color: initial;
+        }
+
+        .blog-hero p {
+            font-size: 1.2em;
+            color: rgba(255, 255, 255, 0.9);
+            max-width: 600px;
+            margin: 0 auto 30px auto;
+        }
+        
+        .libutton {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 25px;
+            text-align: center;
+            outline: none;
+            text-decoration: none !important;
+            color: #ffffff !important;
+            min-width: 200px;
+            height: 42px;
+            border-radius: 50px;
+            background-color: #0A66C2;
+            font-family: var(--body-font);
+            font-weight: 600;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .libutton:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 15px rgba(10, 102, 194, 0.4);
+        }
+
+        .blog-main-content {
+            padding: 60px 0;
+        }
+        
+        .blog-filters {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 50px;
+            flex-wrap: wrap;
+        }
+        .filter-btn {
+            background: var(--white-color);
+            color: var(--primary-color);
+            border: 1px solid #e0e6ed;
+            padding: 12px 25px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            font-family: var(--body-font);
+            transition: background-color 0.3s, color 0.3s, border-color 0.3s, transform 0.3s;
+        }
+        .filter-btn:hover {
+            background: var(--secondary-color);
+            color: var(--white-color);
+            border-color: var(--secondary-color);
+            transform: translateY(-3px);
+        }
+        .filter-btn.active {
+            background: var(--secondary-gradient);
+            color: var(--white-color);
+            border-color: var(--secondary-color);
+        }
+
+        .blog-grid-full {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .blog-post-card {
+            background: var(--white-color);
+            border-radius: var(--border-radius);
+            box-shadow: 0 5px 25px rgba(0,0,0,0.05);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            animation: fadeIn 0.5s ease-out forwards;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .blog-post-card.hidden {
+            display: none;
+        }
+
+        .blog-post-card:hover {
+             transform: translateY(-10px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.1);
+        }
+        .blog-post-content { padding: 25px; }
+        .blog-post-content h3 { margin-bottom: 10px; font-size: 1.3em; }
+        .blog-post-content p { margin-bottom: 20px; }
+        .read-more-btn {
+            background: none;
+            border: none;
+            color: var(--secondary-color);
+            font-weight: 600;
+            cursor: pointer;
+            padding: 10px 25px;
+            font-size: 1em;
+            font-family: var(--body-font);
+            align-self: flex-start;
+            margin-left: -10px;
+        }
+        .read-more-btn:hover { text-decoration: underline; }
+
+        /* --- Footer (Copied from index.html) --- */
+        .main-footer { background-color: var(--primary-color); color: var(--white-color); padding: 50px 0; }
+        .footer-content { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 30px; }
+        .footer-section { flex: 1; min-width: 200px; }
+        .footer-section h4 { font-family: var(--heading-font); font-size: 1.2em; margin-bottom: 15px; color: var(--white-color); }
+        .footer-section ul { list-style: none; padding: 0; }
+        .footer-section ul li { margin-bottom: 12px; }
+        .footer-section a { color: rgba(255, 255, 255, 0.7); text-decoration: none; transition: color 0.3s ease; }
+        .footer-section a:hover { color: var(--white-color); }
+        .footer-contact-info li { display: flex; align-items: center; gap: 12px; }
+        .footer-contact-info i { font-size: 1.1em; width: 20px; text-align: center; color: rgba(255, 255, 255, 0.7); }
+        .social-icons a { margin-right: 15px; display: inline-block; }
+        .social-icons svg { width: 24px; height: 24px; fill: rgba(255, 255, 255, 0.7); transition: fill 0.3s ease, transform 0.3s ease; }
+        .social-icons a:hover svg { fill: var(--white-color); transform: scale(1.1); }
+        .footer-bottom { text-align: center; margin-top: 40px; padding-top: 20px; border-top: 1px solid #4a4e56; }
+
+        /* --- Modal (Pop-up) Styles (Copied from index.html) --- */
+        .modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.6); }
+        .modal-content { background-color: var(--white-color); margin: 5% auto; padding: 40px; border-radius: var(--border-radius); width: 90%; max-width: 800px; position: relative; animation: fadeInModal 0.3s; }
+        .close-btn { color: #aaa; position: absolute; top: 15px; right: 25px; font-size: 28px; font-weight: bold; cursor: pointer; }
+        .close-btn:hover, .close-btn:focus { color: var(--primary-color); }
+        .modal-body h3, .modal-body h4 { color: var(--secondary-color); font-size: 1.8em; margin-bottom: 25px; }
+        .modal-body h4 { font-size: 1.3em; color: var(--primary-color); margin-top: 30px; margin-bottom: 15px; }
+        .modal-body p { margin-bottom: 15px; font-size: 1.1em; }
+        .modal-body ul { list-style-type: none; padding-left: 0; margin-bottom: 20px; }
+        .modal-body ul li { padding-left: 25px; position: relative; margin-bottom: 10px; }
+        .modal-body ul li::before { content: '✓'; color: var(--secondary-color); position: absolute; left: 0; }
+        .modal-body.text-left p, .modal-body.text-left h3 { text-align: left; }
+        @keyframes fadeInModal { from {opacity: 0; transform: translateY(-20px);} to {opacity: 1; transform: translateY(0);} }
+
+        /* --- Responsive Design --- */
+        @media (max-width: 1080px) {
+            .hamburger { display: block; position: relative; z-index: 1001; }
+            .hamburger.active .bar { background-color: var(--white-color); }
+            .main-nav { display: flex; flex-direction: column; align-items: center; justify-content: center; position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background-color: rgba(34, 40, 49, 0.95); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); opacity: 0; visibility: hidden; transition: opacity 0.35s ease, visibility 0.35s; z-index: 1000; }
+            .main-nav.active { opacity: 1; visibility: visible; }
+            .main-nav ul { flex-direction: column; width: 100%; gap: 30px; }
+            .main-nav ul li { width: 100%; text-align: center; }
+            .main-nav a { font-size: 1.6em; font-weight: 500; color: var(--white-color); }
+        }
+        
+        @media (max-width: 992px) {
+            .blog-grid-full { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 768px) {
+            .section-title, .blog-hero h1 { font-size: 2.2em; }
+            .blog-grid-full { grid-template-columns: 1fr; }
+        }
+
+        @media (max-width: 576px) {
+            .footer-content { flex-direction: column; align-items: flex-start; text-align: left; }
+            .footer-section { min-width: 100%; }
+        }
+    </style>
+</head>
+<body>
+    <header class="main-header">
+        <div class="container">
+            <a href="/" class="logo">
+                <img src="/images/logo.png" alt="PMania Hub Logo">
+            </a>
+            <div class="header-actions">
+                <nav class="main-nav" id="main-nav-links">
+                    <ul>
+                        <li><a href="/" data-lang-key="navHome">Əsas Səhifə</a></li>
+                        <li><a href="/about/" data-lang-key="navAbout">Haqqımızda</a></li>
+                        <li><a href="/services/" data-lang-key="navServices">Xidmətlər</a></li>
+                        <li><a href="/#testimonials-section" data-lang-key="navReviews">Rəylər</a></li>
+                        <li><a href="/#blog-section" data-lang-key="navBlog">Bloq</a></li>
+                        <li><a href="/contact/" data-lang-key="navContact">Əlaqə</a></li>
+                    </ul>
+                </nav>
+                <div class="header-controls">
+                    <div class="lang-switcher">
+                        <button id="lang-az" class="active">AZ</button> |
+                        <button id="lang-en">EN</button>
+                    </div>
+                </div>
+                <div class="hamburger" id="hamburger-menu">
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="blog-hero">
+            <div class="container">
+                <h1 data-lang-key="blogPageTitle">PMania Hub <span>Bloqu</span></h1>
+                <p data-lang-key="blogPageSubtitle">Layihə idarəetməsi, liderlik və karyera inkişafı haqqında ən son məqalələr və fikirlər.</p>
+                <a class="libutton" href="https://www.linkedin.com/build-relation/newsletter-follow?entityUrn=7374731390166269955" target="_blank" data-lang-key="subscribeBtn"></a>
+            </div>
+        </section>
+
+        <section class="blog-main-content">
+            <div class="container">
+                <div class="blog-filters">
+                    <button class="filter-btn active" data-filter="all" data-lang-key="filterAll">Hamısı</button>
+                    <button class="filter-btn" data-filter="pm" data-lang-key="filterPM">Layihə İdarəetməsi</button>
+                    <button class="filter-btn" data-filter="leadership" data-lang-key="filterLeadership">Liderlik</button>
+                    <button class="filter-btn" data-filter="tools" data-lang-key="filterTools">Alətlər və Sertifikatlar</button>
+                    <button class="filter-btn" data-filter="cases" data-lang-key="filterCases">Keyslər</button>
+                </div>
+
+                <div class="blog-grid-full">
+                    <!-- Project Management Blogs -->
+                    <article class="blog-post-card" data-category="pm"><div class="blog-post-content"><h3 data-lang-key="blog1Title"></h3><p data-lang-key="blog1Desc"></p></div><button class="read-more-btn" onclick="openModal('blog-modal-1')" data-lang-key="readMore"></button></article>
+                    <article class="blog-post-card" data-category="pm"><div class="blog-post-content"><h3 data-lang-key="blog2Title"></h3><p data-lang-key="blog2Desc"></p></div><button class="read-more-btn" onclick="openModal('blog-modal-2')" data-lang-key="readMore"></button></article>
+                    <article class="blog-post-card" data-category="pm"><div class="blog-post-content"><h3 data-lang-key="blog3Title"></h3><p data-lang-key="blog3Desc"></p></div><button class="read-more-btn" onclick="openModal('blog-modal-3')" data-lang-key="readMore"></button></article>
+                    <article class="blog-post-card" data-category="pm"><div class="blog-post-content"><h3 data-lang-key="blog4Title"></h3><p data-lang-key="blog4Desc"></p></div><button class="read-more-btn" onclick="openModal('blog-modal-4')" data-lang-key="readMore"></button></article>
+                    <article class="blog-post-card" data-category="pm"><div class="blog-post-content"><h3 data-lang-key="blog5Title"></h3><p data-lang-key="blog5Desc"></p></div><button class="read-more-btn" onclick="openModal('blog-modal-5')" data-lang-key="readMore"></button></article>
+                    
+                    <!-- Leadership Blogs -->
+                    <article class="blog-post-card" data-category="leadership"><div class="blog-post-content"><h3 data-lang-key="blog6Title"></h3><p data-lang-key="blog6Desc"></p></div><button class="read-more-btn" onclick="openModal('blog-modal-6')" data-lang-key="readMore"></button></article>
+                    <article class="blog-post-card" data-category="leadership"><div class="blog-post-content"><h3 data-lang-key="blog7Title"></h3><p data-lang-key="blog7Desc"></p></div><button class="read-more-btn" onclick="openModal('blog-modal-7')" data-lang-key="readMore"></button></article>
+                    <article class="blog-post-card" data-category="leadership"><div class="blog-post-content"><h3 data-lang-key="blog8Title"></h3><p data-lang-key="blog8Desc"></p></div><button class="read-more-btn" onclick="openModal('blog-modal-8')" data-lang-key="readMore"></button></article>
+                    <article class="blog-post-card" data-category="leadership"><div class="blog-post-content"><h3 data-lang-key="blog9Title"></h3><p data-lang-key="blog9Desc"></p></div><button class="read-more-btn" onclick="openModal('blog-modal-9')" data-lang-key="readMore"></button></article>
+                    <article class="blog-post-card" data-category="leadership"><div class="blog-post-content"><h3 data-lang-key="blog10Title"></h3><p data-lang-key="blog10Desc"></p></div><button class="read-more-btn" onclick="openModal('blog-modal-10')" data-lang-key="readMore"></button></article>
+                    <article class="blog-post-card" data-category="leadership"><div class="blog-post-content"><h3 data-lang-key="blog21Title"></h3><p data-lang-key="blog21Desc"></p></div><button class="read-more-btn" onclick="openModal('blog-modal-21')" data-lang-key="readMore"></button></article>
+
+                    <!-- Tools & Certifications Blogs -->
+                    <article class="blog-post-card" data-category="tools"><div class="blog-post-content"><h3 data-lang-key="blog11Title"></h3><p data-lang-key="blog11Desc"></p></div><button class="read-more-btn" onclick="openModal('blog-modal-11')" data-lang-key="readMore"></button></article>
+                    <article class="blog-post-card" data-category="tools"><div class="blog-post-content"><h3 data-lang-key="blog12Title"></h3><p data-lang-key="blog12Desc"></p></div><button class="read-more-btn" onclick="openModal('blog-modal-12')" data-lang-key="readMore"></button></article>
+                    <article class="blog-post-card" data-category="tools"><div class="blog-post-content"><h3 data-lang-key="blog13Title"></h3><p data-lang-key="blog13Desc"></p></div><button class="read-more-btn" onclick="openModal('blog-modal-13')" data-lang-key="readMore"></button></article>
+                    <article class="blog-post-card" data-category="tools"><div class="blog-post-content"><h3 data-lang-key="blog14Title"></h3><p data-lang-key="blog14Desc"></p></div><button class="read-more-btn" onclick="openModal('blog-modal-14')" data-lang-key="readMore"></button></article>
+                    <article class="blog-post-card" data-category="tools"><div class="blog-post-content"><h3 data-lang-key="blog15Title"></h3><p data-lang-key="blog15Desc"></p></div><button class="read-more-btn" onclick="openModal('blog-modal-15')" data-lang-key="readMore"></button></article>
+
+                    <!-- Case Studies Blogs -->
+                    <article class="blog-post-card" data-category="cases"><div class="blog-post-content"><h3 data-lang-key="blog16Title"></h3><p data-lang-key="blog16Desc"></p></div><button class="read-more-btn" onclick="openModal('blog-modal-16')" data-lang-key="readMore"></button></article>
+                    <article class="blog-post-card" data-category="cases"><div class="blog-post-content"><h3 data-lang-key="blog17Title"></h3><p data-lang-key="blog17Desc"></p></div><button class="read-more-btn" onclick="openModal('blog-modal-17')" data-lang-key="readMore"></button></article>
+                    <article class="blog-post-card" data-category="cases"><div class="blog-post-content"><h3 data-lang-key="blog18Title"></h3><p data-lang-key="blog18Desc"></p></div><button class="read-more-btn" onclick="openModal('blog-modal-18')" data-lang-key="readMore"></button></article>
+                    <article class="blog-post-card" data-category="cases"><div class="blog-post-content"><h3 data-lang-key="blog19Title"></h3><p data-lang-key="blog19Desc"></p></div><button class="read-more-btn" onclick="openModal('blog-modal-19')" data-lang-key="readMore"></button></article>
+                    <article class="blog-post-card" data-category="cases"><div class="blog-post-content"><h3 data-lang-key="blog20Title"></h3><p data-lang-key="blog20Desc"></p></div><button class="read-more-btn" onclick="openModal('blog-modal-20')" data-lang-key="readMore"></button></article>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section"><h4 data-lang-key="footerTitle1"></h4><p data-lang-key="footerDesc1"></p></div>
+                <div class="footer-section">
+                    <h4 data-lang-key="footerTitle2"></h4>
+                    <ul>
+                        <li><a href="/" data-lang-key="navHome"></a></li>
+                        <li><a href="/about/" data-lang-key="navAbout"></a></li>
+                        <li><a href="/services/" data-lang-key="navServices"></a></li>
+                        <li><a href="/#testimonials-section" data-lang-key="navReviews"></a></li>
+                        <li><a href="/#blog-section" data-lang-key="navBlog"></a></li>
+                        <li><a href="/contact/" data-lang-key="navContact"></a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4 data-lang-key="footerTitle3"></h4>
+                    <ul class="footer-contact-info">
+                        <li><i class="fas fa-envelope"></i> <a href="mailto:info@pmaniahub.com">info@pmaniahub.com</a></li>
+                        <li><i class="fas fa-phone"></i> <a href="tel:+37258243097">+372 5824 3097</a></li>
+                        <li><i class="fas fa-globe"></i> <a href="http://www.pmaniahub.com" target="_blank">www.pmaniahub.com</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4 data-lang-key="footerTitle4"></h4>
+                    <div class="social-icons">
+                        <a href="https://www.instagram.com/pmania_hub/" target="_blank" title="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.85s-.011 3.585-.069 4.85c-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07s-3.585-.012-4.85-.07c-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.85s.012-3.584.07-4.85c.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.85-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948s.014 3.667.072 4.947c.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072s3.667-.014 4.947-.072c4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.947s-.014-3.667-.072-4.947c-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.689-.073-4.948-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.162 6.162 6.162 6.162-2.759 6.162-6.162-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4s1.791-4 4-4 4 1.79 4 4-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.441 1.441 1.441 1.441-.645 1.441-1.441-.645-1.44-1.441-1.44z"/></svg></a>
+                        <a href="https://www.facebook.com/profile.php?id=61578312400129" target="_blank" title="Facebook"><svg viewBox="0 0 24 24"><path d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.323-1.325z"/></svg></a>
+                        <a href="https://www.linkedin.com/company/pmania-hub" target="_blank" title="LinkedIn"><svg viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom"><p data-lang-key="footerRights"></p></div>
+        </div>
+    </footer>
+    
+    <!-- Modals will be inserted here by script -->
+    <div id="modal-container"></div>
+
+    <script>
+        // Check if the script has already been loaded
+        if (!window.pmaniaBlogScriptLoaded) {
+            window.pmaniaBlogScriptLoaded = true;
+
+            const blogPostsData = [
+                // Project Management
+                { id: 1, category: 'pm', modal: 'blog-modal-1' },
+                { id: 2, category: 'pm', modal: 'blog-modal-2' },
+                { id: 3, category: 'pm', modal: 'blog-modal-3' },
+                { id: 4, category: 'pm', modal: 'blog-modal-4' },
+                { id: 5, category: 'pm', modal: 'blog-modal-5' },
+                // Leadership
+                { id: 6, category: 'leadership', modal: 'blog-modal-6' },
+                { id: 7, category: 'leadership', modal: 'blog-modal-7' },
+                { id: 8, category: 'leadership', modal: 'blog-modal-8' },
+                { id: 9, category: 'leadership', modal: 'blog-modal-9' },
+                { id: 10, category: 'leadership', modal: 'blog-modal-10' },
+                { id: 21, category: 'leadership', modal: 'blog-modal-21' },
+                // Tools & Certifications
+                { id: 11, category: 'tools', modal: 'blog-modal-11' },
+                { id: 12, category: 'tools', modal: 'blog-modal-12' },
+                { id: 13, category: 'tools', modal: 'blog-modal-13' },
+                { id: 14, category: 'tools', modal: 'blog-modal-14' },
+                { id: 15, category: 'tools', modal: 'blog-modal-15' },
+                 // Case Studies
+                { id: 16, category: 'cases', modal: 'blog-modal-16' },
+                { id: 17, category: 'cases', modal: 'blog-modal-17' },
+                { id: 18, category: 'cases', modal: 'blog-modal-18' },
+                { id: 19, category: 'cases', modal: 'blog-modal-19' },
+                { id: 20, category: 'cases', modal: 'blog-modal-20' },
+            ];
+            
+            const translations = {
+                az: {
+                    // General
+                    navHome: "Əsas Səhifə", navAbout: "Haqqımızda", navServices: "Xidmətlər", navReviews: "Rəylər", navBlog: "Bloq", navContact: "Əlaqə", readMore: "Daha çox oxu &rarr;",
+                    footerTitle1: "PMania Hub", footerDesc1: "Layihə idarəetməsində peşəkar dəstəkçiniz.", footerTitle2: "Sürətli Keçidlər", footerTitle3: "Əlaqə", footerTitle4: "Bizi İzləyin", footerRights: "&copy; 2025 PMania Hub. Bütün hüquqlar qorunur.",
+                    // Blog Page Specific
+                    blogPageTitle: "PMania Hub Bloqu", blogPageSubtitle: "Layihə idarəetməsi, liderlik və karyera inkişafı haqqında ən son məqalələr və fikirlər.",
+                    subscribeBtn: "LinkedIn bülletenimizə abunə olun",
+                    filterAll: "Hamısı", filterPM: "Layihə İdarəetməsi", filterLeadership: "Liderlik", filterTools: "Alətlər və Sertifikatlar", filterCases: "Keyslər",
+                    
+                    // --- BLOGS ---
+                    // Project Management (1-5)
+                    blog1Title: "Agile və Scrum Arasındakı Fərqlər", blog1Desc: "Bu məqalədə çevik metodologiyaların əsas prinsiplərini və onların tətbiqini araşdırırıq.",
+                    blog1p1: "Layihə idarəetməsi dünyasında tez-tez bir-birinin yerinə istifadə edilən iki termin var: Agile və Scrum. Bəs onlar həqiqətən eyni şeydirmi? Qısa cavab: xeyr. Gəlin onların arasındakı əsas fərqləri aydınlaşdıraq.", blog1h1: "Agile nədir?", blog1p2: "Agile bir metodologiya deyil, bir fəlsəfədir. Bu, layihələri daha çevik, uyğunlaşa bilən və müştəri mərkəzli şəkildə idarə etmək üçün bir düşüncə tərzidir. Agile Manifestində təsbit edilmiş 4 əsas dəyər və 12 prinsipdən ibarətdir. Əsas məqsəd, dəyişikliklərə tez reaksiya vermək və davamlı olaraq dəyər yaratmaqdır.", blog1h2: "Scrum nədir?", blog1p3: "Scrum, Agile fəlsəfəsini tətbiq etmək üçün istifadə olunan ən populyar çərçivələrdən (framework) biridir. Scrum, komandaların mürəkkəb problemləri həll etməsinə kömək edən konkret rollar (Product Owner, Scrum Master, Development Team), hadisələr (Sprint, Sprint Planning, Daily Scrum) və artefaktlar (Product Backlog, Sprint Backlog) təyin edir.", blog1h3: "Əsas Fərq", blog1p4: "Sadə bir bənətmə ilə desək, Agile \"sağlam həyat tərzi sürmək\" fəlsəfəsidirsə, Scrum bu fəlsəfəyə çatmaq üçün seçdiyiniz \"xüsusi pəhriz və məşq proqramı\" kimidir. Yəni, Scrum çevik olmağın bir yoludur, lakin tək yolu deyil. Kanban, XP kimi digər Agile çərçivələr də mövcüddur.",
+                    blog2Title: "Uğurlu Layihə Üçün 5 Vacib Addım", blog2Desc: "Layihə planlamasından yekun təhvilə qədər olan mərhələlərdə diqqət etməli olduğunuz məqamlar.",
+                    blog2p1: "Hər bir uğurlu layihənin arxasında yaxşı düşünülmüş bir plan və ardıcıl icra dayanır. Layihənin ölçüsündən və mürəkkəbliyindən asılı olmayaraq, bu 5 əsas addımı izləmək sizi uğura daha da yaxınlaşdıracaq.", blog2h1: "1. Başlanğıc (Initiation)", blog2p2: "Bu, layihənin doğuş mərhələsidir. Burada layihənin məqsədləri, gözləntiləri və əsas maraqlı tərəfləri müəyyən edilir. “Biz nəyə nail olmaq istəyirik?” və “Bu layihə niyə vacibdir?” suallarına cavab tapmaq lazımdır.", blog2h2: "2. Planlaşdırma (Planning)", blog2p3: "Uğurun təməli detallı planlaşdırmadır. Bu mərhələdə layihənin həcmi, büdcəsi, zaman qrafiki, tələb olunan resurslar və potensial risklər müəyyən edilir. Aydın bir yol xəritəsi çəkmək bütün komandanın eyni hədəfə doğru irəliləməsini təmin edir.", blog2h3: "3. İcra (Execution)", blog2p4: "Planın həyata keçirildiyi mərhələdir. Komanda üzvləri tapşırıqları yerinə yetirir, resurslar paylanır və layihənin əsas məhsul və ya xidməti yaradılır. Bu mərhələdə effektiv kommunikasiya və komanda işi kritik əhəmiyyət daşıyır.", blog2h4: "4. Nəzarət və Monitorinq (Monitoring & Control)", blog2p5: "Bu mərhələ icra ilə paralel gedir. Layihənin gedişatı plana uyğun olaraq izlənilir, performans ölçülür və hər hansı bir yayınma olarsa, düzəldici tədbirlər görülür. Məqsəd, layihəni büdcə, zaman və keyfiyyət çərçivəsində saxlamaqdır.", blog2h5: "5. Yekunlaşdırma (Closure)", blog2p6: "Layihənin uğurla başa çatdırıldığı son mərhələdir. Yekun məhsul müştəriyə təhvil verilir, sənədləşmə tamamlanır və layihədən əldə edilən təcrübələr (“lessons learned”) qeydə alınır. Bu, gələcək layihələr üçün dəyərli bir məlumat bazası yaradır.",
+                    blog3Title: "Risk İdarəetməsi Nədir?", blog3Desc: "Layihələrinizdə qarşılaşa biləcəyiniz riskləri necə müəyyən edə və idarə edə bilərsiniz?",
+                    blog3p1: "Layihə idarəetməsində ən yaxşı planlar belə gözlənilməz hadisələrlə üzləşə bilər. Risk idarəetməsi, bu qeyri-müəyyənlikləri qabaqcadan görməyə və onların layihəyə mənfi təsirini minimuma endirməyə kömək edən bir prosesdir.", blog3h1: "Risk Nədir və Növləri Hansılardır?", blog3p2: "Risk, baş verəcəyi təqdirdə layihənin məqsədlərinə (büdcə, zaman, keyfiyyət) müsbət və ya mənfi təsir göstərə biləcək qeyri-müəyyən bir hadisədir. Risklər texniki (texnologiya problemi), xarici (bazar dəyişikliyi), təşkilati (resurs çatışmazlığı) və ya idarəetmə (zəif planlama) kimi fərqli kateqoriyalara ayrıla bilər.", blog3h2: "Risk İdarəetmə Prosesi", blog3p3: "Effektiv risk idarəetməsi adətən dörd əsas addımdan ibarətdir:", blog3li1: "<strong>Risk Analizi:</strong> Hər bir riskin baş vermə ehtimalı və potensial təsiri qiymətləndirilir.", blog3li2: "<strong>Risk Cavabının Planlaşdırılması:</strong> Risklərə qarşı strategiyalar hazırlanır (qəbul etmək, qarşısını almaq, təsirini azaltmaq və ya başqasına ötürmək).", blog3li3: "<strong>Risk İdentifikasiyası:</strong> Potensial risklərin müəyyən edilməsi və siyahısının hazırlanması.", blog3li4: "<strong>Risk Monitorinqi:</strong> Proses boyu yeni risklərin izlənilməsi və mövcud risklərə qarşı planların effektivliyinin yoxlanılması.",
+                    blog4Title: "Layihə Meneceri yoxsa Lider? Hər İkisi!", blog4Desc: "Uğurlu layihələrin arxasında dayanan liderlik keyfiyyətlərini və onların komandaya təsirini araşdırın.",
+                    blog4p1: "Layihə idarəetməsi terminologiyasında \"menecer\" və \"lider\" sözləri tez-tez bir-birini əvəz etsə də, əslində fərqli mənaları və funksiyaları ifadə edirlər. Uğurlu bir layihə meneceri hər iki rolu da özündə birləşdirməyi bacarmalıdır.", blog4h1: "Layihə Meneceri: Sistem və Proses", blog4p2: "Menecer, ilk növbədə, sistem və nizam-intizamla bağlıdır. O, planlar qurur, büdcələr təyin edir, resursları paylayır və tapşırıqların vaxtında və keyfiyyətlə yerinə yetirilməsinə nəzarət edir. Menecerin əsas sualları \"necə?\" və \"nə zaman?\" olur. O, proseslərin düzgün işləməsini təmin edir.", blog4h2: "Lider: İnsanlar və Vizyon", blog4p3: "Lider isə daha çox vizyon və motivasiya ilə bağlıdır. O, komandanı ruhlandırır, onlara ümumi hədəfi göstərir və çətinliklər qarşısında onlara dəstək olur. Liderin əsas sualları \"nə?\" və \"niyə?\" olur. O, komandanın hədəfə inanmasını və bu yolda həvəslə çalışmasını təmin edir.", blog4h3: "Nəticə: Hər İkisi Olmaq Şərtdir", blog4p4: "Yalnız idarə edən, lakin ilham verməyən bir menecer komandanın tam potensialını ortaya çıxara bilməz. Yalnız ilham verən, lakin planlama və nəzarət bacarığı olmayan bir lider isə layihəni xaosdan xilas edə bilməz. Buna görə də müasir layihə meneceri həm menecer kimi prosesləri mükəmməl idarə etməli, həm də lider kimi komandasına yol göstərməlidir.",
+                    blog5Title: "Təcili yoxsa Vacib? Prioritetləri Düzgün Müəyyən Etməyin Yolları", blog5Desc: "MoSCoW və Eisenhower Matrisi kimi effektiv prioritetləşdirmə üsulları ilə tanış olun.",
+                    blog5p1: "Gündəlik iş həyatında qarşımıza çıxan tapşırıqların hamısı eyni dərəcədə vacib deyil. Vaxtımızı səmərəli idarə etmək və həqiqətən əhəmiyyətli olan işlərə fokuslanmaq üçün tapşırıqları düzgün prioritetləşdirmək vacibdir. Bunun üçün ən effektiv üsullardan biri Eisenhower Matrisidir.", blog5h1: "Eisenhower Matrisi: 4 Kvadrant", blog5p2: "Bu metod, ABŞ-ın 34-cü prezidenti Dwight D. Eisenhower tərəfindən istifadə edildiyi üçün onun adını daşıyır. Matris bütün tapşırıqları iki meyar üzrə qiymətləndirir: Təcililik (Urgency) və Vaciblik (Importance). Bu, dörd fərqli kvadrant yaradır:", blog5li1: "<strong>1. Təcili və Vacib (Do):</strong> Bu tapşırıqları dərhal yerinə yetirmək lazımdır. Məsələn, müştəri ilə bağlı kritik bir problem və ya yaxınlaşan bir son tarix.", blog5li2: "<strong>2. Vacib, lakin Təcili Deyil (Schedule):</strong> Bu, uzunmüddətli hədəflərinizə çatmağınıza kömək edən tapşırıqlar üçün. Məsələn, yeni bir bacarıq öyrənmək, gələcək layihəni planlaşdırmaq. Bu tapşırıqları təqviminizdə planlaşdırın.", blog5li3: "<strong>3. Təcili, lakin Vacib Deyil (Delegate):</strong> Bu tapşırıqlar başqası tərəfindən edilə bilər. Məsələn, bəzi zənglərə cavab vermək, hesabatları tərtib etmək. Mümkünsə, bu işləri həvalə edin.", blog5li4: "<strong>4. Nə Təcili, Nə də Vacib (Eliminate):</strong> Bu tapşırıqlar vaxt itkisidir və onlardan yayınmaq lazımdır. Məsələn, sosial mediada məqsədsiz gəzmək.", blog5p3: "Bu matrisi istifadə edərək, \"reaktiv\" (yalnız təcili işlərə reaksiya verən) rejimdən çıxıb, \"proaktiv\" (həqiqətən vacib olan işlərə fokuslanan) bir iş rejiminə keçə bilərsiniz.",
+                    
+                    // Leadership (6-10)
+                    blog6Title: "Effektiv Liderliyin Sırrı: Emosional Zəka (EQ)", blog6Desc: "Komandanızı anlamaq və motivasiya etmək üçün emosional zəkanızı necə inkişaf etdirə bilərsiniz?",
+                    blog6p1: "Liderlik sadəcə tapşırıq vermək və nəticələri yoxlamaq deyil. Əsl liderlik, insanları anlamaq, onları ruhlandırmaq və ortaq bir hədəfə doğru yönləndirmək bacarığıdır. Bu bacarığın təməlində isə Emosional Zəka (EQ) dayanır.", blog6h1: "Emosional Zəka Nədir?", blog6p2: "EQ, öz və başqalarının emosiyalarını anlamaq, idarə etmək və onlardan effektiv şəkildə istifadə etmək qabiliyyətidir. Yüksək EQ-ya sahib liderlər daha yaxşı qərarlar qəbul edir, daha güclü komandalar qurur və stress altında daha sakit qalırlar.", blog6h2: "Liderlikdə EQ-nun 4 Komponenti", blog6p3: "<strong>1. Özünüdərk:</strong> Öz emosiyalarınızı, güclü və zəif tərəflərinizi anlamaq. Bu, öz davranışlarınızın komandaya təsirini bilmək deməkdir. <strong>2. Özünüidarəetmə:</strong> Emosiyalarınızı, xüsusən də stresli anlarda, nəzarətdə saxlamaq. Bu, düşünülmüş və rasional qərarlar verməyə kömək edir. <strong>3. Sosial Məlumatlılıq (Empatiya):</strong> Komanda üzvlərinizin emosiyalarını, ehtiyaclarını və narahatlıqlarını anlamaq. Empatiya qurmaq güvən və sadiqlik yaradır. <strong>4. Münasibətlərin İdarə Edilməsi:</strong> Başqalarına təsir etmək, onları ruhlandırmaq və münaqişələri həll etmək bacarığı. Bu, komandanı ortaq bir vizyon ətrafında birləşdirmək üçün vacibdir.", blog6h3: "Nəticə", blog6p4: "Texniki bacarıqlar sizi yaxşı bir menecer edə bilər, ancaq yüksək emosional zəka sizi təsirli bir liderə çevirəcəkdir.",
+                    
+                    blog7Title: "Xidmətçi Liderlik: Komandanızı Gücləndirin", blog7Desc: "Müasir iş dünyasında ənənəvi iyerarxiyanı kənara qoyaraq komandanıza xidmət etməyin faydaları.",
+                    blog7p1: "Ənənəvi liderlik modelləri gücü zirvədə cəmləşdirir. Lakin müasir iş dünyasında getdikcə populyarlaşan bir yanaşma var: Xidmətçi Liderlik (Servant Leadership). Bu model, liderin əsas rolunun komandaya xidmət etmək və onların uğuru üçün şərait yaratmaq olduğunu vurğulayır.", blog7h1: "Xidmətçi Lider Kimdir?", blog7p2: "Xidmətçi lider \"Mənim üçün nə edə bilərsiniz?\" sualını deyil, \"Sizin üçün nə edə bilərəm?\" sualını verir. Onun əsas məqsədi komanda üzvlərinin inkişafına dəstək olmaq, onların qarşısındakı maneələri aradan qaldırmaq və hədəflərinə çatmaları üçün onlara güc verməkdir.", blog7h2: "Əsas Prinsipləri", blog7p3: "Bu liderlik tərzi dinləmə, empatiya, fərqindəlik və başqalarının inkişafına sadiqlik kimi xüsusiyyətlərə əsaslanır. Güc və nəzarət əvəzinə, təsir və etimad qurmağa fokuslanır. Komanda üzvləri özlərini dəyərli və dəstəklənmiş hiss etdikdə, daha yaradıcı, məhsuldar və sadiq olurlar.", blog7h3: "Niyə Effektivdir?", blog7p4: "Xidmətçi liderlik, komanda daxilində güvən, əməkdaşlıq və psixoloji təhlükəsizlik mühiti yaradır. Bu da öz növbəsində innovasiyanı artırır və uzunmüddətli perspektivdə daha dayanıqlı nəticələr əldə etməyə imkan verir.",
+
+                    blog8Title: "Münaqişələrin İdarə Olunması: Çətin Söhbətləri Necə Aparmalı?", blog8Desc: "Komanda daxilində yaranan fikir ayrılıqlarını konstruktiv nəticələrə çevirmək üçün praktiki məsləhətlər.",
+                    blog8p1: "Fərqli düşüncələrə və təcrübələrə malik insanların birgə işlədiyi hər yerdə fikir ayrılıqlarının yaranması qaçılmazdır. Münaqişənin özü problem deyil; problem onun necə idarə olunmasıdır. Düzgün idarə edildikdə, münaqişələr daha yaxşı qərarlara və daha güclü komanda münasibətlərinə səbəb ola bilər.", blog8h1: "Hazırlıqlı Olun", blog8p2: "Çətin bir söhbətə başlamazdan əvvəl məqsədinizi aydınlaşdırın. Məqsəd qalib gəlmək deyil, qarşılıqlı anlaşmaya nail olmaq və ortaq bir həll yolu tapmaq olmalıdır. Faktları toplayın və emosiyalarınızı nəzarətdə saxlamağa çalışın.", blog8h2: "Aktiv Dinləyin", blog8p3: "Qarşı tərəfin nöqteyi-nəzərini həqiqətən anlamağa çalışın. Cavab vermək üçün deyil, anlamaq üçün dinləyin. Onun dediklərini ümumiləşdirərək düzgün başa düşdüyünüzdən əmin olun (\"Əgər səni düz başa düşdümsə, sən ... deyirsən\").", blog8h3: "\"Mən\" Mesajlarından İstifadə Edin", blog8p4: "Qarşı tərəfi ittiham etməkdən çəkinin. \"Sən həmişə belə edirsən\" demək əvəzinə, \"Mən bu vəziyyətdə özümü ... hiss edirəm\" kimi cümlələr qurun. Bu, müdafiə reaksiyasını azaldır və dialoqa şərait yaradır.", blog8h4: "Ortaq Zəmin Axtarın", blog8p5: "Fikir ayrılıqlarına baxmayaraq, razılaşdığınız məqamları tapın. Bu, ümumi bir hədəfə doğru çalışdığınızı göstərir. Problemdən daha çox həll yollarına fokuslanın və mümkün variantları birlikdə beyin fırtınası edin.",
+
+                    blog9Title: "Geribildirim Mədəniyyəti Yaratmaq", blog9Desc: "Davamlı inkişafı təmin etmək üçün komandanızda açıq və səmimi geribildirim mühitini necə formalaşdırmalı?",
+                    blog9p1: "Geribildirim (feedback) komandanın və fərdlərin inkişafı üçün həyati əhəmiyyət daşıyır. Ancaq çox vaxt geribildirim yalnız illik performans dəyərləndirmələrində və ya problem yarandıqda verilir. Əsl inkişafı təmin etmək üçün isə davamlı, konstruktiv və dəstəkləyici bir geribildirim mədəniyyəti yaratmaq lazımdır.", blog9h1: "Geribildirimi Normallaşdırın", blog9p2: "Geribildirimi qorxulu bir hadisə olmaqdan çıxarın. Onu gündəlik iş prosesinin normal bir hissəsinə çevirin. Həm müsbət, həm də inkişafa yönəlik rəyləri mütəmadi olaraq paylaşın. Bu, komanda üzvlərinin geribildirimə daha açıq olmasına kömək edəcək.", blog9h2: "Konkret və Davranışa Yönəlik Olun", blog9p3: "“Yaxşı işdir” kimi ümumi ifadələr əvəzinə, konkret olaraq nəyin yaxşı olduğunu deyin. Eyni şəkildə, tənqid edərkən şəxsiyyəti deyil, konkret davranışı hədəf alın. “Sən tənbəlsən” əvəzinə, “Son hesabatın təhvil verilməsinin gecikməsi layihə qrafikinə təsir etdi” demək daha konstruktivdir.", blog9h3: "İki Tərəfli Bir Küçə", blog9p4: "Lider olaraq yalnız geribildirim verməyin, həm də onu tələb edin. Komandanızdan öz performansınız haqqında rəy istəyin. Bu, güvən yaradır və hər kəsin inkişafa sadiq olduğunu göstərir.",
+                    
+                    blog10Title: "Dəyişiklik Zamanı Liderlik: Komandanı Qeyri-müəyyənlikdən Keçirmək", blog10Desc: "Təşkilati dəyişikliklər zamanı inamı qorumaq və komandanı yeni hədəflərə doğru yönləndirmək.",
+                    blog10p1: "İstər yeni bir texnologiyanın tətbiqi, istərsə də şirkətin yenidən qurulması olsun, dəyişikliklər çox vaxt qeyri-müəyyənlik, narahatlıq və hətta müqavimətlə müşayiət olunur. Belə anlarda liderin rolu komandanı bu prosesdən uğurla keçirmək üçün kritikdir.", blog10h1: "Şəffaf və Davamlı Ünsiyyət", blog10p2: "Qeyri-müəyyənliyin ən böyük düşməni məlumat boşluğudur. Dəyişikliyin səbəblərini, gözlənilən nəticələri və prosesin necə gedəcəyini komandanızla açıq şəkildə paylaşın. Məlumatınız olmasa belə, bunu etiraf edin və məlumat əldə etdikcə paylaşacağınıza söz verin.", blog10h2: "Empatiya Göstərin və Dinləyin", blog10p3: "Komanda üzvlərinizin narahatlıqlarını və qorxularını qəbul edin. Onların hisslərini kiçik görməyin. Fikirlərini və təkliflərini dinləmək üçün vaxt ayırın. İnsanlar prosesin bir hissəsi olduqlarını hiss etdikdə, dəyişikliyə daha az müqavimət göstərirlər.", blog10h3: "Aydın Bir Vizyon Təqdim Edin", blog10p4: "Dəyişikliyin sonunda komandanı nəyin gözlədiyini aydın şəkildə təsvir edin. Bu “yeni dünya”nın onlar üçün hansı faydaları və imkanları yaradacağını göstərin. İnsanlar çətin bir yolda getməyə daha həvəsli olarlar, əgər gedəcəkləri yerin dəyərli olduğuna inansalar.",
+
+                    // Tools & Certifications (11-15)
+                    blog11Title: "PMP Sertifikatı: Karyeranız Üçün Buna Dəyərmi?", blog11Desc: "Project Management Professional (PMP) sertifikatının üstünlükləri, tələbləri və imtahana hazırlıq prosesi.",
+                    blog11p1: "Layihə idarəetməsi sahəsində ən tanınmış və hörmətli sertifikatlardan biri olan PMP (Project Management Professional), bir çox peşəkarın karyera hədəfləri arasındadır. Bəs bu sertifikat həqiqətən də yatırılan vaxta və vəsaitə dəyərmi?", blog11h1: "PMP-nin Üstünlükləri Nələrdir?", blog11p2: "<strong>Qlobal Tanınma:</strong> PMP, bütün dünyada layihə idarəetməsi üzrə qızıl standart kimi qəbul edilir. <strong>Daha Yüksək Əmək Haqqı:</strong> PMI tərəfindən aparılan araşdırmalar göstərir ki, PMP sertifikatlı mütəxəssislər sertifikatsız həmkarlarından orta hesabla daha çox qazanırlar. <strong>Karyera İmkanları:</strong> Bir çox şirkət, xüsusən də böyük və beynəlxalq layihələr üçün PMP sertifikatını bir tələb olaraq irəli sürür. <strong>Dərin Bilik:</strong> PMP imtahanına hazırlıq prosesi sizə layihə idarəetməsinin bütün sahələri (başlanğıc, planlama, icra, nəzarət, yekunlaşdırma) üzrə hərtərəfli biliklər verir.", blog11h2: "Kimlər Müraciət Edə Bilər?", blog11p3: "PMP üçün tələblər təhsil səviyyənizdən asılı olaraq dəyişir. Ümumiyyətlə, ali təhsilli namizədlər üçün 3 illik layihə idarəetməsi təcrübəsi və 35 saatlıq rəsmi təlim, orta təhsillilər üçün isə 5 illik təcrübə və eyni təlim tələb olunur.", blog11h3: "Nəticə", blog11p4: "Əgər layihə idarəetməsi sahəsində uzunmüddətli bir karyera qurmağı hədəfləyirsinizsə, PMP sertifikatı şübhəsiz ki, ən dəyərli investisiyalardan biridir.",
+                    
+                    blog12Title: "Giriş Səviyyəsi Üçün Ən Yaxşı Sertifikat: CAPM", blog12Desc: "Layihə idarəetməsi karyerasına yeni başlayanlar üçün Certified Associate in Project Management (CAPM) imtahanı.",
+                    blog12p1: "Layihə idarəetməsi sahəsinə yeni addım atırsınız və ya karyeranızın əvvəlindəsiniz? Bu sahədə fundamental biliklərinizi və həvəsinizi nümayiş etdirmək üçün ən yaxşı yollardan biri PMI-ın CAPM (Certified Associate in Project Management) sertifikatını əldə etməkdir.", blog12h1: "CAPM Nədir və Kimlər Üçündür?", blog12p2: "CAPM, layihə idarəetməsinin əsas terminologiyası, prosesləri və bilik sahələri haqqında anlayışınızı təsdiqləyən giriş səviyyəli bir sertifikatdır. Bu sertifikat, hələ PMP üçün tələb olunan geniş təcrübəyə malik olmayan tələbələr, yeni məzunlar və ya karyerasını bu sahəyə yönəltmək istəyən peşəkarlar üçün idealdır.", blog12h2: "Tələblər və Proses", blog12p3: "CAPM üçün müraciət etmək PMP-yə nisbətən daha asandır. Sizdən orta təhsil və 23 saatlıq layihə idarəetməsi təlimi tələb olunur. Təcrübə tələbi yoxdur. İmtahan, PMBOK təlimatında yer alan fundamental bilikləri yoxlamağa yönəlmişdir.", blog12h3: "CAPM-in Faydaları", blog12p4: "CAPM sertifikatı, PMP üçün möhkəm bir təməl yaradır. CV-nizdə bu sertifikatın olması, sizin bu sahəyə ciddi yanaşdığınızı göstərir və işəgötürənlər üçün sizi daha cəlbedici bir namizəd edir. Bu, layihə komandalarında daha məsuliyyətli vəzifələrə keçmək üçün əla bir başlanğıcdır.",
+                    
+                    blog13Title: "Jira vs. Trello: Hansı Alət Sizin Komandanız Üçündür?", blog13Desc: "Agile komandaları üçün ən populyar iki layihə idarəetmə alətinin müqayisəli təhlili.",
+                    blog13p1: "Çevik (Agile) layihə idarəetməsi üçün doğru aləti seçmək komandanın məhsuldarlığına ciddi təsir göstərə bilər. Bazarın iki nəhəngi olan Jira və Trello, fərqli ehtiyaclara cavab verən güclü həllər təklif edir.", blog13h1: "Trello: Sadəlik və Vizual Görüntü", blog13p2: "Trello, Yaponların Kanban metodologiyasından ilhamlanan sadə və intuitiv bir interfeysə malikdir. O, lövhələr (boards), siyahılar (lists) və kartlardan (cards) ibarət vizual bir sistemə əsaslanır. Trello, kiçik və orta ölçülü komandalar, sadə layihələr və tapşırıqların gedişatını vizual olaraq izləmək istəyənlər üçün mükəmməldir. Onunla işə başlamaq çox asandır.", blog13h2: "Jira: Güc və Fərdiləşdirmə", blog13p3: "Atlassian tərəfindən hazırlanan Jira, proqram təminatı hazırlayan komandalar üçün yaradılmış daha mürəkkəb və güclü bir alətdir. Scrum və Kanban üçün xüsusi dəstək, detallı hesabatlar, fərdiləşdirilə bilən iş axınları (workflows) və minlərlə inteqrasiya imkanı təklif edir. Jira, mürəkkəb layihələri, böyük komandaları və proseslər üzərində tam nəzarət tələb edən təşkilatlar üçün daha uyğundur.", blog13h3: "Hansını Seçməli?", blog13p4: "Əgər sadəlik, sürət və vizual idarəetməyə üstünlük verirsinizsə, Trello əla seçimdir. Əgər layihəniz mürəkkəbdirsə, detallı hesabatlara və proseslər üzərində dərin nəzarətə ehtiyacınız varsa, Jira sizin üçün daha doğru alətdir.",
+                    
+                    blog14Title: "Scrum Master Olmaq: PSM I Sertifikatı", blog14Desc: "Professional Scrum Master I (PSM I) sertifikatının əhəmiyyəti və Scrum prinsiplərini mənimsəmək üçün yol xəritəsi.",
+                    blog14p1: "Scrum, müasir çevik (Agile) layihə idarəetməsinin ən populyar çərçivəsidir və Scrum Master bu çərçivənin effektiv tətbiqində açar rol oynayır. Scrum prinsiplərini dərindən anladığınızı və tətbiq edə bildiyinizi sübut etməyin ən hörmətli yollarından biri Scrum.org tərəfindən təqdim edilən Professional Scrum Master I (PSM I) sertifikatını əldə etməkdir.", blog14h1: "Scrum Master Nə İş Görür?", blog14p2: "Scrum Master bir menecer deyil, bir xidmətçi liderdir (servant leader). Onun əsas vəzifəsi Scrum çərçivəsinin düzgün başa düşülməsini və tətbiqini təmin etməkdir. O, komandanın qarşısındakı maneələri aradan qaldırır, Scrum tədbirlərini (Daily Scrum, Sprint Planning və s.) asanlaşdırır və komandanın özünü təşkil etməsinə və davamlı olaraq təkmilləşməsinə kömək edir.", blog14h2: "Niyə PSM I?", blog14p3: "PSM I, Scrum-un banilərindən olan Ken Schwaber tərəfindən yaradılmış Scrum.org tərəfindən təklif edildiyi üçün yüksək etibarlılığa malikdir. İmtahan, yalnız nəzəriyyəni deyil, həm də Scrum-un prinsiplərini real vəziyyətlərdə tətbiq etmə bacarığınızı yoxlayır. Bu sertifikat, sizin Scrum-u sadəcə “əzbərləmədiyinizi”, həqiqətən dərk etdiyinizi göstərir.",
+                    
+                    blog15Title: "Microsoft Project-in Gücü: Detallı Planlama", blog15Desc: "Mürəkkəb layihələrin planlaşdırılması və izlənilməsi üçün MS Project-in əsas xüsusiyyətləri və istifadə qaydaları.",
+                    blog15p1: "Böyük və mürəkkəb layihələri idarə edərkən, sadə tapşırıq siyahıları kifayət etmir. Belə hallarda, Microsoft Project kimi güclü bir planlama və idarəetmə alətinə ehtiyac yaranır. MS Project, layihə menecerlərinə layihənin bütün həyat dövrü boyunca tam nəzarəti təmin etmək üçün geniş funksionallıq təklif edir.", blog15h1: "Əsas Xüsusiyyətləri", blog15p2: "<strong>Qant Diaqramları (Gantt Charts):</strong> Layihənin zaman qrafikini, tapşırıqların müddətini və onlar arasındakı asılılıqları vizual olaraq göstərən interaktiv diaqramlar yaratmağa imkan verir. <strong>Resursların İdarə Edilməsi:</strong> Komanda üzvlərinin iş yükünü izləmək, resursları tapşırıqlara təyin etmək və həddindən artıq yüklənmənin qarşısını almaq üçün güclü alətlər təqdim edir. <strong>Büdcə Nəzarəti:</strong> Həm planlaşdırılan, həm də faktiki xərcləri izləyərək layihənin büdcə daxilində qalmasını təmin etməyə kömək edir. <strong>Hesabatlar:</strong> Layihənin statusu, resurs istifadəsi və büdcə vəziyyəti haqqında fərdiləşdirilə bilən onlarla hesabat yaratmaq mümkündür.", blog15h2: "Kimlər Üçün Faydalıdır?", blog15p3: "MS Project, xüsusilə tikinti, mühəndislik, istehsalat və böyük İT layihələri kimi ənənəvi (Waterfall) metodologiyanın tətbiq olunduğu sahələrdə geniş istifadə olunur. Əgər layihənizdə bir-birindən asılı olan çoxsaylı tapşırıqlar, mürəkkəb resurs planlaması və detallı maliyyə nəzarəti tələb olunursa, Microsoft Project sizin üçün əvəzsiz bir alət ola bilər.",
+
+                    // Case Studies (16-20)
+                    blog16Title: "Keys: Sidney Opera Evinin Tikintisi - Gözəlliyin Bədəli", blog16Desc: "Memarlıq şah əsəri olan Sidney Opera Evinin tikintisi zamanı baş verən büdcə və vaxt aşımlarından hansı dərsləri çıxarmaq olar?",
+                    blog16p1: "Sidney Opera Evi, dünyanın ən tanınmış memarlıq abidələrindən biridir. Ancaq bu möhtəşəm tikilinin arxasında layihə idarəetməsi baxımından ciddi uğursuzluqlarla dolu bir hekayə dayanır. Bu keys, bizə ambisiya ilə reallıq arasındakı balansı qorumağın nə qədər vacib olduğunu göstərir.", blog16h1: "Başlanğıc Problemləri", blog16p2: "Layihə, 1957-ci ildə 7 milyon Avstraliya dolları büdcə və 4 illik bir müddətlə başladı. Lakin memar Yorn Utzonun dizaynı o qədər mürəkkəb və o dövrün texnologiyası üçün o qədər yeni idi ki, ilkin planlar tamamilə qeyri-real idi. Layihənin həcmi və mürəkkəbliyi düzgün qiymətləndirilməmişdi.", blog16h2: "Nəzarətdən Çıxan Proses", blog16p3: "Layihə davam etdikcə, xərclər və müddət kəskin şəkildə artmağa başladı. Siyasi müdaxilələr, memarla hökumət arasındakı münaqişələr və davamlı dizayn dəyişiklikləri layihəni xaosa sürüklədi. Nəticədə, Opera Evi 1973-cü ildə, planlaşdırılandan 10 il sonra və 102 milyon dollarlıq bir xərclə tamamlandı - ilkin büdcədən 14 dəfə çox.", blog16h3: "Çıxarılan Dərslər", blog16p4: "Sidney Opera Evi keysi bizə bir neçə vacib dərs verir: 1) Layihənin başlanğıcında hərtərəfli və real planlamanın kritik əhəmiyyəti. 2) Maraqlı tərəflərlə (stakeholders) davamlı və şəffaf ünsiyyətin vacibliyi. 3) Layihə həcminin (scope) dəyişməsinin ciddi nəzarətdə saxlanılmasının zəruriliyi.",
+                    
+                    blog17Title: "Keys: NASA-nın Mars Rover Layihəsi - Mümkünsüzə Nail Olmaq", blog17Desc: "Mars planetinə göndərilən robotların hazırlanması layihəsində risk idarəetməsi və innovativ həllər necə uğur gətirdi?",
+                    blog17p1: "Başqa bir planetə robot göndərmək, bəşəriyyətin ən mürəkkəb və riskli layihələrindən biridir. NASA-nın Mars Rover layihələri (məsələn, Spirit, Opportunity, Curiosity) layihə idarəetməsinin, xüsusən də risk idarəetməsinin ən yüksək səviyyədə tətbiq olunduğu möhtəşəm uğur hekayələridir.", blog17h1: "Sıfır Xəta Mühiti", blog17p2: "Marsa eniş prosesi “7 dəqiqəlik terror” adlandırılır, çünki bu müddət ərzində hər şey avtomatik baş verməlidir və Yerlə əlaqə gecikməli olur. Ən kiçik bir səhv milyardlarla dollarlıq bir layihənin məhvinə səbəb ola bilər. Bu səbəbdən, NASA-nın mühəndisləri hər bir komponenti dəfələrlə sınaqdan keçirir və mümkün olan hər bir uğursuzluq ssenarisini planlaşdırırlar.", blog17h2: "Risk İdarəetməsinin Zirvəsi", blog17p3: "NASA, “ehtiyat planının da ehtiyat planını” hazırlayır. Həyati sistemlərin bir neçə ehtiyat nüsxəsi olur (redundancy). Hər bir potensial risk müəyyən edilir, onun başvermə ehtimalı və təsiri qiymətləndirilir və hər biri üçün azaldılma strategiyası hazırlanır. Məsələn, roverin təkərlərindən biri sıradan çıxarsa, o, qalan beş təkərlə hərəkət etməyə davam edə bilər.", blog17h3: "Çıxarılan Dərslər", blog17p4: "Mars Rover layihəsi, yüksək riskli mühitlərdə uğur qazanmaq üçün hərtərəfli planlama, davamlı sınaq və risklərin proaktiv idarə olunmasının nə qədər vacib olduğunu göstərir. Bu layihə, ən cəsarətli hədəflərə belə, sistematik və nizam-intizamlı bir yanaşma ilə çatmağın mümkün olduğunu sübut edir.",
+                    
+                    blog18Title: "Uğursuzluqdan Dərs: Google Glass Niyə Uğursuz Oldu?", blog18Desc: "Böyük ümidlərlə təqdim edilən Google Glass layihəsinin bazarda uğursuz olmasının arxasındakı səbəblər.",
+                    blog18p1: "2013-cü ildə Google, gələcəyin texnologiyası kimi təqdim etdiyi Google Glass ilə böyük səs-küy yaratdı. Ancaq bu innovativ məhsul geniş kütlələr tərəfindən qəbul edilmədi və nəticədə uğursuz oldu. Bu keys, texniki cəhətdən mükəmməl bir məhsulun belə, layihə idarəetməsinin digər aspektləri nəzərə alınmadıqda necə uğursuz ola biləcəyini göstərir.", blog18h1: "Problem Nə idi?", blog18p2: "<strong>Aydın Dəyər Təklifi Yox idi:</strong> Google Glass-ın hansı konkret problemi həll etdiyi aydın deyildi. O, “hər şey bir az” idi, amma heç bir şeyi mükəmməl etmirdi. İstifadəçilər onun üçün niyə 1500 dollar ödəməli olduqlarını anlamırdılar. <strong>Məxfilik Narahatlıqları:</strong> İnsanlar, xəbərləri olmadan kameralı bir cihazla qeydə alınmaqdan narahat idilər. Google, bu mühüm sosial və etik riski (stakeholder narahatlığı) düzgün idarə edə bilmədi. <strong>Məhsulun Statusu:</strong> Cihazın dizaynı bir çox insan tərəfindən qəribə və “qeyri-təbii” hesab edildi, bu da onun sosial qəbuluna mane oldu.", blog18h2: "Çıxarılan Dərslər", blog18p3: "Google Glass-ın uğursuzluğu bizə öyrədir ki, bir layihənin uğuru yalnız texnologiyadan asılı deyil. 1) Müştərinin ehtiyaclarını və həll etdiyiniz problemi dərindən anlamaq vacibdir. 2) Bütün maraqlı tərəflərin (yalnız istifadəçilərin deyil, bütün cəmiyyətin) narahatlıqlarını nəzərə almaq və idarə etmək lazımdır. 3) Məhsulun bazara çıxarılma strategiyası və marketinqi ən az məhsulun özü qədər vacibdir.",
+                    
+                    blog19Title: "Spotify Modeli: Çevik Təşkilat Quruluşu", blog19Desc: "Musiqi nəhəngi Spotify-ın Squads, Tribes, Chapters və Guilds-dən ibarət unikal təşkilati modelinin təhlili.",
+                    blog19p1: "Böyüyən texnologiya şirkətlərinin qarşılaşdığı ən böyük çətinliklərdən biri, çevikliyini və innovasiya sürətini qorumaqdır. Musiqi axını xidməti olan Spotify, bu problemi həll etmək üçün öz unikal təşkilati modelini yaratdı. Bu model, muxtariyyət və əməkdaşlıq arasında bir balans qurmağa çalışır.", blog19h1: "Modelin Komponentləri", blog19p2: "<strong>Squads (Manqalar):</strong> Kiçik, özünü təşkil edən və müəyyən bir xüsusiyyət üzərində işləyən komandalardır (məsələn, axtarış funksiyası). Onlar startap kimi fəaliyyət göstərirlər. <strong>Tribes (Qəbilələr):</strong> Oxşar sahələrdə çalışan bir neçə Squad-ın bir araya gəldiyi qruplardır. <strong>Chapters (Bölmələr):</strong> Eyni səriştəyə malik (məsələn, bütün iOS developerləri) və fərqli Squad-larda çalışan insanların bir araya gələrək bilik paylaşdığı qruplardır. <strong>Guilds (Gildiyalar):</strong> Ortaq maraqları olan (məsələn, veb performansı) insanların bilik və təcrübələrini paylaşmaq üçün yaratdığı qeyri-rəsmi icmalardır.", blog19h2: "Nəticə", blog19p3: "Spotify modeli, ənənəvi iyerarxik idarəetməyə bir alternativdir. O, komandalara yüksək dərəcədə muxtariyyət verərək innovasiyanı sürətləndirir, eyni zamanda Chapters və Guilds vasitəsilə bilik mübadiləsini və standartların qorunmasını təmin edir. Bu model, hər təşkilat üçün uyğun olmasa da, çeviklik və miqyaslanma arasında balans axtaran bir çox şirkət üçün ilham mənbəyidir.",
+                    
+                    blog20Title: "Burj Khalifa: Dünyanın Ən Hündür Binasının İnşası", blog20Desc: "Dubaydakı bu möhtəşəm layihənin arxasındakı mühəndislik, logistika və beynəlxalq əməkdaşlıq hekayəsi.",
+                    blog20p1: "828 metrlik hündürlüyü ilə Burj Khalifa, insan mühəndisliyinin bir möcüzəsidir. Bu nəhəng layihənin həyata keçirilməsi, dünyanın dörd bir yanından mütəxəssislərin cəlb olunduğu və ən qabaqcıl texnologiyaların tətbiq edildiyi mürəkkəb bir proses idi.", blog20h1: "Layihənin Miqyası və Çətinlikləri", blog20p2: "Layihənin əsas çətinlikləri arasında Dubayın sərt iqlim şəraiti (yüksək temperatur və qum fırtınaları), bu hündürlükdə bir binanın struktur dayanıqlığını təmin etmək və minlərlə işçinin və tonlarla materialın logistikasını idarə etmək daxil idi. Binanın təməli üçün xüsusi beton qarışığı hazırlanmış və betonun qurumaması üçün gecələr tökülmüşdür.", blog20h2: "Beynəlxalq Əməkdaşlıq", blog20p3: "Burj Khalifa layihəsi, əsl beynəlxalq bir əməkdaşlıq nümunəsidir. Memarlıq dizaynı Çikaqodan bir şirkət tərəfindən hazırlanmış, əsas podratçı isə Cənubi Koreyadan olan Samsung C&T idi. Layihədə 30-dan çox ölkədən mütəxəssislər və işçilər iştirak edirdi. Bu qədər fərqli mədəniyyətdən və dildən olan insanları vahid bir hədəf ətrafında birləşdirmək layihə idarəetmə komandasının ən böyük uğurlarından biri idi.", blog20h3: "Nəticə", blog20p4: "6 il ərzində tamamlanan Burj Khalifa, aydın bir vizyon, detallı planlama, güclü liderlik və effektiv beynəlxalq əməkdaşlıq sayəsində vaxtında və büdcəyə uyğun şəkildə həyata keçirilən meqalayihənin parlaq bir nümunəsidir.",
+
+                    blog21Title: "Risk Jurnalından Kənar: Layihələri Qorxu ilə deyil, Məqsədlə İdarə Etmək", blog21Desc: "Risklərə fokuslanmaq vacibdir, lakin bu, layihənin əsas dəyərini və məqsədini kölgədə qoymamalıdır.",
+                    blog21p1: "Layihə menecerləri olaraq, biz nələrin səhv gedə biləcəyini planlaşdırmaqda ustadıyıq. Dünyamız Qant diaqramları, risk reyestrləri və təsirlərin azaldılması strategiyalarından ibarətdir. Hər bir potensial təhlükəni proqnozlaşdırmaq üçün saysız-hesabsız saatlar sərf edirik. Bu müdafiə mövqeyi işimizin vacib bir hissəsidir, lakin mən bunun tənliyin yalnız yarısı olduğunu öyrəndim.", blog21p2: "Yalnız risklərin azaldılmasına fokuslanmaq, gəmini yalnız aysberqlərə baxaraq idarə etməyə bənzəyir. Fəlakətdən qaça bilərsiniz, ancaq təyinat yerinə çatacağınıza zəmanət yoxdur. Bu qorxuya əsaslanan yanaşma innovasiyanı boğa və komandanın mənəviyyatını aşağı sala bilər.", blog21h1: "Fikri Dəyişiklik", blog21p3: "Bir neçə il əvvəl anladım ki, bu müdafiə düşüncə tərzi əsas bir layihəni ləngidir. Komanda səhvlərdən qaçmağa o qədər fokuslanmışdı ki, yaratmağa çalışdığımız inanılmaz dəyəri gözdən itirirdik. Məhz o zaman şüurlu bir zehni dəyişiklik etdim: uğursuzluq qorxusuna olan diqqətimi, çatdırılma istəyinə olan bir həvəslə əvəz etməyə qərar verdim.", blog21h2: "\"Dəyər Həvəsi\" (Value Hunger)", blog21p4: "Mən bunu \"Dəyər Həvəsi\" adlandırıram. Bu, layihənin əsas məqsədinin amansız, proaktiv axtarışıdır. Perspektivdəki bu sadə dəyişiklik dərin təsir göstərir:", blog21p5: "<strong>Maraqlı Tərəflərin İdarə Edilməsində:</strong> Layihə həcmindən (scope) qorxmaq əvəzinə, maraqlı tərəfin əsas problemini dərindən anlamaq üçün bir \"həvəs\" inkişaf etdirirsiniz. Bu, həcmi aydınlaşdırır və söhbətləri əməkdaşlıq səylərinə çevirir. <strong>Komanda Liderliyində:</strong> Tükənmədən qorxmaq əvəzinə, missiyaya qarşı bir \"həvəs\" yetişdirməyə fokuslanırsınız. Gündəlik tapşırıqları layihənin vizyonuna bağlamaq, təzyiqin heç vaxt edə bilməyəcəyi qədər effektiv bir şəkildə motivasiyanı artıran bir məqsəd hissi yaradır.", blog21h3: "Nəticə", blog21p6: "Nəticə etibarilə, risk idarəetməsi \"necə\"ni idarə etməklə bağlıdır. Əsl layihə liderliyi isə \"niyə\"ni müdafiə etməkdən gəlir."
+                },
+                en: {
+                    // General
+                    navHome: "Home", navAbout: "About Us", navServices: "Services", navReviews: "Reviews", navBlog: "Blog", navContact: "Contact", readMore: "Read more &rarr;",
+                    footerTitle1: "PMania Hub", footerDesc1: "Your professional support in project management.", footerTitle2: "Quick Links", footerTitle3: "Contact", footerTitle4: "Follow Us", footerRights: "&copy; 2025 PMania Hub. All rights reserved.",
+                    // Blog Page Specific
+                    blogPageTitle: "The PMania Hub Blog", blogPageSubtitle: "The latest articles and insights on project management, leadership, and career development.",
+                    subscribeBtn: "Subscribe to our newsletter on LinkedIn",
+                    filterAll: "All", filterPM: "Project Management", filterLeadership: "Leadership", filterTools: "Tools & Certs", filterCases: "Case Studies",
+                   
+                    // --- BLOGS ---
+                    // Project Management (1-5)
+                    blog1Title: "Differences Between Agile and Scrum", blog1Desc: "In this article, we explore the core principles of agile methodologies and their application.",
+                    blog1p1: "In the world of project management, two terms are often used interchangeably: Agile and Scrum. But are they really the same thing? The short answer is no. Let's clarify the main differences between them.", blog1h1: "What is Agile?", blog1p2: "Agile is not a methodology, but a philosophy. It is a mindset for managing projects in a more flexible, adaptable, and customer-centric way. It consists of 4 core values and 12 principles set out in the Agile Manifesto. The main goal is to react quickly to change and continuously create value.", blog1h2: "What is Scrum?", blog1p3: "Scrum is one of the most popular frameworks used to implement the Agile philosophy. Scrum defines specific roles (Product Owner, Scrum Master, Development Team), events (Sprint, Sprint Planning, Daily Scrum), and artifacts (Product Backlog, Sprint Backlog) that help teams solve complex problems.", blog1h3: "The Main Difference", blog1p4: "To put it simply, if Agile is the philosophy of \"living a healthy lifestyle,\" then Scrum is the \"specific diet and exercise program\" you choose to achieve that philosophy. In other words, Scrum is one way to be agile, but it is not the only way. Other Agile frameworks like Kanban and XP also exist.",
+                    blog2Title: "5 Essential Steps for a Successful Project", blog2Desc: "Key points to consider from project planning to final delivery.",
+                    blog2p1: "Behind every successful project lies a well-thought-out plan and consistent execution. Regardless of the project's size or complexity, following these 5 essential steps will bring you closer to success.", blog2h1: "1. Initiation", blog2p2: "This is the birth stage of the project. Here, the project's goals, expectations, and key stakeholders are identified. It's crucial to answer the questions, “What do we want to achieve?” and “Why is this project important?”", blog2h2: "2. Planning", blog2p3: "The foundation of success is detailed planning. In this phase, the project's scope, budget, timeline, required resources, and potential risks are determined. Drawing a clear roadmap ensures the entire team moves towards the same goal.", blog2h3: "3. Execution", blog2p4: "This is the stage where the plan is brought to life. Team members carry out tasks, resources are allocated, and the project's main product or service is created. Effective communication and teamwork are critical in this phase.", blog2h4: "4. Monitoring & Control", blog2p5: "This phase runs parallel to execution. The project's progress is tracked against the plan, performance is measured, and corrective actions are taken if any deviations occur. The goal is to keep the project within budget, on time, and up to quality standards.", blog2h5: "5. Closure", blog2p6: "This is the final stage where the project is successfully completed. The final product is delivered to the client, documentation is finalized, and lessons learned are recorded. This creates a valuable knowledge base for future projects.",
+                    blog3Title: "What is Risk Management?", blog3Desc: "How can you identify and manage potential risks in your projects?",
+                    blog3p1: "In project management, even the best-laid plans can face unexpected events. Risk management is a process that helps to foresee these uncertainties and minimize their negative impact on the project.", blog3h1: "What is Risk and What Are Its Types?", blog3p2: "A risk is an uncertain event that, if it occurs, can have a positive or negative effect on the project's objectives (budget, time, quality). Risks can be categorized as technical (technology failure), external (market changes), organizational (resource shortages), or management (poor planning).", blog3h2: "The Risk Management Process", blog3p3: "Effective risk management typically consists of four main steps:", blog3li1: "<strong>Risk Identification:</strong> Identifying potential risks and creating a list of them.", blog3li2: "<strong>Risk Analysis:</strong> Assessing the probability and potential impact of each risk.", blog3li3: "<strong>Risk Response Planning:</strong> Developing strategies to address risks (accept, avoid, mitigate, or transfer).", blog3li4: "<strong>Risk Monitoring:</strong> Tracking new risks throughout the process and checking the effectiveness of plans for existing risks.",
+                    blog4Title: "Project Manager or Leader? Both!", blog4Desc: "Explore the leadership qualities behind successful projects and their impact on the team.",
+                    blog4p1: "In project management terminology, the words \"manager\" and \"leader\" are often used interchangeably, but they actually represent different meanings and functions. A successful project manager must be able to embody both roles.", blog4h1: "The Project Manager: System and Process", blog4p2: "A manager is primarily concerned with systems and order. They create plans, set budgets, allocate resources, and oversee the timely and quality completion of tasks. A manager's main questions are \"how?\" and \"when?\". They ensure that processes run correctly.", blog4h2: "The Leader: People and Vision", blog4p3: "A leader, on the other hand, is more about vision and motivation. They inspire the team, show them the common goal, and support them through challenges. A leader's main questions are \"what?\" and \"why?\". They ensure the team believes in the goal and works enthusiastically towards it.", blog4h3: "Conclusion: Being Both is Essential", blog4p4: "A manager who only manages but does not inspire cannot unlock the team's full potential. A leader who only inspires but lacks planning and control skills cannot save the project from chaos. Therefore, a modern project manager must both manage processes perfectly like a manager and guide their team like a leader.",
+                    blog5Title: "Urgent or Important? How to Prioritize Correctly", blog5Desc: "Learn effective prioritization methods like MoSCoW and Eisenhower Matrix.",
+                    blog5p1: "Not all tasks that come our way in daily work life are equally important. To manage our time effectively and focus on what truly matters, it's essential to prioritize tasks correctly. One of the most effective methods for this is the Eisenhower Matrix.", blog5h1: "The Eisenhower Matrix: 4 Quadrants", blog5p2: "This method is named after Dwight D. Eisenhower, the 34th President of the United States, who was known for using it. The matrix evaluates all tasks based on two criteria: Urgency and Importance. This creates four distinct quadrants:", blog5li1: "<strong>1. Urgent & Important (Do):</strong> These tasks need to be done immediately. For example, a critical client issue or an approaching deadline.", blog5li2: "<strong>2. Important, but Not Urgent (Schedule):</strong> These are tasks that help you achieve your long-term goals. For instance, learning a new skill or planning a future project. Schedule these tasks on your calendar.", blog5li3: "<strong>3. Urgent, but Not Important (Delegate):</strong> These tasks can be done by someone else. For example, answering some calls or compiling reports. If possible, delegate this work.", blog5li4: "<strong>4. Neither Urgent nor Important (Eliminate):</strong> These tasks are a waste of time and should be avoided. For example, aimlessly scrolling through social media.", blog5p3: "By using this matrix, you can move from a \"reactive\" mode (only reacting to urgent tasks) to a \"proactive\" work mode (focusing on what is truly important).",
+
+                    // Leadership (6-10)
+                    blog6Title: "The Secret to Effective Leadership: Emotional Intelligence (EQ)", blog6Desc: "How can you develop your emotional intelligence to better understand and motivate your team?",
+                    blog6p1: "Leadership isn't just about giving orders and checking results. True leadership is the ability to understand people, inspire them, and guide them toward a common goal. At the core of this ability lies Emotional Intelligence (EQ).", blog6h1: "What is Emotional Intelligence?", blog6p2: "EQ is the ability to understand, manage, and effectively use your own and others' emotions. Leaders with high EQ make better decisions, build stronger teams, and remain calmer under stress.", blog6h2: "The 4 Components of EQ in Leadership", blog6p3: "<strong>1. Self-awareness:</strong> Understanding your own emotions, strengths, and weaknesses. This means knowing how your behavior affects the team. <strong>2. Self-management:</strong> Keeping your emotions, especially during stressful moments, in check. This helps in making thoughtful and rational decisions. <strong>3. Social Awareness (Empathy):</strong> Understanding the emotions, needs, and concerns of your team members. Building empathy creates trust and loyalty. <strong>4. Relationship Management:</strong> The ability to influence and inspire others and resolve conflicts. This is crucial for uniting the team around a shared vision.", blog6h3: "Conclusion", blog6p4: "Technical skills can make you a good manager, but high emotional intelligence will make you an effective leader.",
+
+                    blog7Title: "Servant Leadership: Empowering Your Team", blog7Desc: "The benefits of serving your team instead of adhering to a traditional hierarchy in the modern workplace.",
+                    blog7p1: "Traditional leadership models concentrate power at the top. However, an approach gaining popularity in the modern business world is Servant Leadership. This model emphasizes that the primary role of a leader is to serve the team and create the conditions for their success.", blog7h1: "Who is a Servant Leader?", blog7p2: "A servant leader doesn't ask, 'What can you do for me?' but rather, 'What can I do for you?'. Their main goal is to support the growth of team members, remove obstacles in their way, and empower them to reach their goals.", blog7h2: "Core Principles", blog7p3: "This leadership style is based on qualities like listening, empathy, awareness, and a commitment to the growth of others. It focuses on building influence and trust instead of power and control. When team members feel valued and supported, they become more creative, productive, and loyal.", blog7h3: "Why Is It Effective?", blog7p4: "Servant leadership creates an environment of trust, collaboration, and psychological safety within the team. This, in turn, boosts innovation and allows for more sustainable results in the long run.",
+                    
+                    blog8Title: "Conflict Resolution: How to Navigate Difficult Conversations", blog8Desc: "Practical tips for turning disagreements within the team into constructive outcomes.",
+                    blog8p1: "Wherever people with different thoughts and experiences work together, disagreements are inevitable. Conflict itself is not the problem; the problem is how it's managed. When handled correctly, conflicts can lead to better decisions and stronger team relationships.", blog8h1: "Be Prepared", blog8p2: "Before starting a difficult conversation, clarify your goal. The goal shouldn't be to win, but to achieve mutual understanding and find a common solution. Gather the facts and try to keep your emotions in check.", blog8h2: "Listen Actively", blog8p3: "Genuinely try to understand the other person's point of view. Listen to understand, not to reply. Ensure you've understood correctly by summarizing what they said ('If I'm understanding you correctly, you're saying...').", blog8h3: "Use 'I' Statements", blog8p4: "Avoid blaming the other person. Instead of saying, 'You always do this,' frame your sentences around your feelings, like, 'I feel... in this situation.' This reduces defensiveness and opens the door for dialogue.", blog8h4: "Look for Common Ground", blog8p5: "Despite disagreements, find points you both agree on. This shows you're working towards a common goal. Focus on solutions rather than the problem and brainstorm possible options together.",
+
+                    blog9Title: "Creating a Feedback Culture", blog9Desc: "How to foster an environment of open and honest feedback in your team to ensure continuous improvement.",
+                    blog9p1: "Feedback is vital for the growth of teams and individuals. However, feedback is often given only during annual performance reviews or when a problem arises. To ensure real development, it's necessary to create a culture of continuous, constructive, and supportive feedback.", blog9h1: "Normalize Feedback", blog9p2: "Take the fear out of feedback. Make it a normal part of the daily work process. Regularly share both positive and developmental feedback. This will help team members become more open to receiving it.", blog9h2: "Be Specific and Behavior-Focused", blog9p3: "Instead of general statements like 'Good job,' specify what was done well. Similarly, when giving criticism, target the specific behavior, not the person. Saying, 'The delay in submitting the last report affected the project schedule,' is more constructive than, 'You are lazy.'", blog9h3: "It's a Two-Way Street", blog9p4: "As a leader, don't just give feedback; ask for it too. Request feedback from your team on your own performance. This builds trust and shows that everyone is committed to improvement.",
+                    
+                    blog10Title: "Leading Through Change: Guiding a Team Through Uncertainty", blog10Desc: "Maintaining trust and directing the team towards new goals during times of organizational change.",
+                    blog10p1: "Whether it's implementing new technology or restructuring the company, change is often accompanied by uncertainty, anxiety, and even resistance. In such moments, the leader's role is critical in successfully guiding the team through the process.", blog10h1: "Transparent and Continuous Communication", blog10p2: "The biggest enemy of uncertainty is a lack of information. Openly share the reasons for the change, the expected outcomes, and how the process will unfold. Even if you don't have all the answers, admit it and promise to share information as you get it.", blog10h2: "Show Empathy and Listen", blog10p3: "Acknowledge your team members' concerns and fears. Don't diminish their feelings. Take the time to listen to their ideas and suggestions. When people feel they are part of the process, they are less likely to resist change.", blog10h3: "Provide a Clear Vision", blog10p4: "Clearly describe what awaits the team at the end of the change. Show them the benefits and opportunities this 'new world' will bring. People are more willing to go down a difficult path if they believe the destination is worthwhile.",
+                    
+                    // Tools & Certifications (11-15)
+                    blog11Title: "The PMP Certification: Is It Worth It for Your Career?", blog11Desc: "The benefits, requirements, and preparation process for the Project Management Professional (PMP) certification.",
+                    blog11p1: "As one of the most recognized and respected certifications in project management, the PMP (Project Management Professional) is a career goal for many professionals. But is this certification really worth the time and investment?", blog11h1: "What are the Benefits of PMP?", blog11p2: "<strong>Global Recognition:</strong> PMP is accepted worldwide as the gold standard in project management. <strong>Higher Salary:</strong> Studies by PMI show that PMP certified professionals earn, on average, more than their non-certified counterparts. <strong>Career Opportunities:</strong> Many companies list PMP certification as a requirement, especially for large and international projects. <strong>In-Depth Knowledge:</strong> The PMP exam preparation process provides you with comprehensive knowledge across all areas of project management (initiating, planning, executing, monitoring, and closing).", blog11h2: "Who Can Apply?", blog11p3: "The requirements for PMP vary depending on your education level. Generally, candidates with a four-year degree need three years of project management experience and 35 hours of formal training, while those with a secondary degree need five years of experience and the same training.", blog11h3: "Conclusion", blog11p4: "If you are aiming for a long-term career in project management, the PMP certification is undoubtedly one of the most valuable investments you can make.",
+                    
+                    blog12Title: "The Best Entry-Level Certification: CAPM", blog12Desc: "An overview of the Certified Associate in Project Management (CAPM) exam for those new to a project management career.",
+                    blog12p1: "Are you just starting out in project management or at the beginning of your career? One of the best ways to demonstrate your foundational knowledge and enthusiasm for the field is to obtain the CAPM (Certified Associate in Project Management) certification from PMI.", blog12h1: "What is CAPM and Who is it For?", blog12p2: "CAPM is an entry-level certification that validates your understanding of the fundamental terminology, processes, and knowledge areas of project management. This certification is ideal for students, recent graduates, or professionals looking to transition into the field who do not yet have the extensive experience required for the PMP.", blog12h2: "Requirements and Process", blog12p3: "Applying for the CAPM is much more straightforward than for the PMP. You need a secondary degree and 23 hours of project management education. There is no experience requirement. The exam is focused on testing your knowledge of the fundamentals found in the PMBOK Guide.", blog12h3: "Benefits of CAPM", blog12p4: "The CAPM certification lays a solid foundation for the PMP. Having this certification on your resume shows that you are serious about the field and makes you a more attractive candidate to employers. It's an excellent starting point for moving into more responsible roles on project teams.",
+                    
+                    blog13Title: "Jira vs. Trello: Which Tool is Right for Your Team?", blog13Desc: "A comparative analysis of the two most popular project management tools for Agile teams.",
+                    blog13p1: "Choosing the right tool for agile project management can significantly impact a team's productivity. Two giants in the market, Jira and Trello, offer powerful solutions that cater to different needs.", blog13h1: "Trello: Simplicity and Visuals", blog13p2: "Trello features a simple and intuitive interface inspired by the Japanese Kanban methodology. It is based on a visual system of boards, lists, and cards. Trello is perfect for small to medium-sized teams, simple projects, and those who want to visually track the progress of tasks. It's very easy to get started with.", blog13h2: "Jira: Power and Customization", blog13p3: "Developed by Atlassian, Jira is a more complex and powerful tool originally created for software development teams. It offers specific support for Scrum and Kanban, detailed reporting, customizable workflows, and thousands of integration possibilities. Jira is better suited for complex projects, large teams, and organizations that require full control over their processes.", blog13h3: "Which One to Choose?", blog13p4: "If you prioritize simplicity, speed, and visual management, Trello is an excellent choice. If your project is complex and you need detailed reporting and deep control over processes, Jira is the more appropriate tool for you.",
+                    
+                    blog14Title: "Becoming a Scrum Master: The PSM I Certification", blog14Desc: "The importance of the Professional Scrum Master I (PSM I) certification and a roadmap for mastering Scrum principles.",
+                    blog14p1: "Scrum is the most popular framework in modern agile project management, and the Scrum Master plays a key role in its effective implementation. One of the most respected ways to prove that you deeply understand and can apply Scrum principles is to obtain the Professional Scrum Master I (PSM I) certification from Scrum.org.", blog14h1: "What Does a Scrum Master Do?", blog14p2: "A Scrum Master is not a manager but a servant leader. Their primary duty is to ensure that the Scrum framework is understood and implemented correctly. They remove impediments for the team, facilitate Scrum events (like the Daily Scrum, Sprint Planning, etc.), and help the team to self-organize and continuously improve.", blog14h2: "Why PSM I?", blog14p3: "PSM I holds high credibility as it is offered by Scrum.org, founded by Ken Schwaber, one of the co-creators of Scrum. The exam tests not just theory, but your ability to apply Scrum principles in real-world situations. This certification shows that you don't just 'know' Scrum, but you truly understand it.",
+
+                    blog15Title: "The Power of Microsoft Project: Detailed Planning", blog15Desc: "Key features and usage guidelines of MS Project for planning and tracking complex projects.",
+                    blog15p1: "When managing large and complex projects, simple task lists are not enough. In such cases, a powerful planning and management tool like Microsoft Project becomes necessary. MS Project offers extensive functionality to give project managers full control throughout the project lifecycle.", blog15h1: "Key Features", blog15p2: "<strong>Gantt Charts:</strong> Allows for the creation of interactive diagrams that visually represent the project schedule, task durations, and dependencies between them. <strong>Resource Management:</strong> Provides powerful tools to track team members' workloads, assign resources to tasks, and prevent overallocation. <strong>Budget Control:</strong> Helps ensure the project stays within budget by tracking both planned and actual costs. <strong>Reporting:</strong> It's possible to generate dozens of customizable reports on project status, resource usage, and budget health.", blog15h2: "Who Is It For?", blog15p3: "MS Project is widely used, especially in fields where the traditional (Waterfall) methodology is applied, such as construction, engineering, manufacturing, and large IT projects. If your project involves numerous interdependent tasks, complex resource planning, and detailed financial control, Microsoft Project can be an invaluable tool for you.",
+
+                    // Case Studies (16-20)
+                    blog16Title: "Case Study: Sydney Opera House - The Price of Beauty", blog16Desc: "What lessons can be learned from the budget and schedule overruns during the construction of the architectural masterpiece, the Sydney Opera House?",
+                    blog16p1: "The Sydney Opera House is one of the world's most famous architectural landmarks. However, behind this magnificent structure lies a story filled with significant project management failures. This case study shows us how crucial it is to maintain a balance between ambition and reality.", blog16h1: "Initial Problems", blog16p2: "The project began in 1957 with a budget of 7 million Australian dollars and a 4-year timeline. However, architect Jørn Utzon's design was so complex and new for the technology of the time that the initial plans were completely unrealistic. The project's scope and complexity were not properly assessed.", blog16h2: "A Process Out of Control", blog16p3: "As the project progressed, costs and timelines began to escalate sharply. Political interventions, conflicts between the architect and the government, and continuous design changes threw the project into chaos. As a result, the Opera House was completed in 1973, 10 years later than planned, at a cost of 102 million dollars - 14 times the initial budget.", blog16h3: "Lessons Learned", blog16p4: "The Sydney Opera House case provides several important lessons: 1) The critical importance of comprehensive and realistic planning at the project's outset. 2) The necessity of continuous and transparent communication with stakeholders. 3) The need to keep scope creep under strict control.",
+
+                    blog17Title: "Case Study: NASA's Mars Rover Project - Achieving the Impossible", blog17Desc: "How risk management and innovative solutions led to the success of the project to send robots to Mars.",
+                    blog17p1: "Sending a robot to another planet is one of humanity's most complex and risky projects. NASA's Mars Rover projects (e.g., Spirit, Opportunity, Curiosity) are magnificent success stories where project management, especially risk management, was applied at the highest level.", blog17h1: "A Zero-Error Environment", blog17p2: "The Mars landing process is called the '7 minutes of terror' because everything must happen automatically during this time, and communication with Earth is delayed. The smallest mistake could lead to the failure of a multi-billion dollar project. For this reason, NASA engineers test every component repeatedly and plan for every possible failure scenario.", blog17h2: "The Pinnacle of Risk Management", blog17p3: "NASA prepares a 'backup plan for the backup plan.' Vital systems have multiple redundant copies. Every potential risk is identified, its probability and impact are assessed, and a mitigation strategy is developed for each. For example, if one of the rover's wheels fails, it can continue to move with the remaining five.", blog17h3: "Lessons Learned", blog17p4: "The Mars Rover project demonstrates the importance of comprehensive planning, continuous testing, and proactive risk management to succeed in high-risk environments. This project proves that even the most ambitious goals can be achieved with a systematic and disciplined approach.",
+                    
+                    blog18Title: "Learning from Failure: Why Did Google Glass Fail?", blog18Desc: "The reasons behind the market failure of the much-hyped Google Glass project.",
+                    blog18p1: "In 2013, Google created a huge buzz with Google Glass, presented as the technology of the future. However, this innovative product was not widely accepted by the public and ultimately failed. This case study shows how even a technically perfect product can fail if other aspects of project management are ignored.", blog18h1: "What Was the Problem?", blog18p2: "<strong>No Clear Value Proposition:</strong> It wasn't clear what specific problem Google Glass solved. It was a 'little bit of everything,' but it did nothing perfectly. Users didn't understand why they should pay $1500 for it. <strong>Privacy Concerns:</strong> People were worried about being recorded by a device with a camera without their knowledge. Google failed to properly manage this significant social and ethical risk (a stakeholder concern). <strong>Product Status:</strong> The device's design was considered strange and 'unnatural' by many, which hindered its social acceptance.", blog18h2: "Lessons Learned", blog18p3: "The failure of Google Glass teaches us that a project's success doesn't solely depend on technology. 1) It's crucial to deeply understand customer needs and the problem you are solving. 2) The concerns of all stakeholders (not just users, but society as a whole) must be considered and managed. 3) The go-to-market strategy and marketing are at least as important as the product itself.",
+                    
+                    blog19Title: "The Spotify Model: An Agile Organizational Structure", blog19Desc: "An analysis of the music giant Spotify's unique organizational model of Squads, Tribes, Chapters, and Guilds.",
+                    blog19p1: "One of the biggest challenges growing tech companies face is maintaining their agility and pace of innovation. Music streaming service Spotify created its own unique organizational model to solve this problem. This model attempts to strike a balance between autonomy and collaboration.", blog19h1: "Components of the Model", blog19p2: "<strong>Squads:</strong> Small, self-organizing teams that work on a specific feature (e.g., the search function). They operate like mini-startups. <strong>Tribes:</strong> Groups of several Squads working in related areas. <strong>Chapters:</strong> Groups of people with the same expertise (e.g., all iOS developers) from different Squads who come together to share knowledge. <strong>Guilds:</strong> Informal communities of people with common interests (e.g., web performance) who share knowledge and experiences.", blog19h2: "Conclusion", blog19p3: "The Spotify model is an alternative to traditional hierarchical management. It accelerates innovation by giving teams a high degree of autonomy while ensuring knowledge sharing and standard maintenance through Chapters and Guilds. While not suitable for every organization, this model is a source of inspiration for many companies seeking a balance between agility and scalability.",
+                    
+                    blog20Title: "Building the Burj Khalifa: The World's Tallest Building", blog20Desc: "The story of engineering, logistics, and international collaboration behind this magnificent project in Dubai.",
+                    blog20p1: "At 828 meters, the Burj Khalifa is a marvel of human engineering. The realization of this giant project was a complex process involving experts from all over the world and the application of the most advanced technologies.", blog20h1: "Project Scale and Challenges", blog20p2: "The main challenges of the project included Dubai's harsh climate (high temperatures and sandstorms), ensuring the structural stability of a building of this height, and managing the logistics of thousands of workers and tons of materials. A special concrete mix was developed for the building's foundation, and it was poured at night to prevent it from drying out too quickly.", blog20h2: "International Collaboration", blog20p3: "The Burj Khalifa project is a true example of international collaboration. The architectural design was done by a firm from Chicago, while the main contractor was Samsung C&T from South Korea. Experts and workers from over 30 countries participated in the project. Uniting people from so many different cultures and languages around a single goal was one of the project management team's greatest successes.", blog20h3: "Conclusion", blog20p4: "Completed in 6 years, the Burj Khalifa is a brilliant example of a megaproject executed on time and on budget, thanks to a clear vision, detailed planning, strong leadership, and effective international collaboration.",
+                
+                    blog21Title: "Beyond the Risk Log: Leading Projects with Purpose, Not Fear", blog21Desc: "Focusing on risk is important, but it shouldn't overshadow the core value and purpose of the project.",
+                    blog21p1: "As project managers, we are masters of planning for what could go wrong. Our world is one of Gantt charts, risk registers, and mitigation strategies. We spend countless hours trying to forecast every potential pitfall. This defensive posture is a crucial part of our job, but I’ve learned it’s only half the equation.", blog21p2: "Focusing solely on risk mitigation is like navigating a ship by only looking out for icebergs. You might avoid disaster, but you have no guarantee you'll reach your destination. This fear-based approach can stifle innovation and drain team morale.", blog21h1: "A Mental Shift", blog21p3: "A few years ago, I realized this defensive mindset was holding a key project back. The team was so focused on avoiding mistakes that we were losing sight of the incredible value we were trying to create. That’s when I made a conscious mental shift: I decided to trade my focus on the fear of failure for an obsession with the drive for delivery.", blog21h2: "Value Hunger", blog21p4: "I call this \"Value Hunger.\" It's the relentless, proactive pursuit of the project's core purpose. This simple change in perspective has a profound impact:", blog21p5: "<strong>On Stakeholder Management:</strong> Instead of fearing scope creep, you develop a \"hunger\" to deeply understand the stakeholder's core problem. This clarifies scope and turns conversations into collaborative efforts. <strong>On Team Leadership:</strong> Instead of fearing burnout, you focus on cultivating a \"hunger\" for the mission. Connecting daily tasks to the project's vision builds a sense of purpose that fuels motivation far more effectively than pressure ever could.", blog21h3: "Conclusion", blog21p6: "Ultimately, risk management is about managing the how. True project leadership comes from championing the why."
+                }
+            };
+            
+            // --- MODAL & DYNAMIC CONTENT ---
+            function createModals() {
+                const modalContainer = document.getElementById('modal-container');
+                let modalHTML = '';
+                for (const post of blogPostsData) {
+                    modalHTML += `<div id="${post.modal}" class="modal">
+                        <div class="modal-content">
+                            <span class="close-btn" onclick="closeModal('${post.modal}')">&times;</span>
+                            <div class="modal-body text-left">
+                                <h3 data-lang-key="blog${post.id}Title"></h3>
+                                <p data-lang-key="blog${post.id}p1"></p>
+                                <h4 data-lang-key="blog${post.id}h1"></h4>
+                                <p data-lang-key="blog${post.id}p2"></p>
+                                <h4 data-lang-key="blog${post.id}h2"></h4>
+                                <p data-lang-key="blog${post.id}p3"></p>
+                                <h4 data-lang-key="blog${post.id}h3"></h4>
+                                <p data-lang-key="blog${post.id}p4"></p>
+                                <h4 data-lang-key="blog${post.id}h4"></h4>
+                                <p data-lang-key="blog${post.id}p5"></p>
+                                <h4 data-lang-key="blog${post.id}h5"></h4>
+                                <p data-lang-key="blog${post.id}p6"></p>
+                                <ul>
+                                   <li data-lang-key="blog${post.id}li1"></li>
+                                   <li data-lang-key="blog${post.id}li2"></li>
+                                   <li data-lang-key="blog${post.id}li3"></li>
+                                   <li data-lang-key="blog${post.id}li4"></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>`;
+                }
+                modalContainer.innerHTML = modalHTML;
+            }
+
+            function openModal(modalId) { 
+                const modal = document.getElementById(modalId);
+                if (modal) modal.style.display = 'block'; 
+            }
+            function closeModal(modalId) { 
+                const modal = document.getElementById(modalId);
+                if (modal) modal.style.display = 'none'; 
+            }
+            window.openModal = openModal; // Make it globally accessible
+            window.closeModal = closeModal;
+
+            window.onclick = function(event) {
+                if (event.target.classList.contains('modal')) {
+                    event.target.style.display = 'none';
+                }
+            }
+
+            // --- LANGUAGE SWITCHER ---
+            function switchLanguage(lang) {
+                localStorage.setItem('language', lang); 
+                document.documentElement.lang = lang;
+                document.querySelectorAll('[data-lang-key]').forEach(el => {
+                    const key = el.getAttribute('data-lang-key');
+                    const translation = translations[lang] && translations[lang][key];
+                    if (translation) {
+                        el.innerHTML = translation;
+                        el.style.display = '';
+                    } else if (el.tagName === 'H4' || el.tagName === 'UL' || el.tagName === 'LI' || (el.tagName === 'P' && key.includes('p') && key.length > 5)) {
+                        // Hide empty elements in modals
+                         el.style.display = 'none';
+                    }
+                });
+                document.getElementById('lang-az').classList.toggle('active', lang === 'az');
+                document.getElementById('lang-en').classList.toggle('active', lang === 'en');
+            }
+            
+            // --- FILTERING LOGIC ---
+            function filterBlogPosts() {
+                const filterButtons = document.querySelectorAll('.filter-btn');
+                const blogCards = document.querySelectorAll('.blog-post-card');
+
+                filterButtons.forEach(button => {
+                    button.addEventListener('click', () => {
+                        filterButtons.forEach(btn => btn.classList.remove('active'));
+                        button.classList.add('active');
+                        
+                        const filter = button.getAttribute('data-filter');
+                        
+                        blogCards.forEach(card => {
+                            if (filter === 'all' || card.getAttribute('data-category') === filter) {
+                                card.classList.remove('hidden');
+                            } else {
+                                card.classList.add('hidden');
+                            }
+                        });
+                    });
+                });
+            }
+
+            // --- INITIALIZATION ---
+            document.addEventListener('DOMContentLoaded', () => {
+                createModals();
+
+                const savedLang = localStorage.getItem('language') || 'az';
+                switchLanguage(savedLang);
+
+                document.getElementById('lang-az').addEventListener('click', () => switchLanguage('az'));
+                document.getElementById('lang-en').addEventListener('click', () => switchLanguage('en'));
+                
+                // Hamburger Menu Logic
+                const hamburger = document.getElementById('hamburger-menu');
+                const navLinks = document.getElementById('main-nav-links');
+                hamburger.addEventListener('click', () => {
+                    hamburger.classList.toggle('active');
+                    navLinks.classList.toggle('active');
+                    document.body.classList.toggle('nav-open');
+                });
+                
+                filterBlogPosts();
+            });
+        }
+    </script>
+</body>
+</html>
+
