@@ -176,27 +176,55 @@
             min-width: 200px;
             height: 42px;
             border-radius: 50px;
-            background-color: #0A66C2;
+            background: var(--secondary-gradient);
             font-family: var(--body-font);
             font-weight: 600;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
         .libutton:hover {
             transform: translateY(-3px);
-            box-shadow: 0 4px 15px rgba(10, 102, 194, 0.4);
+            box-shadow: 0 4px 15px rgba(74, 26, 209, 0.4);
         }
 
         .blog-main-content {
             padding: 60px 0;
         }
         
+        .blog-filters-container {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+             margin-bottom: 50px;
+             padding-bottom: 15px; /* For scrollbar space */
+        }
+        
+        /* Hide scrollbar for aesthetics but keep functionality */
+        .blog-filters-container::-webkit-scrollbar {
+            display: none;
+        }
+        .blog-filters-container {
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+        
         .blog-filters {
             display: flex;
-            justify-content: center;
+            justify-content: flex-start;
             gap: 15px;
-            margin-bottom: 50px;
-            flex-wrap: wrap;
+            white-space: nowrap;
         }
+        
+        @media (min-width: 769px) {
+            .blog-filters-container {
+                overflow-x: visible;
+                padding-bottom: 0;
+            }
+            .blog-filters {
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+        }
+
+
         .filter-btn {
             background: var(--white-color);
             color: var(--primary-color);
@@ -367,12 +395,14 @@
 
         <section class="blog-main-content">
             <div class="container">
-                <div class="blog-filters">
-                    <button class="filter-btn active" data-filter="all" data-lang-key="filterAll">Hamısı</button>
-                    <button class="filter-btn" data-filter="pm" data-lang-key="filterPM">Layihə İdarəetməsi</button>
-                    <button class="filter-btn" data-filter="leadership" data-lang-key="filterLeadership">Liderlik</button>
-                    <button class="filter-btn" data-filter="tools" data-lang-key="filterTools">Alətlər və Sertifikatlar</button>
-                    <button class="filter-btn" data-filter="cases" data-lang-key="filterCases">Keyslər</button>
+                <div class="blog-filters-container">
+                    <div class="blog-filters">
+                        <button class="filter-btn active" data-filter="all" data-lang-key="filterAll">Hamısı</button>
+                        <button class="filter-btn" data-filter="pm" data-lang-key="filterPM">Layihə İdarəetməsi</button>
+                        <button class="filter-btn" data-filter="leadership" data-lang-key="filterLeadership">Liderlik</button>
+                        <button class="filter-btn" data-filter="tools" data-lang-key="filterTools">Alətlər və Sertifikatlar</button>
+                        <button class="filter-btn" data-filter="cases" data-lang-key="filterCases">Keyslər</button>
+                    </div>
                 </div>
 
                 <div class="blog-grid-full">
@@ -488,7 +518,7 @@
                     footerTitle1: "PMania Hub", footerDesc1: "Layihə idarəetməsində peşəkar dəstəkçiniz.", footerTitle2: "Sürətli Keçidlər", footerTitle3: "Əlaqə", footerTitle4: "Bizi İzləyin", footerRights: "&copy; 2025 PMania Hub. Bütün hüquqlar qorunur.",
                     // Blog Page Specific
                     blogPageTitle: "PMania Hub Bloqu", blogPageSubtitle: "Layihə idarəetməsi, liderlik və karyera inkişafı haqqında ən son məqalələr və fikirlər.",
-                    subscribeBtn: "LinkedIn bülletenimizə abunə olun",
+                    subscribeBtn: "LinkedIn'də Abunə Ol",
                     filterAll: "Hamısı", filterPM: "Layihə İdarəetməsi", filterLeadership: "Liderlik", filterTools: "Alətlər və Sertifikatlar", filterCases: "Keyslər",
                     
                     // --- BLOGS ---
@@ -561,7 +591,7 @@
                     footerTitle1: "PMania Hub", footerDesc1: "Your professional support in project management.", footerTitle2: "Quick Links", footerTitle3: "Contact", footerTitle4: "Follow Us", footerRights: "&copy; 2025 PMania Hub. All rights reserved.",
                     // Blog Page Specific
                     blogPageTitle: "The PMania Hub Blog", blogPageSubtitle: "The latest articles and insights on project management, leadership, and career development.",
-                    subscribeBtn: "Subscribe to our newsletter on LinkedIn",
+                    subscribeBtn: "Subscribe on LinkedIn",
                     filterAll: "All", filterPM: "Project Management", filterLeadership: "Leadership", filterTools: "Tools & Certs", filterCases: "Case Studies",
                    
                     // --- BLOGS ---
