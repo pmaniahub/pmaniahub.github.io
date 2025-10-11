@@ -580,29 +580,74 @@
             overflow: hidden;
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
+            justify-content: flex-end;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            color: var(--white-color);
+            min-height: 350px;
+        }
+        .blog-post-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.2) 50%, transparent 100%);
+            z-index: 1;
+            transition: background 0.3s ease;
+        }
+        .blog-post-card:hover::before {
+             background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.3) 50%, transparent 100%);
+        }
+        .blog-post-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 0;
+            transition: transform 0.4s ease;
+        }
+        .blog-post-card:hover .blog-post-image {
+            transform: scale(1.05);
         }
         .blog-post-card:hover {
-             transform: translateY(-10px);
-            box-shadow: 0 12px 40px rgba(0,0,0,0.1);
+            transform: translateY(-10px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.2);
         }
-        .blog-post-content { padding: 25px; }
-        .blog-post-content h3 { margin-bottom: 10px; }
-        .blog-post-content p { margin-bottom: 20px; }
+        .blog-post-content {
+            padding: 25px;
+            position: relative;
+            z-index: 2;
+        }
+        .blog-post-content h3, .blog-post-content p {
+            color: var(--white-color);
+            text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+            margin-bottom: 10px;
+        }
+        .blog-post-content p {
+             margin-bottom: 20px;
+        }
         .read-more-btn {
             background: none;
             border: none;
-            color: var(--secondary-color);
-            font-weight: 600;
+            color: var(--white-color);
+            font-weight: 700;
             cursor: pointer;
             padding: 10px 25px;
             font-size: 1em;
             font-family: var(--body-font);
             align-self: flex-start;
             margin-left: -10px;
+            position: relative;
+            z-index: 2;
         }
-        .read-more-btn:hover { text-decoration: underline; }
+        .read-more-btn:hover {
+            text-decoration: none;
+            opacity: 0.9;
+        }
         .view-all-blogs-container {
             text-align: center;
             margin-top: 40px;
@@ -700,67 +745,74 @@
         #calendar-modal h3 { margin-bottom: 20px; }
 
 
-        /* --- Final CTA Section --- */
-        .final-cta {
-            position: relative;
-            background-image: url('https://images.pexels.com/photos/3183197/pexels-photo-3183197.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');
+        /* --- Final CTA Section - UPDATED --- */
+        .final-cta-section {
+            background-color: var(--background-color);
+            padding: 60px 0;
+        }
+        .cta-card {
+            background-image: url('https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');
             background-size: cover;
             background-position: center;
-            background-attachment: fixed;
-            padding: 60px 0;
-            color: var(--white-color);
-            text-align: center;
+            position: relative;
+            border-radius: var(--border-radius);
+            padding: 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 40px;
+            box-shadow: 0 15px 40px rgba(74, 26, 209, 0.2);
         }
-        .final-cta::before {
+        .cta-card::before {
             content: '';
             position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
             background: linear-gradient(45deg, rgba(74, 26, 209, 0.85), rgba(106, 50, 241, 0.85));
+            border-radius: var(--border-radius);
             z-index: 1;
         }
-        .final-cta .container {
+        .cta-text, .cta-buttons-wrapper {
             position: relative;
             z-index: 2;
         }
-        .final-cta h2 {
-            font-size: 2.8em;
-            margin-bottom: 20px;
+        .cta-text h2 {
             color: var(--white-color);
-            text-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            font-size: 2.2em;
+            margin: 0 0 10px 0;
+            line-height: 1.3;
         }
-        .final-cta p {
-            font-size: 1.2em;
-            max-width: 600px;
-            margin: 0 auto 40px auto;
-            color: rgba(255,255,255,0.9);
-            text-shadow: 0 1px 3px rgba(0,0,0,0.2);
-        }
-        .final-cta-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
-        }
-        .final-cta-buttons .cta-button {
-            padding: 18px 40px;
+        .cta-text p {
+            color: rgba(255, 255, 255, 0.85);
             font-size: 1.1em;
+            margin: 0;
+        }
+        .cta-buttons-wrapper {
+            display: flex;
+            gap: 15px;
+            flex-shrink: 0; /* Prevents buttons from wrapping on smaller flex containers */
+        }
+        .cta-buttons-wrapper .cta-button {
+            background: var(--white-color);
+            color: var(--secondary-color);
+            box-shadow: none;
             font-weight: 700;
-            border: none;
-            box-shadow: 0 6px 20px rgba(0,0,0,0.2);
-            transform: translateY(0);
         }
-        .final-cta-buttons .cta-button:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+        .cta-buttons-wrapper .cta-button:hover {
+            background-color: #f0f0f0;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
         }
-        .final-cta-buttons .cta-button.cta-button-outline {
+        .cta-buttons-wrapper .cta-button.secondary-style {
             background: transparent;
             color: var(--white-color);
             border: 2px solid var(--white-color);
         }
-        .final-cta-buttons .cta-button.cta-button-outline:hover {
+        .cta-buttons-wrapper .cta-button.secondary-style:hover {
             background: var(--white-color);
             color: var(--secondary-color);
+            box-shadow: none;
         }
 
 
@@ -899,6 +951,13 @@
             .value-prop-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
+            .cta-card {
+                flex-direction: column;
+                text-align: center;
+            }
+            .cta-text h2 {
+                font-size: 1.8em;
+            }
         }
 
         @media (max-width: 768px) {
@@ -919,29 +978,28 @@
                 font-size: 1.1em;
             }
             .hero-buttons {
-                flex-wrap: nowrap; /* Prevent hero buttons from wrapping */
+                flex-wrap: wrap; /* Allow hero buttons to wrap */
             }
             .hero-buttons .cta-button {
-                padding: 12px 20px; /* Adjust padding to fit */
-                font-size: 0.9em; /* Adjust font size to fit */
+                padding: 12px 25px; 
+                font-size: 1em;
             }
-            .final-cta {
-                padding: 60px 0;
-                background-attachment: scroll; /* Disable parallax on mobile for performance */
-            }
-            .final-cta h2 {
-                font-size: 2.2em;
-            }
-            .final-cta-buttons {
-                flex-wrap: nowrap; /* Prevent CTA buttons from wrapping */
-            }
-            .final-cta-buttons .cta-button {
-                padding: 12px 20px; /* Adjust padding to fit */
-                font-size: 0.9em; /* Adjust font size to fit */
-            }
+            
             /* Hide scroll buttons on mobile; users can swipe */
             .scroll-btn {
                 display: none;
+            }
+            
+            .cta-buttons-wrapper {
+                flex-direction: column;
+                width: 100%;
+                align-items: center;
+            }
+            .cta-buttons-wrapper .cta-button {
+                width: 100%;
+                max-width: 300px; /* Give buttons a max width */
+                padding: 15px 20px;
+                font-size: 1em;
             }
         }
 
@@ -1317,6 +1375,7 @@
                     <div class="scroll-container" id="blog-scroller">
                         <div class="blog-grid">
                             <article class="blog-post-card">
+                                <img src="https://images.pexels.com/photos/3184338/pexels-photo-3184338.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Agile and Scrum" class="blog-post-image">
                                 <div class="blog-post-content">
                                     <h3 data-lang-key="blog1Title">Agile və Scrum Arasındakı Fərqlər</h3>
                                     <p data-lang-key="blog1Desc">Bu məqalədə çevik metodologiyaların əsas prinsiplərini və onların tətbiqini araşdırırıq.</p>
@@ -1324,6 +1383,7 @@
                                 <button class="read-more-btn" onclick="openModal('blog-modal-1')" data-lang-key="readMore">Daha çox oxu &rarr;</button>
                             </article>
                             <article class="blog-post-card">
+                                <img src="https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Successful Project" class="blog-post-image">
                                 <div class="blog-post-content">
                                     <h3 data-lang-key="blog2Title">Uğurlu Layihə Üçün 5 Vacib Addım</h3>
                                     <p data-lang-key="blog2Desc">Layihə planlamasından yekun təhvilə qədər olan mərhələlərdə diqqət etməli olduğunuz məqamlar.</p>
@@ -1331,6 +1391,7 @@
                                 <button class="read-more-btn" onclick="openModal('blog-modal-2')" data-lang-key="readMore">Daha çox oxu &rarr;</button>
                             </article>
                             <article class="blog-post-card">
+                                <img src="https://images.pexels.com/photos/1181472/pexels-photo-1181472.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Risk Management" class="blog-post-image">
                                 <div class="blog-post-content">
                                     <h3 data-lang-key="blog3Title">Risk İdarəetməsi Nədir?</h3>
                                     <p data-lang-key="blog3Desc">Layihələrinizdə qarşılaşa biləcəyiniz riskləri necə müəyyən edə və idarə edə bilərsiniz?</p>
@@ -1338,6 +1399,7 @@
                                 <button class="read-more-btn" onclick="openModal('blog-modal-3')" data-lang-key="readMore">Daha çox oxu &rarr;</button>
                             </article>
                              <article class="blog-post-card">
+                                <img src="https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Manager vs Leader" class="blog-post-image">
                                 <div class="blog-post-content">
                                     <h3 data-lang-key="blog4Title">Layihə Meneceri yoxsa Lider? Hər İkisi!</h3>
                                     <p data-lang-key="blog4Desc">Uğurlu layihələrin arxasında dayanan liderlik keyfiyyətlərini və onların komandaya təsirini araşdırın.</p>
@@ -1345,6 +1407,7 @@
                                 <button class="read-more-btn" onclick="openModal('blog-modal-4')" data-lang-key="readMore">Daha çox oxu &rarr;</button>
                             </article>
                             <article class="blog-post-card">
+                                <img src="https://images.pexels.com/photos/5997321/pexels-photo-5997321.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Prioritization" class="blog-post-image">
                                 <div class="blog-post-content">
                                     <h3 data-lang-key="blog5Title">Təcili yoxsa Vacib? Prioritetləri Düzgün Müəyyən Etməyin Yolları</h3>
                                     <p data-lang-key="blog5Desc">MoSCoW və Eisenhower Matrisi kimi effektiv prioritetləşdirmə üsulları ilə tanış olun.</p>
@@ -1367,14 +1430,18 @@
         </section>
     </main>
 
-    <!-- Final CTA Section -->
-    <section class="final-cta">
+    <!-- Final CTA Section - UPDATED -->
+    <section class="final-cta-section">
         <div class="container">
-            <h2 data-lang-key="ctaTitle">Layihələrinizi Növbəti Səviyyəyə Qaldırmağa Hazırsınız?</h2>
-            <p data-lang-key="ctaSubtitle">İndi başlayın – inkişaf üçün ilk addımı atın.</p>
-            <div class="final-cta-buttons">
-                <button class="cta-button" onclick="openModal('calendar-modal')" data-lang-key="ctaBtn1">Ödənişsiz konsultasiya al</button>
-                <a href="/services/" class="cta-button cta-button-outline" data-lang-key="ctaBtn2">Bütün Xidmətlərə Bax</a>
+            <div class="cta-card">
+                <div class="cta-text">
+                    <h2 data-lang-key="ctaTitle">Layihələrinizi Növbəti Səviyyəyə Qaldırmağa Hazırsınız?</h2>
+                    <p data-lang-key="ctaSubtitle">İndi başlayın – inkişaf üçün ilk addımı atın.</p>
+                </div>
+                <div class="cta-buttons-wrapper">
+                    <button class="cta-button" onclick="openModal('calendar-modal')" data-lang-key="ctaBtn1">Ödənişsiz konsultasiya al</button>
+                    <a href="/services/" class="cta-button secondary-style" data-lang-key="ctaBtn2">Bütün Xidmətlərə Bax</a>
+                </div>
             </div>
         </div>
     </section>
