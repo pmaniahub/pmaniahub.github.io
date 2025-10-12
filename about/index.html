@@ -619,6 +619,12 @@
                             <p data-lang-key="abdallahTitle">Süni İntellekt Eksperti | PHD</p>
                         </div>
                     </div>
+                    <div class="team-card" style="background-image: url('/images/hashim.png'), url('https://placehold.co/320x400/2c3e50/ffffff?text=Hashim+H.');" onclick="openModal('hashim-modal')">
+                        <div class="team-card-overlay">
+                            <h3 data-lang-key="hashimName">Haşım Haşımov</h3>
+                            <p data-lang-key="hashimTitle">IT Təlimçi | Full Stack Developer</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -723,6 +729,29 @@
         </div>
     </div>
 
+    <!-- Hashim's Profile Modal -->
+    <div id="hashim-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('hashim-modal')">&times;</span>
+            <div class="modal-body">
+                <h3 data-lang-key="hashimName">Haşım Haşımov</h3>
+                <p class="subtitle" data-lang-key="hashimRole">Komanda Lideri | Full Stack Developer</p>
+                
+                <h4 data-lang-key="summaryTitle">Peşəkar Xülasə</h4>
+                <p data-lang-key="hashimSummaryContent"></p>
+                
+                <h4 data-lang-key="skillsTitle">Əsas Bacarıqlar</h4>
+                <ul>
+                    <li data-lang-key="hashimSkill1"></li>
+                    <li data-lang-key="hashimSkill2"></li>
+                    <li data-lang-key="hashimSkill3"></li>
+                    <li data-lang-key="hashimSkill4"></li>
+                    <li data-lang-key="hashimSkill5"></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
 
     <script>
         if (!window.pmaniaScriptLoaded) {
@@ -756,6 +785,16 @@
                     abdallahCert1: "Kiçik Elmi İşçi – Tallinn Universiteti",
                     abdallahCert2: "Çoxsaylı rəyçilənmiş Sİ tədqiqat nəşrləri",
                     abdallahCert3: "Etik Sİ və tətbiqi maşın öyrənməsi sahəsində tanınmış töhfəçi.",
+
+                    hashimName: "Haşım Haşımov", hashimTitle: "IT Təlimçi | Full Stack Developer",
+                    hashimRole: "Komanda Lideri | Full Stack Developer",
+                    hashimSummaryContent: "7 ildən çox proqram təminatının tam inkişaf dövrü (SDLC) təcrübəsi olan, nəticəyönümlü Komanda Lideri və Full Stack Developer. Mən Python (FastAPI, Django) və React, Vue.js kimi müasir frontend freymvorklərindən istifadə edərək köhnə sistemləri modernləşdirmək və sıfırdan yüksək performanslı tətbiqlər yaratmaq üzrə ixtisaslaşmışam. Təcrübəmə güclü mikroservislərin inkişafı, CI/CD proseslərinin tətbiqi və stabil, miqyaslana bilən və müasir proqram həllərini təqdim etmək üçün funksiyalararası komandalar daxilində əməkdaşlığın təşviqi daxildir.",
+                    skillsTitle: "Əsas Bacarıqlar",
+                    hashimSkill1: "Python, FastAPI, Django",
+                    hashimSkill2: "React.js, Vue.js, PHP",
+                    hashimSkill3: "MySQL, Kubernetes",
+                    hashimSkill4: "Microservices, CI/CD",
+                    hashimSkill5: "Agile Methodologies, Team Leadership",
                     
                     footerTitle1: "PMania Hub", footerDesc1: "Layihə idarəetməsində peşəkar dəstəkçiniz.", footerTitle2: "Sürətli Keçidlər", footerTitle3: "Əlaqə", footerTitle4: "Bizi İzləyin", footerRights: "&copy; 2025 PMania Hub. Bütün hüquqlar qorunur.",
                 },
@@ -787,6 +826,16 @@
                     abdallahCert2: "Multiple peer-reviewed AI research publications",
                     abdallahCert3: "Recognized contributor in ethical AI and applied machine learning.",
                     
+                    hashimName: "Hashim Hashimov", hashimTitle: "IT Trainer | Full Stack Developer",
+                    hashimRole: "Team Lead | Full Stack Developer",
+                    hashimSummaryContent: "Results-driven Team Lead and Full Stack Developer with over 7 years of experience in the complete software development lifecycle. I specialize in modernizing legacy systems while building high-performance applications from the ground up using Python (FastAPI, Django) and modern frontend frameworks like React and Vue.js. My expertise includes developing robust microservices, implementing CI/CD pipelines, and fostering collaboration within cross-functional teams to deliver stable, scalable, and cutting-edge software solutions.",
+                    skillsTitle: "Key Skills",
+                    hashimSkill1: "Python, FastAPI, Django",
+                    hashimSkill2: "React.js, Vue.js, PHP",
+                    hashimSkill3: "MySQL, Kubernetes",
+                    hashimSkill4: "Microservices, CI/CD",
+                    hashimSkill5: "Agile Methodologies, Team Leadership",
+
                     footerTitle1: "PMania Hub", footerDesc1: "Your professional support in project management.", footerTitle2: "Quick Links", footerTitle3: "Contact", footerTitle4: "Follow Us", footerRights: "&copy; 2025 PMania Hub. All rights reserved.",
                 }
             };
