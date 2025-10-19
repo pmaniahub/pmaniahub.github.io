@@ -379,9 +379,28 @@
             cursor: pointer;
         }
         
-        .modal-body h3 {
-            font-size: 1.8em;
+        .modal-body .modal-title-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
             margin-bottom: 5px;
+        }
+        
+        .modal-body .modal-title-group h3 {
+            font-size: 1.8em;
+            margin-bottom: 0;
+        }
+        
+        .modal-body .modal-title-group a svg {
+            width: 24px;
+            height: 24px;
+            fill: var(--text-color);
+            transition: fill 0.3s ease, transform 0.3s ease;
+        }
+        
+        .modal-body .modal-title-group a:hover svg {
+            fill: var(--secondary-color);
+            transform: scale(1.1);
         }
 
         .modal-body .subtitle {
@@ -405,6 +424,21 @@
         }
         .modal-body ul li {
             margin-bottom: 8px;
+        }
+        
+        .see-more-link {
+            margin-top: 15px;
+            font-weight: 500;
+        }
+        
+        .see-more-link a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        .see-more-link a:hover {
+            text-decoration: underline;
         }
 
         /* --- Footer --- */
@@ -638,6 +672,18 @@
                             <p data-lang-key="hashimTitle">IT Təlimçi | Full Stack Developer</p>
                         </div>
                     </div>
+                    <div class="team-card" style="background-image: url('/images/leman.png'), url('https://placehold.co/320x400/2c3e50/ffffff?text=Leman');" onclick="openModal('leman-modal')">
+                        <div class="team-card-overlay">
+                            <h3 data-lang-key="lemanName">Leman</h3>
+                            <p data-lang-key="lemanTitle">Azerbaijani Community Lead</p>
+                        </div>
+                    </div>
+                     <div class="team-card" style="background-image: url('/images/nina.png'), url('https://placehold.co/320x400/2c3e50/ffffff?text=Nina');" onclick="openModal('nina-modal')">
+                        <div class="team-card-overlay">
+                            <h3 data-lang-key="ninaName">Nina</h3>
+                            <p data-lang-key="ninaTitle">Estonia Community Lead</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -690,11 +736,14 @@
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal('mahmud-modal')">&times;</span>
             <div class="modal-body">
-                <h3 data-lang-key="mahmudName">Mahmud Mahmudlu</h3>
+                <div class="modal-title-group">
+                    <h3 data-lang-key="mahmudName">Mahmud Mahmudlu</h3>
+                    <a href="https://www.linkedin.com/in/mahmudmahmudlu/" target="_blank" title="LinkedIn"><svg viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg></a>
+                </div>
                 <p class="subtitle" data-lang-key="mahmudRole">PMP® | Senior Project & Program Leader</p>
-                
                 <h4 data-lang-key="summaryTitle">Peşəkar Xülasə</h4>
                 <p data-lang-key="summaryContent">PMP® və Lean Six Sigma sertifikatlı, mürəkkəb və yüksək dəyərli texnologiya proqramlarını tam həyat dövrü boyunca uğurla təslim etmə təcrübəsinə malik lider. 6 ildən çox beynəlxalq təcrübə ilə yüksək texnologiyalı sənaye mühitində çoxmilyonluq avro dəyərində NPI layihələrini idarə etməkdə üstünəm.</p>
+                 <p class="see-more-link"><a href="https://www.linkedin.com/in/mahmudmahmudlu/" target="_blank" data-lang-key="seeMoreLinkedIn"></a></p>
                 
                 <h4 data-lang-key="experienceTitle">Əsas Təcrübə (Ericsson)</h4>
                 <ul>
@@ -718,11 +767,14 @@
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal('abdallah-modal')">&times;</span>
             <div class="modal-body">
-                <h3 data-lang-key="abdallahName">Abdallah Hussein Sham</h3>
+                <div class="modal-title-group">
+                    <h3 data-lang-key="abdallahName">Abdallah Hussein Sham</h3>
+                    <a href="https://www.linkedin.com/in/ahsham/" target="_blank" title="LinkedIn"><svg viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg></a>
+                </div>
                 <p class="subtitle" data-lang-key="abdallahRole">AI Expert | Educator | Junior Research Fellow</p>
-                
                 <h4 data-lang-key="abdallahSummaryTitle">Professional Summary</h4>
                 <p data-lang-key="abdallahSummaryContent">An Artificial Intelligence researcher with expertise in multimodal emotion recognition, speech technologies, and applied machine learning. Abdallah combines academic rigor with practical application, focusing on how AI can understand human behavior while ensuring fairness, ethics, and bias-awareness in intelligent systems. With a growing body of peer-reviewed publications, he is dedicated to making AI concepts accessible to students and professionals.</p>
+                <p class="see-more-link"><a href="https://www.linkedin.com/in/ahsham/" target="_blank" data-lang-key="seeMoreLinkedIn"></a></p>
                 
                 <h4 data-lang-key="abdallahExperienceTitle">Key Experience (Tallinn University & Research Projects)</h4>
                 <ul>
@@ -747,11 +799,14 @@
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal('hashim-modal')">&times;</span>
             <div class="modal-body">
-                <h3 data-lang-key="hashimName">Haşım Haşımov</h3>
+                <div class="modal-title-group">
+                    <h3 data-lang-key="hashimName">Haşım Haşımov</h3>
+                    <a href="https://www.linkedin.com/in/hashim-hashimov/" target="_blank" title="LinkedIn"><svg viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg></a>
+                </div>
                 <p class="subtitle" data-lang-key="hashimRole">Komanda Lideri | Full Stack Developer</p>
-                
                 <h4 data-lang-key="summaryTitle">Peşəkar Xülasə</h4>
                 <p data-lang-key="hashimSummaryContent"></p>
+                <p class="see-more-link"><a href="https://www.linkedin.com/in/hashim-hashimov/" target="_blank" data-lang-key="seeMoreLinkedIn"></a></p>
                 
                 <h4 data-lang-key="skillsTitle">Əsas Bacarıqlar</h4>
                 <ul>
@@ -760,6 +815,53 @@
                     <li data-lang-key="hashimSkill3"></li>
                     <li data-lang-key="hashimSkill4"></li>
                     <li data-lang-key="hashimSkill5"></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Leman's Profile Modal -->
+    <div id="leman-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('leman-modal')">&times;</span>
+            <div class="modal-body">
+                <div class="modal-title-group">
+                    <h3 data-lang-key="lemanName">Leman</h3>
+                    <a href="https://www.linkedin.com/in/lemanbekirova/" target="_blank" title="LinkedIn"><svg viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg></a>
+                </div>
+                <p class="subtitle" data-lang-key="lemanRole">Azerbaijani Community Lead</p>
+                <h4 data-lang-key="summaryTitle">Professional Summary</h4>
+                <p data-lang-key="lemanSummaryContent"></p>
+                <p class="see-more-link"><a href="https://www.linkedin.com/in/lemanbekirova/" target="_blank" data-lang-key="seeMoreLinkedIn"></a></p>
+                <h4 data-lang-key="experienceTitle">Key Experience</h4>
+                 <ul>
+                    <li data-lang-key="lemanExp1"></li>
+                    <li data-lang-key="lemanExp2"></li>
+                    <li data-lang-key="lemanExp3"></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Nina's Profile Modal -->
+    <div id="nina-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('nina-modal')">&times;</span>
+            <div class="modal-body">
+                 <div class="modal-title-group">
+                    <h3 data-lang-key="ninaName">Nina</h3>
+                    <a href="https://www.linkedin.com/in/nina-gulashvili-b7886883/" target="_blank" title="LinkedIn"><svg viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg></a>
+                </div>
+                <p class="subtitle" data-lang-key="ninaRole">Estonia Community Lead</p>
+                <h4 data-lang-key="summaryTitle">Professional Summary</h4>
+                <p data-lang-key="ninaSummaryContent"></p>
+                <p class="see-more-link"><a href="https://www.linkedin.com/in/nina-gulashvili-b7886883/" target="_blank" data-lang-key="seeMoreLinkedIn"></a></p>
+                <h4 data-lang-key="experienceTitle">Key Experience</h4>
+                <ul>
+                    <li data-lang-key="ninaExp1"></li>
+                    <li data-lang-key="ninaExp2"></li>
+                    <li data-lang-key="ninaExp3"></li>
+                    <li data-lang-key="ninaExp4"></li>
                 </ul>
             </div>
         </div>
@@ -782,7 +884,7 @@
                     
                     mahmudName: "Mahmud Mahmudlu", mahmudRole: "PMP® | Baş Layihə və Proqram Rəhbəri",
                     summaryTitle: "Peşəkar Xülasə", summaryContent: "PMP® və Lean Six Sigma sertifikatlı, mürəkkəb və yüksək dəyərli texnologiya proqramlarını tam həyat dövrü boyunca uğurla təslim etmə təcrübəsinə malik lider. 6 ildən çox beynəlxalq təcrübə ilə yüksək texnologiyalı sənaye mühitində çoxmilyonluq avro dəyərində NPI layihələrini idarə etməkdə üstünəm.",
-                    experienceTitle: "Əsas Təcrübə (Ericsson)", expPoint1: "Büdcəsi 7 milyon avroya çatan əsas NPI platforma layihələrini idarə edib.", expPoint2: "Müxtəlif qlobal istehsalat sahələrində funksiyalararası komandalara (mühəndislik, keyfiyyət, satınalma) rəhbərlik edib.", expPoint3: "Kiçik PM-lərə mentorluq edərək komandanın performansını yüksəldib və ən yaxşı performans mükafatlarına layiq görülüb.",
+                    experienceTitle: "Əsas Təcrübə", expPoint1: "Büdcəsi 7 milyon avroya çatan əsas NPI platforma layihələrini idarə edib.", expPoint2: "Müxtəlif qlobal istehsalat sahələrində funksiyalararası komandalara (mühəndislik, keyfiyyət, satınalma) rəhbərlik edib.", expPoint3: "Kiçik PM-lərə mentorluq edərək komandanın performansını yüksəldib və ən yaxşı performans mükafatlarına layiq görülüb.",
                     certsTitle: "Sertifikatlar", cert1: "Project Management Professional (PMP)® - PMI", cert2: "Lean Six Sigma Yellow Belt - Ericsson", cert3: "Practical Gen AI for Project Managers – PMI",
 
                     abdallahName: "Abdallah Hussein Sham", abdallahTitle: "Süni İntellekt Eksperti | PHD",
@@ -808,7 +910,23 @@
                     hashimSkill3: "MySQL, Kubernetes",
                     hashimSkill4: "Microservices, CI/CD",
                     hashimSkill5: "Agile Methodologies, Team Leadership",
+
+                    ninaName: "Nina", ninaTitle: "Estoniya İcma Rəhbəri",
+                    ninaRole: "Estoniya İcma Rəhbəri",
+                    ninaSummaryContent: "Həm startaplarda, həm də böyük beynəlxalq şirkətlərdə mürəkkəb layihələrin çatdırılmasında güclü təcrübəyə malik təcrübəli Texniki Layihə Meneceri. Rəqabətli və çətin mühitlərdə işləməkdən zövq alıram, çünki onlar mənim əsas motivasiya və inkişaf mənbəyimdir. Tənzimlənən texnologiya sektorlarında komandalararası əməkdaşlıq, proseslərin uyğunlaşdırılması və sertifikatlaşdırma və uyğunluq təşəbbüslərinə rəhbərlik etməkdə bacarıqlıyam.",
+                    ninaExp1: "Planlaşdırma, büdcə və maraqlı tərəflərlə əlaqə daxil olmaqla, rəqəmsal və texniki layihələrin başdan-başa çatdırılmasını idarə etmişdir.",
+                    ninaExp2: "Qlobal iGaming proqram təminatı şirkəti üçün sertifikatlaşdırma və uyğunluq layihələrinə rəhbərlik etmiş, funksiyalararası komandaları koordinasiya etmiş və bir çox yurisdiksiyada vaxtında çatdırılmanı təmin etmişdir.",
+                    ninaExp3: "Müştərilərə texniki tətbiq, tənzimləyici uyğunlaşdırma və proses optimallaşdırılması ilə dəstək olmuşdur.",
+                    ninaExp4: "Startap mühitində layihənin icrasına və komandanın performansına nəzarət etmiş, sıx müddətlər altında səmərəliliyi və innovasiyanı təşviq etmişdir.",
+
+                    lemanName: "Leman", lemanTitle: "Azərbaycan İcma Rəhbəri",
+                    lemanRole: "Azərbaycan İcma Rəhbəri",
+                    lemanSummaryContent: "Azərbaycan Respublikası Təhsil Nazirliyinin Təhsil üçün İKT Bürosunda Layihə Rəhbəri kimi fəaliyyət göstərən, texnologiya layihələrinin dəstəklənməsi və əlaqələndirilməsində praktiki təcrübəyə malik İT Layihə Meneceri. Güclü təşkilati bacarıqları, intizamı və layihə planlaşdırılmasına proaktiv yanaşması ilə seçilir. Texnoloji həllərə töhfə verməyə və layihə idarəetməsi və çevik metodologiyalarda təcrübəsini artırmağa yüksək motivasiyalıdır.",
+                    lemanExp1: "Texnologiya layihələrinin planlaşdırılması, icrası və monitorinqində fəal iştirak.",
+                    lemanExp2: "Güclü təşkilatçılıq və tapşırıqların idarə edilməsi bacarıqları ilə layihə komandalarını effektiv şəkildə əlaqələndirmək.",
+                    lemanExp3: "Layihə idarəetməsi və çevik metodologiyalar sahəsində bilik və bacarıqlarını davamlı olaraq təkmilləşdirmək.",
                     
+                    seeMoreLinkedIn: "LinkedIn-də daha ətraflı baxın",
                     footerTitle1: "PMania Hub", footerDesc1: "Layihə idarəetməsində peşəkar dəstəkçiniz.", footerTitle2: "Sürətli Keçidlər", footerTitle3: "Əlaqə", footerTitle4: "Bizi İzləyin", footerRights: "&copy; 2025 PMania Hub. Bütün hüquqlar qorunur.",
                 },
                 en: {
@@ -822,7 +940,7 @@
                     
                     mahmudName: "Mahmud Mahmudlu", mahmudRole: "PMP® | Senior Project & Program Leader",
                     summaryTitle: "Professional Summary", summaryContent: "A PMP® and Lean Six Sigma certified leader with a proven record of delivering complex, high-value technology programs across their full lifecycle. With over 6 years of international experience, I excel at managing multimillion-euro NPI projects in a high-tech, industrial environment.",
-                    experienceTitle: "Key Experience (Ericsson)", expPoint1: "Managed major NPI platform projects with budgets up to €7 million.", expPoint2: "Led and coordinated cross-functional teams (engineering, quality, purchasing) across multiple global manufacturing sites.", expPoint3: "Coached and mentored junior PMs, elevating team performance and maturity, leading to top performance awards.",
+                    experienceTitle: "Key Experience", expPoint1: "Managed major NPI platform projects with budgets up to €7 million.", expPoint2: "Led and coordinated cross-functional teams (engineering, quality, purchasing) across multiple global manufacturing sites.", expPoint3: "Coached and mentored junior PMs, elevating team performance and maturity, leading to top performance awards.",
                     certsTitle: "Certifications", cert1: "Project Management Professional (PMP)® - PMI", cert2: "Lean Six Sigma Yellow Belt - Ericsson", cert3: "Practical Gen AI for Project Managers – PMI",
                     
                     abdallahName: "Abdallah Hussein Sham", abdallahTitle: "AI Expert | PHD",
@@ -849,6 +967,22 @@
                     hashimSkill4: "Microservices, CI/CD",
                     hashimSkill5: "Agile Methodologies, Team Leadership",
 
+                    ninaName: "Nina", ninaTitle: "Estonia Community Lead",
+                    ninaRole: "Estonia Community Lead",
+                    ninaSummaryContent: "Experienced Technical Project Manager with a strong background in delivering complex projects across both startups and large international companies. I enjoy working in competitive and challenging environments, as they are my main source of motivation and growth. Skilled in cross-team collaboration, process alignment, and leading certification and compliance initiatives in regulated technology sectors.",
+                    ninaExp1: "Managed end-to-end delivery of digital and technical projects, including planning, budgeting, and stakeholder communication.",
+                    ninaExp2: "Led certification and compliance projects for a global iGaming software company, coordinating cross-functional teams and ensuring on-time delivery across multiple jurisdictions.",
+                    ninaExp3: "Supported clients with technical implementation, regulatory alignment, and process optimization.",
+                    ninaExp4: "Oversaw project execution and team performance within a startup environment, driving efficiency and innovation under tight deadlines.",
+                    
+                    lemanName: "Leman", lemanTitle: "Azerbaijani Community Lead",
+                    lemanRole: "Azerbaijani Community Lead",
+                    lemanSummaryContent: "IT Project Manager with hands-on experience in supporting and coordinating technology projects, currently serving as a Project Leader at the Bureau on ICT for Education, Ministry of Education of the Republic of Azerbaijan. Demonstrates strong organizational skills, discipline, and a proactive approach to project planning and task management. Highly motivated to contribute to technology solutions and committed to advancing expertise in project management and agile methodologies.",
+                    lemanExp1: "Actively involved in the planning, execution, and monitoring of technology projects.",
+                    lemanExp2: "Effectively coordinates project teams through strong organizational and task management skills.",
+                    lemanExp3: "Continuously committed to advancing expertise in project management and agile methodologies.",
+                    
+                    seeMoreLinkedIn: "See more on LinkedIn",
                     footerTitle1: "PMania Hub", footerDesc1: "Your professional support in project management.", footerTitle2: "Quick Links", footerTitle3: "Contact", footerTitle4: "Follow Us", footerRights: "&copy; 2025 PMania Hub. All rights reserved.",
                 }
             };
