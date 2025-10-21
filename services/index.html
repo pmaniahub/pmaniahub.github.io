@@ -214,7 +214,37 @@
             transition: all 0.3s ease;
             text-align: left;
             border: 1px solid #e9ecef;
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
         }
+        
+        .training-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-size: cover;
+            background-position: center;
+            z-index: -1;
+            opacity: 0.1;
+            transition: opacity 0.3s ease;
+        }
+
+        .training-card:hover::after {
+            opacity: 0.2;
+        }
+
+        #pmp-card::after { background-image: url('../images/pmp.png'); }
+        #it-pm-card::after { background-image: url('../images/itpm.png'); }
+        #ai-pm-card::after { background-image: url('../images/aipm.png'); }
+        #d360-card::after { background-image: url('../images/360.png'); }
+        #capm-card::after { background-image: url('../images/capm.png'); }
+        #corporate-card::after { background-image: url('../images/corporate.png'); }
+
+
         .training-card:hover {
             transform: translateY(-10px);
             box-shadow: 0 15px 45px rgba(0,0,0,0.1);
@@ -449,32 +479,8 @@
                 </div>
                 
                 <div class="training-cards-container">
-                    <!-- Card 1: 360 -->
-                    <div class="training-card">
-                        <div class="icon-wrapper"><i class="fas fa-sitemap"></i></div>
-                        <h3 data-lang-key="training1Title">“360° Layihə İdarəetməsi”</h3>
-                        <ul class="card-bullets">
-                            <li data-lang-key="training1Bullet1"></li>
-                            <li data-lang-key="training1Bullet2"></li>
-                            <li data-lang-key="training1Bullet3"></li>
-                        </ul>
-                        <button class="cta-button" onclick="openModal('modal-360')" data-lang-key="readMore">Ətraflı Bax</button>
-                    </div>
-        
-                    <!-- Card 2: CAPM -->
-                    <div class="training-card">
-                        <div class="icon-wrapper"><i class="fas fa-user-graduate"></i></div>
-                        <h3 data-lang-key="training2Title">CAPM® Sertifikatına Hazırlıq</h3>
-                        <ul class="card-bullets">
-                            <li data-lang-key="training2Bullet1"></li>
-                            <li data-lang-key="training2Bullet2"></li>
-                            <li data-lang-key="training2Bullet3"></li>
-                        </ul>
-                        <button class="cta-button" onclick="openModal('modal-capm')" data-lang-key="readMore">Ətraflı Bax</button>
-                    </div>
-
-                    <!-- Card 3: PMP -->
-                    <div class="training-card">
+                    <!-- Card 1: PMP -->
+                    <div class="training-card" id="pmp-card">
                         <div class="icon-wrapper"><i class="fas fa-certificate"></i></div>
                         <h3 data-lang-key="training3Title">PMP® Sertifikatına Hazırlıq</h3>
                          <ul class="card-bullets">
@@ -484,9 +490,9 @@
                         </ul>
                         <button class="cta-button" onclick="openModal('modal-pmp')" data-lang-key="readMore">Ətraflı Bax</button>
                     </div>
-                    
-                    <!-- Card 6: IT PM -->
-                    <div class="training-card">
+
+                    <!-- Card 2: IT PM -->
+                    <div class="training-card" id="it-pm-card">
                         <div class="icon-wrapper"><i class="fas fa-laptop-code"></i></div>
                         <h3 data-lang-key="training6Title">IT Layihə İdarəetməsi Proqramı</h3>
                         <ul class="card-bullets">
@@ -497,8 +503,8 @@
                         <button class="cta-button" onclick="openModal('modal-it-pm')" data-lang-key="readMore">Ətraflı Bax</button>
                     </div>
 
-                    <!-- Card 5: AI PM -->
-                    <div class="training-card">
+                    <!-- Card 3: AI PM -->
+                    <div class="training-card" id="ai-pm-card">
                         <div class="icon-wrapper"><i class="fas fa-robot"></i></div>
                         <h3 data-lang-key="training5Title">AI Layihə İdarəetməsi Təlim Proqramı</h3>
                         <ul class="card-bullets">
@@ -508,9 +514,33 @@
                         </ul>
                         <button class="cta-button" onclick="openModal('modal-ai-pm')" data-lang-key="readMore">Ətraflı Bax</button>
                     </div>
+                    
+                    <!-- Card 4: 360 -->
+                    <div class="training-card" id="d360-card">
+                        <div class="icon-wrapper"><i class="fas fa-sitemap"></i></div>
+                        <h3 data-lang-key="training1Title">“360° Layihə İdarəetməsi”</h3>
+                        <ul class="card-bullets">
+                            <li data-lang-key="training1Bullet1"></li>
+                            <li data-lang-key="training1Bullet2"></li>
+                            <li data-lang-key="training1Bullet3"></li>
+                        </ul>
+                        <button class="cta-button" onclick="openModal('modal-360')" data-lang-key="readMore">Ətraflı Bax</button>
+                    </div>
+        
+                    <!-- Card 5: CAPM -->
+                    <div class="training-card" id="capm-card">
+                        <div class="icon-wrapper"><i class="fas fa-user-graduate"></i></div>
+                        <h3 data-lang-key="training2Title">CAPM® Sertifikatına Hazırlıq</h3>
+                        <ul class="card-bullets">
+                            <li data-lang-key="training2Bullet1"></li>
+                            <li data-lang-key="training2Bullet2"></li>
+                            <li data-lang-key="training2Bullet3"></li>
+                        </ul>
+                        <button class="cta-button" onclick="openModal('modal-capm')" data-lang-key="readMore">Ətraflı Bax</button>
+                    </div>
 
-                    <!-- Card 4: Corporate -->
-                    <div class="training-card">
+                    <!-- Card 6: Corporate -->
+                    <div class="training-card" id="corporate-card">
                         <div class="icon-wrapper"><i class="fas fa-building"></i></div>
                         <h3 data-lang-key="training4Title">Korporativ Təlim Paketi</h3>
                         <ul class="card-bullets">
@@ -830,6 +860,13 @@
                         <li data-lang-key="training5DetailsP2"></li>
                         <li data-lang-key="groupSize"></li>
                     </ul>
+
+                    <h4 data-lang-key="training5InstructorsTitle"></h4>
+                    <ul>
+                        <li data-lang-key="training5Instructor1"></li>
+                        <li data-lang-key="training5Instructor2"></li>
+                    </ul>
+
                     <div class="modal-price-info">
                         <h4 data-lang-key="priceTitle"></h4>
                         <p class="price" data-price-azn="500">500 AZN</p>
@@ -980,11 +1017,11 @@
                     training3Bullet1: "Elita menecerlər sırasına qoşulun",
                     training3Bullet2: "Mürəkkəb layihələri idarə edin",
                     training3Bullet3: "Qlobal karyera imkanları yaradın",
-                    
+
                     training4Title: "Korporativ Təlim Paketi",
-                    training4Bullet1: "Komandanızın potensialını artırın",
-                    training4Bullet2: "Biznes hədəflərinizə sürətlə çatın",
-                    training4Bullet3: "Şirkətinizə uyğun fərdi proqram",
+                    training4Bullet1: "Şirkətinizə özəl təlimlər",
+                    training4Bullet2: "Ehtiyaclarınıza uyğunlaşdırılmış proqram",
+                    training4Bullet3: "Komandanızın bacarıqlarını artırın",
 
                     training5Title: "AI Layihə İdarəetməsi Proqramı",
                     training5Bullet1: "Gələcəyin texnologiyasını idarə edin",
@@ -1003,12 +1040,13 @@
                     groupSize: "Qrup ölçüsü: 5 nəfərə qədər",
                     trainingDetailsTitle: "Təlim Detalları",
 
-                    consultingTitle: "Biznes Konsaltinq", consultingSubtitle: "Proseslərinizi optimallaşdırmaq və layihə uğurunuzu artırmaq üçün fərdi strateji dəstək.",
+                    consultingTitle: "Biznes Konsaltinq", 
+                    consultingSubtitle: "Proseslərinizi optimallaşdırmaq və layihə uğurunuzu artırmaq üçün fərdi strateji dəstək.",
                     consultingBoxTitle: "Biznesiniz üçün Strateji Həllər",
                     consultingBullet1: "Strateji layihə idarəetməsi və proses optimallaşdırılması.",
                     consultingBullet2: "Səmərəli metodologiyaların (Agile, Waterfall, Hibrid) tətbiqi.",
                     consultingBullet3: "Süni İntellekt (AI) əsaslı həllərin inteqrasiyası.",
-                    consultingBoxDescFull: "Layihələrinizdə çətinliklərlə üzləşirsiniz? Proseslərinizi optimallaşdırmaq və komandanızın məhsuldarlığını artırmaq istəyirsiniz? PMania Hub-ın biznes konsaltinq xidmətləri, şirkətinizin spesifik ehtiyaclarına uyğunlaşdırılmış strateji həllər təklif edir. Biz sizinlə birlikdə çalışaraq mövcud problemləri analiz edir, səmərəli idarəetmə metodologiyalarını (Agile, Waterfall, Hibrid) tətbiq edir və layihələrinizin uğurla başa çatmasını təmin edirik. Bundan əlavə, layihə idarəetmə praktikalarınıza <strong>Süni İntellekt (AI) əsaslı həllər inteqrasiya edərək</strong> proseslərinizi avtomatlaşdırır və proqnozlaşdırma dəqiqliyini artırırıq. Təcrübəmizlə biznes hədəflərinizə daha sürətli və effektiv şəkildə çatmağınıza dəstək oluruq.",
+                    consultingBoxDescFull: "Layihələrinizdə çətinliklərlə üzləşirsiniz? Proseslərinizi optimallaşdırmaq və komandanızın məhsuldarlığını artırmaq istəyirsiniz? PMania Hub-ın biznes konsaltinq xidmətləri, şirkətinizin spesifik ehtiyaclarına uyğunlaşdırılmış strateji həllər təklif edir. Biz sizinlə birlikdə çalışaraq mövcud problemləri analiz edir, səmərəli idarəetmə metodologiyalarını (Agile, Waterfall, Hibrid) tətbiq edir və layihələrinizin uğurla başa çatmasını təmin edirik. Təcrübəmizlə biznes hədəflərinizə daha sürətli və effektiv şəkildə çatmağınıza dəstək oluruq.",
                     sendInquiry: "Sorğu Göndər",
                     coachingTitle: "Fərdi Kouçinq", 
                     coachingSubtitle: "Karyeranızda irəliləmək və hədəflərinizə çatmaq üçün fərdi mentorluq dəstəyi.",
@@ -1101,15 +1139,17 @@
                     training3WhyUsP3: "İnteraktiv və praktiki təlim yanaşması",
                     training3WhyUsP4: "PMP® imtahanında sübut olunmuş yüksək müvəffəqiyyət dərəcələri",
                     training3Enroll: "Qeydiyyatdan Keçin!",
-                    
-                    training4TitleFull: "Şirkətlər üçün Fərdi Təlim Paketi", training4Tagline: "KOMANDANIZIN POTENSİALINI MAKSİMUMA ÇATDIRIN!", training4ModalDesc: "Bu tam günlük interaktiv təlim, şirkətinizin spesifik ehtiyaclarına və layihələrinə uyğunlaşdırılır. Komandanızın layihə idarəetməsi bacarıqlarını artırmaq, prosesləri optimallaşdırmaq və nəticələri yaxşılaşdırmaq üçün ideal həlldir.",
-                    training4BenefitsTitle: "Paketin Faydaları:",
-                    training4BenefitsP1: "Şirkətinizin hədəflərinə uyğunlaşdırılmış təlim məzmunu.",
-                    training4BenefitsP2: "Komanda daxilində vahid layihə idarəetmə dilinin və yanaşmasının formalaşması.",
-                    training4BenefitsP3: "Praktiki çalışmalarla real iş problemlərinin həlli.",
-                    training4PriceInfo: "Qiymət komandanızın ölçüsünə və ehtiyaclarına görə fərdi olaraq hesablanır.",
-                    getOffer: "Təklif Alın",
-                    
+
+                    training4TitleFull: "Korporativ Təlim Paketi",
+                    training4Tagline: "Komandanızın Potensialını Zirvəyə Daşıyın",
+                    training4ModalDesc: "Şirkətinizin unikal hədəflərinə və ehtiyaclarına uyğun olaraq hazırlanmış fərdi təlim proqramları ilə komandanızın bacarıqlarını inkişaf etdirin. Təlimlərimiz, layihə idarəetməsi, çevik metodologiyalar, liderlik və digər vacib sahələrdə praktiki biliklərin mənimsənilməsini təmin edir.",
+                    training4BenefitsTitle: "Paketin Üstünlükləri",
+                    training4BenefitsP1: "Tamamilə fərdiləşdirilmiş təlim məzmunu",
+                    training4BenefitsP2: "Praktiki nümunələr və şirkət daxili keys-stadilər",
+                    training4BenefitsP3: "Ölçüləbilən nəticələr və artan komanda məhsuldarlığı",
+                    training4PriceInfo: "Qiymət təklifi üçün bizimlə əlaqə saxlayın.",
+                    getOffer: "Təklif Al",
+
                     training5TitleFull: "AI Layihə İdarəetməsi Təlim Proqramı",
                     training5OverviewTitle: "Proqram Haqqında",
                     training5OverviewContent: "Bu proqram iştirakçılara Süni İntellekt (AI) layihələrini uğurla idarə etmək üçün bilik və alətlər təqdim edir. 2 ay ərzində siz həm layihə idarəetməsinin əsaslarını, həm də AI əsaslı layihələrin xüsusi çətinliklərini – məlumatların toplanması, etik məsələlər və maraqlı tərəflərlə uyğunlaşmanı öyrənəcəksiniz.",
@@ -1122,7 +1162,10 @@
                     training5LearnP6: "Praktik nümunələr və qrup tapşırıqları",
                     training5DetailsP1: "Müddət: 2 ay (16 sessiya, həftədə 2 dəfə)",
                     training5DetailsP2: "Format: İnteraktiv mühazirələr, nümunələr və viktorinalar",
-                    
+                    training5InstructorsTitle: "Təlimçilər:",
+                    training5Instructor1: "Layihə İdarəetməsi: <a href='https://www.linkedin.com/in/mahmudmahmudlu/' target='_blank' rel='noopener noreferrer'>Mahmud Mahmudlu</a> (PMP®)",
+                    training5Instructor2: "Süni İntellekt: <a href='https://www.linkedin.com/in/ahsham/' target='_blank' rel='noopener noreferrer'>Abdallah Hussein Sham</a> (PHD)",
+
                     training6TitleFull: "IT Layihə İdarəetməsi Təlim Proqramı",
                     training6OverviewContent: "Bu proqram sizə həm İT-nin fundamental biliklərini, həm də proqram mühəndisliyi prinsiplərini öyrədərək texniki layihələri uğurla idarə etmək üçün lazımi bacarıqları təqdim edir.",
                     training6LearnTitle: "IT Əsasları Hissəsində Nə Öyrənəcəksiniz?",
@@ -1140,8 +1183,8 @@
                     training6SESkillsTitle: "Əldə Edəcəyiniz Bacarıqlar (Proqram Mühəndisliyi):",
                     training6SESkillsContent: "Software Engineering, Software Development Life Cycle, Unified Modeling Language, Back-End Web Development, Front-End Web Development, Object Oriented Design, Software Architecture, Web Development, Application Development, Agile Methodology, Software Design, Integrated Development Environments, Programming Principles, Software Design Patterns, Python Programming, Scrum (Software Development).",
                     training6InstructorsTitle: "Təlimçilər:",
-                    training6Instructor1: "IT Əsasları: Haşım Haşımov (Full Stack Developer)",
-                    training6Instructor2: "Layihə İdarəetməsi: Mahmud Mahmudlu (PMP®)"
+                    training6Instructor1: "IT Əsasları: <a href='https://www.linkedin.com/in/hashim-hashimov/' target='_blank' rel='noopener noreferrer'>Haşım Haşımov</a> (Full Stack Developer)",
+                    training6Instructor2: "Layihə İdarəetməsi: <a href='https://www.linkedin.com/in/mahmudmahmudlu/' target='_blank' rel='noopener noreferrer'>Mahmud Mahmudlu</a> (PMP®)"
 
                 },
                 en: {
@@ -1165,9 +1208,9 @@
                     training3Bullet3: "Unlock global career opportunities",
 
                     training4Title: "Corporate Training Package",
-                    training4Bullet1: "Maximize your team's potential",
-                    training4Bullet2: "Achieve business goals faster",
-                    training4Bullet3: "Custom programs tailored to you",
+                    training4Bullet1: "Customized training for your company",
+                    training4Bullet2: "Program tailored to your needs",
+                    training4Bullet3: "Enhance your team's skills",
 
                     training5Title: "AI Project Management Program",
                     training5Bullet1: "Lead the technology of the future",
@@ -1186,12 +1229,13 @@
                     groupSize: "Group Size: Up to 5 people",
                     trainingDetailsTitle: "Training Details",
 
-                    consultingTitle: "Business Consulting", consultingSubtitle: "Tailored strategic support to optimize your processes and elevate your project success.",
+                    consultingTitle: "Business Consulting", 
+                    consultingSubtitle: "Tailored strategic support to optimize your processes and elevate your project success.",
                     consultingBoxTitle: "Strategic Solutions for Your Business",
                     consultingBullet1: "Strategic project management and process optimization.",
                     consultingBullet2: "Implementation of effective methodologies (Agile, Waterfall, Hybrid).",
                     consultingBullet3: "Integration of AI-powered solutions.",
-                    consultingBoxDescFull: "Facing challenges in your projects? Looking to optimize processes and boost team productivity? PMania Hub's business consulting services offer strategic solutions tailored to your company's specific needs. We work with you to analyze existing problems, implement efficient management methodologies (Agile, Waterfall, Hybrid), and ensure your projects are completed successfully. Furthermore, we enhance your project management practices by <strong>integrating AI-powered solutions</strong> to automate processes and improve forecasting accuracy. Let our experience help you achieve your business goals faster and more effectively.",
+                    consultingBoxDescFull: "Facing challenges in your projects? Looking to optimize processes and boost team productivity? PMania Hub's business consulting services offer strategic solutions tailored to your company's specific needs. We work with you to analyze existing problems, implement efficient management methodologies (Agile, Waterfall, Hybrid), and ensure your projects are completed successfully. Let our experience help you achieve your business goals faster and more effectively.",
                     sendInquiry: "Send Inquiry",
                     coachingTitle: "Personal Coaching", 
                     coachingSubtitle: "Personalized mentorship support to advance your career and achieve your goals.",
@@ -1284,15 +1328,17 @@
                     training3WhyUsP3: "Interactive and practical learning approach",
                     training3WhyUsP4: "Proven high success rates in PMP® exam",
                     training3Enroll: "Enroll Today!",
-                    
-                    training4TitleFull: "Custom Training Package for Companies", training4Tagline: "MAXIMIZE YOUR TEAM'S POTENTIAL!", training4ModalDesc: "This full-day interactive training is tailored to the specific needs and projects of your company. It is the ideal solution to enhance your team's project management skills, optimize processes, and improve results.",
-                    training4BenefitsTitle: "Package Benefits:",
-                    training4BenefitsP1: "Training content customized to your company's goals.",
-                    training4BenefitsP2: "Formation of a unified project management language and approach within the team.",
-                    training4BenefitsP3: "Solving real work problems through practical exercises.",
-                    training4PriceInfo: "Price is calculated individually based on your team's size and needs.",
-                    getOffer: "Get an Offer",
 
+                    training4TitleFull: "Corporate Training Package",
+                    training4Tagline: "Unlock Your Team's Full Potential",
+                    training4ModalDesc: "Develop your team's skills with custom training programs designed according to your company's unique goals and needs. Our trainings ensure practical knowledge acquisition in project management, agile methodologies, leadership, and other critical areas.",
+                    training4BenefitsTitle: "Package Benefits",
+                    training4BenefitsP1: "Fully customized training content",
+                    training4BenefitsP2: "Practical examples and internal company case studies",
+                    training4BenefitsP3: "Measurable results and increased team productivity",
+                    training4PriceInfo: "Contact us for a price quote.",
+                    getOffer: "Get Offer",
+                    
                     training5TitleFull: "AI Project Management Training Program",
                     training5OverviewTitle: "Program Overview",
                     training5OverviewContent: "This program is designed to equip participants with the knowledge and tools to manage Artificial Intelligence (AI) projects effectively. Over 2 months, you will learn both the fundamentals of project management and the specific challenges of AI-driven projects, including data, ethical considerations, and stakeholder alignment.",
@@ -1305,7 +1351,10 @@
                     training5LearnP6: "Practical case studies and group exercises",
                     training5DetailsP1: "Duration: 2 months (16 sessions, 2 per week)",
                     training5DetailsP2: "Format: Interactive lectures, case studies, and quizzes",
-                    
+                    training5InstructorsTitle: "Instructors:",
+                    training5Instructor1: "Project Management: <a href='https://www.linkedin.com/in/mahmudmahmudlu/' target='_blank' rel='noopener noreferrer'>Mahmud Mahmudlu</a> (PMP®)",
+                    training5Instructor2: "Artificial Intelligence: <a href='https://www.linkedin.com/in/ahsham/' target='_blank' rel='noopener noreferrer'>Abdallah Hussein Sham</a> (PHD)",
+
                     training6TitleFull: "IT Project Management Training Program",
                     training6OverviewContent: "This program provides you with the necessary skills to successfully manage technical projects by teaching you both the fundamental knowledge of IT and the principles of software engineering.",
                     training6LearnTitle: "What You Will Learn in IT Fundamentals:",
@@ -1323,8 +1372,8 @@
                     training6SESkillsTitle: "Skills You Will Gain (Software Engineering):",
                     training6SESkillsContent: "Software Engineering, Software Development Life Cycle, Unified Modeling Language, Back-End Web Development, Front-End Web Development, Object Oriented Design, Software Architecture, Web Development, Application Development, Agile Methodology, Software Design, Integrated Development Environments, Programming Principles, Software Design Patterns, Python Programming, Scrum (Software Development).",
                     training6InstructorsTitle: "Instructors:",
-                    training6Instructor1: "IT Fundamentals: Hashim Hashimov (Full Stack Developer)",
-                    training6Instructor2: "Project Management: Mahmud Mahmudlu (PMP®)"
+                    training6Instructor1: "IT Fundamentals: <a href='https://www.linkedin.com/in/hashim-hashimov/' target='_blank' rel='noopener noreferrer'>Hashim Hashimov</a> (Full Stack Developer)",
+                    training6Instructor2: "Project Management: <a href='https://www.linkedin.com/in/mahmudmahmudlu/' target='_blank' rel='noopener noreferrer'>Mahmud Mahmudlu</a> (PMP®)"
                 }
             };
             
@@ -1426,3 +1475,4 @@
 
 </body>
 </html>
+
