@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "category": "pm",
+    "title": "Agile və Scrum Arasındakı Fərqlər",
+    "desc": "Bu məqalədə çevik metodologiyaların əsas prinsiplərini və onların tətbiqini araşdırırıq.",
+    "content": [
+      {"type": "p", "text": "Layihə idarəetməsi dünyasında tez-tez bir-birinin yerinə istifadə edilən iki termin var: Agile və Scrum. Bəs onlar həqiqətən eyni şeydirmi?"},
+      {"type": "h2", "text": "Agile nədir?"},
+      {"type": "p", "text": "Agile bir metodologiya deyil, bir fəlsəfədir..."},
+      {"type": "h2", "text": "Scrum nədir?"},
+      {"type": "p", "text": "Scrum, Agile fəlsəfəsini tətbiq etmək üçün istifadə olunan ən populyar çərçivələrdən biridir..."}
+    ]
+  },
+  {
+    "id": 2,
+    "category": "leadership",
+    "title": "Effektiv Liderliyin Sırrı: Emosional Zəka (EQ)",
+    "desc": "Komandanızı anlamaq və motivasiya etmək üçün emosional zəkanızı necə inkişaf etdirə bilərsiniz?",
+    "content": [
+      {"type": "p", "text": "Liderlik sadəcə tapşırıq vermək və nəticələri yoxlamaq deyil..."},
+      {"type": "h2", "text": "Emosional Zəka Nədir?"},
+      {"type": "p", "text": "EQ, öz və başqalarının emosiyalarını anlamaq və idarə etmək qabiliyyətidir."}
+    ]
+  }
+]
