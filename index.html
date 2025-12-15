@@ -199,6 +199,26 @@
             transform: rotate(45deg) translate(-5px, -6px);
         }
 
+        /* New style for the Quiz link in the header */
+        .header-controls {
+            display: flex;
+            align-items: center;
+            gap: 15px; /* Space between quiz link and lang switcher */
+        }
+        .quiz-nav-link { 
+            text-decoration: none;
+            color: var(--secondary-color); 
+            font-weight: 600;
+            font-family: var(--heading-font);
+            font-size: 1.1em;
+            padding: 5px 0; 
+            transition: color 0.3s ease;
+        }
+        .quiz-nav-link:hover { 
+            color: #3b15a8;
+        }
+
+
         /* --- Hero Section --- */
         .hero {
             position: relative;
@@ -1054,11 +1074,12 @@
                         <li><a href="/about/" data-lang-key="navAbout">Haqqımızda</a></li>
                         <li><a href="/services/" data-lang-key="navServices">Xidmətlər</a></li>
                         <li><a href="#testimonials-section" data-lang-key="navReviews">Rəylər</a></li>
-                        <li><a href="#blog-section" data-lang-key="navBlog">Bloq</a></li>
+                        <li><a href="/blog/" data-lang-key="navBlog">Bloq</a></li>
                         <li><a href="/contact/" data-lang-key="navContact">Əlaqə</a></li>
                     </ul>
                 </nav>
                 <div class="header-controls">
+                    <a href="https://pmania-hub-quiz.lovable.app/" target="_blank" class="quiz-nav-link" data-lang-key="navQuiz">Quiz Tətbiqini Sına</a> 
                     <div class="lang-switcher">
                         <button id="lang-az" class="active">AZ</button> |
                         <button id="lang-en">EN</button>
@@ -1080,7 +1101,8 @@
                 <p data-lang-key="heroSubtitle">Fərdlər və şirkətlər üçün hazırlanmış təlim və konsaltinq xidmətləri – real nəticələr, praktik alətlər.</p>
                 <div class="hero-buttons">
                     <a href="/services/" class="cta-button" data-lang-key="heroButton">Təlimə Qoşul</a>
-                    <a href="/services/#consulting" class="cta-button cta-button-secondary" data-lang-key="aboutButton">Konsultasiya al</a>
+                    <!-- Updated to point to the calendar appointment link -->
+                    <a href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ1XfkZmkcBhOEeY2REOv08Q-OX9uIxSxJxwwu2FvgzLkC0Z4g14IWDxXxM6ETYK3dIxEhMs9Zwd?gv=true" target="_blank" class="cta-button cta-button-secondary" data-lang-key="aboutButton">Konsultasiya al</a>
                 </div>
             </div>
         </section>
@@ -1516,7 +1538,7 @@
                         <li><a href="/about/" data-lang-key="navAbout"></a></li>
                         <li><a href="/services/" data-lang-key="navServices"></a></li>
                         <li><a href="#testimonials-section" data-lang-key="navReviews"></a></li>
-                        <li><a href="#blog-section" data-lang-key="navBlog"></a></li>
+                        <li><a href="/blog/" data-lang-key="navBlog"></a></li>
                         <li><a href="/contact/" data-lang-key="navContact"></a></li>
                     </ul>
                 </div>
@@ -1679,6 +1701,8 @@
             const translations = {
                 az: {
                     navHome: "Əsas Səhifə", navAbout: "Haqqımızda", navServices: "Xidmətlər", navReviews: "Rəylər", navBlog: "Bloq", navContact: "Əlaqə",
+                    // ADDED navQuiz
+                    navQuiz: "Quiz Tətbiqini Sına",
                     heroTitle: "Peşəkar Layihə Meneceri Olun. Gələcəyinizi Dəyişin.", heroSubtitle: "Fərdlər və şirkətlər üçün hazırlanmış təlim və konsaltinq xidmətləri – real nəticələr, praktik alətlər.",
                     heroButton: "Təlimə Qoşul", aboutButton: "Konsultasiya al",
                     valuePropTitle: "Niyə Biz?", value1Title: "Praktiki Təlim", value1Desc: "Real nümunələr və alətlər", value2Title: "Beynəlxalq Standartlar", value2Desc: "PMI və Agile yanaşmaları", value3Title: "Fərdi Konsaltinq", value3Desc: "Biznesinizə uyğun həllər", value4Title: "Sübut Olunmuş Təcrübə", value4Desc: "15M+ € layihə idarəetməsi",
@@ -1690,7 +1714,7 @@
                     quizCtaSubtitle: "PMI və Agile standartlarına əsaslanan peşəkar quiz tətbiqimizlə bacarıqlarınızı yoxlayın.",
                     quizCtaBtn: "Quizə Başla!",
                     
-                    // NEWS 1: PMP Free Consultation
+                    // NEWS 1: PMP Free Consultation (UPDATED START DATE)
                     news1Title: "🎓 PMP Sertifikasiyası: Pulsuz Konsultasiya",
                     news1ModalTitle: "PMP İmtahanına Hazırlıq: Pulsuz Fərdi Konsultasiya",
                     news1ModalSub: "Peşəkar Layihə Meneceri (PMP) sertifikatına gedən yolunuzu planlayın.",
@@ -1698,10 +1722,12 @@
                     news1ModalPoint1: "✅ Mövcud layihə idarəetmə biliklərinizi qiymətləndirməyə.",
                     news1ModalPoint2: "✅ Güclü və zəif tərəflərinizi müəyyən etməyə.",
                     news1ModalPoint3: "✅ Uğur üçün fərdi təhsil yol xəritəsi qurmağa.",
-                    news1ModalPoint4: "Əlavə olaraq, strukturlaşdırılmış təlim mühiti axtarırsınızsa, növbəti PMP imtahanına hazırlıq qrupumuz oktyabrın ortalarında başlayır. Görüşümüz zamanı bunun sizin üçün uyğun olub olmadığını müzakirə edə bilərik.",
+                    news1ModalPoint4: "Əlavə olaraq, strukturlaşdırılmış təlim mühiti axtarırsınızsa, növbəti PMP imtahanına hazırlıq qrupumuz yanvarın 15-də başlayır. Görüşümüz zamanı bunun sizin üçün uyğun olub olmadığını müzakirə edə bilərik.",
                     news1ModalPoint5: "Başlamağa hazırsınız?",
                     news1ModalCTA: "Pulsuz Konsultasiya üçün Yazılın",
                     news1ModalLink: "https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ1XfkZmkcBhOEeY2REOv08Q-OX9uIxSxJxwwu2FvgzLkC0Z4g14IWDxXxM6ETYK3dIxEhMs9Zwd",
+                    news1ModalLinkText2: "",
+                    news1ModalHashtags: "",
                     
                     // NEW NEWS 2: Qlobal PM Təcrübəsi (apmc.png)
                     news2Title: "Qlobal PM Təcrübəsi: Xaricdə Karyera və Real Səhnə Arxası",
@@ -1806,78 +1832,12 @@
                     blog2p1: "Hər bir uğurlu layihənin arxasında yaxşı düşünülmüş bir plan və ardıcıl icra dayanır. Layihənin ölçüsündən və mürəkkəbliyindən asılı olmayaraq, bu 5 əsas addımı izləmək sizi uğura daha da yaxınlaşdıracaq.", blog2h1: "1. Başlanğıc (Initiation)", blog2p2: "Bu, layihənin doğuş mərhələsidir. Burada layihənin məqsədləri, gözləntiləri və əsas maraqlı tərəfləri müəyyən edilir. “Biz nəyə nail olmaq istəyirik?” və “Bu layihə niyə vacibdir?” suallarına cavab tapmaq lazımdır.", blog2h2: "2. Planlaşdırma (Planning)", blog2p3: "Uğurun təməli detallı planlaşdırmadır. Bu mərhələdə layihənin həcmi, büdcəsi, zaman qrafiki, tələb olunan resurslar və potensial risklər müəyyən edilir. Aydın bir yol xəritəsi çəkmək bütün komandanın eyni hədəfə doğru irəliləməsini təmin edir.", blog2h3: "3. İcra (Execution)", blog2p4: "Planın həyata keçirildiyi mərhələdir. Komanda üzvləri tapşırıqları yerinə yetirir, resurslar paylanır və layihənin əsas məhsul və ya xidməti yaradılır. Bu mərhələdə effektiv kommunikasiya və komanda işi kritik əhəmiyyət daşıyır.", blog2h4: "4. Nəzarət və Monitorinq (Monitoring & Control)", blog2p5: "Bu mərhələ icra ilə paralel gedir. Layihənin gedişatı plana uyğun olaraq izlənilir, performans ölçülür və hər hansı bir yayınma olarsa, düzəldici tədbirlər görülür. Məqsəd, layihəni büdcə, zaman və keyfiyyət çərçivəsində saxlamaqdır.", blog2h5: "5. Yekunlaşdırma (Closure)", blog2p6: "Layihənin uğurla başa çatdırıldığı son mərhələdir. Yekun məhsul müştəriyə təhvil verilir, sənədləşmə tamamlanır və layihədən əldə edilən təcrübələr (“lessons learned”) qeydə alınır. Bu, gələcək layihələr üçün dəyərli bir məlumat bazası yaradır.",
                     blog3p1: "Layihə idarəetməsində ən yaxşı planlar belə gözlənilməz hadisələrlə üzləşə bilər. Risk idarəetməsi, bu qeyri-müəyyənlikləri qabaqcadan görməyə və onların layihəyə mənfi təsirini minimuma endirməyə kömək edən bir prosesdir.", blog3h1: "Risk Nədir və Növləri Hansılardır?", blog3p2: "Risk, baş verəcəyi təqdirdə layihənin məqsədlərinə (büdcə, zaman, keyfiyyət) müsbət və ya mənfi təsir göstərə biləcək qeyri-müəyyən bir hadisədir. Risklər texniki (texnologiya problemi), xarici (bazar dəyişikliyi), təşkilati (resurs çatışmazlığı) və ya idarəetmə (zəif planlama) kimi fərqli kateqoriyalara ayrıla bilər.", blog3h2: "Risk İdarəetmə Prosesi", blog3p3: "Effektiv risk idarəetməsi adətən dörd əsas addımdan ibarətrətdir:", blog3li1: "<strong>Risk Analizi:</strong> Hər bir riskin baş vermə ehtimalı və potensial təsiri qiymətləndirilir.", blog3li2: "<strong>Risk Cavabının Planlaşdırılması:</strong> Risklərə qarşı strategiyalar hazırlanır (qəbul etmək, qarşısını almaq, təsirini azaltmaq və ya başqasına ötürmək).", blog3li3: "<strong>Risk İdentifikasiyası:</strong> Potensial risklərin müəyyən edilməsi və siyahısının hazırlanması.", blog3li4: "<strong>Risk Monitorinqi:</strong> Proses boyu yeni risklərin izlənilməsi və mövcud risklərə qarşı planların effektivliyinin yoxlanılması.",
                     blog4p1: "Layihə idarəetməsi terminologiyasında \"menecer\" və \"lider\" sözləri tez-tez bir-birini əvəz etsə də, əslində fərqli mənaları və funxiyaları ifadə edirlər. Uğurlu bir layihə meneceri hər iki rolu da özündə birləşdirməyi bacarmalıdır.", blog4h1: "Layihə Meneceri: Sistem və Proses", blog4p2: "Menecer, ilk növbədə, sistem və nizam-intizamla bağlıdır. O, planlar qurur, büdcələr təyin edir, resursları paylayır və tapşırıqların vaxtında və keyfiyyətlə yerinə yetirilməsinə nəzarət edir. Menecerin əsas sualları \"necə?\" və \"nə zaman?\" olur. O, proseslərin düzgün işləməsini təmin edir.", blog4h2: "Lider: İnsanlar və Vizyon", blog4p3: "Lider isə daha çox vizyon və motivasiya ilə bağlıdır. O, komandanı ruhlandırır, onlara ümumi hədəfi göstərir və çətinliklər qarşısında onlara dəstək olur. Liderin əsas sualları \"nə?\" və \"niyə?\" olur. O, komandanın hədəfə inanmasını və bu yolda həvəslə çalışmasını təmin edir.", blog4h3: "Nəticə: Hər İkisi Olmaq Şərtdir", blog4p4: "Yalnız idarə edən, lakin ilham verməyən bir menecer komandanın tam potensialını ortaya çıxara bilməz. Yalnız ilham verən, lakin planlama və nəzarət bacarığı olmayan bir lider isə layihəni xaosdan xilas edə bilməz. Buna görə də müasir layihə meneceri həm menecer kimi prosesləri mükəmməl idarə etməli, həm də lider kimi komandasına yol göstərməlidir.",
-                    blog5p1: "Gündəlik iş həyatında qarşımıza çıxan tapşırıqların hamısı eyni dərəcədə vacib deyil. Vaxtımızı səmərəli idarə etmək və həqiqətən əhəmiyyətli olan işlərə fokuslanmaq üçün tapşırıqları düzgün prioritetləşdirmək vacibdir. Bunun üçün ən effektiv üsullardan biri Eisenhower Matrisidir.", blog5h1: "Eisenhower Matrisi: 4 Kvadrant", blog5p2: "Bu metod, ABŞ-ın 34-cü prezidenti Dwight D. Eisenhower tərəfindən istifadə edildiyi üçün onun adını daşıyır. Matris bütün tapşırıqları iki meyar üzrə qiymətləndirir: Təcililik (Urgency) və Vaciblik (Importance). Bu, dörd fərqli kvadrant yaradır:", blog5li1: "<strong>1. Təcili və Vacib (Do):</strong> Bu tapşırıqları dərhal yerinə yetirmək lazımdır. Məsələn, müştəri ilə bağlı kritik bir problem və ya yaxınlaşan bir son tarix.", blog5li2: "<strong>2. Vacib, lakin Təcili Deyil (Schedule):</strong> Bu, uzunmüddətli hədəflərinizə çatmağınıza kömək edən tapşırıqlar üçün. Məsələn, yeni bir bacarıq öyrənmək, gələcək layihəni planlaşdırmaq. Bu tapşırıqları təqviminizdə planlaşdırın.", blog5li3: "<strong>3. Təcili, lakin Vacib Deyil (Delegate):</strong> Bu tapşırıqlar başqası tərəfindən edilə bilər. Məsələn, bəzi zənglərə cavab vermək, hesabatları tərtib etmək. Mümkünsə, bu işləri həvalə edin.", blog5li4: "<strong>4. Nə Təcili, Nə də Vacib (Eliminate):</strong> Bu tapşırıqlar vaxt itkisidir və onlardan yayınmaq lazımdır. Məsələn, sosial mediada məqsədsiz gəzmək.", blog5p3: "Bu matrisi istifadə edərək, \"reaktiv\" (yalnız təcili işlərə reaksiya verən) rejimdən çıxıb, \"proaktiv\" (həqiqətən vacib olan işlərə fokuslanan) bir iş rejiminə keçə bilərsiniz.",
-
-                    // SHIFTED NEWS 4: Old news1 (Product vs Project Management Event)
-                    news4Title: "🎙️Bizə qoşul! Tallinn-də Panel Müzakirəsi — Məhsul və Layihə İdarəetməsi",
-                    news4ModalTitle: "Məhsul və Layihə İdarəetməsi: Fərqi Anlayaq",
-                    news4ModalSub: "Panel Müzakirə: ProductTank Tallinn & PMania Hub",
-                    news4ModalDesc: "İki titul. Bir akronim. Sonsuz qarışıqlıq. Məhsul Menecerlərini Layihə Menecerlərindən həqiqətən nə ayırır - və onların prioritetləri harada toqquşur və ya üst-üstə düşür? ProductTank Tallinn və PMania Hub-a qoşularaq, bu iki sahənin uğur, sahiblik və təsirə necə yanaşdığını araşdıran panel müzakirəsini izləyin.",
-                    news4ModalPoint1: "🗓 <strong>Tarix & Saat:</strong> 11 Noyabr, 2025 | qapılar 18:00-da açılır",
-                    news4ModalPoint2: "📍 <strong>Məkan:</strong> Coolbet ofisi, Kai 4, 2-ci mərtəbə",
-                    news4ModalPoint3: "🎤 <strong>Moderator:</strong> Anna Albert, Riverty-də Baş Məhsul Meneceri",
-                    news4ModalPoint4: "⚠️ <strong>Qeyd:</strong> Bu, məhdud yer olan oflayn tədbirdir. Yalnız şəxsən qoşula biləcəyiniz təqdirdə qeydiyyatdan keçin.",
-                    news4ModalPoint5: "📸 Foto çəkiləcək — şəkildə görünmək istəmədiyinizi bizə bildirin.",
-                    news4ModalCTA: "Qeydiyyatdan Keç",
-                    news4ModalLink: "https://www.meetup.com/producttank-tallinn/events/311759588/?utm_medium=referral&utm_campaign=announce_event&utm_source=link&utm_version=v2",
-
-                    // SHIFTED NEWS 5: Old news2 (360° Layihə İdarəetməsi)
-                    news5Title: "Qeydiyyat Başladı: 360° Layihə İdarəetməsi", 
-                    news5ModalTitle: "Qeydiyyat Başladı: 360° Layihə İdarəetməsi", 
-                    news5ModalSub: "Qeydiyyat Açıqdır!", 
-                    news5ModalDesc: "QOŞUL, ÖYRƏN, TƏTBİQ ET! 🚀 Layihə idarəetməsində peşəkar olmaq istəyirsən? PMANIA sənə beynəlxalq yanaşmalar, real nümunələr və praktiki biliklərlə kömək edəcək!", 
-                    news5ModalPoint1: "8 həftəlik intensiv təlim", 
-                    news5ModalPoint2: "Agile, Waterfall, Scrum, Kanban", 
-                    news5ModalPoint3: "Sertifikat + praktiki tapşırıqlar", 
-                    news5ModalTrainer: "<strong>Təlimçi:</strong> Mahmud Mahmudlu – PMP®, Lean Six Sigma sertifikatlı layihə meneceri, hazırda qlobal telekommunikasiya lideri Ericsson-da çalışır.", 
-                    news5ModalRegister: "Qeydiyyat üçün bizə yaz – uğurlu karyera üçün ilk addımı bu gün at!", 
-                    news5ModalCTA: "Bizə Yaz",
-                    
-                    // SHIFTED NEWS 6: Old news3 (Keçirilmiş Seminar)
-                    news6Title: "Keçirilmiş Seminar: Çevik və Klassik Metodlar", 
-                    news6ModalTitle: "Keçirilmiş Seminar: Çevik və Klassik Metodlar", 
-                    news6ModalDesc: "Layihə idarəçiliyində həm klassik, həm də çevik metodlarla tanış olmaq istəyirsənsə, bu seminar tam sənlikdir!", 
-                    news6ModalPoint1: "<strong>Mövzu:</strong> Çevik və Klassik Layihə İdarəetməsi", 
-                    news6ModalPoint2: "<strong>Spiker:</strong> Mahmud Mahmudlu", 
-                    news6ModalPoint3: "📌 Ericsson – Tech Project Manager", 
-                    news6ModalPoint4: "📜 PMP, Lean Six Sigma Certified", 
-                    news6ModalDate: "🗓️ Tarix: 21 Avqust (Tədbir başa çatıb)", 
-                    news6ModalCTA: "Qeydiyyat Bağlanıb",
-                    
-                    // SHIFTED NEWS 7: Old news4 (Təqaüd Proqramı)
-                    news7Title: "Təqaüd Proqramı Uğurla Başa Çatdı", 
-                    news7ModalTitle: "Təqaüd Proqramı Uğurla Başa Çatdı", 
-                    news7ModalDesc1: "Məlumat üçün bildirmək istərdik ki, AYAFE Gənclər Təşkilatı və Pmania Hub şirkətinin təşkilatı dəstəyi ilə təqaüd proqramına müraciət prosesi yekunlaşmışdır.", 
-                    news7ModalDesc2: "Ümumilikdə 100-dən çox müraciət qeydə alınmış, 40 nəfər müsahibə mərhələsinə keçmişdir. Müsahibə mərhələsindən uğurla keçən 11 nəfər 2 aylıq ödənişsiz \"360° Layihə İdarəetməsi təlim proqramı\"na cəlb edilmişdir.", 
-                    news7ModalDesc3: "İndi isə yeni biliklər, böyük hədəflər və fərq yaradan layihələr üçün səhnə onlarındır!", 
-                    news7ModalDesc4: "Təqaüd proqramı üzrə qaliblərimizi təbrik edir, fəaliyyətlərində uğurlar arzulayırıq.", 
-                    news7ModalHashtags: "#AYAFEAZERBAIJAN #PMANİA #ProjectManagement",
-                    
-                    testimonialsTitle: "Tələbələrimiz Nə Deyir?",
-                    blogTitle: "Son Bloq Yazıları", blog1Title: "Agile və Scrum Arasındakı Fərqlər", blog1Desc: "Bu məqalədə çevik metodologiyaların əsas prinsiplərini və onların tətbiqini araşdırırıq.", blog2Title: "Uğurlu Layihə Üçün 5 Vacib Addım", blog2Desc: "Layihə planlamasından yekun təhvilə qədər olan mərhələlərdə diqqət etməli olduğunuz məqamlar.", blog3Title: "Risk İdarəetməsi Nədir?", blog3Desc: "Layihələrinizdə qarşılaşa biləcəyiniz riskləri necə müəyyən edə və idarə edə bilərsiniz?", blog4Title: "Layihə Meneceri yoxsa Lider? Hər İkisi!", blog4Desc: "Uğurlu layihələrin arxasında dayanan liderlik keyfiyyətlərini və onların komandaya təsirini araşdırın.", blog5Title: "Təcili yoxsa Vacib? Prioritetləri Düzgün Müəyyən Etməyin Yolları", blog5Desc: "MoSCoW və Eisenhower Matrisi kimi effektiv prioritetləşdirmə üsulları ilə tanış olun.", readMore: "Daha çox oxu &rarr;", viewAllBlogs: "Bütün Bloqlara Bax",
-                    ctaTitle: "Layihələrinizi Növbəti Səviyyəyə Qaldırmağa Hazırsınız?", ctaSubtitle: "İndi başlayın – inkişaf üçün ilk addımı atın.", ctaBtn1: "Ödənişsiz konsultasiya al", ctaBtn2: "Bütün Xidmətlərə Bax",
-                    footerTitle1: "PMania Hub", footerDesc1: "Layihə idarəetməsində peşəkar dəstəkçiniz.", footerTitle2: "Sürətli Keçidlər", footerTitle3: "Əlaqə", footerTitle4: "Bizi İzləyin", footerRights: "&copy; 2025 PMania Hub. Bütün hüquqlar qorunur.",
-                    calendarTitle: "Görüş Rezerv Edin",
-                    
-                    readMoreReview: "Davamını Oxu",
-                    linkedinComment: "LinkedIn Rəyi",
-                    reviewAytacAName: "Aytac Abbasova", reviewAytacAQuoteShort: "İnteraktiv, dinləyicini nəzərə alaraq ona uyğun sadə dildə izah etməsi...", reviewAytacAQuoteFull: "İnteraktiv, dinləyicini nəzərə alaraq ona uyğun sadə dildə izah etməsi, sonda əyləncəli metodla öyrəndiklərimizin yoxlanılması əla metod idi.",
-                    reviewFatimaUName: "Umudova Fatimə", reviewFatimaUQuoteShort: "Dərslər çox aydın və sistematik şəkildə izah edilir, mövzunun həm nəzəri, həm də real...", reviewFatimaUQuoteFull: "Dərslər çox aydın və sistematik şəkildə izah edilir, mövzunun həm nəzəri, həm də real nümunələr ilə izah edilməsi isə mövzunu daha da anlaşıqlı edirdi. Təlimçinin biliyi qədər mövzunu təqdim etmə forması da çox önəmlidir və düşünürəm ki, hər ikisi kifayət qədər yaxşı idi.",
-                    reviewFatimaCName: "Cəfərova Fatimə", reviewFatimaCQuoteShort: "Təlimçi mövzunu sadə və aydın şəkildə təqdim etdi. Ritm balanslı idi...", reviewFatimaCQuoteFull: "Təlimçi mövzunu sadə və aydın şəkildə təqdim etdi. Ritm balanslı idi, izahları həyatdakı nümunələrlə zənginləşdirməsi dərsi daha anlaşılan etdi.",
-                    reviewGulsumTName: "Gülsüm Tarverdiyeva", reviewGulsumTQuoteShort: "Təlimçinin dərsi təqdim etmə tərzi çox maraqlı və aydın idi. Mövzunu hərtərəfli...", reviewGulsumTQuoteFull: "Təlimçinin dərsi təqdim etmə tərzi çox maraqlı və aydın idi. Mövzunu hərtərəfli izah edir, real nümunələr gətirərək mövzunu daha da anlaşıqlı edirdi. Ritmi uyğun, izahı əyləncəli idi və iştirakçılarla yaxşı əlaqə qurmağı bacarırdı.",
-                    reviewMasmaRName: "Məsmə Rəcəbova", reviewMasmaRQuoteShort: "Təlimin keyfiyyətindən çox razı qaldım. Təlimçinin izah tərzi sadə və anlaşılan idi...", reviewMasmaRQuoteFull: "Təlimin keyfiyyətindən çox razı qaldım. Təlimçinin izah tərzi sadə və anlaşılan idi, çətin görünən mövzuları belə rahat başa düşmək mümkün oldu. Hər dərs maraqlı və interaktiv şəkildə keçirildi, nümunələr və izahlar öyrənmə prosesini daha da asanlaşdırdı. Düşünürəm ki, bu təlim həm nəzəri bilik, həm də praktik bacarıqlar qazanmaq üçün çox faydalıdır.",
-                    reviewSusanHName: "Susan Heydərova", reviewSusanHQuoteShort: "Çox maraqlı və məlumatlandırıcı vebinar üçün bütün təşkilatçılar və mentora təşəkkürümü...", reviewSusanHQuoteFull: "Çox maraqlı və məlumatlandırıcı vebinar üçün bütün təşkilatçılar və mentora təşəkkürümü bildirməyi özümə borc bilirəm. Bu sahəyə maraqlı olan şəxslərə növbəti təlimlərə qoşulmağı məsləhət görürəm☺️",
-                    reviewFatimaBName: "Bağırova Fatimə", reviewFatimaBQuoteShort: "Bu layihədə mən əsaslı biliklər əldə etdim. Müəllimin səmimiliyi və bizə sanki ‘bizdən biri’...", reviewFatimaBQuoteFull: "Bu layihədə mən əsaslı biliklər əldə etdim . Müəllimin səmimiliyi və bizə sanki ‘bizdən biri’ kimi yanaşması dərsləri tamamilə fərqli bir atmosferdə keçirməyə səbəb oldu. Bu yaxınlıq və rahatlıq bizə daha çox sual verməyə, fikir mübadiləsi aparmağa və dərslərə maraqla qatılmağa şərait yaratdı. Mənim üçün layihə idarəçiliyi yolunda ilk addımları atmaq elə bu təlimlə başladı. Öyrəndiklərim nəzəri biliklər , həm də komanda mühitində ünsiyyət və əməkdaşlıq bacarıqlarımı inkişaf etdirdi. Dərslərin sonunda Kahoot oyunu ilə yarışmaq və doğrusu heç birində qalib gəlməsəmdə bu mənə hər dəfə təcrübəli edirdi , daha da unudulmaz proqram kimi yadda qaldı. \n Çünki buradakı ab-hava və yanaşma bir çox məşhur kurslardan qat-qat üstündür. Mənim üçün bu təlim , özünü inkişaf və motivasiya üçün açılan yeni bir qapı oldu. Hər dərsdən maraqlı qeydlərimi yazdıqca həvəslənirdim bu sahəyə . Təşəkkür edirəm!",
-                    reviewRovshanYName: "Rövşən Yasinov", reviewRovshanYQuoteShort: "Təlim mövzusu və məlumatlar ənənəvi təlimlərdə olduğu kimi yalnız mühazirəçi və dinləyici...", reviewRovshanYQuoteFull: "Təlim mövzusu və məlumatlar ənənəvi təlimlərdə olduğu kimi yalnız mühazirəçi və dinləyici perspektivindən deyil, interaktiv və qarşılıqlı dialoq əsasında təqdim olunur. Ən önəmlisi, tipik nəzəri biliklərdən çox, real həyat təcrübələrinə əsaslanan məlumatlara üstünlük verilir. Bu təlimin bizə qatdığı ən dəyərli məqamlardan biri yalnız peşəkar layihə meneceri olmaq üçün zəruri bilikləri öyrətməsi deyil, həm də müxtəlif proseslərə düzgün yanaşma tərzi formalaşdırmaq, yaranan çətinliklərə səmərəli həll yolları tapmaq və onlara fərqli baxış bucağından yanaşmaq bacarığını inkişaf etdirməsidir.",
-
-                    blog1p1: "Layihə idarəetməsi dünyasında tez-tez bir-birinin yerinə istifadə edilən iki termin var: Agile və Scrum. Bəs onlar həqiqətən eyni şeydirmi? Qısa cavab: xeyr. Gəlin onların arasındakı əsas fərqləri aydınlaşdıraq.", blog1h1: "Agile nədir?", blog1p2: "Agile bir metodologiya deyil, bir fəlsəfədir. Bu, layihələri daha çevik, uyğunlaşa bilən və müştəri mərkəzli şəkildə idarə etmək üçün bir düşüncə tərzidir. Agile Manifestində təsbit edilmiş 4 əsas dəyər və 12 prinsipdən ibarətdir. Əsas məqsəd, dəyişikliklərə tez reaksiya vermək və davamlı olaraq dəyər yaratmaqdır.", blog1h2: "Scrum nədir?", blog1p3: "Scrum, Agile fəlsəfəsini tətbiq etmək üçün istifadə olunan ən populyar çərçivələrdən (framework) biridir. Scrum, komandaların mürəkkəb problemləri həll etməsinə kömək edən konkret rollar (Product Owner, Scrum Master, Development Team), hadisələr (Sprint, Sprint Planning, Daily Scrum) və artefaktlar (Product Backlog, Sprint Backlog) təyin edir.", blog1h3: "Əsas Fərq", blog1p4: "Sadə bir bənətmə ilə desək, Agile \"sağlam həyat tərzi sürmək\" fəlsəfəsidirsə, Scrum bu fəlsəfəyə çatmaq üçün seçdiyiniz \"xüsusi pəhriz və məşq proqramı\" kimidir. Yəni, Scrum çevik olmağın bir yoludur, lakin tək yolu deyil. Kanban, XP kimi digər Agile çərçivələr də mövcüddur.",
-                    blog2p1: "Hər bir uğurlu layihənin arxasında yaxşı düşünülmüş bir plan və ardıcıl icra dayanır. Layihənin ölçüsündən və mürəkkəbliyindən asılı olmayaraq, bu 5 əsas addımı izləmək sizi uğura daha da yaxınlaşdıracaq.", blog2h1: "1. Başlanğıc (Initiation)", blog2p2: "Bu, layihənin doğuş mərhələsidir. Burada layihənin məqsədləri, gözləntiləri və əsas maraqlı tərəfləri müəyyən edilir. “Biz nəyə nail olmaq istəyirik?” və “Bu layihə niyə vacibdir?” suallarına cavab tapmaq lazımdır.", blog2h2: "2. Planlaşdırma (Planning)", blog2p3: "Uğurun təməli detallı planlaşdırmadır. Bu mərhələdə layihənin həcmi, büdcəsi, zaman qrafiki, tələb olunan resurslar və potensial risklər müəyyən edilir. Aydın bir yol xəritəsi çəkmək bütün komandanın eyni hədəfə doğru irəliləməsini təmin edir.", blog2h3: "3. İcra (Execution)", blog2p4: "Planın həyata keçirildiyi mərhələdir. Komanda üzvləri tapşırıqları yerinə yetirir, resurslar paylanır və layihənin əsas məhsul və ya xidməti yaradılır. Bu mərhələdə effektiv kommunikasiya və komanda işi kritik əhəmiyyət daşıyır.", blog2h4: "4. Nəzarət və Monitorinq (Monitoring & Control)", blog2p5: "Bu mərhələ icra ilə paralel gedir. Layihənin gedişatı plana uyğun olaraq izlənilir, performans ölçülür və hər hansı bir yayınma olarsa, düzəldici tədbirlər görülür. Məqsəd, layihəni büdcə, zaman və keyfiyyət çərçivəsində saxlamaqdır.", blog2h5: "5. Yekunlaşdırma (Closure)", blog2p6: "Layihənin uğurla başa çatdırıldığı son mərhələdir. Yekun məhsul müştəriyə təhvil verilir, sənədləşmə tamamlanır və layihədən əldə edilən təcrübələr (“lessons learned”) qeydə alınır. Bu, gələcək layihələr üçün dəyərli bir məlumat bazası yaradır.",
-                    blog3p1: "Layihə idarəetməsində ən yaxşı planlar belə gözlənilməz hadisələrlə üzləşə bilər. Risk idarəetməsi, bu qeyri-müəyyənlikləri qabaqcadan görməyə və onların layihəyə mənfi təsirini minimuma endirməyə kömək edən bir prosesdir.", blog3h1: "Risk Nədir və Növləri Hansılardır?", blog3p2: "Risk, baş verəcəyi təqdirdə layihənin məqsədlərinə (büdcə, zaman, keyfiyyət) müsbət və ya mənfi təsir göstərə biləcək qeyri-müəyyən bir hadisədir. Risklər texniki (texnologiya problemi), xarici (bazar dəyişikliyi), təşkilati (resurs çatışmazlığı) və ya idarəetmə (zəif planlama) kimi fərqli kateqoriyalara ayrıla bilər.", blog3h2: "Risk İdarəetmə Prosesi", blog3p3: "Effektiv risk idarəetməsi adətən dörd əsas addımdan ibarətrətdir:", blog3li1: "<strong>Risk Analizi:</strong> Hər bir riskin baş vermə ehtimalı və potensial təsiri qiymətləndirilir.", blog3li2: "<strong>Risk Cavabının Planlaşdırılması:</strong> Risklərə qarşı strategiyalar hazırlanır (qəbul etmək, qarşısını almaq, təsirini azaltmaq və ya başqasına ötürmək).", blog3li3: "<strong>Risk İdentifikasiyası:</strong> Potensial risklərin müəyyən edilməsi və siyahısının hazırlanması.", blog3li4: "<strong>Risk Monitorinqi:</strong> Proses boyu yeni risklərin izlənilməsi və mövcud risklərə qarşı planların effektivliyinin yoxlanılması.",
-                    blog4p1: "Layihə idarəetməsi terminologiyasında \"menecer\" və \"lider\" sözləri tez-tez bir-birini əvəz etsə də, əslində fərqli mənaları və funxiyaları ifadə edirlər. Uğurlu bir layihə meneceri hər iki rolu da özündə birləşdirməyi bacarmalıdır.", blog4h1: "Layihə Meneceri: Sistem və Proses", blog4p2: "Menecer, ilk növbədə, sistem və nizam-intizamla bağlıdır. O, planlar qurur, büdcələr təyin edir, resursları paylayır və tapşırıqların vaxtında və keyfiyyətlə yerinə yetirilməsinə nəzarət edir. Menecerin əsas sualları \"necə?\" və \"nə zaman?\" olur. O, proseslərin düzgün işləməsini təmin edir.", blog4h2: "Lider: İnsanlar və Vizyon", blog4p3: "Lider isə daha çox vizyon və motivasiya ilə bağlıdır. O, komandanı ruhlandırır, onlara ümumi hədəfi göstərir və çətinliklər qarşısında onlara dəstək olur. Liderin əsas sualları \"nə?\" və \"niyə?\" olur. O, komandanın hədəfə inanmasını və bu yolda həvəslə çalışmasını təmin edir.", blog4h3: "Nəticə: Hər İkisi Olmaq Şərtdir", blog4p4: "Yalnız idarə edən, lakin ilham verməyən bir menecer komandanın tam potensialını ortaya çıxara bilməz. Yalnız ilham verən, lakin planlama və nəzarət bacarığı olmayan bir lider isə layihəni xaosdan xilas edə bilməz. Buna görə də müasir layihə meneceri həm menecer kimi prosesləri mükəmməl idarə etməli, həm də lider kimi komandasına yol göstərməlidir.",
                     blog5p1: "Gündəlik iş həyatında qarşımıza çıxan tapşırıqların hamısı eyni dərəcədə vacib deyil. Vaxtımızı səmərəli idarə etmək və həqiqətən əhəmiyyətli olan işlərə fokuslanmaq üçün tapşırıqları düzgün prioritetləşdirmək vacibdir. Bunun üçün ən effektiv üsullardan biri Eisenhower Matrisidir.", blog5h1: "Eisenhower Matrisi: 4 Kvadrant", blog5p2: "Bu metod, ABŞ-ın 34-cü prezidenti Dwight D. Eisenhower tərəfindən istifadə edildiyi üçün onun adını daşıyır. Matris bütün tapşırıqları iki meyar üzrə qiymətləndirir: Təcililik (Urgency) və Vaciblik (Importance). Bu, dörd fərqli kvadrant yaradır:", blog5li1: "<strong>1. Təcili və Vacib (Do):</strong> Bu tapşırıqları dərhal yerinə yetirmək lazımdır. Məsələn, müştəri ilə bağlı kritik bir problem və ya yaxınlaşan bir son tarix.", blog5li2: "<strong>2. Vacib, lakin Təcili Deyil (Schedule):</strong> Bu, uzunmüddətli hədəflərinizə çatmağınıza kömək edən tapşırıqlar üçün. Məsələn, yeni bir bacarıq öyrənmək, gələcək layihəni planlaşdırmaq. Bu tapşırıqları təqviminizdə planlaşdırın.", blog5li3: "<strong>3. Təcili, lakin Vacib Deyil (Delegate):</strong> Bu tapşırıqlar başqası tərəfindən edilə bilər. Məsələn, bəzi zənglərə cavab vermək, hesabatları tərtib etmək. Mümkünsə, bu işləri həvalə edin.", blog5li4: "<strong>4. Nə Təcili, Nə də Vacib (Eliminate):</strong> Bu tapşırıqlar vaxt itkisidir və onlardan yayınmaq lazımdır. Məsələn, sosial mediada məqsədsiz gəzmək.", blog5p3: "Bu matrisi istifadə edərək, \"reaktiv\" (yalnız təcili işlərə reaksiya verən) rejimdən çıxıb, \"proaktiv\" (həqiqətən vacib olan işlərə fokuslanan) bir iş rejiminə keçə bilərsiniz."
                 },
                 en: {
                     navHome: "Home", navAbout: "About Us", navServices: "Services", navReviews: "Reviews", navBlog: "Blog", navContact: "Contact",
+                     // ADDED navQuiz
+                    navQuiz: "Try Quiz App",
                     heroTitle: "Master Project Management. Transform Your Future.", heroSubtitle: "Training and consulting designed for individuals and companies – real results, practical tools.",
                     heroButton: "Join a Training", aboutButton: "Get Consultation",
                     valuePropTitle: "Why Choose Us?", value1Title: "Practical Training", value1Desc: "Real examples and tools", value2Title: "International Standards", value2Desc: "PMI and Agile approaches", value3Title: "Personalized Consulting", value3Desc: "Solutions tailored to your business", value4Title: "Proven Expertise", value4Desc: "15M+ € project management",
@@ -1889,7 +1849,7 @@
                     quizCtaSubtitle: "Check your skills with our professional quiz app based on PMI and Agile standards.",
                     quizCtaBtn: "Start the Quiz!",
                     
-                    // NEWS 1: PMP Free Consultation
+                    // NEWS 1: PMP Free Consultation (UPDATED START DATE)
                     news1Title: "🎓 PMP Certification: Free Consultation",
                     news1ModalTitle: "PMP Exam Prep: Free 1:1 Consultation",
                     news1ModalSub: "Plan your journey to becoming a Project Management Professional (PMP) certified.",
@@ -1897,7 +1857,7 @@
                     news1ModalPoint1: "✅ Assess your current project management knowledge.",
                     news1ModalPoint2: "✅ Identify your strengths and weaknesses.",
                     news1ModalPoint3: "✅ Build a personalized study roadmap for success.",
-                    news1ModalPoint4: "Plus, if you're looking for a structured learning environment, our next PMP exam prep group starts in mid-October. We can discuss if it's the right fit for you during our call.",
+                    news1ModalPoint4: "Plus, if you're looking for a structured learning environment, our next PMP exam prep group starts on January 15th. We can discuss if it's the right fit for you during our call.",
                     news1ModalPoint5: "Ready to take the first step?",
                     news1ModalCTA: "Book Your FREE Consultation",
                     news1ModalLink: "https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ1XfkZmkcBhOEeY2REOv08Q-OX9uIxSxJxwwu2FvgzLkC0Z4g14IWDxXxM6ETYK3dIxEhMs9Zwd",
@@ -2076,7 +2036,10 @@
                 });
 
                 navMenuLinks.forEach(link => {
-                    link.addEventListener('click', closeMenu);
+                    // Check if link is not the Blog link (to allow hard navigation) or is not pointing to an anchor
+                    if (link.getAttribute('href') !== '/blog/') { 
+                        link.addEventListener('click', closeMenu);
+                    }
                 });
                 
                 // Setup for standard manual scrollers
