@@ -606,6 +606,10 @@
         .blog-post-card:hover::before {
              background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.3) 50%, transparent 100%);
         }
+        .blog-post-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.2);
+        }
         .blog-post-image {
             position: absolute;
             top: 0;
@@ -618,10 +622,6 @@
         }
         .blog-post-card:hover .blog-post-image {
             transform: scale(1.05);
-        }
-        .blog-post-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 12px 40px rgba(0,0,0,0.2);
         }
         .blog-post-content {
             padding: 25px;
@@ -1194,40 +1194,56 @@
                 <div class="scroll-wrapper">
                     <div class="scroll-container" id="news-scroller">
                         <div class="news-grid">
-                            <!-- NEW 1: PMP Free Consultation (news-modal-1) -->
+                            <!-- NEWS 1: PMP Free Consultation (news-modal-1) - STAYS AS ID 1 -->
                             <div class="news-card" onclick="openModal('news-modal-1')">
-                                <!-- NOTE: User needs to upload /images/css.png. Using placeholder until then. -->
                                 <img src="/images/css.png" alt="PMP Certification Free Consultation" onerror="this.onerror=null;this.src='https://placehold.co/350x350/FF8C00/ffffff?text=PMP+Consultation';">
                                 <div class="news-content">
                                     <h3 data-lang-key="news1Title"></h3>
                                 </div>
                             </div>
-                            <!-- SHIFTED 2: Old news-modal-1 (Product vs Project Management Event) -->
+                            
+                            <!-- NEW NEWS 2: Qlobal PM Təcrübəsi (news-modal-2) -->
                             <div class="news-card" onclick="openModal('news-modal-2')">
-                                <img src="/images/ptpm.png" alt="Product vs Project Management Panel Discussion" onerror="this.onerror=null;this.src='https://placehold.co/350x350/9932CC/ffffff?text=PTPM+NEWS';">
+                                <img src="/images/apmc.png" alt="Qlobal PM Təcrübəsi: Xaricdə Karyera və Real Səhnə Arxası" onerror="this.onerror=null;this.src='https://placehold.co/350x350/3498db/ffffff?text=APMC+Global+PM';">
                                 <div class="news-content">
                                     <h3 data-lang-key="news2Title"></h3>
                                 </div>
                             </div>
-                            <!-- SHIFTED 3: Old news-modal-2 (360° Layihə İdarəetməsi) -->
+
+                            <!-- NEW NEWS 3: Generative AI və Layihə İdarəetməsi (news-modal-3) -->
                             <div class="news-card" onclick="openModal('news-modal-3')">
-                                <img src="/images/360.png" alt="360° Layihə İdarəetməsi Təlimi Qeydiyyatı" onerror="this.onerror=null;this.src='https://placehold.co/350x350/ecf0f1/222831?text=X%C9%99b%C9%99r+3';">
+                                <img src="/images/aya.png" alt="Generative AI və Layihə İdarəetməsi Təlimi" onerror="this.onerror=null;this.src='https://placehold.co/350x350/9b59b6/ffffff?text=AI+for+PM';">
                                 <div class="news-content">
                                     <h3 data-lang-key="news3Title"></h3>
                                 </div>
                             </div>
-                            <!-- SHIFTED 4: Old news-modal-3 (Ödənişsiz Seminar Elanı) -->
+                            
+                            <!-- SHIFTED OLD NEWS 2 to 4: Product vs Project Management Event (news-modal-4) -->
                             <div class="news-card" onclick="openModal('news-modal-4')">
-                                <img src="/images/webinar.png" alt="Ödənişsiz Seminar Elanı" onerror="this.onerror=null;this.src='https://placehold.co/350x350/ecf0f1/222831?text=X%C9%99b%C9%99r+4';">
+                                <img src="/images/ptpm.png" alt="Product vs Project Management Panel Discussion" onerror="this.onerror=null;this.src='https://placehold.co/350x350/9932CC/ffffff?text=PTPM+NEWS';">
                                 <div class="news-content">
                                     <h3 data-lang-key="news4Title"></h3>
                                 </div>
                             </div>
-                            <!-- SHIFTED 5: Old news-modal-4 (Təqaüd Proqramı) -->
+                            <!-- SHIFTED OLD NEWS 3 to 5: 360° Layihə İdarəetməsi (news-modal-5) -->
                             <div class="news-card" onclick="openModal('news-modal-5')">
-                                <img src="/images/ayafe.png" alt="Təqaüd Proqramı" onerror="this.onerror=null;this.src='https://placehold.co/350x350/ecf0f1/222831?text=X%C9%99b%C9%99r+5';">
+                                <img src="/images/360.png" alt="360° Layihə İdarəetməsi Təlimi Qeydiyyatı" onerror="this.onerror=null;this.src='https://placehold.co/350x350/ecf0f1/222831?text=X%C9%99b%C9%99r+5';">
                                 <div class="news-content">
                                     <h3 data-lang-key="news5Title"></h3>
+                                </div>
+                            </div>
+                            <!-- SHIFTED OLD NEWS 4 to 6: Ödənişsiz Seminar Elanı (news-modal-6) -->
+                            <div class="news-card" onclick="openModal('news-modal-6')">
+                                <img src="/images/webinar.png" alt="Ödənişsiz Seminar Elanı" onerror="this.onerror=null;this.src='https://placehold.co/350x350/ecf0f1/222831?text=X%C9%99b%C9%99r+6';">
+                                <div class="news-content">
+                                    <h3 data-lang-key="news6Title"></h3>
+                                </div>
+                            </div>
+                            <!-- SHIFTED OLD NEWS 5 to 7: Təqaüd Proqramı (news-modal-7) -->
+                            <div class="news-card" onclick="openModal('news-modal-7')">
+                                <img src="/images/ayafe.png" alt="Təqaüd Proqramı" onerror="this.onerror=null;this.src='https://placehold.co/350x350/ecf0f1/222831?text=X%C9%99b%C9%99r+7';">
+                                <div class="news-content">
+                                    <h3 data-lang-key="news7Title"></h3>
                                 </div>
                             </div>
                         </div>
@@ -1528,7 +1544,8 @@
     </footer>
 
     <!-- Modals -->
-    <!-- NEW NEWS MODAL 1: PMP Free Consultation (news-modal-1) -->
+    
+    <!-- NEWS MODAL 1: PMP Free Consultation (news-modal-1) - UNCHANGED ID -->
     <div id="news-modal-1" class="modal">
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal('news-modal-1')">&times;</span>
@@ -1551,35 +1568,91 @@
         </div>
     </div>
     
-    <!-- SHIFTED OLD MODAL 1 to 2: Product vs Project Management Event (news-modal-2) -->
+    <!-- NEW NEWS MODAL 2: Qlobal PM Təcrübəsi (news-modal-2) -->
     <div id="news-modal-2" class="modal">
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal('news-modal-2')">&times;</span>
             <div class="modal-body text-left">
                 <h3 data-lang-key="news2ModalTitle"></h3>
                 <p data-lang-key="news2ModalSub"></p>
-                <p data-lang-key="news2ModalDesc"></p>
+                <p data-lang-key="news2ModalDesc1"></p>
+                <p data-lang-key="news2ModalDesc2"></p>
+                <h4 data-lang-key="news2ModalForWhomTitle"></h4>
                 <ul>
-                    <li data-lang-key="news2ModalPoint1"></li>
-                    <li data-lang-key="news2ModalPoint2"></li>
-                    <li data-lang-key="news2ModalPoint3"></li>
-                    <li data-lang-key="news2ModalPoint4"></li>
-                    <li data-lang-key="news2ModalPoint5"></li>
+                    <li data-lang-key="news2ModalForWhom1"></li>
+                    <li data-lang-key="news2ModalForWhom2"></li>
+                    <li data-lang-key="news2ModalForWhom3"></li>
                 </ul>
+                <h4 data-lang-key="news2ModalContentTitle"></h4>
+                <ul>
+                    <li data-lang-key="news2ModalContent1"></li>
+                    <li data-lang-key="news2ModalContent2"></li>
+                    <li data-lang-key="news2ModalContent3"></li>
+                    <li data-lang-key="news2ModalContent4"></li>
+                </ul>
+                <p data-lang-key="news2ModalDateTime"></p>
                 <!-- The CTA button for registration -->
                 <a href="" class="cta-button" target="_blank" id="news2-cta-link" data-lang-key="news2ModalCTA"></a>
+                <div class="hashtags" data-lang-key="news2ModalHashtags"></div>
             </div>
         </div>
     </div>
 
-    <!-- SHIFTED OLD MODAL 2 to 3: 360° Layihə İdarəetməsi (news-modal-3) -->
-    <div id="news-modal-3" class="modal"><div class="modal-content"><span class="close-btn" onclick="closeModal('news-modal-3')">&times;</span><div class="modal-body text-left"><h3 data-lang-key="news3ModalTitle"></h3><p data-lang-key="news3ModalSub"></p><p data-lang-key="news3ModalDesc"></p><ul><li data-lang-key="news3ModalPoint1"></li><li data-lang-key="news3ModalPoint2"></li><li data-lang-key="news3ModalPoint3"></li></ul><div class="trainer-info"><p data-lang-key="news3ModalTrainer"></p></div><p data-lang-key="news3ModalRegister"></p><a href="https://wa.me/37258243097?text=Salam%2C%20'360%C2%B0%20Layih%C9%99%20%C4%B0dar%C9%99etm%C9%99si'%20t%C9%99limin%C9%99%20qeydiyyatdan%20keçm%C9%99k%20ist%C9%99yir%C9%99m." target="_blank" class="cta-button" data-lang-key="news3ModalCTA"></a></div></div></div>
+    <!-- NEW NEWS MODAL 3: Generative AI və Layihə İdarəetməsi (news-modal-3) -->
+    <div id="news-modal-3" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('news-modal-3')">&times;</span>
+            <div class="modal-body text-left">
+                <h3 data-lang-key="news3ModalTitle"></h3>
+                <p data-lang-key="news3ModalSub"></p>
+                <h4 data-lang-key="news3ModalLearnTitle"></h4>
+                <ul>
+                    <li data-lang-key="news3ModalLearn1"></li>
+                    <li data-lang-key="news3ModalLearn2"></li>
+                    <li data-lang-key="news3ModalLearn3"></li>
+                    <li data-lang-key="news3ModalLearn4"></li>
+                </ul>
+                <p data-lang-key="news3ModalDate"></p>
+                <p data-lang-key="news3ModalTime"></p>
+                <p data-lang-key="news3ModalPlace"></p>
+                <div class="trainer-info"><p data-lang-key="news3ModalTrainer"></p></div>
+                <p data-lang-key="news3ModalPartners"></p>
+                <!-- The CTA button for registration -->
+                <a href="" class="cta-button" target="_blank" id="news3-cta-link" data-lang-key="news3ModalCTA"></a>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- SHIFTED OLD MODAL 1 to 4: Product vs Project Management Event (news-modal-4) -->
+    <div id="news-modal-4" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('news-modal-4')">&times;</span>
+            <div class="modal-body text-left">
+                <h3 data-lang-key="news4ModalTitle"></h3>
+                <p data-lang-key="news4ModalSub"></p>
+                <p data-lang-key="news4ModalDesc"></p>
+                <ul>
+                    <li data-lang-key="news4ModalPoint1"></li>
+                    <li data-lang-key="news4ModalPoint2"></li>
+                    <li data-lang-key="news4ModalPoint3"></li>
+                    <li data-lang-key="news4ModalPoint4"></li>
+                    <li data-lang-key="news4ModalPoint5"></li>
+                </ul>
+                <!-- The CTA button for registration -->
+                <a href="" class="cta-button" target="_blank" id="news4-cta-link" data-lang-key="news4ModalCTA"></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- SHIFTED OLD MODAL 2 to 5: 360° Layihə İdarəetməsi (news-modal-5) -->
+    <div id="news-modal-5" class="modal"><div class="modal-content"><span class="close-btn" onclick="closeModal('news-modal-5')">&times;</span><div class="modal-body text-left"><h3 data-lang-key="news5ModalTitle"></h3><p data-lang-key="news5ModalSub"></p><p data-lang-key="news5ModalDesc"></p><ul><li data-lang-key="news5ModalPoint1"></li><li data-lang-key="news5ModalPoint2"></li><li data-lang-key="news5ModalPoint3"></li></ul><div class="trainer-info"><p data-lang-key="news5ModalTrainer"></p></div><p data-lang-key="news5ModalRegister"></p><a href="https://wa.me/37258243097?text=Salam%2C%20'360%C2%B0%20Layih%C9%99%20%C4%B0dar%C9%99etm%C9%99si'%20t%C9%99limin%C9%99%20qeydiyyatdan%20keçm%C9%99k%20ist%C9%99yir%C9%99m." target="_blank" class="cta-button" data-lang-key="news5ModalCTA"></a></div></div></div>
     
-    <!-- SHIFTED OLD MODAL 3 to 4: Ödənişsiz Seminar Elanı (news-modal-4) -->
-    <div id="news-modal-4" class="modal"><div class="modal-content"><span class="close-btn" onclick="closeModal('news-modal-4')">&times;</span><div class="modal-body text-left"><h3 data-lang-key="news4ModalTitle"></h3><p data-lang-key="news4ModalDesc"></p><ul><li data-lang-key="news4ModalPoint1"></li><li data-lang-key="news4ModalPoint2"></li><li data-lang-key="news4ModalPoint3"></li><li data-lang-key="news4ModalPoint4"></li><li data-lang-key="news4ModalDate"></li></ul><button class="cta-button disabled" data-lang-key="news4ModalCTA"></button></div></div></div>
+    <!-- SHIFTED OLD MODAL 3 to 6: Ödənişsiz Seminar Elanı (news-modal-6) -->
+    <div id="news-modal-6" class="modal"><div class="modal-content"><span class="close-btn" onclick="closeModal('news-modal-6')">&times;</span><div class="modal-body text-left"><h3 data-lang-key="news6ModalTitle"></h3><p data-lang-key="news6ModalDesc"></p><ul><li data-lang-key="news6ModalPoint1"></li><li data-lang-key="news6ModalPoint2"></li><li data-lang-key="news6ModalPoint3"></li><li data-lang-key="news6ModalPoint4"></li><li data-lang-key="news6ModalDate"></li></ul><button class="cta-button disabled" data-lang-key="news6ModalCTA"></button></div></div></div>
     
-    <!-- SHIFTED OLD MODAL 4 to 5: Təqaüd Proqramı (news-modal-5) -->
-    <div id="news-modal-5" class="modal"><div class="modal-content"><span class="close-btn" onclick="closeModal('news-modal-5')">&times;</span><div class="modal-body text-left"><h3 data-lang-key="news5ModalTitle"></h3><p data-lang-key="news5ModalDesc1"></p><p data-lang-key="news5ModalDesc2"></p><p data-lang-key="news5ModalDesc3"></p><p data-lang-key="news5ModalDesc4"></p><div class="hashtags" data-lang-key="news5ModalHashtags"></div><div class="modal-socials"><a href="https://www.instagram.com/pmania_hub/" target="_blank" title="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.070 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.85s-.011 3.585-.069 4.85c-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.070-4.85.070s-3.585-.012-4.85-.070c-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.070-1.644-.070-4.85s.012-3.584.070-4.85c.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.85-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.200-6.780 2.618-6.980 6.980-.059 1.281-.073 1.689-.073 4.948s.014 3.667.072 4.947c.200 4.358 2.618 6.780 6.980 6.980 1.281.058 1.689.072 4.948.072s3.667-.014 4.947-.072c4.354-.200 6.782-2.618 6.979-6.980.059-1.280.073-1.689.073-4.947s-.014-3.667-.072-4.947c-.196-4.354-2.617-6.780-6.979-6.980-1.281-.059-1.689-.073-4.948-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.162 6.162 6.162 6.162-2.759 6.162-6.162-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.790-4-4s1.791-4 4-4 4 1.790 4 4-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.441 1.441 1.441 1.441-.645 1.441-1.441-.645-1.440-1.441-1.440z"/></svg></a><a href="https://www.facebook.com/profile.php?id=61578312400129" target="_blank" title="Facebook"><svg viewBox="0 0 24 24"><path d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.100 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.240l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12v9.293h6.116c.730 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.323-1.325z"/></svg></a><a href="https://www.linkedin.com/company/pmania-hub" target="_blank" title="LinkedIn"><svg viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.790-1.75-1.764s.784-1.764 1.75-1.764 1.75.790 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg></a></div></div></div></div>
+    <!-- SHIFTED OLD MODAL 4 to 7: Təqaüd Proqramı (news-modal-7) -->
+    <div id="news-modal-7" class="modal"><div class="modal-content"><span class="close-btn" onclick="closeModal('news-modal-7')">&times;</span><div class="modal-body text-left"><h3 data-lang-key="news7ModalTitle"></h3><p data-lang-key="news7ModalDesc1"></p><p data-lang-key="news7ModalDesc2"></p><p data-lang-key="news7ModalDesc3"></p><p data-lang-key="news7ModalDesc4"></p><div class="hashtags" data-lang-key="news7ModalHashtags"></div><div class="modal-socials"><a href="https://www.instagram.com/pmania_hub/" target="_blank" title="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.070 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.85s-.011 3.585-.069 4.85c-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.070-4.85.070s-3.585-.012-4.85-.070c-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.070-1.644-.070-4.85s.012-3.584.070-4.85c.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.85-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.200-6.780 2.618-6.980 6.980-.059 1.281-.073 1.689-.073 4.948s.014 3.667.072 4.947c.200 4.358 2.618 6.780 6.980 6.980 1.281.058 1.689.072 4.948.072s3.667-.014 4.947-.072c4.354-.200 6.782-2.618 6.979-6.980.059-1.280.073-1.689.073-4.947s-.014-3.667-.072-4.947c-.196-4.354-2.617-6.780-6.979-6.980-1.281-.059-1.689-.073-4.948-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.162 6.162 6.162 6.162-2.759 6.162-6.162-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.790-4-4s1.791-4 4-4 4 1.790 4 4-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.441 1.441 1.441 1.441-.645 1.441-1.441-.645-1.440-1.441-1.440z"/></svg></a><a href="https://www.facebook.com/profile.php?id=61578312400129" target="_blank" title="Facebook"><svg viewBox="0 0 24 24"><path d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.100 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.240l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12v9.293h6.116c.730 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.323-1.325z"/></svg></a><a href="https://www.linkedin.com/company/pmania-hub" target="_blank" title="LinkedIn"><svg viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.790-1.75-1.764s.784-1.764 1.75-1.764 1.75.790 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg></a></div></div></div></div>
     <!-- Blog Modals (Unchanged in IDs) -->
     <div id="blog-modal-1" class="modal"><div class="modal-content"><span class="close-btn" onclick="closeModal('blog-modal-1')">&times;</span><div class="modal-body text-left"><h3 data-lang-key="blog1Title"></h3><p data-lang-key="blog1p1"></p><h4 data-lang-key="blog1h1"></h4><p data-lang-key="blog1p2"></p><h4 data-lang-key="blog1h2"></h4><p data-lang-key="blog1p3"></p><h4 data-lang-key="blog1h3"></h4><p data-lang-key="blog1p4"></p></div></div></div>
     <div id="blog-modal-2" class="modal"><div class="modal-content"><span class="close-btn" onclick="closeModal('blog-modal-2')">&times;</span><div class="modal-body text-left"><h3 data-lang-key="blog2Title"></h3><p data-lang-key="blog2p1"></p><h4 data-lang-key="blog2h1"></h4><p data-lang-key="blog2p2"></p><h4 data-lang-key="blog2h2"></h4><p data-lang-key="blog2p3"></p><h4 data-lang-key="blog2h3"></h4><p data-lang-key="blog2p4"></p><h4 data-lang-key="blog2h4"></h4><p data-lang-key="blog2p5"></p><h4 data-lang-key="blog2h5"></h4><p data-lang-key="blog2p6"></p></div></div></div>
@@ -1617,7 +1690,7 @@
                     quizCtaSubtitle: "PMI və Agile standartlarına əsaslanan peşəkar quiz tətbiqimizlə bacarıqlarınızı yoxlayın.",
                     quizCtaBtn: "Quizə Başla!",
                     
-                    // NEW NEWS ITEM 1: PMP Free Consultation
+                    // NEWS 1: PMP Free Consultation
                     news1Title: "🎓 PMP Sertifikasiyası: Pulsuz Konsultasiya",
                     news1ModalTitle: "PMP İmtahanına Hazırlıq: Pulsuz Fərdi Konsultasiya",
                     news1ModalSub: "Peşəkar Layihə Meneceri (PMP) sertifikatına gedən yolunuzu planlayın.",
@@ -1629,50 +1702,156 @@
                     news1ModalPoint5: "Başlamağa hazırsınız?",
                     news1ModalCTA: "Pulsuz Konsultasiya üçün Yazılın",
                     news1ModalLink: "https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ1XfkZmkcBhOEeY2REOv08Q-OX9uIxSxJxwwu2FvgzLkC0Z4g14IWDxXxM6ETYK3dIxEhMs9Zwd",
-            
-                    news2Title: "🎙️Bizə qoşul! Tallinn-də Panel Müzakirəsi — Məhsul və Layihə İdarəetməsi",
-                    news2ModalTitle: "Məhsul və Layihə İdarəetməsi: Fərqi Anlayaq",
-                    news2ModalSub: "Panel Müzakirə: ProductTank Tallinn & PMania Hub",
-                    news2ModalDesc: "İki titul. Bir akronim. Sonsuz qarışıqlıq. Məhsul Menecerlərini Layihə Menecerlərindən həqiqətən nə ayırır - və onların prioritetləri harada toqquşur və ya üst-üstə düşür? ProductTank Tallinn və PMania Hub-a qoşularaq, bu iki sahənin uğur, sahiblik və təsirə necə yanaşdığını araşdıran panel müzakirəsini izləyin.",
-                    news2ModalPoint1: "🗓 <strong>Tarix & Saat:</strong> 11 Noyabr, 2025 | qapılar 18:00-da açılır",
-                    news2ModalPoint2: "📍 <strong>Məkan:</strong> Coolbet ofisi, Kai 4, 2-ci mərtəbə",
-                    news2ModalPoint3: "🎤 <strong>Moderator:</strong> Anna Albert, Riverty-də Baş Məhsul Meneceri",
-                    news2ModalPoint4: "⚠️ <strong>Qeyd:</strong> Bu, məhdud yer olan oflayn tədbirdir. Yalnız şəxsən qoşula biləcəyiniz təqdirdə qeydiyyatdan keçin.",
-                    news2ModalPoint5: "📸 Foto çəkiləcək — şəkildə görünmək istəmədiyinizi bizə bildirin.",
+                    
+                    // NEW NEWS 2: Qlobal PM Təcrübəsi (apmc.png)
+                    news2Title: "Qlobal PM Təcrübəsi: Xaricdə Karyera və Real Səhnə Arxası",
+                    news2ModalTitle: "Qlobal PM Təcrübəsi: Xaricdə Karyera və Real Səhnə Arxası",
+                    news2ModalSub: "Xaricdə karyera qurmaq istəyən layihə menecerləri üçün xüsusi görüş! 🌍",
+                    news2ModalDesc1: "Bu dəfə APMC-də qonağımız - xaricdə çalışan azərbaycanlı PM olacaq. O, real təcrübəsini, qlobal şirkətlərdə mühitin necə olduğunu, gözləntiləri, çətinlikləri və PM Mahmud Mahmudlu, PMP® PMania Hub olaraq xaricdə karyeraya necə qədəm qoymağın mümkün yollarını bizimlə paylaşacaq.",
+                    news2ModalDesc2: "", // Empty for structure consistency
+                    news2ModalForWhomTitle: "Bu tədbir kimlər üçündür?",
+                    news2ModalForWhom1: "🔹 Xüsusən xaricdə işləmək istəyən PM-lər",
+                    news2ModalForWhom2: "🔹 Karyerasını qlobal səviyyəyə çıxarmaq istəyənlər",
+                    news2ModalForWhom3: "🔹 Qlobal layihələrə qoşulmaq istəyən hər kəs",
+                    news2ModalContentTitle: "Nələr olacaq?",
+                    news2ModalContent1: "✓ Real təcrübələr və praktiki məsləhətlər",
+                    news2ModalContent2: "✓ Qlobal PM mühitində tələblər",
+                    news2ModalContent3: "✓ CV / portfolio tövsiyələri",
+                    news2ModalContent4: "✓ Sual-cavab sessiyası",
+                    news2ModalDateTime: "📅 Tarix: 20 Dekabr 2025 | 🕒 Saat: 16:00 | 🎟️ Qeydiyyat: Form bio-da / aşağıdadır.",
                     news2ModalCTA: "Qeydiyyatdan Keç",
-                    news2ModalLink: "https://www.meetup.com/producttank-tallinn/events/311759588/?utm_medium=referral&utm_campaign=announce_event&utm_source=link&utm_version=v2",
+                    news2ModalLink: "https://lnkd.in/dn_sAwYd",
+                    news2ModalHashtags: "#AzerbaijanProjectManagementCommunity #projectmanagement #projectmanager #layihəidarəetməsi #layihəmeneceri",
+                    
+                    // NEW NEWS 3: Generative AI və Layihə İdarəetməsi (aya.png)
+                    news3Title: "Generative AI və Layihə İdarəetməsi Təliminə Qoşul!",
+                    news3ModalTitle: "Generative AI və Layihə İdarəetməsi: İmkanlar və İstifadə Halları",
+                    news3ModalSub: "AYAFE Gənclər Təşkilatı və Pmania Hub sizi 21 dekabr 2025-ci il tarixində keçiriləcək təlimə dəvət edir!",
+                    news3ModalLearnTitle: "Təlimdə nələri öyrənəcəksiniz?",
+                    news3ModalLearn1: "- Süni intellektin əsas anlayışları və Generative AI",
+                    news3ModalLearn2: "- Layihə idarəetməsində AI-nın tətbiq sahələri",
+                    news3ModalLearn3: "- AI vasitəsilə layihə planlarını və hesabatlarını effektiv yaratmaq",
+                    news3ModalLearn4: "- Daha səmərəli, yaradıcı və sürətli layihə hazırlamaq bacarıqları",
+                    news3ModalDate: "Tarix: 21 dekabr 2025",
+                    news3ModalTime: "Saat: 10:30 – 12:30",
+                    news3ModalPlace: "Yer: Qlobus Centre",
+                    news3ModalTrainer: "<strong>Təlimçi:</strong> Mahmud Mahmudlu, PMP®",
+                    news3ModalPartners: "<strong>Tərəfdaşlar:</strong> AYAFE Gənclər Təşkilatı | PMania Hub",
+                    news3ModalCTA: "Qeydiyyat üçün Keçid",
+                    news3ModalLink: "https://lnkd.in/eQ2xNXeg",
 
-                    // SHIFTED NEWS 3: Old news2 (360° Layihə İdarəetməsi)
-                    news3Title: "Qeydiyyat Başladı: 360° Layihə İdarəetməsi", 
-                    news3ModalTitle: "Qeydiyyat Başladı: 360° Layihə İdarəetməsi", 
-                    news3ModalSub: "Qeydiyyat Açıqdır!", 
-                    news3ModalDesc: "QOŞUL, ÖYRƏN, TƏTBİQ ET! 🚀 Layihə idarəetməsində peşəkar olmaq istəyirsən? PMANIA sənə beynəlxalq yanaşmalar, real nümunələr və praktiki biliklərlə kömək edəcək!", 
-                    news3ModalPoint1: "8 həftəlik intensiv təlim", 
-                    news3ModalPoint2: "Agile, Waterfall, Scrum, Kanban", 
-                    news3ModalPoint3: "Sertifikat + praktiki tapşırıqlar", 
-                    news3ModalTrainer: "<strong>Təlimçi:</strong> Mahmud Mahmudlu – PMP®, Lean Six Sigma sertifikatlı layihə meneceri, hazırda qlobal telekommunikasiya lideri Ericsson-da çalışır.", 
-                    news3ModalRegister: "Qeydiyyat üçün bizə yaz – uğurlu karyera üçün ilk addımı bu gün at!", 
-                    news3ModalCTA: "Bizə Yaz",
+                    // SHIFTED NEWS 4: Old news2 (Product vs Project Management Event)
+                    news4Title: "🎙️Bizə qoşul! Tallinn-də Panel Müzakirəsi — Məhsul və Layihə İdarəetməsi",
+                    news4ModalTitle: "Məhsul və Layihə İdarəetməsi: Fərqi Anlayaq",
+                    news4ModalSub: "Panel Müzakirə: ProductTank Tallinn & PMania Hub",
+                    news4ModalDesc: "İki titul. Bir akronim. Sonsuz qarışıqlıq. Məhsul Menecerlərini Layihə Menecerlərindən həqiqətən nə ayırır - və onların prioritetləri harada toqquşur və ya üst-üstə düşür? ProductTank Tallinn və PMania Hub-a qoşularaq, bu iki sahənin uğur, sahiblik və təsirə necə yanaşdığını araşdıran panel müzakirəsini izləyin.",
+                    news4ModalPoint1: "🗓 <strong>Tarix & Saat:</strong> 11 Noyabr, 2025 | qapılar 18:00-da açılır",
+                    news4ModalPoint2: "📍 <strong>Məkan:</strong> Coolbet ofisi, Kai 4, 2-ci mərtəbə",
+                    news4ModalPoint3: "🎤 <strong>Moderator:</strong> Anna Albert, Riverty-də Baş Məhsul Meneceri",
+                    news4ModalPoint4: "⚠️ <strong>Qeyd:</strong> Bu, məhdud yer olan oflayn tədbirdir. Yalnız şəxsən qoşula biləcəyiniz təqdirdə qeydiyyatdan keçin.",
+                    news4ModalPoint5: "📸 Foto çəkiləcək — şəkildə görünmək istəmədiyinizi bizə bildirin.",
+                    news4ModalCTA: "Qeydiyyatdan Keç",
+                    news4ModalLink: "https://www.meetup.com/producttank-tallinn/events/311759588/?utm_medium=referral&utm_campaign=announce_event&utm_source=link&utm_version=v2",
+
+                    // SHIFTED NEWS 5: Old news3 (360° Layihə İdarəetməsi)
+                    news5Title: "Qeydiyyat Başladı: 360° Layihə İdarəetməsi", 
+                    news5ModalTitle: "Qeydiyyat Başladı: 360° Layihə İdarəetməsi", 
+                    news5ModalSub: "Qeydiyyat Açıqdır!", 
+                    news5ModalDesc: "QOŞUL, ÖYRƏN, TƏTBİQ ET! 🚀 Layihə idarəetməsində peşəkar olmaq istəyirsən? PMANIA sənə beynəlxalq yanaşmalar, real nümunələr və praktiki biliklərlə kömək edəcək!", 
+                    news5ModalPoint1: "8 həftəlik intensiv təlim", 
+                    news5ModalPoint2: "Agile, Waterfall, Scrum, Kanban", 
+                    news5ModalPoint3: "Sertifikat + praktiki tapşırıqlar", 
+                    news5ModalTrainer: "<strong>Təlimçi:</strong> Mahmud Mahmudlu – PMP®, Lean Six Sigma sertifikatlı layihə meneceri, hazırda qlobal telekommunikasiya lideri Ericsson-da çalışır.", 
+                    news5ModalRegister: "Qeydiyyat üçün bizə yaz – uğurlu karyera üçün ilk addımı bu gün at!", 
+                    news5ModalCTA: "Bizə Yaz",
                     
-                    // SHIFTED NEWS 4: Old news3 (Keçirilmiş Seminar)
-                    news4Title: "Keçirilmiş Seminar: Çevik və Klassik Metodlar", 
-                    news4ModalTitle: "Keçirilmiş Seminar: Çevik və Klassik Metodlar", 
-                    news4ModalDesc: "Layihə idarəçiliyində həm klassik, həm də çevik metodlarla tanış olmaq istəyirsənsə, bu seminar tam sənlikdir!", 
-                    news4ModalPoint1: "<strong>Mövzu:</strong> Çevik və Klassik Layihə İdarəetməsi", 
-                    news4ModalPoint2: "<strong>Spiker:</strong> Mahmud Mahmudlu", 
-                    news4ModalPoint3: "📌 Ericsson – Tech Project Manager", 
-                    news4ModalPoint4: "📜 PMP, Lean Six Sigma Certified", 
-                    news4ModalDate: "🗓️ Tarix: 21 Avqust (Tədbir başa çatıb)", 
-                    news4ModalCTA: "Qeydiyyat Bağlanıb",
+                    // SHIFTED NEWS 6: Old news4 (Keçirilmiş Seminar)
+                    news6Title: "Keçirilmiş Seminar: Çevik və Klassik Metodlar", 
+                    news6ModalTitle: "Keçirilmiş Seminar: Çevik və Klassik Metodlar", 
+                    news6ModalDesc: "Layihə idarəçiliyində həm klassik, həm də çevik metodlarla tanış olmaq istəyirsənsə, bu seminar tam sənlikdir!", 
+                    news6ModalPoint1: "<strong>Mövzu:</strong> Çevik və Klassik Layihə İdarəetməsi", 
+                    news6ModalPoint2: "<strong>Spiker:</strong> Mahmud Mahmudlu", 
+                    news6ModalPoint3: "📌 Ericsson – Tech Project Manager", 
+                    news6ModalPoint4: "📜 PMP, Lean Six Sigma Certified", 
+                    news6ModalDate: "🗓️ Tarix: 21 Avqust (Tədbir başa çatıb)", 
+                    news6ModalCTA: "Qeydiyyat Bağlanıb",
                     
-                    // SHIFTED NEWS 5: Old news4 (Təqaüd Proqramı)
-                    news5Title: "Təqaüd Proqramı Uğurla Başa Çatdı", 
-                    news5ModalTitle: "Təqaüd Proqramı Uğurla Başa Çatdı", 
-                    news5ModalDesc1: "Məlumat üçün bildirmək istərdik ki, AYAFE Gənclər Təşkilatı və Pmania Hub şirkətinin təşkilatı dəstəyi ilə təqaüd proqramına müraciət prosesi yekunlaşmışdır.", 
-                    news5ModalDesc2: "Ümumilikdə 100-dən çox müraciət qeydə alınmış, 40 nəfər müsahibə mərhələsinə keçmişdir. Müsahibə mərhələsindən uğurla keçən 11 nəfər 2 aylıq ödənişsiz \"360° Layihə İdarəetməsi təlim proqramı\"na cəlb edilmişdir.", 
-                    news5ModalDesc3: "İndi isə yeni biliklər, böyük hədəflər və fərq yaradan layihələr üçün səhnə onlarındır!", 
-                    news5ModalDesc4: "Təqaüd proqramı üzrə qaliblərimizi təbrik edir, fəaliyyətlərində uğurlar arzulayırıq.", 
-                    news5ModalHashtags: "#AYAFEAZERBAIJAN #PMANİA #ProjectManagement",
+                    // SHIFTED NEWS 7: Old news5 (Təqaüd Proqramı)
+                    news7Title: "Təqaüd Proqramı Uğurla Başa Çatdı", 
+                    news7ModalTitle: "Təqaüd Proqramı Uğurla Başa Çatdı", 
+                    news7ModalDesc1: "Məlumat üçün bildirmək istərdik ki, AYAFE Gənclər Təşkilatı və Pmania Hub şirkətinin təşkilatı dəstəyi ilə təqaüd proqramına müraciət prosesi yekunlaşmışdır.", 
+                    news7ModalDesc2: "Ümumilikdə 100-dən çox müraciət qeydə alınmış, 40 nəfər müsahibə mərhələsinə keçmişdir. Müsahibə mərhələsindən uğurla keçən 11 nəfər 2 aylıq ödənişsiz \"360° Layihə İdarəetməsi təlim proqramı\"na cəlb edilmişdir.", 
+                    news7ModalDesc3: "İndi isə yeni biliklər, böyük hədəflər və fərq yaradan layihələr üçün səhnə onlarındır!", 
+                    news7ModalDesc4: "Təqaüd proqramı üzrə qaliblərimizi təbrik edir, fəaliyyətlərində uğurlar arzulayırıq.", 
+                    news7ModalHashtags: "#AYAFEAZERBAIJAN #PMANİA #ProjectManagement",
+                    
+                    testimonialsTitle: "Tələbələrimiz Nə Deyir?",
+                    blogTitle: "Son Bloq Yazıları", blog1Title: "Agile və Scrum Arasındakı Fərqlər", blog1Desc: "Bu məqalədə çevik metodologiyaların əsas prinsiplərini və onların tətbiqini araşdırırıq.", blog2Title: "Uğurlu Layihə Üçün 5 Vacib Addım", blog2Desc: "Layihə planlamasından yekun təhvilə qədər olan mərhələlərdə diqqət etməli olduğunuz məqamlar.", blog3Title: "Risk İdarəetməsi Nədir?", blog3Desc: "Layihələrinizdə qarşılaşa biləcəyiniz riskləri necə müəyyən edə və idarə edə bilərsiniz?", blog4Title: "Layihə Meneceri yoxsa Lider? Hər İkisi!", blog4Desc: "Uğurlu layihələrin arxasında dayanan liderlik keyfiyyətlərini və onların komandaya təsirini araşdırın.", blog5Title: "Təcili yoxsa Vacib? Prioritetləri Düzgün Müəyyən Etməyin Yolları", blog5Desc: "MoSCoW və Eisenhower Matrisi kimi effektiv prioritetləşdirmə üsulları ilə tanış olun.", readMore: "Daha çox oxu &rarr;", viewAllBlogs: "Bütün Bloqlara Bax",
+                    ctaTitle: "Layihələrinizi Növbəti Səviyyəyə Qaldırmağa Hazırsınız?", ctaSubtitle: "İndi başlayın – inkişaf üçün ilk addımı atın.", ctaBtn1: "Ödənişsiz konsultasiya al", ctaBtn2: "Bütün Xidmətlərə Bax",
+                    footerTitle1: "PMania Hub", footerDesc1: "Layihə idarəetməsində peşəkar dəstəkçiniz.", footerTitle2: "Sürətli Keçidlər", footerTitle3: "Əlaqə", footerTitle4: "Bizi İzləyin", footerRights: "&copy; 2025 PMania Hub. Bütün hüquqlar qorunur.",
+                    calendarTitle: "Görüş Rezerv Edin",
+                    
+                    readMoreReview: "Davamını Oxu",
+                    linkedinComment: "LinkedIn Rəyi",
+                    reviewAytacAName: "Aytac Abbasova", reviewAytacAQuoteShort: "İnteraktiv, dinləyicini nəzərə alaraq ona uyğun sadə dildə izah etməsi...", reviewAytacAQuoteFull: "İnteraktiv, dinləyicini nəzərə alaraq ona uyğun sadə dildə izah etməsi, sonda əyləncəli metodla öyrəndiklərimizin yoxlanılması əla metod idi.",
+                    reviewFatimaUName: "Umudova Fatimə", reviewFatimaUQuoteShort: "Dərslər çox aydın və sistematik şəkildə izah edilir, mövzunun həm nəzəri, həm də real...", reviewFatimaUQuoteFull: "Dərslər çox aydın və sistematik şəkildə izah edilir, mövzunun həm nəzəri, həm də real nümunələr ilə izah edilməsi isə mövzunu daha da anlaşıqlı edirdi. Təlimçinin biliyi qədər mövzunu təqdim etmə forması da çox önəmlidir və düşünürəm ki, hər ikisi kifayət qədər yaxşı idi.",
+                    reviewFatimaCName: "Cəfərova Fatimə", reviewFatimaCQuoteShort: "Təlimçi mövzunu sadə və aydın şəkildə təqdim etdi. Ritm balanslı idi...", reviewFatimaCQuoteFull: "Təlimçi mövzunu sadə və aydın şəkildə təqdim etdi. Ritm balanslı idi, izahları həyatdakı nümunələrlə zənginləşdirməsi dərsi daha anlaşılan etdi.",
+                    reviewGulsumTName: "Gülsüm Tarverdiyeva", reviewGulsumTQuoteShort: "Təlimçinin dərsi təqdim etmə tərzi çox maraqlı və aydın idi. Mövzunu hərtərəfli...", reviewGulsumTQuoteFull: "Təlimçinin dərsi təqdim etmə tərzi çox maraqlı və aydın idi. Mövzunu hərtərəfli izah edir, real nümunələr gətirərək mövzunu daha da anlaşıqlı edirdi. Ritmi uyğun, izahı əyləncəli idi və iştirakçılarla yaxşı əlaqə qurmağı bacarırdı.",
+                    reviewMasmaRName: "Məsmə Rəcəbova", reviewMasmaRQuoteShort: "Təlimin keyfiyyətindən çox razı qaldım. Təlimçinin izah tərzi sadə və anlaşılan idi...", reviewMasmaRQuoteFull: "Təlimin keyfiyyətindən çox razı qaldım. Təlimçinin izah tərzi sadə və anlaşılan idi, çətin görünən mövzuları belə rahat başa düşmək mümkün oldu. Hər dərs maraqlı və interaktiv şəkildə keçirildi, nümunələr və izahlar öyrənmə prosesini daha da asanlaşdırdı. Düşünürəm ki, bu təlim həm nəzəri bilik, həm də praktik bacarıqlar qazanmaq üçün çox faydalıdır.",
+                    reviewSusanHName: "Susan Heydərova", reviewSusanHQuoteShort: "Çox maraqlı və məlumatlandırıcı vebinar üçün bütün təşkilatçılar və mentora təşəkkürümü...", reviewSusanHQuoteFull: "Çox maraqlı və məlumatlandırıcı vebinar üçün bütün təşkilatçılar və mentora təşəkkürümü bildirməyi özümə borc bilirəm. Bu sahəyə maraqlı olan şəxslərə növbəti təlimlərə qoşulmağı məsləhət görürəm☺️",
+                    reviewFatimaBName: "Bağırova Fatimə", reviewFatimaBQuoteShort: "Bu layihədə mən əsaslı biliklər əldə etdim. Müəllimin səmimiliyi və bizə sanki ‘bizdən biri’...", reviewFatimaBQuoteFull: "Bu layihədə mən əsaslı biliklər əldə etdim . Müəllimin səmimiliyi və bizə sanki ‘bizdən biri’ kimi yanaşması dərsləri tamamilə fərqli bir atmosferdə keçirməyə səbəb oldu. Bu yaxınlıq və rahatlıq bizə daha çox sual verməyə, fikir mübadiləsi aparmağa və dərslərə maraqla qatılmağa şərait yaratdı. Mənim üçün layihə idarəçiliyi yolunda ilk addımları atmaq elə bu təlimlə başladı. Öyrəndiklərim nəzəri biliklər , həm də komanda mühitində ünsiyyət və əməkdaşlıq bacarıqlarımı inkişaf etdirdi. Dərslərin sonunda Kahoot oyunu ilə yarışmaq və doğrusu heç birində qalib gəlməsəmdə bu mənə hər dəfə təcrübəli edirdi , daha da unudulmaz proqram kimi yadda qaldı. \n Çünki buradakı ab-hava və yanaşma bir çox məşhur kurslardan qat-qat üstündür. Mənim üçün bu təlim , özünü inkişaf və motivasiya üçün açılan yeni bir qapı oldu. Hər dərsdən maraqlı qeydlərimi yazdıqca həvəslənirdim bu sahəyə . Təşəkkür edirəm!",
+                    reviewRovshanYName: "Rövşən Yasinov", reviewRovshanYQuoteShort: "Təlim mövzusu və məlumatlar ənənəvi təlimlərdə olduğu kimi yalnız mühazirəçi və dinləyici...", reviewRovshanYQuoteFull: "Təlim mövzusu və məlumatlar ənənəvi təlimlərdə olduğu kimi yalnız mühazirəçi və dinləyici perspektivindən deyil, interaktiv və qarşılıqlı dialoq əsasında təqdim olunur. Ən önəmlisi, tipik nəzəri biliklərdən çox, real həyat təcrübələrinə əsaslanan məlumatlara üstünlük verilir. Bu təlimin bizə qatdığı ən dəyərli məqamlardan biri yalnız peşəkar layihə meneceri olmaq üçün zəruri bilikləri öyrətməsi deyil, həm də müxtəlif proseslərə düzgün yanaşma tərzi formalaşdırmaq, yaranan çətinliklərə səmərəli həll yolları tapmaq və onlara fərqli baxış bucağından yanaşmaq bacarığını inkişaf etdirməsidir.",
+
+                    blog1p1: "Layihə idarəetməsi dünyasında tez-tez bir-birinin yerinə istifadə edilən iki termin var: Agile və Scrum. Bəs onlar həqiqətən eyni şeydirmi? Qısa cavab: xeyr. Gəlin onların arasındakı əsas fərqləri aydınlaşdıraq.", blog1h1: "Agile nədir?", blog1p2: "Agile bir metodologiya deyil, bir fəlsəfədir. Bu, layihələri daha çevik, uyğunlaşa bilən və müştəri mərkəzli şəkildə idarə etmək üçün bir düşüncə tərzidir. Agile Manifestində təsbit edilmiş 4 əsas dəyər və 12 prinsipdən ibarətdir. Əsas məqsəd, dəyişikliklərə tez reaksiya vermək və davamlı olaraq dəyər yaratmaqdır.", blog1h2: "Scrum nədir?", blog1p3: "Scrum, Agile fəlsəfəsini tətbiq etmək üçün istifadə olunan ən populyar çərçivələrdən (framework) biridir. Scrum, komandaların mürəkkəb problemləri həll etməsinə kömək edən konkret rollar (Product Owner, Scrum Master, Development Team), hadisələr (Sprint, Sprint Planning, Daily Scrum) və artefaktlar (Product Backlog, Sprint Backlog) təyin edir.", blog1h3: "Əsas Fərq", blog1p4: "Sadə bir bənətmə ilə desək, Agile \"sağlam həyat tərzi sürmək\" fəlsəfəsidirsə, Scrum bu fəlsəfəyə çatmaq üçün seçdiyiniz \"xüsusi pəhriz və məşq proqramı\" kimidir. Yəni, Scrum çevik olmağın bir yoludur, lakin tək yolu deyil. Kanban, XP kimi digər Agile çərçivələr də mövcüddur.",
+                    blog2p1: "Hər bir uğurlu layihənin arxasında yaxşı düşünülmüş bir plan və ardıcıl icra dayanır. Layihənin ölçüsündən və mürəkkəbliyindən asılı olmayaraq, bu 5 əsas addımı izləmək sizi uğura daha da yaxınlaşdıracaq.", blog2h1: "1. Başlanğıc (Initiation)", blog2p2: "Bu, layihənin doğuş mərhələsidir. Burada layihənin məqsədləri, gözləntiləri və əsas maraqlı tərəfləri müəyyən edilir. “Biz nəyə nail olmaq istəyirik?” və “Bu layihə niyə vacibdir?” suallarına cavab tapmaq lazımdır.", blog2h2: "2. Planlaşdırma (Planning)", blog2p3: "Uğurun təməli detallı planlaşdırmadır. Bu mərhələdə layihənin həcmi, büdcəsi, zaman qrafiki, tələb olunan resurslar və potensial risklər müəyyən edilir. Aydın bir yol xəritəsi çəkmək bütün komandanın eyni hədəfə doğru irəliləməsini təmin edir.", blog2h3: "3. İcra (Execution)", blog2p4: "Planın həyata keçirildiyi mərhələdir. Komanda üzvləri tapşırıqları yerinə yetirir, resurslar paylanır və layihənin əsas məhsul və ya xidməti yaradılır. Bu mərhələdə effektiv kommunikasiya və komanda işi kritik əhəmiyyət daşıyır.", blog2h4: "4. Nəzarət və Monitorinq (Monitoring & Control)", blog2p5: "Bu mərhələ icra ilə paralel gedir. Layihənin gedişatı plana uyğun olaraq izlənilir, performans ölçülür və hər hansı bir yayınma olarsa, düzəldici tədbirlər görülür. Məqsəd, layihəni büdcə, zaman və keyfiyyət çərçivəsində saxlamaqdır.", blog2h5: "5. Yekunlaşdırma (Closure)", blog2p6: "Layihənin uğurla başa çatdırıldığı son mərhələdir. Yekun məhsul müştəriyə təhvil verilir, sənədləşmə tamamlanır və layihədən əldə edilən təcrübələr (“lessons learned”) qeydə alınır. Bu, gələcək layihələr üçün dəyərli bir məlumat bazası yaradır.",
+                    blog3p1: "Layihə idarəetməsində ən yaxşı planlar belə gözlənilməz hadisələrlə üzləşə bilər. Risk idarəetməsi, bu qeyri-müəyyənlikləri qabaqcadan görməyə və onların layihəyə mənfi təsirini minimuma endirməyə kömək edən bir prosesdir.", blog3h1: "Risk Nədir və Növləri Hansılardır?", blog3p2: "Risk, baş verəcəyi təqdirdə layihənin məqsədlərinə (büdcə, zaman, keyfiyyət) müsbət və ya mənfi təsir göstərə biləcək qeyri-müəyyən bir hadisədir. Risklər texniki (texnologiya problemi), xarici (bazar dəyişikliyi), təşkilati (resurs çatışmazlığı) və ya idarəetmə (zəif planlama) kimi fərqli kateqoriyalara ayrıla bilər.", blog3h2: "Risk İdarəetmə Prosesi", blog3p3: "Effektiv risk idarəetməsi adətən dörd əsas addımdan ibarətrətdir:", blog3li1: "<strong>Risk Analizi:</strong> Hər bir riskin baş vermə ehtimalı və potensial təsiri qiymətləndirilir.", blog3li2: "<strong>Risk Cavabının Planlaşdırılması:</strong> Risklərə qarşı strategiyalar hazırlanır (qəbul etmək, qarşısını almaq, təsirini azaltmaq və ya başqasına ötürmək).", blog3li3: "<strong>Risk İdentifikasiyası:</strong> Potensial risklərin müəyyən edilməsi və siyahısının hazırlanması.", blog3li4: "<strong>Risk Monitorinqi:</strong> Proses boyu yeni risklərin izlənilməsi və mövcud risklərə qarşı planların effektivliyinin yoxlanılması.",
+                    blog4p1: "Layihə idarəetməsi terminologiyasında \"menecer\" və \"lider\" sözləri tez-tez bir-birini əvəz etsə də, əslində fərqli mənaları və funxiyaları ifadə edirlər. Uğurlu bir layihə meneceri hər iki rolu da özündə birləşdirməyi bacarmalıdır.", blog4h1: "Layihə Meneceri: Sistem və Proses", blog4p2: "Menecer, ilk növbədə, sistem və nizam-intizamla bağlıdır. O, planlar qurur, büdcələr təyin edir, resursları paylayır və tapşırıqların vaxtında və keyfiyyətlə yerinə yetirilməsinə nəzarət edir. Menecerin əsas sualları \"necə?\" və \"nə zaman?\" olur. O, proseslərin düzgün işləməsini təmin edir.", blog4h2: "Lider: İnsanlar və Vizyon", blog4p3: "Lider isə daha çox vizyon və motivasiya ilə bağlıdır. O, komandanı ruhlandırır, onlara ümumi hədəfi göstərir və çətinliklər qarşısında onlara dəstək olur. Liderin əsas sualları \"nə?\" və \"niyə?\" olur. O, komandanın hədəfə inanmasını və bu yolda həvəslə çalışmasını təmin edir.", blog4h3: "Nəticə: Hər İkisi Olmaq Şərtdir", blog4p4: "Yalnız idarə edən, lakin ilham verməyən bir menecer komandanın tam potensialını ortaya çıxara bilməz. Yalnız ilham verən, lakin planlama və nəzarət bacarığı olmayan bir lider isə layihəni xaosdan xilas edə bilməz. Buna görə də müasir layihə meneceri həm menecer kimi prosesləri mükəmməl idarə etməli, həm də lider kimi komandasına yol göstərməlidir.",
+                    blog5p1: "Gündəlik iş həyatında qarşımıza çıxan tapşırıqların hamısı eyni dərəcədə vacib deyil. Vaxtımızı səmərəli idarə etmək və həqiqətən əhəmiyyətli olan işlərə fokuslanmaq üçün tapşırıqları düzgün prioritetləşdirmək vacibdir. Bunun üçün ən effektiv üsullardan biri Eisenhower Matrisidir.", blog5h1: "Eisenhower Matrisi: 4 Kvadrant", blog5p2: "Bu metod, ABŞ-ın 34-cü prezidenti Dwight D. Eisenhower tərəfindən istifadə edildiyi üçün onun adını daşıyır. Matris bütün tapşırıqları iki meyar üzrə qiymətləndirir: Təcililik (Urgency) və Vaciblik (Importance). Bu, dörd fərqli kvadrant yaradır:", blog5li1: "<strong>1. Təcili və Vacib (Do):</strong> Bu tapşırıqları dərhal yerinə yetirmək lazımdır. Məsələn, müştəri ilə bağlı kritik bir problem və ya yaxınlaşan bir son tarix.", blog5li2: "<strong>2. Vacib, lakin Təcili Deyil (Schedule):</strong> Bu, uzunmüddətli hədəflərinizə çatmağınıza kömək edən tapşırıqlar üçün. Məsələn, yeni bir bacarıq öyrənmək, gələcək layihəni planlaşdırmaq. Bu tapşırıqları təqviminizdə planlaşdırın.", blog5li3: "<strong>3. Təcili, lakin Vacib Deyil (Delegate):</strong> Bu tapşırıqlar başqası tərəfindən edilə bilər. Məsələn, bəzi zənglərə cavab vermək, hesabatları tərtib etmək. Mümkünsə, bu işləri həvalə edin.", blog5li4: "<strong>4. Nə Təcili, Nə də Vacib (Eliminate):</strong> Bu tapşırıqlar vaxt itkisidir və onlardan yayınmaq lazımdır. Məsələn, sosial mediada məqsədsiz gəzmək.", blog5p3: "Bu matrisi istifadə edərək, \"reaktiv\" (yalnız təcili işlərə reaksiya verən) rejimdən çıxıb, \"proaktiv\" (həqiqətən vacib olan işlərə fokuslanan) bir iş rejiminə keçə bilərsiniz.",
+
+                    // SHIFTED NEWS 4: Old news1 (Product vs Project Management Event)
+                    news4Title: "🎙️Bizə qoşul! Tallinn-də Panel Müzakirəsi — Məhsul və Layihə İdarəetməsi",
+                    news4ModalTitle: "Məhsul və Layihə İdarəetməsi: Fərqi Anlayaq",
+                    news4ModalSub: "Panel Müzakirə: ProductTank Tallinn & PMania Hub",
+                    news4ModalDesc: "İki titul. Bir akronim. Sonsuz qarışıqlıq. Məhsul Menecerlərini Layihə Menecerlərindən həqiqətən nə ayırır - və onların prioritetləri harada toqquşur və ya üst-üstə düşür? ProductTank Tallinn və PMania Hub-a qoşularaq, bu iki sahənin uğur, sahiblik və təsirə necə yanaşdığını araşdıran panel müzakirəsini izləyin.",
+                    news4ModalPoint1: "🗓 <strong>Tarix & Saat:</strong> 11 Noyabr, 2025 | qapılar 18:00-da açılır",
+                    news4ModalPoint2: "📍 <strong>Məkan:</strong> Coolbet ofisi, Kai 4, 2-ci mərtəbə",
+                    news4ModalPoint3: "🎤 <strong>Moderator:</strong> Anna Albert, Riverty-də Baş Məhsul Meneceri",
+                    news4ModalPoint4: "⚠️ <strong>Qeyd:</strong> Bu, məhdud yer olan oflayn tədbirdir. Yalnız şəxsən qoşula biləcəyiniz təqdirdə qeydiyyatdan keçin.",
+                    news4ModalPoint5: "📸 Foto çəkiləcək — şəkildə görünmək istəmədiyinizi bizə bildirin.",
+                    news4ModalCTA: "Qeydiyyatdan Keç",
+                    news4ModalLink: "https://www.meetup.com/producttank-tallinn/events/311759588/?utm_medium=referral&utm_campaign=announce_event&utm_source=link&utm_version=v2",
+
+                    // SHIFTED NEWS 5: Old news2 (360° Layihə İdarəetməsi)
+                    news5Title: "Qeydiyyat Başladı: 360° Layihə İdarəetməsi", 
+                    news5ModalTitle: "Qeydiyyat Başladı: 360° Layihə İdarəetməsi", 
+                    news5ModalSub: "Qeydiyyat Açıqdır!", 
+                    news5ModalDesc: "QOŞUL, ÖYRƏN, TƏTBİQ ET! 🚀 Layihə idarəetməsində peşəkar olmaq istəyirsən? PMANIA sənə beynəlxalq yanaşmalar, real nümunələr və praktiki biliklərlə kömək edəcək!", 
+                    news5ModalPoint1: "8 həftəlik intensiv təlim", 
+                    news5ModalPoint2: "Agile, Waterfall, Scrum, Kanban", 
+                    news5ModalPoint3: "Sertifikat + praktiki tapşırıqlar", 
+                    news5ModalTrainer: "<strong>Təlimçi:</strong> Mahmud Mahmudlu – PMP®, Lean Six Sigma sertifikatlı layihə meneceri, hazırda qlobal telekommunikasiya lideri Ericsson-da çalışır.", 
+                    news5ModalRegister: "Qeydiyyat üçün bizə yaz – uğurlu karyera üçün ilk addımı bu gün at!", 
+                    news5ModalCTA: "Bizə Yaz",
+                    
+                    // SHIFTED NEWS 6: Old news3 (Keçirilmiş Seminar)
+                    news6Title: "Keçirilmiş Seminar: Çevik və Klassik Metodlar", 
+                    news6ModalTitle: "Keçirilmiş Seminar: Çevik və Klassik Metodlar", 
+                    news6ModalDesc: "Layihə idarəçiliyində həm klassik, həm də çevik metodlarla tanış olmaq istəyirsənsə, bu seminar tam sənlikdir!", 
+                    news6ModalPoint1: "<strong>Mövzu:</strong> Çevik və Klassik Layihə İdarəetməsi", 
+                    news6ModalPoint2: "<strong>Spiker:</strong> Mahmud Mahmudlu", 
+                    news6ModalPoint3: "📌 Ericsson – Tech Project Manager", 
+                    news6ModalPoint4: "📜 PMP, Lean Six Sigma Certified", 
+                    news6ModalDate: "🗓️ Tarix: 21 Avqust (Tədbir başa çatıb)", 
+                    news6ModalCTA: "Qeydiyyat Bağlanıb",
+                    
+                    // SHIFTED NEWS 7: Old news4 (Təqaüd Proqramı)
+                    news7Title: "Təqaüd Proqramı Uğurla Başa Çatdı", 
+                    news7ModalTitle: "Təqaüd Proqramı Uğurla Başa Çatdı", 
+                    news7ModalDesc1: "Məlumat üçün bildirmək istərdik ki, AYAFE Gənclər Təşkilatı və Pmania Hub şirkətinin təşkilatı dəstəyi ilə təqaüd proqramına müraciət prosesi yekunlaşmışdır.", 
+                    news7ModalDesc2: "Ümumilikdə 100-dən çox müraciət qeydə alınmış, 40 nəfər müsahibə mərhələsinə keçmişdir. Müsahibə mərhələsindən uğurla keçən 11 nəfər 2 aylıq ödənişsiz \"360° Layihə İdarəetməsi təlim proqramı\"na cəlb edilmişdir.", 
+                    news7ModalDesc3: "İndi isə yeni biliklər, böyük hədəflər və fərq yaradan layihələr üçün səhnə onlarındır!", 
+                    news7ModalDesc4: "Təqaüd proqramı üzrə qaliblərimizi təbrik edir, fəaliyyətlərində uğurlar arzulayırıq.", 
+                    news7ModalHashtags: "#AYAFEAZERBAIJAN #PMANİA #ProjectManagement",
                     
                     testimonialsTitle: "Tələbələrimiz Nə Deyir?",
                     blogTitle: "Son Bloq Yazıları", blog1Title: "Agile və Scrum Arasındakı Fərqlər", blog1Desc: "Bu məqalədə çevik metodologiyaların əsas prinsiplərini və onların tətbiqini araşdırırıq.", blog2Title: "Uğurlu Layihə Üçün 5 Vacib Addım", blog2Desc: "Layihə planlamasından yekun təhvilə qədər olan mərhələlərdə diqqət etməli olduğunuz məqamlar.", blog3Title: "Risk İdarəetməsi Nədir?", blog3Desc: "Layihələrinizdə qarşılaşa biləcəyiniz riskləri necə müəyyən edə və idarə edə bilərsiniz?", blog4Title: "Layihə Meneceri yoxsa Lider? Hər İkisi!", blog4Desc: "Uğurlu layihələrin arxasında dayanan liderlik keyfiyyətlərini və onların komandaya təsirini araşdırın.", blog5Title: "Təcili yoxsa Vacib? Prioritetləri Düzgün Müəyyən Etməyin Yolları", blog5Desc: "MoSCoW və Eisenhower Matrisi kimi effektiv prioritetləşdirmə üsulları ilə tanış olun.", readMore: "Daha çox oxu &rarr;", viewAllBlogs: "Bütün Bloqlara Bax",
@@ -1710,7 +1889,7 @@
                     quizCtaSubtitle: "Check your skills with our professional quiz app based on PMI and Agile standards.",
                     quizCtaBtn: "Start the Quiz!",
                     
-                    // NEW NEWS ITEM 1: PMP Free Consultation
+                    // NEWS 1: PMP Free Consultation
                     news1Title: "🎓 PMP Certification: Free Consultation",
                     news1ModalTitle: "PMP Exam Prep: Free 1:1 Consultation",
                     news1ModalSub: "Plan your journey to becoming a Project Management Professional (PMP) certified.",
@@ -1722,52 +1901,89 @@
                     news1ModalPoint5: "Ready to take the first step?",
                     news1ModalCTA: "Book Your FREE Consultation",
                     news1ModalLink: "https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ1XfkZmkcBhOEeY2REOv08Q-OX9uIxSxJxwwu2FvgzLkC0Z4g14IWDxXxM6ETYK3dIxEhMs9Zwd",
-                    
 
-                    // SHIFTED NEWS 2: Old news1 (Product vs Project Management Event)
-                    news2Title: "🎙️Join Us! Panel Discussion in Tallinn — Product vs. Project Management",
-                    news2ModalTitle: "Product and Project Management: Understanding the Difference",
-                    news2ModalSub: "Panel Discussion: ProductTank Tallinn & PMania Hub",
-                    news2ModalDesc: "Two titles. One acronym. Endless confusion. What really separates <strong>Product Managers</strong> from <strong>Project Managers</strong> — and where do their priorities collide or overlap? Join ProductTank Tallinn and PMania Hub for a panel discussion exploring how these two disciplines approach success, ownership, and impact.",
-                    news2ModalPoint1: "🗓 <strong>Date & Time:</strong> November 11, 2025 | doors open at 18:00",
-                    news2ModalPoint2: "📍 <strong>Location:</strong> Coolbet office, Kai 4, 2nd floor",
-                    news2ModalPoint3: "🎤 <strong>Moderator:</strong> Anna Albert, Senior Product Manager at Riverty",
-                    news2ModalPoint4: "⚠️ <strong>Important:</strong> This is an offline event with limited space. Please RSVP only if you can join in person.",
-                    news2ModalPoint5: "📸 We’ll be taking photos — let us know if you’d prefer not to be featured.",
+                    // NEW NEWS 2: Qlobal PM Təcrübəsi (apmc.png)
+                    news2Title: "Global PM Experience: Career Abroad and Behind the Real Scene",
+                    news2ModalTitle: "Global PM Experience: Career Abroad and Behind the Real Scene",
+                    news2ModalSub: "A special meeting for project managers seeking a career abroad! 🌍",
+                    news2ModalDesc1: "This time, our guest at APMC will be an Azerbaijani PM working abroad. He will share his real experience, the environment in global companies, expectations, challenges, and possible ways to embark on an international career with PM Mahmud Mahmudlu, PMP® PMania Hub.",
+                    news2ModalDesc2: "",
+                    news2ModalForWhomTitle: "Who is this event for?",
+                    news2ModalForWhom1: "🔹 PMs specifically looking to work abroad",
+                    news2ModalForWhom2: "🔹 Those who want to elevate their career to a global level",
+                    news2ModalForWhom3: "🔹 Anyone interested in joining global projects",
+                    news2ModalContentTitle: "What will happen?",
+                    news2ModalContent1: "✓ Real experiences and practical advice",
+                    news2ModalContent2: "✓ Requirements in the global PM environment",
+                    news2ModalContent3: "✓ CV / portfolio recommendations",
+                    news2ModalContent4: "✓ Q&A session",
+                    news2ModalDateTime: "📅 Date: December 20, 2025 | 🕒 Time: 16:00 | 🎟️ Registration: Form is in bio / below.",
                     news2ModalCTA: "Register",
-                    news2ModalLink: "https://www.meetup.com/producttank-tallinn/events/311759588/?utm_medium=referral&utm_campaign=announce_event&utm_source=link&utm_version=v2",
-
-                    // SHIFTED NEWS 3: Old news2 (360° Layihə İdarəetməsi)
-                    news3Title: "Registration Open: 360° Project Management", 
-                    news3ModalTitle: "Registration Started: 360° Project Management", 
-                    news3ModalSub: "Registration is Open!", 
-                    news3ModalDesc: "JOIN, LEARN, APPLY! 🚀 Want to become a professional in project management? PMANIA will help you with international approaches, real examples, and practical knowledge!", 
-                    news3ModalPoint1: "8-week intensive training", 
-                    news3ModalPoint2: "Agile, Waterfall, Scrum, Kanban", 
-                    news3ModalPoint3: "Certificate + practical assignments", 
-                    news3ModalTrainer: "<strong>Instructor:</strong> Mahmud Mahmudlu – PMP®, Lean Six Sigma certified project manager, currently working at the global telecommunications leader, Ericsson.", 
-                    news3ModalRegister: "Contact us to register – take the first step towards a successful career today!", 
-                    news3ModalCTA: "Contact Us",
-
-                    // SHIFTED NEWS 4: Old news3 (Keçirilmiş Seminar)
-                    news4Title: "Past Seminar: Agile vs. Classic Methods", 
-                    news4ModalTitle: "Past Seminar: Agile and Classic Methods", 
-                    news4ModalDesc: "If you want to get acquainted with both classic and agile methods in project management, this seminar is for you!", 
-                    news4ModalPoint1: "<strong>Topic:</strong> Agile and Classic Project Management", 
-                    news4ModalPoint2: "<strong>Speaker:</strong> Mahmud Mahmudlu", 
-                    news4ModalPoint3: "📌 Ericsson – Tech Project Manager", 
-                    news4ModalPoint4: "📜 PMP, Lean Six Sigma Certified", 
-                    news4ModalDate: "🗓️ Date: August 21 (Event has ended)", 
-                    news4ModalCTA: "Registration Closed",
+                    news2ModalLink: "https://lnkd.in/dn_sAwYd",
+                    news2ModalHashtags: "#AzerbaijanProjectManagementCommunity #projectmanagement #projectmanager #layihəidarəetməsi #layihəmeneceri",
                     
-                    // SHIFTED NEWS 5: Old news4 (Təqaüd Proqramı)
-                    news5Title: "Scholarship Program Successfully Concluded", 
-                    news5ModalTitle: "Scholarship Program Successfully Concluded", 
-                    news5ModalDesc1: "We would like to inform you that the application process for the scholarship program, organized with the support of AYAFE Youth Organization and Pmania Hub, has been completed.", 
-                    news5ModalDesc2: "Over 100 applications were received, with 40 candidates advancing to the interview stage. 11 successful candidates were selected for the 2-month free \"360° Project Management training program.\"", 
-                    news5ModalDesc3: "Now, the stage is theirs for new knowledge, big goals, and projects that make a difference!", 
-                    news5ModalDesc4: "We congratulate our scholarship winners and wish them success in their activities.", 
-                    news5ModalHashtags: "#AYAFEAZERBAIJAN #PMANIA #ProjectManagement",
+                    // NEW NEWS 3: Generative AI və Layihə İdarəetməsi (aya.png)
+                    news3Title: "Join the Generative AI and Project Management Training!",
+                    news3ModalTitle: "Generative AI and Project Management: Opportunities and Use Cases",
+                    news3ModalSub: "AYAFE Youth Organization and Pmania Hub invite you to the training to be held on December 21, 2025!",
+                    news3ModalLearnTitle: "What will you learn in the training?",
+                    news3ModalLearn1: "- Basic concepts of Artificial Intelligence and Generative AI",
+                    news3ModalLearn2: "- Application areas of AI in project management",
+                    news3ModalLearn3: "- Effectively creating project plans and reports through AI",
+                    news3ModalLearn4: "- Skills for preparing more efficient, creative, and faster projects",
+                    news3ModalDate: "Date: December 21, 2025",
+                    news3ModalTime: "Time: 10:30 – 12:30",
+                    news3ModalPlace: "Location: Globus Centre",
+                    news3ModalTrainer: "<strong>Trainer:</strong> Mahmud Mahmudlu, PMP®",
+                    news3ModalPartners: "<strong>Partners:</strong> AYAFE Youth Organization | PMania Hub",
+                    news3ModalCTA: "Registration Link",
+                    news3ModalLink: "https://lnkd.in/eQ2xNXeg",
+
+
+                    // SHIFTED NEWS 4: Old news1 (Product vs Project Management Event)
+                    news4Title: "🎙️Join Us! Panel Discussion in Tallinn — Product vs. Project Management",
+                    news4ModalTitle: "Product and Project Management: Understanding the Difference",
+                    news4ModalSub: "Panel Discussion: ProductTank Tallinn & PMania Hub",
+                    news4ModalDesc: "Two titles. One acronym. Endless confusion. What really separates <strong>Product Managers</strong> from <strong>Project Managers</strong> — and where do their priorities collide or overlap? Join ProductTank Tallinn and PMania Hub for a panel discussion exploring how these two disciplines approach success, ownership, and impact.",
+                    news4ModalPoint1: "🗓 <strong>Date & Time:</strong> November 11, 2025 | doors open at 18:00",
+                    news4ModalPoint2: "📍 <strong>Location:</strong> Coolbet office, Kai 4, 2nd floor",
+                    news4ModalPoint3: "🎤 <strong>Moderator:</strong> Anna Albert, Senior Product Manager at Riverty",
+                    news4ModalPoint4: "⚠️ <strong>Important:</strong> This is an offline event with limited space. Please RSVP only if you can join in person.",
+                    news4ModalPoint5: "📸 We’ll be taking photos — let us know if you’d prefer not to be featured.",
+                    news4ModalCTA: "Register",
+                    news4ModalLink: "https://www.meetup.com/producttank-tallinn/events/311759588/?utm_medium=referral&utm_campaign=announce_event&utm_source=link&utm_version=v2",
+
+                    // SHIFTED NEWS 5: Old news2 (360° Layihə İdarəetməsi)
+                    news5Title: "Registration Open: 360° Project Management", 
+                    news5ModalTitle: "Registration Started: 360° Project Management", 
+                    news5ModalSub: "Registration is Open!", 
+                    news5ModalDesc: "JOIN, LEARN, APPLY! 🚀 Want to become a professional in project management? PMANIA will help you with international approaches, real examples, and practical knowledge!", 
+                    news5ModalPoint1: "8-week intensive training", 
+                    news5ModalPoint2: "Agile, Waterfall, Scrum, Kanban", 
+                    news5ModalPoint3: "Certificate + practical assignments", 
+                    news5ModalTrainer: "<strong>Instructor:</strong> Mahmud Mahmudlu – PMP®, Lean Six Sigma certified project manager, currently working at the global telecommunications leader, Ericsson.", 
+                    news5ModalRegister: "Contact us to register – take the first step towards a successful career today!", 
+                    news5ModalCTA: "Contact Us",
+
+                    // SHIFTED NEWS 6: Old news3 (Keçirilmiş Seminar)
+                    news6Title: "Past Seminar: Agile vs. Classic Methods", 
+                    news6ModalTitle: "Past Seminar: Agile and Classic Methods", 
+                    news6ModalDesc: "If you want to get acquainted with both classic and agile methods in project management, this seminar is for you!", 
+                    news6ModalPoint1: "<strong>Topic:</strong> Agile and Classic Project Management", 
+                    news6ModalPoint2: "<strong>Speaker:</strong> Mahmud Mahmudlu", 
+                    news6ModalPoint3: "📌 Ericsson – Tech Project Manager", 
+                    news6ModalPoint4: "📜 PMP, Lean Six Sigma Certified", 
+                    news6ModalDate: "🗓️ Date: August 21 (Event has ended)", 
+                    news6ModalCTA: "Registration Closed",
+                    
+                    // SHIFTED NEWS 7: Old news4 (Təqaüd Proqramı)
+                    news7Title: "Scholarship Program Successfully Concluded", 
+                    news7ModalTitle: "Scholarship Program Successfully Concluded", 
+                    news7ModalDesc1: "We would like to inform you that the application process for the scholarship program, organized with the support of AYAFE Youth Organization and Pmania Hub, has been completed.", 
+                    news7ModalDesc2: "Over 100 applications were received, with 40 candidates advancing to the interview stage. 11 successful candidates were selected for the 2-month free \"360° Project Management training program.\"", 
+                    news7ModalDesc3: "Now, the stage is theirs for new knowledge, big goals, and projects that make a difference!", 
+                    news7ModalDesc4: "We congratulate our scholarship winners and wish them success in their activities.", 
+                    news7ModalHashtags: "#AYAFEAZERBAIJAN #PMANIA #ProjectManagement",
                     
                     testimonialsTitle: "What Our Students Say",
                     blogTitle: "Latest Blog Posts", blog1Title: "Differences Between Agile and Scrum", blog1Desc: "In this article, we explore the core principles of agile methodologies and their application.", blog2Title: "5 Essential Steps for a Successful Project", blog2Desc: "Key points to consider from project planning to final delivery.", blog3Title: "What is Risk Management?", blog3Desc: "How can you identify and manage potential risks in your projects?", blog4Title: "Project Manager or Leader? Both!", blog4Desc: "Explore the leadership qualities behind successful projects and their impact on the team.", blog5Title: "Urgent or Important? How to Prioritize Correctly", blog5Desc: "Learn effective prioritization methods like MoSCoW and Eisenhower Matrix.", readMore: "Read more &rarr;", viewAllBlogs: "View All Blogs",
@@ -1787,10 +2003,7 @@
                     reviewRovshanYName: "Rövşən Yasinov", reviewRovshanYQuoteShort: "The training topic and information are presented not just from the traditional lecturer and listener...", reviewRovshanYQuoteFull: "The training topic and information are presented not just from the traditional lecturer and listener perspective, as in conventional trainings, but on the basis of interactive and mutual dialogue. Most importantly, priority is given to information based on real-life experiences rather than typical theoretical knowledge. One of the most valuable aspects this training has given us is not only teaching the necessary knowledge to become a professional project manager but also developing the ability to form the right approach to various processes, find effective solutions to emerging difficulties, and approach them from a different perspective.",
 
                     blog1p1: "In the world of project management, two terms are often used interchangeably: Agile and Scrum. But are they really the same thing? The short answer is no. Let's clarify the main differences between them.", blog1h1: "What is Agile?", blog1p2: "Agile is not a methodology, but a philosophy. It is a mindset for managing projects in a more flexible, adaptable, and customer-centric way. It consists of 4 core values and 12 principles set out in the Agile Manifesto. The main goal is to react quickly to change and continuously create value.", blog1h2: "What is Scrum?", blog1p3: "Scrum is one of the most popular frameworks used to implement the Agile philosophy. Scrum defines specific roles (Product Owner, Scrum Master, Development Team), events (Sprint, Sprint Planning, Daily Scrum), and artifacts (Product Backlog, Sprint Backlog) that help teams solve complex problems.", blog1h3: "The Main Difference", blog1p4: "To put it simply, if Agile is the philosophy of \"living a healthy lifestyle,\" then Scrum is the \"specific diet and exercise program\" you choose to achieve that philosophy. In other words, Scrum is one way to be agile, but it is not the only way. Other Agile frameworks like Kanban and XP also exist.",
-                    blog2p1: "Behind every successful project lies a well-thought-out plan and consistent execution. Regardless of the project's size or complexity, following these 5 essential steps will bring you closer to success.", blog2h1: "1. Initiation", blog2p2: "This is the birth stage of the project. Here, the project's goals, expectations, and key stakeholders are identified. It's crucial to answer the questions, “What do we want to achieve?” and “Why is this project important?”", blog2h2: "2. Planning", blog2p3: "The foundation of success is detailed planning. In this phase, the project's scope, budget, timeline, required resources, and potential risks are determined. Drawing a clear roadmap ensures the entire team moves towards the same goal.", blog2h3: "3. Execution", blog2p4: "This is the stage where the plan is brought to life. Team members carry out tasks, resources are allocated, and the project's main product or service is created. Effective communication and teamwork are critical in this phase.", blog2h4: "4. Monitoring & Control", blog2p5: "This phase runs parallel to execution. The project's progress is tracked against the plan, performance is measured, and corrective actions are taken if any deviations occur. The goal is to keep the project within budget, on time, and up to quality standards.", blog2h5: "5. Closure", blog2p6: "This is the final stage where the project is successfully completed. The final product is delivered to the client, documentation is finalized, and lessons learned are recorded. This creates a valuable knowledge base for future projects.",
-                    blog3p1: "In project management, even the best-laid plans can face unexpected events. Risk management is a process that helps to foresee these uncertainties and minimize their negative impact on the project.", blog3h1: "What is Risk and What Are Its Types?", blog3p2: "A risk is an uncertain event that, if it occurs, can have a positive or negative effect on the project's objectives (budget, time, quality). Risks can be categorized as technical (technology failure), external (market changes), organizational (resource shortages), or management (poor planning).", blog3h2: "The Risk Management Process", blog3p3: "Effective risk management typically consists of four main steps:", blog3li1: "<strong>Risk Identification:</strong> Identifying potential risks and creating a list of them.", blog3li2: "<strong>Risk Analysis:</strong> Assessing the probability and potential impact of each risk.", blog3li3: "<strong>Risk Response Planning:</strong> Developing strategies to address risks (accept, avoid, mitigate, or transfer).", blog3li4: "<strong>Risk Monitorinqi:</strong> Tracking new risks throughout the process and checking the effectiveness of plans for existing risks.",
-                    blog4p1: "In project management terminology, the words \"manager\" and \"leader\" are often used interchangeably, but they actually represent different meanings and functions. A successful project manager must be able to embody both roles.", blog4h1: "The Project Manager: System and Process", blog4p2: "A manager is primarily concerned with systems and order. They create plans, set budgets, allocate resources, and oversee the timely and quality completion of tasks. A manager's main questions are \"how?\" and \"when?\". They ensure that processes run correctly.", blog4h2: "The Leader: People and Vision", blog4p3: "A leader is more about vision and motivation. They inspire the team, show them the common goal, and support them through challenges. A leader's main questions are \"what?\" and \"why?\". They ensure the team believes in the goal and works enthusiastically towards it.", blog4h3: "Conclusion: Being Both is Essential", blog4p4: "A manager who only manages but does not inspire cannot unlock the team's full potential. A leader who only inspires but lacks planning and control skills cannot save the project from chaos. Therefore, a modern project manager must both manage processes perfectly like a manager and guide their team like a leader.",
-                    blog5p1: "Not all tasks that come our way in daily work life are equally important. To manage our time effectively and focus on what truly matters, it's essential to prioritize tasks correctly. One of the most effective methods for this is the Eisenhower Matrix.", blog5h1: "The Eisenhower Matrix: 4 Quadrants", blog5p2: "This method is named after Dwight D. Eisenhower, the 34th President of the United States, who was known for using it. The matrix evaluates all tasks based on two criteria: Urgency and Importance. This creates four distinct quadrants:", blog5li1: "<strong>1. Urgent & Important (Do):</strong> These tasks need to be done immediately. For example, a critical client issue or an approaching deadline.", blog5li2: "<strong>2. Important, but Not Urgent (Schedule):</strong> These are tasks that help you achieve your long-term goals. For instance, learning a new skill or planning a future project. Schedule these tasks on your calendar.", blog5li3: "<strong>3. Urgent, but Not Important (Delegate):</strong> These tasks can be done by someone else. For example, answering some calls or compiling reports. If possible, delegate this work.", blog5li4: "<strong>4. Neither Urgent nor Important (Eliminate):</strong> These tasks are a waste of time and should be avoided. For example, aimlessly scrolling through social media.", blog5p3: "By using this matrix, you can move from a \"reactive\" mode (only reacting to urgent tasks) to a \"proactive\" work mode (focusing on what is truly important)."
+                    blog2p1: "Behind every successful project lies a well-thought-out plan and consistent execution. Regardless of the project's size or complexity, following these 5 essential steps will bring you closer to success.", blog2h1: "1. Initiation", blog2p2: "This is the birth stage of the project. Here, the project's goals, expectations, and key stakeholders are identified. It's crucial to answer the questions, “What do we want to achieve?” and “Why is this project important?”", blog2h2: "2. Planning", blog2p3: "The foundation of success is detailed planning. In this phase, the project's scope, budget, timeline, required resources, and potential risks are determined. Drawing a clear roadmap ensures the entire team moves towards the same goal.", blog2h3: "3. Execution", blog2p4: "This is the stage where the plan is brought to life. Team members carry out tasks, resources are allocated, and the project's main product or service is created. Effective communication and teamwork are critical in this phase.", blog2h4: "4. Monitoring & Control", blog2p5: "This phase runs parallel to execution. The project's progress is tracked against the plan, performance is measured, and corrective actions are taken if any deviations occur. The goal is to keep the project within budget, on time, and up to quality standards.", blog2h5: "5. Closure", blog2p6: "This is the final stage where the project is successfully completed. The final product is delivered to the client, documentation is finalized, and lessons learned are recorded. This creates a valuable knowledge base for future projects."
                 }
             };
             
@@ -1799,11 +2012,18 @@
                 const modal = document.getElementById(modalId);
                 if (modal) {
                     modal.style.display = 'block'; 
-                    // Special handling for event links, now news1 and news2
+                    // Special handling for event links
+                    const lang = document.documentElement.lang;
+                    
                     if(modalId === 'news-modal-1') {
-                         document.getElementById('news1-cta-link').href = translations[document.documentElement.lang]['news1ModalLink'];
+                         document.getElementById('news1-cta-link').href = translations[lang]['news1ModalLink'];
                     } else if (modalId === 'news-modal-2') {
-                        document.getElementById('news2-cta-link').href = translations[document.documentElement.lang]['news2ModalLink'];
+                        document.getElementById('news2-cta-link').href = translations[lang]['news2ModalLink'];
+                    } else if (modalId === 'news-modal-3') {
+                        document.getElementById('news3-cta-link').href = translations[lang]['news3ModalLink'];
+                    } else if (modalId === 'news-modal-4') {
+                        // Old news 1 shifted to 4
+                        document.getElementById('news4-cta-link').href = translations[lang]['news4ModalLink'];
                     }
                 }
             }
