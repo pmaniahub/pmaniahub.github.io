@@ -207,15 +207,34 @@
         }
         .quiz-nav-link { 
             text-decoration: none;
-            color: var(--secondary-color); 
+            background: var(--secondary-gradient);
+            color: var(--white-color); /* Highlight text with white */
             font-weight: 600;
             font-family: var(--heading-font);
             font-size: 1.1em;
-            padding: 5px 0; 
-            transition: color 0.3s ease;
+            padding: 8px 18px; /* Added padding for oval shape */
+            border-radius: 50px; /* Oval shape */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
         .quiz-nav-link:hover { 
-            color: #3b15a8;
+            color: var(--white-color);
+            box-shadow: 0 4px 15px rgba(74, 26, 209, 0.4);
+            transform: translateY(-2px);
+        }
+        
+        /* Ensure Quiz link is visible outside hamburger menu on mobile, 
+           and regular nav links are hidden until opened. */
+        @media (max-width: 1080px) {
+             .main-nav ul {
+                display: none; /* Hide standard links on mobile initially */
+            }
+            .main-nav.active ul {
+                 display: flex; /* Show links when hamburger is active */
+            }
+            /* Adjust positioning of controls to prevent overlap with hamburger */
+            .header-controls {
+                 order: 2; /* Place controls after logo, before hamburger */
+            }
         }
 
 
@@ -442,19 +461,31 @@
             flex-wrap: nowrap;
             gap: 30px;
         }
-        .service-card, .news-card, .blog-post-card {
+        
+        /* ADJUSTED SIZES FOR NEWS CARDS */
+        .service-card, .blog-post-card {
             flex: 0 0 80%;
             max-width: 300px;
         }
+        .news-card {
+            flex: 0 0 80%; /* Base width */
+            max-width: 350px; /* Increased max width */
+            flex-shrink: 0; /* Ensure it doesn't shrink unnecessarily */
+        }
+        
         @media (min-width: 640px) {
-            .service-card, .news-card, .blog-post-card { flex: 0 0 40%; }
+            .service-card, .blog-post-card { flex: 0 0 40%; }
+            .news-card { flex: 0 0 40%; max-width: 350px; }
         }
         @media (min-width: 992px) {
-             .scroll-container { justify-content: center; }
-            .service-card, .news-card, .blog-post-card { flex: 0 0 calc(33.333% - 20px); }
+             .scroll-container { justify-content: flex-start; } /* Changed to flex-start to show first element completely */
+            .service-card, .blog-post-card { flex: 0 0 calc(33.333% - 20px); }
+            .news-card { flex: 0 0 350px; max-width: 350px; } /* Fixed width on desktop for consistent look */
             /* Fix for testimonials scroller alignment */
             #testimonials-scroller { justify-content: flex-start; }
         }
+        /* END ADJUSTED SIZES */
+
         .scroll-btn {
             position: absolute;
             top: 50%;
@@ -971,6 +1002,28 @@
                 font-weight: 500;
                 color: var(--white-color);
             }
+            
+            /* Hide the Quiz link from the regular flow on mobile (outside hamburger) */
+            .quiz-nav-link {
+                display: none;
+            }
+        }
+        
+        @media (min-width: 1081px) {
+             /* Show Quiz link as a button in header-controls on desktop */
+             .quiz-nav-link {
+                 display: inline-block;
+             }
+             /* Hide the Quiz link from the main nav list on desktop */
+             .main-nav ul li:first-child a[data-lang-key="navQuiz"] {
+                 display: none;
+             }
+             
+             /* Re-adding Quiz link to the desktop menu flow based on the previous request/intention, 
+                but keeping it out of the hamburger flow in the header-controls. 
+                The most recent HTML structure actually puts the Quiz link outside the `main-nav` 
+                and inside `header-controls`. I will rely on this structure.
+             */
         }
         
         @media (max-width: 992px) {
@@ -1079,6 +1132,7 @@
                     </ul>
                 </nav>
                 <div class="header-controls">
+                    <!-- Quiz link is here, visible on desktop, hidden on mobile by CSS to be outside the hamburger menu -->
                     <a href="https://pmania-hub-quiz.lovable.app/" target="_blank" class="quiz-nav-link" data-lang-key="navQuiz">Quiz Tətbiqini Sına</a> 
                     <div class="lang-switcher">
                         <button id="lang-az" class="active">AZ</button> |
@@ -1093,6 +1147,7 @@
             </div>
         </div>
     </header>
+
 
     <main>
         <section class="hero">
@@ -1700,9 +1755,9 @@
             
             const translations = {
                 az: {
-                    navHome: "Əsas Səhifə", navAbout: "Haqqımızda", navServices: "Xidmətlər", navReviews: "Rəylər", navBlog: "Bloq", navContact: "Əlaqə",
-                    // ADDED navQuiz
+                    // MOVED navQuiz to the start of the list
                     navQuiz: "Quiz Tətbiqini Sına",
+                    navHome: "Əsas Səhifə", navAbout: "Haqqımızda", navServices: "Xidmətlər", navReviews: "Rəylər", navBlog: "Bloq", navContact: "Əlaqə",
                     heroTitle: "Peşəkar Layihə Meneceri Olun. Gələcəyinizi Dəyişin.", heroSubtitle: "Fərdlər və şirkətlər üçün hazırlanmış təlim və konsaltinq xidmətləri – real nəticələr, praktik alətlər.",
                     heroButton: "Təlimə Qoşul", aboutButton: "Konsultasiya al",
                     valuePropTitle: "Niyə Biz?", value1Title: "Praktiki Təlim", value1Desc: "Real nümunələr və alətlər", value2Title: "Beynəlxalq Standartlar", value2Desc: "PMI və Agile yanaşmaları", value3Title: "Fərdi Konsaltinq", value3Desc: "Biznesinizə uyğun həllər", value4Title: "Sübut Olunmuş Təcrübə", value4Desc: "15M+ € layihə idarəetməsi",
@@ -1824,140 +1879,6 @@
                     reviewFatimaCName: "Cəfərova Fatimə", reviewFatimaCQuoteShort: "Təlimçi mövzunu sadə və aydın şəkildə təqdim etdi. Ritm balanslı idi...", reviewFatimaCQuoteFull: "Təlimçi mövzunu sadə və aydın şəkildə təqdim etdi. Ritm balanslı idi, izahları həyatdakı nümunələrlə zənginləşdirməsi dərsi daha anlaşılan etdi.",
                     reviewGulsumTName: "Gülsüm Tarverdiyeva", reviewGulsumTQuoteShort: "Təlimçinin dərsi təqdim etmə tərzi çox maraqlı və aydın idi. Mövzunu hərtərəfli...", reviewGulsumTQuoteFull: "Təlimçinin dərsi təqdim etmə tərzi çox maraqlı və aydın idi. Mövzunu hərtərəfli izah edir, real nümunələr gətirərək mövzunu daha da anlaşıqlı edirdi. Ritmi uyğun, izahı əyləncəli idi və iştirakçılarla yaxşı əlaqə qurmağı bacarırdı.",
                     reviewMasmaRName: "Məsmə Rəcəbova", reviewMasmaRQuoteShort: "Təlimin keyfiyyətindən çox razı qaldım. Təlimçinin izah tərzi sadə və anlaşılan idi...", reviewMasmaRQuoteFull: "Təlimin keyfiyyətindən çox razı qaldım. Təlimçinin izah tərzi sadə və anlaşılan idi, çətin görünən mövzuları belə rahat başa düşmək mümkün oldu. Hər dərs maraqlı və interaktiv şəkildə keçirildi, nümunələr və izahlar öyrənmə prosesini daha da asanlaşdırdı. Düşünürəm ki, bu təlim həm nəzəri bilik, həm də praktik bacarıqlar qazanmaq üçün çox faydalıdır.",
-                    reviewSusanHName: "Susan Heydərova", reviewSusanHQuoteShort: "Çox maraqlı və məlumatlandırıcı vebinar üçün bütün təşkilatçılar və mentora təşəkkürümü...", reviewSusanHQuoteFull: "Çox maraqlı və məlumatlandırıcı vebinar üçün bütün təşkilatçılar və mentora təşəkkürümü bildirməyi özümə borc bilirəm. Bu sahəyə maraqlı olan şəxslərə növbəti təlimlərə qoşulmağı məsləhət görürəm☺️",
-                    reviewFatimaBName: "Bağırova Fatimə", reviewFatimaBQuoteShort: "Bu layihədə mən əsaslı biliklər əldə etdim. Müəllimin səmimiliyi və bizə sanki ‘bizdən biri’...", reviewFatimaBQuoteFull: "Bu layihədə mən əsaslı biliklər əldə etdim . Müəllimin səmimiliyi və bizə sanki ‘bizdən biri’ kimi yanaşması dərsləri tamamilə fərqli bir atmosferdə keçirməyə səbəb oldu. Bu yaxınlıq və rahatlıq bizə daha çox sual verməyə, fikir mübadiləsi aparmağa və dərslərə maraqla qatılmağa şərait yaratdı. Mənim üçün layihə idarəçiliyi yolunda ilk addımları atmaq elə bu təlimlə başladı. Öyrəndiklərim nəzəri biliklər , həm də komanda mühitində ünsiyyət və əməkdaşlıq bacarıqlarımı inkişaf etdirdi. Dərslərin sonunda Kahoot oyunu ilə yarışmaq və doğrusu heç birində qalib gəlməsəmdə bu mənə hər dəfə təcrübəli edirdi , daha da unudulmaz proqram kimi yadda qaldı. \n Çünki buradakı ab-hava və yanaşma bir çox məşhur kurslardan qat-qat üstündür. Mənim üçün bu təlim , özünü inkişaf və motivasiya üçün açılan yeni bir qapı oldu. Hər dərsdən maraqlı qeydlərimi yazdıqca həvəslənirdim bu sahəyə . Təşəkkür edirəm!",
-                    reviewRovshanYName: "Rövşən Yasinov", reviewRovshanYQuoteShort: "Təlim mövzusu və məlumatlar ənənəvi təlimlərdə olduğu kimi yalnız mühazirəçi və dinləyici...", reviewRovshanYQuoteFull: "Təlim mövzusu və məlumatlar ənənəvi təlimlərdə olduğu kimi yalnız mühazirəçi və dinləyici perspektivindən deyil, interaktiv və qarşılıqlı dialoq əsasında təqdim olunur. Ən önəmlisi, tipik nəzəri biliklərdən çox, real həyat təcrübələrinə əsaslanan məlumatlara üstünlük verilir. Bu təlimin bizə qatdığı ən dəyərli məqamlardan biri yalnız peşəkar layihə meneceri olmaq üçün zəruri bilikləri öyrətməsi deyil, həm də müxtəlif proseslərə düzgün yanaşma tərzi formalaşdırmaq, yaranan çətinliklərə səmərəli həll yolları tapmaq və onlara fərqli baxış bucağından yanaşmaq bacarığını inkişaf etdirməsidir.",
-
-                    blog1p1: "Layihə idarəetməsi dünyasında tez-tez bir-birinin yerinə istifadə edilən iki termin var: Agile və Scrum. Bəs onlar həqiqətən eyni şeydirmi? Qısa cavab: xeyr. Gəlin onların arasındakı əsas fərqləri aydınlaşdıraq.", blog1h1: "Agile nədir?", blog1p2: "Agile bir metodologiya deyil, bir fəlsəfədir. Bu, layihələri daha çevik, uyğunlaşa bilən və müştəri mərkəzli şəkildə idarə etmək üçün bir düşüncə tərzidir. Agile Manifestində təsbit edilmiş 4 əsas dəyər və 12 prinsipdən ibarətdir. Əsas məqsəd, dəyişikliklərə tez reaksiya vermək və davamlı olaraq dəyər yaratmaqdır.", blog1h2: "Scrum nədir?", blog1p3: "Scrum, Agile fəlsəfəsini tətbiq etmək üçün istifadə olunan ən populyar çərçivələrdən (framework) biridir. Scrum, komandaların mürəkkəb problemləri həll etməsinə kömək edən konkret rollar (Product Owner, Scrum Master, Development Team), hadisələr (Sprint, Sprint Planning, Daily Scrum) və artefaktlar (Product Backlog, Sprint Backlog) təyin edir.", blog1h3: "Əsas Fərq", blog1p4: "Sadə bir bənətmə ilə desək, Agile \"sağlam həyat tərzi sürmək\" fəlsəfəsidirsə, Scrum bu fəlsəfəyə çatmaq üçün seçdiyiniz \"xüsusi pəhriz və məşq proqramı\" kimidir. Yəni, Scrum çevik olmağın bir yoludur, lakin tək yolu deyil. Kanban, XP kimi digər Agile çərçivələr də mövcüddur.",
-                    blog2p1: "Hər bir uğurlu layihənin arxasında yaxşı düşünülmüş bir plan və ardıcıl icra dayanır. Layihənin ölçüsündən və mürəkkəbliyindən asılı olmayaraq, bu 5 əsas addımı izləmək sizi uğura daha da yaxınlaşdıracaq.", blog2h1: "1. Başlanğıc (Initiation)", blog2p2: "Bu, layihənin doğuş mərhələsidir. Burada layihənin məqsədləri, gözləntiləri və əsas maraqlı tərəfləri müəyyən edilir. “Biz nəyə nail olmaq istəyirik?” və “Bu layihə niyə vacibdir?” suallarına cavab tapmaq lazımdır.", blog2h2: "2. Planlaşdırma (Planning)", blog2p3: "Uğurun təməli detallı planlaşdırmadır. Bu mərhələdə layihənin həcmi, büdcəsi, zaman qrafiki, tələb olunan resurslar və potensial risklər müəyyən edilir. Aydın bir yol xəritəsi çəkmək bütün komandanın eyni hədəfə doğru irəliləməsini təmin edir.", blog2h3: "3. İcra (Execution)", blog2p4: "Planın həyata keçirildiyi mərhələdir. Komanda üzvləri tapşırıqları yerinə yetirir, resurslar paylanır və layihənin əsas məhsul və ya xidməti yaradılır. Bu mərhələdə effektiv kommunikasiya və komanda işi kritik əhəmiyyət daşıyır.", blog2h4: "4. Nəzarət və Monitorinq (Monitoring & Control)", blog2p5: "Bu mərhələ icra ilə paralel gedir. Layihənin gedişatı plana uyğun olaraq izlənilir, performans ölçülür və hər hansı bir yayınma olarsa, düzəldici tədbirlər görülür. Məqsəd, layihəni büdcə, zaman və keyfiyyət çərçivəsində saxlamaqdır.", blog2h5: "5. Yekunlaşdırma (Closure)", blog2p6: "Layihənin uğurla başa çatdırıldığı son mərhələdir. Yekun məhsul müştəriyə təhvil verilir, sənədləşmə tamamlanır və layihədən əldə edilən təcrübələr (“lessons learned”) qeydə alınır. Bu, gələcək layihələr üçün dəyərli bir məlumat bazası yaradır.",
-                    blog3p1: "Layihə idarəetməsində ən yaxşı planlar belə gözlənilməz hadisələrlə üzləşə bilər. Risk idarəetməsi, bu qeyri-müəyyənlikləri qabaqcadan görməyə və onların layihəyə mənfi təsirini minimuma endirməyə kömək edən bir prosesdir.", blog3h1: "Risk Nədir və Növləri Hansılardır?", blog3p2: "Risk, baş verəcəyi təqdirdə layihənin məqsədlərinə (büdcə, zaman, keyfiyyət) müsbət və ya mənfi təsir göstərə biləcək qeyri-müəyyən bir hadisədir. Risklər texniki (texnologiya problemi), xarici (bazar dəyişikliyi), təşkilati (resurs çatışmazlığı) və ya idarəetmə (zəif planlama) kimi fərqli kateqoriyalara ayrıla bilər.", blog3h2: "Risk İdarəetmə Prosesi", blog3p3: "Effektiv risk idarəetməsi adətən dörd əsas addımdan ibarətrətdir:", blog3li1: "<strong>Risk Analizi:</strong> Hər bir riskin baş vermə ehtimalı və potensial təsiri qiymətləndirilir.", blog3li2: "<strong>Risk Cavabının Planlaşdırılması:</strong> Risklərə qarşı strategiyalar hazırlanır (qəbul etmək, qarşısını almaq, təsirini azaltmaq və ya başqasına ötürmək).", blog3li3: "<strong>Risk İdentifikasiyası:</strong> Potensial risklərin müəyyən edilməsi və siyahısının hazırlanması.", blog3li4: "<strong>Risk Monitorinqi:</strong> Proses boyu yeni risklərin izlənilməsi və mövcud risklərə qarşı planların effektivliyinin yoxlanılması.",
-                    blog4p1: "Layihə idarəetməsi terminologiyasında \"menecer\" və \"lider\" sözləri tez-tez bir-birini əvəz etsə də, əslində fərqli mənaları və funxiyaları ifadə edirlər. Uğurlu bir layihə meneceri hər iki rolu da özündə birləşdirməyi bacarmalıdır.", blog4h1: "Layihə Meneceri: Sistem və Proses", blog4p2: "Menecer, ilk növbədə, sistem və nizam-intizamla bağlıdır. O, planlar qurur, büdcələr təyin edir, resursları paylayır və tapşırıqların vaxtında və keyfiyyətlə yerinə yetirilməsinə nəzarət edir. Menecerin əsas sualları \"necə?\" və \"nə zaman?\" olur. O, proseslərin düzgün işləməsini təmin edir.", blog4h2: "Lider: İnsanlar və Vizyon", blog4p3: "Lider isə daha çox vizyon və motivasiya ilə bağlıdır. O, komandanı ruhlandırır, onlara ümumi hədəfi göstərir və çətinliklər qarşısında onlara dəstək olur. Liderin əsas sualları \"nə?\" və \"niyə?\" olur. O, komandanın hədəfə inanmasını və bu yolda həvəslə çalışmasını təmin edir.", blog4h3: "Nəticə: Hər İkisi Olmaq Şərtdir", blog4p4: "Yalnız idarə edən, lakin ilham verməyən bir menecer komandanın tam potensialını ortaya çıxara bilməz. Yalnız ilham verən, lakin planlama və nəzarət bacarığı olmayan bir lider isə layihəni xaosdan xilas edə bilməz. Buna görə də müasir layihə meneceri həm menecer kimi prosesləri mükəmməl idarə etməli, həm də lider kimi komandasına yol göstərməlidir.",
-                    blog5p1: "Gündəlik iş həyatında qarşımıza çıxan tapşırıqların hamısı eyni dərəcədə vacib deyil. Vaxtımızı səmərəli idarə etmək və həqiqətən əhəmiyyətli olan işlərə fokuslanmaq üçün tapşırıqları düzgün prioritetləşdirmək vacibdir. Bunun üçün ən effektiv üsullardan biri Eisenhower Matrisidir.", blog5h1: "Eisenhower Matrisi: 4 Kvadrant", blog5p2: "Bu metod, ABŞ-ın 34-cü prezidenti Dwight D. Eisenhower tərəfindən istifadə edildiyi üçün onun adını daşıyır. Matris bütün tapşırıqları iki meyar üzrə qiymətləndirir: Təcililik (Urgency) və Vaciblik (Importance). Bu, dörd fərqli kvadrant yaradır:", blog5li1: "<strong>1. Təcili və Vacib (Do):</strong> Bu tapşırıqları dərhal yerinə yetirmək lazımdır. Məsələn, müştəri ilə bağlı kritik bir problem və ya yaxınlaşan bir son tarix.", blog5li2: "<strong>2. Vacib, lakin Təcili Deyil (Schedule):</strong> Bu, uzunmüddətli hədəflərinizə çatmağınıza kömək edən tapşırıqlar üçün. Məsələn, yeni bir bacarıq öyrənmək, gələcək layihəni planlaşdırmaq. Bu tapşırıqları təqviminizdə planlaşdırın.", blog5li3: "<strong>3. Təcili, lakin Vacib Deyil (Delegate):</strong> Bu tapşırıqlar başqası tərəfindən edilə bilər. Məsələn, bəzi zənglərə cavab vermək, hesabatları tərtib etmək. Mümkünsə, bu işləri həvalə edin.", blog5li4: "<strong>4. Nə Təcili, Nə də Vacib (Eliminate):</strong> Bu tapşırıqlar vaxt itkisidir və onlardan yayınmaq lazımdır. Məsələn, sosial mediada məqsədsiz gəzmək.", blog5p3: "Bu matrisi istifadə edərək, \"reaktiv\" (yalnız təcili işlərə reaksiya verən) rejimdən çıxıb, \"proaktiv\" (həqiqətən vacib olan işlərə fokuslanan) bir iş rejiminə keçə bilərsiniz."
-                },
-                en: {
-                    navHome: "Home", navAbout: "About Us", navServices: "Services", navReviews: "Reviews", navBlog: "Blog", navContact: "Contact",
-                     // ADDED navQuiz
-                    navQuiz: "Try Quiz App",
-                    heroTitle: "Master Project Management. Transform Your Future.", heroSubtitle: "Training and consulting designed for individuals and companies – real results, practical tools.",
-                    heroButton: "Join a Training", aboutButton: "Get Consultation",
-                    valuePropTitle: "Why Choose Us?", value1Title: "Practical Training", value1Desc: "Real examples and tools", value2Title: "International Standards", value2Desc: "PMI and Agile approaches", value3Title: "Personalized Consulting", value3Desc: "Solutions tailored to your business", value4Title: "Proven Expertise", value4Desc: "15M+ € project management",
-                    servicesTitle: "Our Services", service1Title: "Trainings", service1Desc: "Learn project management with practical examples and proven methods.", service2Title: "Consulting", service2Desc: "Custom solutions to improve your company's project outcomes.", service3Title: "Personal Coaching", service3Desc: "1:1 mentoring and support for your career development.",
-                    learnMore: "Learn More &rarr;", newsTitle: "News", 
-
-                    // NEW QUIZ CTA
-                    quizCtaTitle: "Test Your Project Knowledge!",
-                    quizCtaSubtitle: "Check your skills with our professional quiz app based on PMI and Agile standards.",
-                    quizCtaBtn: "Start the Quiz!",
-                    
-                    // NEWS 1: PMP Free Consultation (UPDATED START DATE)
-                    news1Title: "🎓 PMP Certification: Free Consultation",
-                    news1ModalTitle: "PMP Exam Prep: Free 1:1 Consultation",
-                    news1ModalSub: "Plan your journey to becoming a Project Management Professional (PMP) certified.",
-                    news1ModalDesc: "Feeling motivated to get your own **PMP certification** but unsure where to begin? I've got your back. I'm offering a FREE consultation to help you:",
-                    news1ModalPoint1: "✅ Assess your current project management knowledge.",
-                    news1ModalPoint2: "✅ Identify your strengths and weaknesses.",
-                    news1ModalPoint3: "✅ Build a personalized study roadmap for success.",
-                    news1ModalPoint4: "Plus, if you're looking for a structured learning environment, our next PMP exam prep group starts on January 15th. We can discuss if it's the right fit for you during our call.",
-                    news1ModalPoint5: "Ready to take the first step?",
-                    news1ModalCTA: "Book Your FREE Consultation",
-                    news1ModalLink: "https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ1XfkZmkcBhOEeY2REOv08Q-OX9uIxSxJxwwu2FvgzLkC0Z4g14IWDxXxM6ETYK3dIxEhMs9Zwd",
-
-                    // NEW NEWS 2: Qlobal PM Təcrübəsi (apmc.png)
-                    news2Title: "Global PM Experience: Career Abroad and Behind the Real Scene",
-                    news2ModalTitle: "Global PM Experience: Career Abroad and Behind the Real Scene",
-                    news2ModalSub: "A special meeting for project managers seeking a career abroad! 🌍",
-                    news2ModalDesc1: "This time, our guest at APMC will be an Azerbaijani PM working abroad. He will share his real experience, the environment in global companies, expectations, challenges, and possible ways to embark on an international career with PM Mahmud Mahmudlu, PMP® PMania Hub.",
-                    news2ModalDesc2: "",
-                    news2ModalForWhomTitle: "Who is this event for?",
-                    news2ModalForWhom1: "🔹 PMs specifically looking to work abroad",
-                    news2ModalForWhom2: "🔹 Those who want to elevate their career to a global level",
-                    news2ModalForWhom3: "🔹 Anyone interested in joining global projects",
-                    news2ModalContentTitle: "What will happen?",
-                    news2ModalContent1: "✓ Real experiences and practical advice",
-                    news2ModalContent2: "✓ Requirements in the global PM environment",
-                    news2ModalContent3: "✓ CV / portfolio recommendations",
-                    news2ModalContent4: "✓ Q&A session",
-                    news2ModalDateTime: "📅 Date: December 20, 2025 | 🕒 Time: 16:00 | 🎟️ Registration: Form is in bio / below.",
-                    news2ModalCTA: "Register",
-                    news2ModalLink: "https://lnkd.in/dn_sAwYd",
-                    news2ModalHashtags: "#AzerbaijanProjectManagementCommunity #projectmanagement #projectmanager #layihəidarəetməsi #layihəmeneceri",
-                    
-                    // NEW NEWS 3: Generative AI və Layihə İdarəetməsi (aya.png)
-                    news3Title: "Join the Generative AI and Project Management Training!",
-                    news3ModalTitle: "Generative AI and Project Management: Opportunities and Use Cases",
-                    news3ModalSub: "AYAFE Youth Organization and Pmania Hub invite you to the training to be held on December 21, 2025!",
-                    news3ModalLearnTitle: "What will you learn in the training?",
-                    news3ModalLearn1: "- Basic concepts of Artificial Intelligence and Generative AI",
-                    news3ModalLearn2: "- Application areas of AI in project management",
-                    news3ModalLearn3: "- Effectively creating project plans and reports through AI",
-                    news3ModalLearn4: "- Skills for preparing more efficient, creative, and faster projects",
-                    news3ModalDate: "Date: December 21, 2025",
-                    news3ModalTime: "Time: 10:30 – 12:30",
-                    news3ModalPlace: "Location: Globus Centre",
-                    news3ModalTrainer: "<strong>Trainer:</strong> Mahmud Mahmudlu, PMP®",
-                    news3ModalPartners: "<strong>Partners:</strong> AYAFE Youth Organization | PMania Hub",
-                    news3ModalCTA: "Registration Link",
-                    news3ModalLink: "https://lnkd.in/eQ2xNXeg",
-
-
-                    // SHIFTED NEWS 4: Old news1 (Product vs Project Management Event)
-                    news4Title: "🎙️Join Us! Panel Discussion in Tallinn — Product vs. Project Management",
-                    news4ModalTitle: "Product and Project Management: Understanding the Difference",
-                    news4ModalSub: "Panel Discussion: ProductTank Tallinn & PMania Hub",
-                    news4ModalDesc: "Two titles. One acronym. Endless confusion. What really separates <strong>Product Managers</strong> from <strong>Project Managers</strong> — and where do their priorities collide or overlap? Join ProductTank Tallinn and PMania Hub for a panel discussion exploring how these two disciplines approach success, ownership, and impact.",
-                    news4ModalPoint1: "🗓 <strong>Date & Time:</strong> November 11, 2025 | doors open at 18:00",
-                    news4ModalPoint2: "📍 <strong>Location:</strong> Coolbet office, Kai 4, 2nd floor",
-                    news4ModalPoint3: "🎤 <strong>Moderator:</strong> Anna Albert, Senior Product Manager at Riverty",
-                    news4ModalPoint4: "⚠️ <strong>Important:</strong> This is an offline event with limited space. Please RSVP only if you can join in person.",
-                    news4ModalPoint5: "📸 We’ll be taking photos — let us know if you’d prefer not to be featured.",
-                    news4ModalCTA: "Register",
-                    news4ModalLink: "https://www.meetup.com/producttank-tallinn/events/311759588/?utm_medium=referral&utm_campaign=announce_event&utm_source=link&utm_version=v2",
-
-                    // SHIFTED NEWS 5: Old news2 (360° Layihə İdarəetməsi)
-                    news5Title: "Registration Open: 360° Project Management", 
-                    news5ModalTitle: "Registration Started: 360° Project Management", 
-                    news5ModalSub: "Registration is Open!", 
-                    news5ModalDesc: "JOIN, LEARN, APPLY! 🚀 Want to become a professional in project management? PMANIA will help you with international approaches, real examples, and practical knowledge!", 
-                    news5ModalPoint1: "8-week intensive training", 
-                    news5ModalPoint2: "Agile, Waterfall, Scrum, Kanban", 
-                    news5ModalPoint3: "Certificate + practical assignments", 
-                    news5ModalTrainer: "<strong>Instructor:</strong> Mahmud Mahmudlu – PMP®, Lean Six Sigma certified project manager, currently working at the global telecommunications leader, Ericsson.", 
-                    news5ModalRegister: "Contact us to register – take the first step towards a successful career today!", 
-                    news5ModalCTA: "Contact Us",
-
-                    // SHIFTED NEWS 6: Old news3 (Keçirilmiş Seminar)
-                    news6Title: "Past Seminar: Agile vs. Classic Methods", 
-                    news6ModalTitle: "Past Seminar: Agile and Classic Methods", 
-                    news6ModalDesc: "If you want to get acquainted with both classic and agile methods in project management, this seminar is for you!", 
-                    news6ModalPoint1: "<strong>Topic:</strong> Agile and Classic Project Management", 
-                    news6ModalPoint2: "<strong>Speaker:</strong> Mahmud Mahmudlu", 
-                    news6ModalPoint3: "📌 Ericsson – Tech Project Manager", 
-                    news6ModalPoint4: "📜 PMP, Lean Six Sigma Certified", 
-                    news6ModalDate: "🗓️ Date: August 21 (Event has ended)", 
-                    news6ModalCTA: "Registration Closed",
-                    
-                    // SHIFTED NEWS 7: Old news4 (Təqaüd Proqramı)
-                    news7Title: "Scholarship Program Successfully Concluded", 
-                    news7ModalTitle: "Scholarship Program Successfully Concluded", 
-                    news7ModalDesc1: "We would like to inform you that the application process for the scholarship program, organized with the support of AYAFE Youth Organization and Pmania Hub, has been completed.", 
-                    news7ModalDesc2: "Over 100 applications were received, with 40 candidates advancing to the interview stage. 11 successful candidates were selected for the 2-month free \"360° Project Management training program.\"", 
-                    news7ModalDesc3: "Now, the stage is theirs for new knowledge, big goals, and projects that make a difference!", 
-                    news7ModalDesc4: "We congratulate our scholarship winners and wish them success in their activities.", 
-                    news7ModalHashtags: "#AYAFEAZERBAIJAN #PMANIA #ProjectManagement",
-                    
-                    testimonialsTitle: "What Our Students Say",
-                    blogTitle: "Latest Blog Posts", blog1Title: "Differences Between Agile and Scrum", blog1Desc: "In this article, we explore the core principles of agile methodologies and their application.", blog2Title: "5 Essential Steps for a Successful Project", blog2Desc: "Key points to consider from project planning to final delivery.", blog3Title: "What is Risk Management?", blog3Desc: "How can you identify and manage potential risks in your projects?", blog4Title: "Project Manager or Leader? Both!", blog4Desc: "Explore the leadership qualities behind successful projects and their impact on the team.", blog5Title: "Urgent or Important? How to Prioritize Correctly", blog5Desc: "Learn effective prioritization methods like MoSCoW and Eisenhower Matrix.", readMore: "Read more &rarr;", viewAllBlogs: "View All Blogs",
-                    ctaTitle: "Ready to Take Your Projects to the Next Level?", ctaSubtitle: "Start now – take the first step towards growth.", ctaBtn1: "Book a Free Call", ctaBtn2: "View All Services",
-                    footerTitle1: "PMania Hub", footerDesc1: "Your professional support in project management.", footerTitle2: "Quick Links", footerTitle3: "Contact", footerTitle4: "Follow Us", footerRights: "&copy; 2025 PMania Hub. All rights reserved.",
-                    calendarTitle: "Book a Meeting",
-
-                    readMoreReview: "Read More",
-                    linkedinComment: "LinkedIn Comment",
-                    reviewAytacAName: "Aytac Abbasova", reviewAytacAQuoteShort: "The interactive method, explaining in simple language tailored to the listener...", reviewAytacAQuoteFull: "The interactive method, explaining in simple language tailored to the listener, and checking our knowledge with a fun method at the end was an excellent approach.",
-                    reviewFatimaUName: "Fatimə Umudova", reviewFatimaUQuoteShort: "The lessons are explained very clearly and systematically, and explaining the topic with both...", reviewFatimaUQuoteFull: "The lessons are explained very clearly and systematically, and explaining the topic with both theoretical and real examples made it even more understandable. The instructor's presentation style is as important as their knowledge, and I think both were quite good.",
-                    reviewFatimaCName: "Fatimə Cəfərova", reviewFatimaCQuoteShort: "The instructor presented the topic in a simple and clear manner. The pace was balanced...", reviewFatimaCQuoteFull: "The instructor presented the topic in a simple and clear manner. The pace was balanced, and enriching the explanations with real-life examples made the lesson more understandable.",
-                    reviewGulsumTName: "Gülsüm Tarverdiyeva", reviewGulsumTQuoteShort: "The instructor's way of presenting the lesson was very interesting and clear. He explained...", reviewGulsumTQuoteFull: "The instructor's way of presenting the lesson was very interesting and clear. He explained the topic comprehensively, making it even more understandable by providing real examples. The pace was appropriate, the explanation was enjoyable, and he was able to establish a good connection with the participants.",
-                    reviewMasmaRName: "Məsmə Rəcəbova", reviewMasmaRQuoteShort: "I was very pleased with the quality of the training. The instructor's teaching style was simple...", reviewMasmaRQuoteFull: "I was very pleased with the quality of the training. The instructor's teaching style was simple and understandable, making it possible to grasp even seemingly difficult topics with ease. Every lesson was interesting and interactive; the examples and explanations made the learning process much easier. I believe this training is very beneficial for gaining both theoretical knowledge and practical skills.",
                     reviewSusanHName: "Susan Heydarova", reviewSusanHQuoteShort: "I feel it is my duty to thank all the organizers and the mentor for a very interesting...", reviewSusanHQuoteFull: "I feel it is my duty to thank all the organizers and the mentor for a very interesting and informative webinar. I recommend that people interested in this field join the next trainings☺️",
                     reviewFatimaBName: "Fatima Baghirova", reviewFatimaBQuoteShort: "In this project, I gained fundamental knowledge. The teacher's sincerity and treating us like...", reviewFatimaBQuoteFull: "In this project, I gained fundamental knowledge. The teacher's sincerity and treating us like 'one of us' created a completely different atmosphere in the lessons. This closeness and comfort allowed us to ask more questions, exchange ideas, and participate in the lessons with interest. For me, taking the first steps on the path of project management started with this training. What I learned not only improved my theoretical knowledge but also my communication and collaboration skills in a team environment. Competing with the Kahoot game at the end of the lessons, and honestly, even though I never won, it made me more experienced each time and remained a memorable program. \n Because the atmosphere and approach here are far superior to many famous courses. For me, this training was a new door opened for self-development and motivation. I was inspired as I wrote down interesting notes from each lesson in this field. Thank you!",
                     reviewRovshanYName: "Rövşən Yasinov", reviewRovshanYQuoteShort: "The training topic and information are presented not just from the traditional lecturer and listener...", reviewRovshanYQuoteFull: "The training topic and information are presented not just from the traditional lecturer and listener perspective, as in conventional trainings, but on the basis of interactive and mutual dialogue. Most importantly, priority is given to information based on real-life experiences rather than typical theoretical knowledge. One of the most valuable aspects this training has given us is not only teaching the necessary knowledge to become a professional project manager but also developing the ability to form the right approach to various processes, find effective solutions to emerging difficulties, and approach them from a different perspective.",
